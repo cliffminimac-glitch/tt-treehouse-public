@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>treehouse. | Events | New York City</title>
+<meta name="description" content="Curated experiences bringing together NYC's top cultural insiders, tastemakers, creators, and brand leaders. Follow @treehouseevents.nyc">
+<meta property="og:title" content="treehouse. | Events | New York City">
+<meta property="og:description" content="Curated experiences where premium brands meet real influence. New York City.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm: #E2DED8;
+  --olive: #3B4A2A;
+  --olive-dark: #2F3D20;
+  --text-dark: #1E3016;
+  --text-warm: #E2DED8;
+  --muted: #A8A49E;
+  --muted-warm: rgba(226,222,216,.6);
+  --divider-light: rgba(30,48,22,.1);
+  --divider-dark: rgba(226,222,216,.15);
+  --accent: #4A4E6A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--warm); color: var(--text-dark); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between;
+  transition: all .3s;
+}
+.nav.scrolled { background: rgba(59,74,42,.95); backdrop-filter: blur(12px); }
+.nav-logo { font-weight: 700; font-size: 1rem; color: #fff; }
+.nav-logo .sub { font-size: .5rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; opacity: .6; }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-size: .68rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  padding: .45rem 1.2rem; border: 1.5px solid rgba(255,255,255,.5); border-radius: 50px;
+  font-size: .62rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #fff;
+}
+.nav-cta:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 3rem; background: var(--olive); color: var(--text-warm); position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('img/hero.png') center/cover no-repeat;
+  opacity: .2;
+}
+.hero-content { position: relative; z-index: 1; max-width: 700px; padding-bottom: 2rem; }
+.hero-eyebrow {
+  font-size: .6rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--muted-warm); margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(3rem, 9vw, 6.5rem); line-height: .88; letter-spacing: -.03em;
+  margin-bottom: 1.25rem;
+}
+.hero-desc {
+  font-size: .9rem; font-weight: 300; color: var(--muted-warm); max-width: 460px; line-height: 1.8;
+}
+.hero-badge {
+  position: absolute; top: 5.5rem; right: 3rem; z-index: 1;
+  border: 1.5px solid var(--accent); border-radius: 50px; padding: .3rem 1.1rem;
+  font-size: .68rem; font-weight: 600; letter-spacing: .12em; color: var(--muted-warm);
+}
+.hero-logo {
+  position: absolute; bottom: 3rem; right: 3rem; text-align: right; z-index: 1;
+}
+.hero-logo .wm { font-weight: 700; font-size: 1.1rem; color: #fff; }
+.hero-logo .tag { font-size: .48rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-warm); }
+
+/* PHOTO STRIP */
+.photo-strip {
+  display: flex; height: 280px; overflow: hidden;
+}
+.photo-strip img {
+  height: 100%; width: auto; object-fit: cover; flex-shrink: 0; filter: saturate(.85);
+  transition: filter .3s;
+}
+.photo-strip img:hover { filter: saturate(1.1); }
+
+/* SECTIONS */
+.sec-warm { background: var(--warm); color: var(--text-dark); padding: 5rem 3rem; }
+.sec-olive { background: var(--olive); color: var(--text-warm); padding: 5rem 3rem; }
+.section-inner { max-width: 1000px; margin: 0 auto; }
+.sec-label { font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; margin-bottom: .5rem; }
+.sec-olive .sec-label { color: var(--muted-warm); }
+.sec-warm .sec-label { color: var(--muted); }
+.sec-title {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -.02em; margin-bottom: 1.25rem;
+}
+.sec-desc { font-size: .88rem; font-weight: 300; line-height: 1.8; max-width: 520px; margin-bottom: 2.5rem; }
+.sec-olive .sec-desc { color: var(--muted-warm); }
+.sec-warm .sec-desc { color: var(--muted); }
+
+/* STATS */
+.stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--divider-dark); }
+.stat .num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2rem; }
+.stat .label { font-size: .58rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted-warm); }
+
+/* FEATURE GRID */
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.feat-card { padding: 2rem; border-radius: 10px; transition: transform .2s; }
+.sec-warm .feat-card { background: rgba(30,48,22,.04); border: 1px solid var(--divider-light); }
+.sec-olive .feat-card { background: rgba(226,222,216,.05); border: 1px solid var(--divider-dark); }
+.feat-card:hover { transform: translateY(-3px); }
+.feat-card h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; margin-bottom: .4rem; }
+.feat-card p { font-size: .82rem; font-weight: 300; line-height: 1.7; }
+.sec-warm .feat-card p { color: var(--muted); }
+.sec-olive .feat-card p { color: var(--muted-warm); }
+
+/* EVENT BLOCK */
+.event-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.event-img { border-radius: 10px; overflow: hidden; }
+.event-img img { width: 100%; display: block; }
+.event-details .dl { margin-bottom: 1.25rem; }
+.event-details .dt { font-size: .6rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .1rem; }
+.sec-warm .dt { color: var(--muted); }
+.sec-olive .dt { color: var(--muted-warm); }
+.event-details .dd { font-size: .92rem; font-weight: 400; }
+
+/* PAST EVENTS */
+.past-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.past-card { border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 3/4; }
+.past-card img { width: 100%; height: 100%; object-fit: cover; }
+.past-card .overlay {
+  position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(30,48,22,.8));
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 1.25rem;
+}
+.past-card .overlay h4 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: #fff; }
+.past-card .overlay span { font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+
+/* STEPS */
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; counter-reset: s; }
+.step { text-align: center; }
+.step::before {
+  counter-increment: s; content: '0' counter(s);
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2rem;
+  display: block; margin-bottom: .3rem;
+}
+.sec-warm .step::before { color: rgba(30,48,22,.12); }
+.sec-olive .step::before { color: rgba(226,222,216,.15); }
+.step h4 { font-size: .78rem; font-weight: 700; margin-bottom: .25rem; }
+.step p { font-size: .76rem; font-weight: 300; line-height: 1.7; }
+.sec-warm .step p { color: var(--muted); }
+.sec-olive .step p { color: var(--muted-warm); }
+
+/* CONNECT */
+.connect-box {
+  border-radius: 14px; padding: 3rem; text-align: center; max-width: 540px; margin: 0 auto;
+  border: 1px solid var(--divider-dark);
+}
+.connect-box h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-style: italic; font-size: 1.8rem; margin-bottom: .5rem; }
+.connect-box > p { font-size: .82rem; font-weight: 300; color: var(--muted-warm); margin-bottom: 1.5rem; }
+.email-row { display: flex; gap: .5rem; max-width: 380px; margin: 0 auto; }
+.email-row input {
+  flex: 1; padding: .6rem 1.1rem; border-radius: 50px; background: transparent;
+  border: 1.5px solid var(--divider-dark); font-family: inherit; font-size: .82rem; color: #fff;
+}
+.email-row input::placeholder { color: rgba(255,255,255,.35); }
+.email-row input:focus { outline: none; border-color: rgba(255,255,255,.5); }
+.email-row button {
+  padding: .6rem 1.3rem; border-radius: 50px; background: var(--text-warm); color: var(--olive);
+  font-family: inherit; font-weight: 600; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  border: none; cursor: pointer;
+}
+.email-row button:hover { opacity: .85; }
+.social-row { display: flex; gap: 2rem; justify-content: center; margin-top: 1.75rem; }
+.social-row a { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-warm); }
+.social-row a:hover { color: #fff; }
+
+/* GALLERY LINKS */
+.gallery-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.gallery-link {
+  padding: .4rem 1rem; border: 1px solid var(--divider-light); border-radius: 50px;
+  font-size: .65rem; font-weight: 500; letter-spacing: .08em; color: var(--muted);
+  transition: all .2s;
+}
+.gallery-link:hover { border-color: var(--text-dark); color: var(--text-dark); }
+
+/* FOOTER */
+footer { padding: 2.5rem 3rem; text-align: center; background: var(--olive-dark); color: var(--text-warm); }
+.footer-logo { font-weight: 700; font-size: .95rem; }
+.footer-tag { font-size: .48rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted-warm); }
+footer nav { margin: 1rem 0; }
+footer nav a { font-size: .6rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-warm); margin: 0 .75rem; }
+footer nav a:hover { color: #fff; }
+footer .copy { font-size: .52rem; color: var(--muted-warm); opacity: .4; }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .nav { padding: .75rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 2rem 1.5rem; }
+  .hero-badge { right: 1.5rem; top: 4.5rem; }
+  .hero-logo { right: 1.5rem; bottom: 2rem; }
+  .sec-warm, .sec-olive { padding: 3.5rem 1.5rem; }
+  .feat-grid, .past-grid { grid-template-columns: 1fr; }
+  .event-block { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .email-row { flex-direction: column; }
+  .photo-strip { height: 180px; }
+  .stats { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">treehouse. <span class="sub">Events | New York City</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#next">Next Event</a>
+    <a href="#past">Past Events</a>
+    <a href="https://www.instagram.com/treehouseevents.nyc/" target="_blank" class="nav-cta">Follow Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">2026</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">treehouse. events | new york city</div>
+    <h1>where culture<br>comes alive.</h1>
+    <p class="hero-desc">Curated experiences bringing together NYC's top cultural insiders, tastemakers, creators, and brand leaders for unforgettable moments.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">350+</div><div class="label">Avg. Attendance</div></div>
+      <div class="stat"><div class="num">4M+</div><div class="label">Social Reach</div></div>
+      <div class="stat"><div class="num">60%</div><div class="label">Guest Content Rate</div></div>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <div class="wm">treehouse.</div>
+    <div class="tag">Events | New York City</div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="img/venue.jpg" alt="Rooftop venue NYC skyline">
+  <img src="img/crowd.jpg" alt="Treehouse crowd">
+  <img src="img/soho.jpg" alt="SoHo NYC">
+  <img src="img/dj.jpg" alt="DJ set">
+  <img src="img/party.jpg" alt="Treehouse party">
+  <img src="img/venue.jpg" alt="NYC venue">
+</div>
+
+<!-- WHO WE ARE -->
+<section class="sec-olive" id="about">
+  <div class="section-inner">
+    <div class="sec-label">Who We Are</div>
+    <div class="sec-title">curated experiences.<br>real influence.</div>
+    <div class="sec-desc">Treehouse curates sold-out experiences that bring together NYC's top cultural insiders, tastemakers, creators, and brand leaders for unforgettable moments where premium brands meet real influence.</div>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <h3>Intimate Dinners</h3>
+        <p>40-person seated dinners in NYC's most coveted private spaces. Thoughtful guest curation, curated menus, meaningful conversation.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Rooftop Parties</h3>
+        <p>Daytime rooftop events with panoramic city views, surprise DJ sets, and craft cocktails against the Manhattan skyline.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Nighttime Events</h3>
+        <p>400-600 guest events at NYC's most iconic venues. Immersive themes, open bar, world-class DJs, and unforgettable energy.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Curated Guest Lists</h3>
+        <p>Invite-only. NYC's fashion, music, media, and startup worlds. Quality over quantity, always.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Brand Activations</h3>
+        <p>Branded installations, custom touchpoints, and product integration woven seamlessly into the event experience.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Organic Content</h3>
+        <p>60% of guests post event content. Influencer engagement and post-event buzz that extends well beyond the night itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT EVENT -->
+<section class="sec-warm" id="next">
+  <div class="section-inner">
+    <div class="sec-label">Next Event</div>
+    <div class="sec-title">march 13th.<br>75 varick rooftop.</div>
+
+    <div class="event-block">
+      <div class="event-img">
+        <img src="img/venue.jpg" alt="75 Varick Rooftop SoHo">
+      </div>
+      <div class="event-details">
+        <div class="dl">
+          <div class="dt">When</div>
+          <div class="dd">March 13th @ 10:30pm - 3:30am ET</div>
+        </div>
+        <div class="dl">
+          <div class="dt">Where</div>
+          <div class="dd">75 Varick: Rooftop venue in SoHo, NYC</div>
+        </div>
+        <div class="dl">
+          <div class="dt">Who</div>
+          <div class="dd">Invite-only. 300-400 influential guests from NYC's fashion, music, media, and startup worlds.</div>
+        </div>
+        <div class="dl">
+          <div class="dt">What</div>
+          <div class="dd">A gallery takeover featuring surprise DJ sets, curated food + cocktails, and interactive brand experiences set against the NYC skyline.</div>
+        </div>
+        <div class="dl">
+          <div class="dt">The Venue</div>
+          <div class="dd">The 75 Varick Rooftop in SoHo offers panoramic city views and a stunning downtown backdrop. With its capacity, design, and location, this space provides the ultimate stage for unforgettable experiences.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section class="sec-olive" id="past">
+  <div class="section-inner">
+    <div class="sec-label">Past Events</div>
+    <div class="sec-title">past activations.</div>
+    <div class="sec-desc">Past sponsors have gained strong exposure through branded activations, custom installations, and thoughtful product integration woven seamlessly into the event design.</div>
+
+    <div class="past-grid">
+      <div class="past-card">
+        <img src="img/crowd.jpg" alt="Treehouse crowd">
+        <div class="overlay"><span>May 2025</span><h4>Rooftop Summer Opener</h4></div>
+      </div>
+      <div class="past-card">
+        <img src="img/dj.jpg" alt="DJ sunset set">
+        <div class="overlay"><span>Oct 2025</span><h4>Sunset Sessions</h4></div>
+      </div>
+      <div class="past-card">
+        <img src="img/party.jpg" alt="Treehouse party">
+        <div class="overlay"><span>Dec 2025</span><h4>Winter Formal</h4></div>
+      </div>
+    </div>
+
+    <div class="gallery-links" style="margin-top:2rem;">
+      <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" class="gallery-link" style="border-color:var(--divider-dark);color:var(--muted-warm);">📸 May 31st Gallery</a>
+      <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" class="gallery-link" style="border-color:var(--divider-dark);color:var(--muted-warm);">📸 Oct 18th Gallery</a>
+      <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" class="gallery-link" style="border-color:var(--divider-dark);color:var(--muted-warm);">📸 Dec 12th Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec-warm">
+  <div class="section-inner">
+    <div class="sec-label">Get Involved</div>
+    <div class="sec-title">how it works.</div>
+    <div class="sec-desc">Whether you want to attend or partner with us, getting started is simple.</div>
+
+    <div class="steps-row">
+      <div class="step">
+        <h4>Follow Us</h4>
+        <p>Follow <a href="https://www.instagram.com/treehouseevents.nyc/" target="_blank" style="text-decoration:underline;">@treehouseevents.nyc</a> for event drops and early access.</p>
+      </div>
+      <div class="step">
+        <h4>Join the List</h4>
+        <p>Sign up below. Treehouse events are invite-only, curated experiences.</p>
+      </div>
+      <div class="step">
+        <h4>Show Up</h4>
+        <p>Arrive at the venue. Rooftop or underground, daytime or late night. Let the experience unfold.</p>
+      </div>
+      <div class="step">
+        <h4>Live It</h4>
+        <p>Dance, connect, create. Every treehouse. moment is designed to be remembered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="sec-olive" id="connect">
+  <div class="section-inner">
+    <div class="connect-box">
+      <h3>don't miss a night.</h3>
+      <p>Join the list. Get first access to events, invites, and sponsorship opportunities.</p>
+      <div class="email-row">
+        <input type="email" id="emailInput" placeholder="your@email.com">
+        <button onclick="subscribe()">Join</button>
+      </div>
+      <div id="subMsg" style="display:none;margin-top:.75rem;font-size:.8rem;font-weight:500;color:#fff;"></div>
+      <div class="social-row">
+        <a href="https://www.instagram.com/treehouseevents.nyc/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@treehouseevents.nyc" target="_blank">TikTok</a>
+        <a href="mailto:events@tigertracks.ai">Email Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">treehouse.</div>
+  <div class="footer-tag">Events | New York City</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#next">Next Event</a>
+    <a href="#past">Past Events</a>
+    <a href="#connect">Connect</a>
+  </nav>
+  <div class="copy">&copy; 2026 treehouse. events nyc. All rights reserved.</div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>80);});
+
+function subscribe(){
+  var e=document.getElementById('emailInput').value.trim(),m=document.getElementById('subMsg');
+  if(!e||!e.includes('@')){m.textContent='Enter a valid email.';m.style.display='block';return;}
+  var s=JSON.parse(localStorage.getItem('th_subs')||'[]');
+  if(s.indexOf(e)<0)s.push(e);
+  localStorage.setItem('th_subs',JSON.stringify(s));
+  m.textContent="You're in. See you soon.";m.style.display='block';
+  document.getElementById('emailInput').value='';
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:.08});
+document.querySelectorAll('.feat-card,.step,.past-card').forEach(function(el){
+  el.style.opacity='0';el.style.transform='translateY(14px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';obs.observe(el);
+});
+</script>
+</body>
+</html>
