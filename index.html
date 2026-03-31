@@ -1,711 +1,2467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>treehouse. | Events | New York City</title>
-<meta name="description" content="New York's best recurring night out. Themed parties. Open bar. A room full of people you actually want to meet.">
-<meta property="og:title" content="treehouse. | Events | New York City">
-<meta property="og:description" content="New York's best recurring night out. Themed parties. Open bar.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>treehouse. events | new york city</title>
+  <meta name="description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
 
-<style>
+  <!-- Open Graph -->
+  <meta property="og:title" content="treehouse. events | new york city">
+  <meta property="og:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb">
+  <meta property="og:url" content="https://treehouseevents.cliffeliz.ai">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="treehouse. events | new york city">
+  <meta name="twitter:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb">
+
+  <!-- Fonts: Bebas Neue (display) + Playfair Display (editorial) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
 /* ============================================================
-   VARIABLES
+   SA2 — DESIGN SYSTEM + GLOBAL CSS
+   treehouse. events | treehouseevents.cliffeliz.ai
    ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (:root)
+   ──────────────────────────────────────────────────────────── */
 :root {
-  --cream: #E8E6DF;
-  --green: #2D4A1E;
-  --green-80: rgba(45,74,30,0.8);
-  --green-40: rgba(45,74,30,0.4);
-  --green-12: rgba(45,74,30,0.12);
-  --green-06: rgba(45,74,30,0.06);
-  --cream-80: rgba(232,230,223,0.8);
+  /* Colors */
+  --g:        #1a3a1a;   /* deep forest green — primary dark bg */
+  --g2:       #2b5c1f;
+  --g3:       #3d7a28;
+  --linen:    #f0ede8;   /* primary light bg */
+  --linen2:   #e8e3db;
+  --white:    #ffffff;
+  --accent:   #7eb832;
+  --muted:    #7a7a6e;
+
+  /* Derived / alpha */
+  --g-80:     rgba(26, 58, 26, 0.80);
+  --g-40:     rgba(26, 58, 26, 0.40);
+  --g-12:     rgba(26, 58, 26, 0.12);
+  --g-06:     rgba(26, 58, 26, 0.06);
+  --linen-80: rgba(240, 237, 232, 0.80);
+  --accent-dark: #6aa228;
+
+  /* Fonts */
+  --font-display:   'Bebas Neue', sans-serif;
+  --font-editorial: 'Playfair Display', serif;
+  --font-body:      'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(4rem, 8vw, 9rem) clamp(1.5rem, 5vw, 5rem);
+  --nav-height:  72px;
+  --wrap-max:    1280px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Transitions */
+  --transition-std: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* EVENT DATE -- edit this one place to change the countdown target */
-/* April 25, 2026 = "2026-04-25T20:00:00" (8pm ET assumed) */
-/* If event moves to May 30: change to "2026-05-30T20:00:00" */
+/* ────────────────────────────────────────────────────────────
+   2. CSS RESET
+   ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* ============================================================
-   RESET + BASE
-   ============================================================ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--cream);
-  color: var(--green);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
 
-/* ============================================================
-   NAV
-   ============================================================ */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  padding: 1.25rem 3rem;
-  display: flex; align-items: center; justify-content: space-between;
-  background: var(--cream);
-  border-bottom: 1px solid var(--green-12);
-  transition: box-shadow 0.3s;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
-.nav.scrolled { box-shadow: 0 2px 24px rgba(45,74,30,0.08); }
-.nav-logo-wrap { display: flex; flex-direction: column; line-height: 1; }
-.nav-logo-name {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700; font-size: 1.05rem;
-  color: var(--green); letter-spacing: -0.02em;
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.nav-logo-sub {
-  font-size: 0.48rem; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--green); opacity: 0.55; margin-top: 2px;
+
+ul {
+  list-style: none;
 }
-.nav-links {
-  display: flex; align-items: center; gap: 2.5rem;
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
-.nav-links a {
-  font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: lowercase;
-  color: var(--green); opacity: 0.65;
-  transition: opacity 0.2s;
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. SECTION BACKGROUND SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.section-dark {
+  background: var(--g);
+  color: var(--linen);
   position: relative;
+  overflow: hidden;
 }
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-  height: 1px; background: var(--green);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s ease;
-}
-.nav-links a:hover { opacity: 1; }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-ticket {
-  padding: 0.5rem 1.4rem;
-  background: var(--green); color: var(--cream) !important;
-  border-radius: 4px; opacity: 1 !important;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: lowercase;
-  transition: background 0.2s, transform 0.15s !important;
-}
-.nav-ticket::after { display: none !important; }
-.nav-ticket:hover { background: #1e3314 !important; transform: scale(1.02); }
 
-/* hamburger */
+.section-light {
+  background: var(--linen);
+  color: var(--g);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   4. GRAIN TEXTURE (applied via ::after pseudo-element)
+   Sections that get grain: hero, stats, next-event, why-sponsor, join, footer
+   ──────────────────────────────────────────────────────────── */
+.section-dark.hero::after,
+.section-dark.stats::after,
+.section-dark.next-event::after,
+.section-dark.why-sponsor::after,
+.section-dark.join::after,
+.section-dark.site-footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  animation: grainShift 8s steps(1) infinite;
+}
+
+/* Content must sit above grain */
+.section-dark.hero .hero-inner,
+.section-dark.hero .hero-bg,
+.section-dark.stats .stats-band,
+.section-dark.next-event .next-event-inner,
+.section-dark.why-sponsor .why-sponsor-inner,
+.section-dark.join .join-inner,
+.section-dark.site-footer .footer-top,
+.section-dark.site-footer .footer-links,
+.section-dark.site-footer .footer-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+/* ────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY SCALE
+   ──────────────────────────────────────────────────────────── */
+
+/* Display (Bebas Neue) */
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  font-weight: 400; /* Bebas Neue is weight 400 */
+}
+
+/* Hero wordmark */
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 12rem);
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  font-weight: 400;
+}
+
+/* Editorial headings */
+h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Section label / overline */
+.section-label,
+.overline {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Body text */
+p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Caption */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+}
+
+/* ────────────────────────────────────────────────────────────
+   6. BUTTON STYLES
+   ──────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  color: currentColor;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid currentColor;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), color var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: currentColor;
+  transform: scale(1.02);
+}
+
+/* When btn-secondary is on a dark section, invert on hover */
+.section-dark .btn-secondary:hover {
+  color: var(--g);
+}
+
+.section-light .btn-secondary:hover {
+  color: var(--linen);
+}
+
+/* ────────────────────────────────────────────────────────────
+   7. ANIMATION KEYFRAMES
+   ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2%, -2%); }
+  50%  { transform: translate(3%, 1%); }
+  75%  { transform: translate(-1%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ────────────────────────────────────────────────────────────
+   8. ANIMATION TRIGGER SYSTEM
+   Elements start invisible; JS adds .visible to trigger
+   ──────────────────────────────────────────────────────────── */
+[data-animate="fadeUp"] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-animate="fadeUp"].visible {
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+[data-animate="fadeIn"] {
+  opacity: 0;
+}
+
+[data-animate="fadeIn"].visible {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+[data-animate="slideLeft"] {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+
+[data-animate="slideLeft"].visible {
+  animation: slideLeft 0.7s ease-out forwards;
+}
+
+/* Data-delay stagger system */
+[data-delay="100"].visible { animation-delay: 0.10s; }
+[data-delay="200"].visible { animation-delay: 0.20s; }
+[data-delay="300"].visible { animation-delay: 0.30s; }
+[data-delay="400"].visible { animation-delay: 0.40s; }
+[data-delay="500"].visible { animation-delay: 0.50s; }
+[data-delay="600"].visible { animation-delay: 0.60s; }
+[data-delay="700"].visible { animation-delay: 0.70s; }
+
+/* ────────────────────────────────────────────────────────────
+   9. CUSTOM CURSOR
+   ──────────────────────────────────────────────────────────── */
+.cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: none;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  transition: width var(--transition-fast), height var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+  will-change: transform;
+}
+
+/* Hover state — expanded ring */
+body.cursor-hover .cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--g);
+  opacity: 1;
+}
+
+/* Inverted state — on light sections */
+body.cursor-inverted .cursor {
+  background: var(--g);
+}
+
+body.cursor-inverted .cursor-ring {
+  border-color: var(--g);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   10. NAV STYLES
+   ──────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: transparent;
+  transition: background var(--transition-std), backdrop-filter var(--transition-std);
+}
+
+.nav.nav-scrolled {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--g-80);
+}
+
+/* Nav text/links */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--linen);
+  text-decoration: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--linen);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a.nav-ticket {
+  opacity: 1;
+}
+
+/* Hamburger button */
 .hamburger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
 }
+
 .hamburger span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--green); transition: all 0.3s;
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--linen);
+  transition: all var(--transition-std);
 }
+
+/* Mobile menu */
 .mobile-menu {
-  display: none; position: fixed; inset: 0; z-index: 190;
-  background: var(--cream);
-  flex-direction: column; align-items: center; justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  background: var(--g);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 2.5rem;
 }
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight: 700;
-  color: var(--green); opacity: 0.85;
-  transition: opacity 0.2s;
-}
-.mobile-menu a:hover { opacity: 1; }
-.mobile-close {
-  position: absolute; top: 1.5rem; right: 2rem;
-  font-size: 1.5rem; cursor: pointer; color: var(--green);
+
+.mobile-menu[hidden] {
+  display: none;
 }
 
+.mobile-menu nav a {
+  font-family: var(--font-editorial);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--linen);
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.mobile-menu nav a:hover {
+  opacity: 1;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--linen);
+  opacity: 0.7;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: opacity var(--transition-fast);
+}
+
+.mobile-close:hover {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   11. IMAGE FALLBACK SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.img-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: var(--g2);
+  color: var(--linen);
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.img-failed .img-fallback {
+  display: flex;
+}
+
+/* Position parent for absolute fallback */
+.img-failed {
+  position: relative;
+}
+
+/* ────────────────────────────────────────────────────────────
+   12. FORM ELEMENTS (global)
+   ──────────────────────────────────────────────────────────── */
+input[type="email"] {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  background: transparent;
+  border: 1.5px solid var(--linen-80);
+  border-radius: var(--radius-sm);
+  color: var(--linen);
+  padding: 0.85rem 1.25rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+
+input[type="email"]::placeholder {
+  color: var(--linen);
+  opacity: 0.4;
+}
+
+input[type="email"]:focus {
+  border-color: var(--accent);
+}
+
+/* Join confirmation */
+.join-confirmation {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity var(--transition-std);
+}
+
+.join-confirmation.visible {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   13. UTILITY CLASSES
+   ──────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   14. MOBILE BREAKPOINTS (typography + base adjustments)
+       Layout overrides live in SA3
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(3rem, 6vw, 5rem) 1.5rem;
+    --nav-height: 60px;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .hero-wordmark {
+    font-size: clamp(4rem, 18vw, 7rem);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad: 2.5rem 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
+
 /* ============================================================
-   HERO
+   SA3 — SECTION LAYOUT CSS
+   treehouse. events | treehouseevents.cliffeliz.ai
+   References: SA1 class names only. SA2 variables only.
+   No new keyframes. No hardcoded colors. No hardcoded fonts.
    ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   SHARED WRAP UTILITY
+   ──────────────────────────────────────────────────────────── */
+.hero-inner,
+.stats-band,
+.about-inner,
+.next-event-inner,
+.gallery-inner,
+.why-sponsor-inner,
+.tiers-inner,
+.past-sponsors-inner,
+.hiw-inner,
+.join-inner,
+.footer-top,
+.footer-links,
+.footer-bottom {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding: var(--section-pad);
+  width: 100%;
+}
+
+/* ────────────────────────────────────────────────────────────
+   NAV LAYOUT
+   ──────────────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   01 HERO
+   ──────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background: var(--cream);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 8rem 3rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero background image — fills section behind content */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.35;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  position: relative; overflow: hidden;
+  gap: 1.25rem;
+  padding-top: calc(var(--nav-height) + 2rem);
 }
-.hero-headline {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900; font-style: italic;
-  font-size: clamp(3.2rem, 9vw, 7.5rem);
-  line-height: 0.9; letter-spacing: -0.03em;
-  color: var(--green);
-  max-width: 900px;
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-.hero-headline.visible { opacity: 1; transform: translateY(0); }
 
 .hero-sub {
-  margin-top: 2rem;
-  font-size: 0.88rem; font-weight: 300;
-  color: var(--green); opacity: 0.6;
-  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  opacity: 0.75;
   max-width: 480px;
-  line-height: 1.9;
 }
 
-/* countdown */
-.hero-countdown {
-  margin-top: 3rem;
-  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
-}
-.countdown-label {
-  font-size: 0.55rem; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--green); opacity: 0.45;
-}
-.countdown-blocks {
-  display: flex; gap: 1.5rem; align-items: flex-start;
-}
-.cd-block { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-.cd-num {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900;
-  color: var(--green); line-height: 1;
-  min-width: 3ch; text-align: center;
-  transition: opacity 0.2s;
-}
-.cd-unit {
-  font-size: 0.5rem; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--green); opacity: 0.4;
-}
-.cd-sep {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem; color: var(--green); opacity: 0.2;
-  line-height: 1; margin-top: 2px;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--linen-80);
+  border-radius: 99px;
+  padding: 0.35rem 1rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
-/* cta */
-.hero-cta-wrap {
-  margin-top: 2.5rem;
-  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+.hero-badge-dot {
+  opacity: 0.5;
 }
-.btn-primary {
-  display: inline-block;
-  padding: 1rem 3.5rem;
-  background: var(--green); color: var(--cream);
-  border-radius: 6px;
-  font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: lowercase;
-  transition: background 0.2s, transform 0.15s;
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   02 STATS
+   ──────────────────────────────────────────────────────────── */
+.stats {
+  /* no extra layout beyond .stats-band */
+}
+
+.stats-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--linen);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 3rem;
+  background: var(--linen);
+  opacity: 0.15;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   03 WHO WE ARE (ABOUT)
+   ──────────────────────────────────────────────────────────── */
+.about-inner {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-label-col {
+  padding-top: 0.25rem;
+}
+
+/* Rotated label */
+.about-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+}
+
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-body {
+  max-width: 560px;
+  opacity: 0.8;
+}
+
+.event-type-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.event-type-card {
+  border: 1px solid var(--g-12);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--g);
+  background: transparent;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.event-type-card:hover {
+  background: var(--g);
+  color: var(--linen);
+}
+
+/* ────────────────────────────────────────────────────────────
+   04 NEXT EVENT
+   ──────────────────────────────────────────────────────────── */
+.next-event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.event-details-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-date-heading {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+  margin-top: -0.75rem;
+}
+
+/* Venue block with accent left border */
+.venue-block {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+}
+
+.venue-name {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.venue-location {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+}
+
+.event-meta {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.event-img-block {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.event-img-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s var(--transition-std);
+}
+
+.event-img-block:hover img {
+  transform: scale(1.03);
+}
+
+/* ────────────────────────────────────────────────────────────
+   05 GALLERY
+   ──────────────────────────────────────────────────────────── */
+.gallery-inner {
+  /* uses standard wrap */
+}
+
+/* Collection tabs */
+.gallery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  border: 1px solid var(--g-12);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--g);
+  background: transparent;
   cursor: pointer;
-}
-.btn-primary:hover { background: #1e3314; transform: scale(1.02); }
-.hero-price {
-  font-size: 0.72rem; font-weight: 300;
-  color: var(--green); opacity: 0.5;
-  letter-spacing: 0.04em;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 
-/* ============================================================
-   GALLERY SECTION
-   ============================================================ */
-.gallery-section {
-  padding: 5rem 3rem 6rem;
-  background: var(--cream);
-}
-.gallery-section-label {
-  font-size: 0.55rem; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--green); opacity: 0.45;
-  margin-bottom: 2.5rem; text-align: center;
+.tab:hover {
+  background: var(--g-06);
 }
 
-/* Editorial asymmetric grid */
-.gallery-grid {
+.tab.tab-active {
+  background: var(--g);
+  color: var(--linen);
+  border-color: var(--g);
+}
+
+/* Asymmetric collage grid — 8 images */
+.gallery-collage {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto;
+  grid-auto-rows: auto;
   gap: 10px;
-  max-width: 1200px; margin: 0 auto;
 }
 
-/* Grid placement - editorial, varied sizes */
-.gallery-item { overflow: hidden; cursor: pointer; position: relative; }
-.gallery-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.5s ease, filter 0.35s ease;
-  filter: brightness(0.97);
-}
-.gallery-item:hover img {
-  transform: scale(1.03);
-  filter: brightness(1.04);
-}
-
-/* Layout: mix large portrait + landscape in editorial pattern */
-/* Row 1 */
-.g1 { grid-column: 1 / 6; grid-row: 1; aspect-ratio: 4/5; }
-.g2 { grid-column: 6 / 9; grid-row: 1; aspect-ratio: 3/4; }
-.g3 { grid-column: 9 / 13; grid-row: 1; aspect-ratio: 4/5; }
-/* Row 2 */
-.g4 { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 5/4; }
-.g5 { grid-column: 5 / 9; grid-row: 2; aspect-ratio: 5/4; }
-.g6 { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 5/4; }
-/* Row 3 */
-.g7 { grid-column: 1 / 4; grid-row: 3; aspect-ratio: 3/4; }
-.g8 { grid-column: 4 / 9; grid-row: 3; aspect-ratio: 5/3; }
-.g9 { grid-column: 9 / 13; grid-row: 3; aspect-ratio: 3/4; }
-
-/* Placeholder style (shown when no real images loaded) */
-.gallery-item .placeholder {
-  width: 100%; height: 100%;
-  background: var(--green-06);
-  border: 1px solid var(--green-12);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 0.5rem; min-height: 200px;
-}
-.gallery-item .placeholder span {
-  font-size: 0.6rem; font-weight: 500;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--green); opacity: 0.3;
-}
-
-/* Lightbox */
-.lightbox {
-  display: none; position: fixed; inset: 0; z-index: 300;
-  background: rgba(45,74,30,0.92);
-  align-items: center; justify-content: center;
+.gallery-item {
+  overflow: hidden;
   cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-sm);
 }
-.lightbox.open { display: flex; }
-.lightbox-img {
-  max-width: 90vw; max-height: 88vh;
-  object-fit: contain;
-  cursor: default; box-shadow: 0 20px 80px rgba(0,0,0,0.4);
-}
-.lightbox-close {
-  position: absolute; top: 1.5rem; right: 2rem;
-  font-size: 1.5rem; color: var(--cream);
-  opacity: 0.7; cursor: pointer;
-  transition: opacity 0.2s;
-  font-family: 'Inter', sans-serif; font-weight: 300;
-}
-.lightbox-close:hover { opacity: 1; }
 
-/* ============================================================
-   ABOUT SECTION
-   ============================================================ */
-.about-section {
-  padding: 8rem 3rem;
-  background: var(--cream);
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--transition-std), filter 0.35s ease;
+  filter: brightness(0.95);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Hidden state for collection filter */
+.gallery-item.hidden {
+  display: none;
+}
+
+/* Grid placement — editorial asymmetric layout */
+/* Row 1 — portrait trio */
+.g1 { grid-column: 1 / 6;  grid-row: 1; aspect-ratio: 4 / 5; }
+.g2 { grid-column: 6 / 9;  grid-row: 1; aspect-ratio: 3 / 4; }
+.g3 { grid-column: 9 / 13; grid-row: 1; aspect-ratio: 4 / 5; }
+
+/* Row 2 — landscape trio */
+.g4 { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 5 / 4; }
+.g5 { grid-column: 5 / 9;  grid-row: 2; aspect-ratio: 5 / 4; }
+.g6 { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 5 / 4; }
+
+/* Row 3 — mixed final row */
+.g7 { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4 / 3; }
+.g8 { grid-column: 5 / 13; grid-row: 3; aspect-ratio: 16 / 9; }
+
+/* ────────────────────────────────────────────────────────────
+   06 WHY SPONSOR
+   ──────────────────────────────────────────────────────────── */
+.why-sponsor-inner {
+  /* uses standard wrap */
+}
+
+.why-sponsor-inner h2 {
+  margin-bottom: 3rem;
+  max-width: 540px;
+}
+
+.why-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 0;
+}
+
+.why-num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+
+.why-text {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  opacity: 0.85;
+}
+
+.why-divider {
+  height: 1px;
+  background: var(--linen);
+  opacity: 0.1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   07 TIERS
+   ──────────────────────────────────────────────────────────── */
+.tiers-inner h2 {
+  margin-bottom: 3rem;
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.tier-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--g-12);
+  border-radius: var(--radius-md);
+  background: var(--linen2);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tier-card:hover {
+  border-color: var(--g);
+  transform: translateY(-4px);
+}
+
+/* Gold featured tier — elevated */
+.tier-card.tier-featured {
+  border-color: var(--accent);
+  background: var(--white);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px var(--g-12);
+}
+
+.tier-card.tier-featured:hover {
+  transform: translateY(-12px);
+}
+
+/* Platinum dark treatment */
+.tier-card.tier-platinum {
+  background: var(--g);
+  color: var(--linen);
+  border-color: transparent;
+}
+
+.tier-card.tier-platinum .tier-features li {
+  color: var(--linen);
+  opacity: 0.75;
+}
+
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.tier-price {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.tier-platinum .tier-price {
+  color: var(--accent);
+}
+
+.tier-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.tier-features li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  opacity: 0.75;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.tier-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  opacity: 0.4;
+  font-size: 0.7rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   08 PAST SPONSORS
+   ──────────────────────────────────────────────────────────── */
+.past-sponsors-inner h2 {
+  margin-bottom: 3rem;
+  max-width: 480px;
+}
+
+.past-sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  align-items: baseline;
+}
+
+/* Varying font sizes for editorial rhythm */
+.sponsor-name {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  line-height: 1.1;
+}
+
+.sponsor-name:hover {
+  opacity: 1;
+}
+
+.sponsor-lg {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.sponsor-md {
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+}
+
+.sponsor-sm {
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+}
+
+/* ────────────────────────────────────────────────────────────
+   09 HOW IT WORKS
+   ──────────────────────────────────────────────────────────── */
+.hiw-inner {
+  /* uses standard wrap */
+}
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 3rem;
+}
+
+/* Connecting line via ::before on the container */
+.hiw-steps::before {
+  content: '';
+  position: absolute;
+  top: 2.2rem; /* align with center of step numbers */
+  left: calc(100% / 8);
+  right: calc(100% / 8);
+  height: 1px;
+  background: var(--g-12);
+  z-index: 0;
+}
+
+.hiw-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hiw-step:first-child {
+  padding-left: 0;
+}
+
+.hiw-step:last-child {
+  padding-right: 0;
+}
+
+.hiw-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hiw-title {
+  font-family: var(--font-editorial);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hiw-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  opacity: 0.7;
+  line-height: 1.65;
+}
+
+/* ────────────────────────────────────────────────────────────
+   10 JOIN THE LIST
+   ──────────────────────────────────────────────────────────── */
+.join {
   text-align: center;
 }
-.about-copy {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-  font-weight: 400; font-style: italic;
-  color: var(--green);
-  line-height: 1.75; letter-spacing: 0.01em;
-  max-width: 640px; margin: 0 auto;
+
+.join-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 }
-.about-ig {
-  margin-top: 2.5rem;
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  font-size: 0.72rem; font-weight: 500;
+
+.join-body {
+  max-width: 460px;
+  opacity: 0.75;
+}
+
+.join-form {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 0.5rem;
+}
+
+.join-form-row {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid var(--linen-80);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.join-form-row:focus-within {
+  border-color: var(--accent);
+}
+
+/* Override default input styles inside form row */
+.join-form-row input[type="email"] {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  padding: 0.85rem 1.25rem;
+}
+
+.join-form-row input[type="email"]:focus {
+  border-color: transparent;
+}
+
+.join-form-row .btn-primary {
+  border-radius: 0;
+  padding: 0.85rem 1.75rem;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   11 FOOTER
+   ──────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid rgba(240, 237, 232, 0.1);
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  color: var(--linen);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
+.footer-tagline {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 2.5rem;
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.72rem;
+  font-weight: 400;
   letter-spacing: 0.06em;
-  color: var(--green); opacity: 0.55;
-  transition: opacity 0.2s;
+  color: var(--linen);
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
 }
-.about-ig:hover { opacity: 1; }
-.about-ig svg { width: 12px; height: 12px; }
 
-/* ============================================================
-   SPONSORSHIP SECTION
-   ============================================================ */
-.sponsor-section {
-  padding: 7rem 3rem;
-  background: var(--cream);
-  border-top: 1px solid var(--green-12);
+.footer-links a:hover {
+  opacity: 1;
 }
-.sponsor-inner {
-  max-width: 600px; margin: 0 auto; text-align: center;
-}
-.sponsor-headline {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.1; letter-spacing: -0.02em;
-  color: var(--green);
-  margin-bottom: 1.25rem;
-}
-.sponsor-body {
-  font-size: 0.88rem; font-weight: 300;
-  color: var(--green); opacity: 0.6;
-  line-height: 1.85; max-width: 440px; margin: 0 auto 2.5rem;
-}
-.btn-outline {
-  display: inline-block;
-  padding: 0.85rem 2.8rem;
-  border: 1.5px solid var(--green);
-  border-radius: 4px; color: var(--green);
-  font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: lowercase;
-  transition: background 0.2s, color 0.2s;
-}
-.btn-outline:hover { background: var(--green); color: var(--cream); }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  padding: 5rem 3rem 3rem;
-  background: var(--cream);
-  border-top: 1px solid var(--green-12);
+.footer-bottom {
+  padding-top: 0;
   text-align: center;
+  border-top: 1px solid rgba(240, 237, 232, 0.08);
 }
-.footer-logo-name {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700; font-size: 1.1rem;
-  color: var(--green); letter-spacing: -0.02em;
-}
-.footer-logo-sub {
-  font-size: 0.5rem; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--green); opacity: 0.4; margin-top: 4px;
-}
-.footer-ig {
-  display: inline-block;
-  margin-top: 1.25rem;
-  font-size: 0.7rem; font-weight: 400;
-  color: var(--green); opacity: 0.45;
-  transition: opacity 0.2s;
-  letter-spacing: 0.04em;
-}
-.footer-ig:hover { opacity: 0.85; }
+
 .footer-copy {
-  margin-top: 2rem;
-  font-size: 0.55rem; font-weight: 400;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--green); opacity: 0.25;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.25;
 }
 
-/* ============================================================
-   ANIMATIONS (hero fade, gallery scroll reveal)
-   ============================================================ */
-.reveal {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE LAYOUT OVERRIDES
+   ──────────────────────────────────────────────────────────── */
 
-/* staggered gallery reveal */
-.gallery-item.reveal { transition-delay: 0s; }
-.gallery-item.reveal:nth-child(2) { transition-delay: 0.07s; }
-.gallery-item.reveal:nth-child(3) { transition-delay: 0.14s; }
-.gallery-item.reveal:nth-child(4) { transition-delay: 0.1s; }
-.gallery-item.reveal:nth-child(5) { transition-delay: 0.17s; }
-.gallery-item.reveal:nth-child(6) { transition-delay: 0.24s; }
-.gallery-item.reveal:nth-child(7) { transition-delay: 0.07s; }
-.gallery-item.reveal:nth-child(8) { transition-delay: 0.14s; }
-.gallery-item.reveal:nth-child(9) { transition-delay: 0.21s; }
-
-/* ============================================================
-   RESPONSIVE - 375px mobile
-   ============================================================ */
-@media (max-width: 768px) {
-  .nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-
-  .hero { padding: 6rem 1.5rem 4rem; }
-  .hero-headline { font-size: clamp(2.6rem, 13vw, 3.8rem); line-height: 0.92; }
-
-  .countdown-blocks { gap: 1rem; }
-  .cd-num { font-size: 1.8rem; }
-  .countdown-blocks .cd-sep { display: none; }
-
-  .btn-primary { padding: 1rem 2.5rem; min-height: 48px; width: 100%; max-width: 320px; }
-
-  .gallery-section { padding: 4rem 1.25rem; }
-  .gallery-grid {
-    display: flex; flex-direction: column; gap: 8px;
+/* ── 1024px ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .tiers-grid {
+    gap: 1rem;
   }
+
+  .tier-card.tier-featured {
+    transform: translateY(-4px);
+  }
+
+  .next-event-grid {
+    gap: 3rem;
+  }
+
+  .hiw-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+  }
+
+  .hiw-steps::before {
+    display: none;
+  }
+}
+
+/* ── 768px ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links {
+    display: none;
+  }
+
+  /* About */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-label-col {
+    display: none; /* hide rotated label on mobile */
+  }
+
+  /* Next Event */
+  .next-event-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .event-img-block {
+    aspect-ratio: 16 / 9;
+    max-height: 320px;
+  }
+
+  /* Gallery */
+  .gallery-collage {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .gallery-item {
-    grid-column: unset !important; grid-row: unset !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Tiers */
+  .tiers-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tier-card.tier-featured,
+  .tier-card.tier-featured:hover {
+    transform: none;
+  }
+
+  /* How It Works */
+  .hiw-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hiw-step {
+    padding: 0;
+    border-bottom: 1px solid var(--g-12);
+    padding-bottom: 2rem;
+  }
+
+  .hiw-step:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Join form */
+  .join-form-row {
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    overflow: visible;
+    border: none;
+    gap: 0.75rem;
+  }
+
+  .join-form-row input[type="email"] {
+    border: 1.5px solid var(--linen-80);
+    border-radius: var(--radius-sm);
     width: 100%;
   }
-  .gallery-item img { height: auto; max-height: 320px; width: 100%; object-fit: cover; }
-  .gallery-item .placeholder { min-height: 200px; }
 
-  .about-section { padding: 5rem 1.5rem; }
-  .about-copy { font-size: 1.1rem; }
+  .join-form-row .btn-primary {
+    border-radius: var(--radius-sm);
+    width: 100%;
+    min-height: 48px;
+  }
 
-  .sponsor-section { padding: 5rem 1.5rem; }
-  .btn-outline { min-height: 48px; padding: 0.85rem 2rem; }
+  /* Footer */
+  .footer-top,
+  .footer-links,
+  .footer-bottom {
+    padding: 1.5rem;
+  }
 
-  footer { padding: 4rem 1.5rem 2.5rem; }
+  .footer-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
-</style>
+
+/* ── 480px ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Stats */
+  .stats-band {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .stat-divider {
+    width: 3rem;
+    height: 1px;
+  }
+
+  /* Hero CTA */
+  .hero-cta-row {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-secondary {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* Past sponsors — smaller on mobile */
+  .past-sponsors-grid {
+    gap: 1rem 2rem;
+  }
+
+  .sponsor-lg { font-size: 1.5rem; }
+  .sponsor-md { font-size: 1.1rem; }
+  .sponsor-sm { font-size: 0.85rem; }
+}
+
+  </style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo-wrap">
-    <span class="nav-logo-name">treehouse.</span>
-    <span class="nav-logo-sub">Events &nbsp;|&nbsp; New York City</span>
-  </a>
-  <div class="nav-links">
-    <a href="#events">events</a>
-    <a href="#gallery">gallery</a>
-    <a href="#sponsor">sponsor</a>
-    <!-- REPLACE href with Partiful URL when ready -->
-    <a href="PARTIFUL_URL_HERE" class="nav-ticket" target="_blank">get tickets</a>
-  </div>
-  <div class="hamburger" id="hamburgerBtn" onclick="openMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+  <!-- ============================================================
+       CUSTOM CURSOR
+       ============================================================ -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" onclick="closeMenu()">&#x2715;</span>
-  <a href="#events" onclick="closeMenu()">events</a>
-  <a href="#gallery" onclick="closeMenu()">gallery</a>
-  <a href="#sponsor" onclick="closeMenu()">sponsor</a>
-  <!-- REPLACE href with Partiful URL when ready -->
-  <a href="PARTIFUL_URL_HERE" onclick="closeMenu()" target="_blank">get tickets</a>
-</div>
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="treehouse. — return to top">treehouse.</a>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<section class="hero" id="events">
-  <h1 class="hero-headline" id="heroHeadline">the party you've<br>been waiting for.</h1>
-  <p class="hero-sub">a curated, themed night out. open bar. good people. new york city.</p>
-
-  <!-- countdown -->
-  <div class="hero-countdown" id="events">
-    <div class="countdown-label">next event</div>
-    <div class="countdown-blocks">
-      <div class="cd-block"><span class="cd-num" id="cd-days">--</span><span class="cd-unit">days</span></div>
-      <div class="cd-sep">·</div>
-      <div class="cd-block"><span class="cd-num" id="cd-hours">--</span><span class="cd-unit">hours</span></div>
-      <div class="cd-sep">·</div>
-      <div class="cd-block"><span class="cd-num" id="cd-minutes">--</span><span class="cd-unit">min</span></div>
-      <div class="cd-sep">·</div>
-      <div class="cd-block"><span class="cd-num" id="cd-seconds">--</span><span class="cd-unit">sec</span></div>
+    <div class="nav-links" role="list">
+      <a href="#next-event" role="listitem">events</a>
+      <a href="#gallery" role="listitem">gallery</a>
+      <a href="#tiers" role="listitem">sponsor</a>
+      <a href="#join" class="nav-ticket" role="listitem">get tickets</a>
     </div>
+
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true" hidden>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
+    <nav aria-label="Mobile navigation links">
+      <a href="#next-event">events</a>
+      <a href="#gallery">gallery</a>
+      <a href="#tiers">sponsor</a>
+      <a href="#join" class="nav-ticket">get tickets</a>
+    </nav>
   </div>
 
-  <!-- CTA -->
-  <div class="hero-cta-wrap">
-    <!-- REPLACE href with Partiful URL when ready -->
-    <a href="PARTIFUL_URL_HERE" class="btn-primary" target="_blank">get tickets</a>
-    <span class="hero-price">$65 &nbsp;·&nbsp; open bar included</span>
-  </div>
-</section>
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
 
-<!-- ============================================================
-     PHOTO GALLERY
-     To add real photos: replace src="PHOTO_URL_N" with image URLs.
-     Source folder: https://drive.google.com/drive/folders/1CMMyzNvWUwdMBZeXED29NXHKDkFgOSJu
-     Tip: export to a public host (Cloudinary, Vercel /img/, etc.)
-     and drop URLs here.
-     ============================================================ -->
-<section class="gallery-section" id="gallery">
-  <div class="gallery-section-label">past events</div>
-  <div class="gallery-grid">
+    <!-- ──────────────────────────────────────────────────────────
+         01 HERO — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark hero" id="hero" aria-label="Hero">
 
-    <!-- Photo 1 -- tall portrait, left anchor -->
-    <div class="gallery-item g1 reveal" onclick="openLightbox(this)">
-      <!-- REPLACE src with real photo URL -->
-      <img src="PHOTO_URL_1" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 1</span></div>'">
+      <!-- Background image -->
+      <div class="hero-bg" role="img" aria-label="Crowd at treehouse. NYC rooftop event, golden hour">
+        <img
+          src="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb"
+          alt="DJ at Pioneer decks with NYC skyline and One WTC at golden hour, treehouse. event"
+          onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+        <div class="img-fallback" aria-hidden="true">treehouse.</div>
+      </div>
+
+      <div class="hero-inner">
+        <p class="section-label" data-animate="fadeUp">// New York City</p>
+        <h1 class="hero-wordmark" data-animate="fadeUp" data-delay="100">treehouse.</h1>
+        <p class="hero-sub" data-animate="fadeUp" data-delay="200">the party you've been waiting for.</p>
+        <div class="hero-badge" data-animate="fadeUp" data-delay="300" aria-label="New York City, invite only">
+          <span>New York City</span>
+          <span class="hero-badge-dot" aria-hidden="true">·</span>
+          <span>Invite Only</span>
+        </div>
+        <div class="hero-cta-row" data-animate="fadeUp" data-delay="400">
+          <a href="#join" class="btn-primary">join the list</a>
+          <a href="#tiers" class="btn-secondary">become a sponsor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         02 STATS — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark stats" id="stats" aria-label="Event statistics">
+      <div class="stats-band">
+        <div class="stat-item" data-animate="fadeUp" data-delay="0">
+          <span class="stat-val">300+</span>
+          <span class="stat-label">guests per event</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" data-animate="fadeUp" data-delay="100">
+          <span class="stat-val">5+</span>
+          <span class="stat-label">events produced</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" data-animate="fadeUp" data-delay="200">
+          <span class="stat-val">Invite</span>
+          <span class="stat-label">only format</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         03 WHO WE ARE — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light about" id="about" aria-label="About treehouse.">
+      <div class="about-inner">
+        <div class="about-label-col">
+          <p class="section-label about-label" aria-hidden="true">// Who We Are</p>
+        </div>
+        <div class="about-content-col">
+          <h2 data-animate="slideLeft">We curate<br>the room.</h2>
+          <p class="about-body" data-animate="fadeUp" data-delay="100">
+            treehouse. is New York's best recurring night out. Themed parties. Open bar.
+            A room full of people you actually want to meet. We've been doing this.
+            Come find out why.
+          </p>
+          <div class="event-type-cards" data-animate="fadeUp" data-delay="200" role="list" aria-label="Event types">
+            <div class="event-type-card" role="listitem">Gallery Takeovers</div>
+            <div class="event-type-card" role="listitem">Rooftop Events</div>
+            <div class="event-type-card" role="listitem">Holiday Parties</div>
+            <div class="event-type-card" role="listitem">Brand Experiences</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         04 NEXT EVENT — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark next-event" id="next-event" aria-label="Next treehouse. event">
+      <div class="next-event-inner">
+        <p class="section-label" data-animate="fadeUp">// Next Event</p>
+        <div class="next-event-grid">
+
+          <div class="event-details-block" data-animate="slideLeft">
+            <h2 class="event-date-heading">April 25th</h2>
+            <p class="event-time">10:30pm – 3:30am ET</p>
+
+            <div class="venue-block" aria-label="Venue details">
+              <p class="venue-name">75 Varick Rooftop</p>
+              <p class="venue-location">SoHo, New York City</p>
+            </div>
+
+            <p class="event-meta" aria-label="Event details: 300 to 400 guests, invite only, open bar">
+              300–400 guests · Invite Only · Open Bar
+            </p>
+
+            <a href="#join" class="btn-primary">request your invite</a>
+          </div>
+
+          <div class="event-img-block" data-animate="fadeIn" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J"
+              alt="Person laughing at NYC rooftop golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">april 25th</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         05 GALLERY — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light gallery" id="gallery" aria-label="Past events gallery">
+      <div class="gallery-inner">
+        <p class="section-label" data-animate="fadeUp">// Past Events</p>
+
+        <!-- Collection tabs -->
+        <div class="gallery-tabs" role="tablist" aria-label="Filter gallery by event type">
+          <button class="tab tab-active" role="tab" aria-selected="true"  data-collection="all"           aria-controls="gallery-collage">all</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="golden-hour"   aria-controls="gallery-collage">golden hour rooftop</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="night-out"     aria-controls="gallery-collage">night out</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="curated-pours" aria-controls="gallery-collage">curated pours</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="table-stories" aria-controls="gallery-collage">table stories</button>
+        </div>
+
+        <!-- Collage grid — 8 images -->
+        <div class="gallery-collage" id="gallery-collage" role="tabpanel">
+
+          <div class="gallery-item g1" data-collection="night-out" data-animate="fadeUp">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1kdBRTPP_E-LO6zIYite8dWViMAOtMFQx"
+              alt="Women celebrating at treehouse. party, NYC"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g2" data-collection="night-out" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1L-qICnnP40QdPGTN4M2CgxCjJeAjWDNB"
+              alt="Stylish couple with cocktails at treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g3" data-collection="golden-hour" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J"
+              alt="Person laughing at NYC rooftop golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">golden hour rooftop</div>
+          </div>
+
+          <div class="gallery-item g4" data-collection="curated-pours" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1ZDAsr1UQiJruIWkPK9gTH36EZ0RVK1m8"
+              alt="Mumm rosé champagne on ice, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">curated pours</div>
+          </div>
+
+          <div class="gallery-item g5" data-collection="table-stories" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1bQcrwyXemChT33X8o5ZBEX7u_Xz7NdZc"
+              alt="Candlelit table with pink roses, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">table stories</div>
+          </div>
+
+          <div class="gallery-item g6" data-collection="night-out" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1Jl_qM7iv7Y8TzUGh5lJ5MlfKWO0kY3eO"
+              alt="Crowd enjoying treehouse. NYC night event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g7" data-collection="golden-hour" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb"
+              alt="DJ at Pioneer decks with NYC skyline and One WTC at golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">golden hour rooftop</div>
+          </div>
+
+          <div class="gallery-item g8" data-collection="table-stories" data-animate="fadeUp" data-delay="300">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1l3HBuLqLuOPgniADwyNAOG8K_mFPCouD"
+              alt="Charcuterie and cocktail spread at treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">table stories</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         06 WHY SPONSOR — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark why-sponsor" id="why-sponsor" aria-label="Why sponsor treehouse.">
+      <div class="why-sponsor-inner">
+        <p class="section-label" data-animate="fadeUp">// Why Sponsor</p>
+        <h2 data-animate="slideLeft">Your brand belongs<br>in this room.</h2>
+
+        <div class="why-rows" role="list">
+
+          <div class="why-row" role="listitem" data-animate="fadeUp">
+            <span class="why-num" aria-hidden="true">01</span>
+            <p class="why-text">Access 300–400 hand-selected NYC tastemakers, cultural insiders, and brand leaders at every event.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="100">
+            <span class="why-num" aria-hidden="true">02</span>
+            <p class="why-text">Authentic integration — your brand lives in the experience, not on a banner.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="200">
+            <span class="why-num" aria-hidden="true">03</span>
+            <p class="why-text">Social content that travels. Our crowd documents everything.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="300">
+            <span class="why-num" aria-hidden="true">04</span>
+            <p class="why-text">Limited slots per event. We turn sponsors away to protect the room.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         07 TIERS — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light tiers" id="tiers" aria-label="Sponsorship tiers">
+      <div class="tiers-inner">
+        <p class="section-label" data-animate="fadeUp">// Sponsorship Tiers</p>
+        <h2 data-animate="slideLeft">Partner with us.</h2>
+
+        <div class="tiers-grid" role="list">
+
+          <!-- Bronze -->
+          <div class="tier-card" role="listitem" data-animate="fadeUp">
+            <div class="tier-name">Bronze</div>
+            <div class="tier-price" aria-label="Five thousand dollars">$5,000</div>
+            <ul class="tier-features" aria-label="Bronze tier features">
+              <li>2 VIP invites</li>
+              <li>Brand presence at event</li>
+              <li>Social mention</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Bronze sponsorship">get started →</a>
+          </div>
+
+          <!-- Gold — featured -->
+          <div class="tier-card tier-featured" role="listitem" data-animate="fadeUp" data-delay="100">
+            <div class="tier-name">Gold</div>
+            <div class="tier-price" aria-label="Ten thousand dollars">$10,000</div>
+            <ul class="tier-features" aria-label="Gold tier features">
+              <li>3 VIP invites</li>
+              <li>Branded activation space</li>
+              <li>Social content package</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Gold sponsorship">get started →</a>
+          </div>
+
+          <!-- Platinum -->
+          <div class="tier-card tier-platinum" role="listitem" data-animate="fadeUp" data-delay="200">
+            <div class="tier-name">Platinum</div>
+            <div class="tier-price" aria-label="Fifteen thousand dollars">$15,000</div>
+            <ul class="tier-features" aria-label="Platinum tier features">
+              <li>5 VIP invites</li>
+              <li>Title sponsorship</li>
+              <li>Full content + media package</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Platinum sponsorship">get started →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         08 PAST SPONSORS — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark past-sponsors" id="past-sponsors" aria-label="Past treehouse. brand partners">
+      <div class="past-sponsors-inner">
+        <p class="section-label" data-animate="fadeUp">// Past Partners</p>
+        <h2 data-animate="slideLeft">Brands that have<br>been in the room.</h2>
+
+        <div class="past-sponsors-grid" role="list" aria-label="Past brand partners">
+          <div class="sponsor-name sponsor-lg" role="listitem">Mumm</div>
+          <div class="sponsor-name sponsor-md" role="listitem">Aperol</div>
+          <div class="sponsor-name sponsor-sm" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-lg" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-md" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-sm" role="listitem">Brand Partner</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         09 HOW IT WORKS — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light how-it-works" id="how-it-works" aria-label="How treehouse. works">
+      <div class="hiw-inner">
+        <p class="section-label" data-animate="fadeUp">// How It Works</p>
+
+        <div class="hiw-steps" role="list" aria-label="Four steps to join treehouse.">
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp">
+            <span class="hiw-num" aria-hidden="true">01</span>
+            <h3 class="hiw-title">Apply</h3>
+            <p class="hiw-desc">Request your invite or sponsorship package.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="100">
+            <span class="hiw-num" aria-hidden="true">02</span>
+            <h3 class="hiw-title">Get Approved</h3>
+            <p class="hiw-desc">We review every application to protect the room quality.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="200">
+            <span class="hiw-num" aria-hidden="true">03</span>
+            <h3 class="hiw-title">Show Up</h3>
+            <p class="hiw-desc">Arrive at 75 Varick Rooftop. Open bar. Curated crowd.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="300">
+            <span class="hiw-num" aria-hidden="true">04</span>
+            <h3 class="hiw-title">Come Back</h3>
+            <p class="hiw-desc">treehouse. events happen throughout the year.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         10 JOIN THE LIST — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark join" id="join" aria-label="Join the treehouse. list">
+      <div class="join-inner">
+        <p class="section-label" data-animate="fadeUp">// Get Access</p>
+        <h2 data-animate="slideLeft">Get on the list.</h2>
+        <p class="join-body" data-animate="fadeUp" data-delay="100">
+          treehouse. is invite-only. Drop your email and we'll reach out before the next event.
+        </p>
+
+        <form class="join-form" data-animate="fadeUp" data-delay="200" novalidate aria-label="Join the treehouse. mailing list">
+          <div class="join-form-row">
+            <input
+              type="email"
+              name="email"
+              id="join-email"
+              placeholder="your@email.com"
+              aria-label="Email address"
+              required
+              autocomplete="email">
+            <button type="submit" class="btn-primary" aria-label="Submit email to join the list">join</button>
+          </div>
+          <div class="join-confirmation" id="join-confirmation" role="status" aria-live="polite" hidden>
+            you're on the list.
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — dark
+       ============================================================ -->
+  <footer class="section-dark site-footer" role="contentinfo" aria-label="treehouse. footer">
+
+    <div class="footer-top">
+      <a href="#" class="footer-logo" aria-label="treehouse. — return to top">treehouse.</a>
+      <p class="footer-tagline">Events · New York City</p>
     </div>
 
-    <!-- Photo 2 -- medium portrait, center -->
-    <div class="gallery-item g2 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_2" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 2</span></div>'">
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="treehouse. on Instagram">@treehouseevents.nyc</a>
+      <a href="mailto:events@tigertracks.ai" aria-label="Email treehouse. events">events@tigertracks.ai</a>
+      <a href="tel:+13016467758" aria-label="Call treehouse. events">(301) 646-7758</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 treehouse. events</p>
     </div>
 
-    <!-- Photo 3 -- tall portrait, right -->
-    <div class="gallery-item g3 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_3" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 3</span></div>'">
-    </div>
+  </footer>
 
-    <!-- Photo 4 -- landscape, left -->
-    <div class="gallery-item g4 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_4" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 4</span></div>'">
-    </div>
 
-    <!-- Photo 5 -- landscape, center -->
-    <div class="gallery-item g5 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_5" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 5</span></div>'">
-    </div>
+  <script>
+'use strict';
 
-    <!-- Photo 6 -- landscape, right -->
-    <div class="gallery-item g6 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_6" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 6</span></div>'">
-    </div>
+/* ============================================================
+   SA4 — JAVASCRIPT
+   treehouse. events | treehouseevents.cliffeliz.ai
+   Vanilla JS only. No jQuery. No external libraries.
+   ============================================================ */
 
-    <!-- Photo 7 -- portrait, left -->
-    <div class="gallery-item g7 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_7" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 7</span></div>'">
-    </div>
+/* ────────────────────────────────────────────────────────────
+   CUSTOM CURSOR
+   Only runs on pointer/mouse devices (not touch)
+   ──────────────────────────────────────────────────────────── */
+function initCursor() {
+  // Skip on touch devices
+  if (!window.matchMedia('(hover: hover)').matches) { return; }
 
-    <!-- Photo 8 -- wide landscape, center -->
-    <div class="gallery-item g8 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_8" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 8</span></div>'">
-    </div>
+  var cursor     = document.getElementById('cursor');
+  var cursorRing = document.getElementById('cursor-ring');
 
-    <!-- Photo 9 -- portrait, right -->
-    <div class="gallery-item g9 reveal" onclick="openLightbox(this)">
-      <img src="PHOTO_URL_9" alt="Treehouse event" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>photo 9</span></div>'">
-    </div>
+  if (!cursor || !cursorRing) { return; }
 
-  </div>
-</section>
+  var cursorX = 0;
+  var cursorY = 0;
+  var ringX   = 0;
+  var ringY   = 0;
+  var rafId   = null;
 
-<!-- Lightbox overlay -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <span class="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="">
-</div>
+  // Track mouse position
+  document.addEventListener('mousemove', function(e) {
+    cursorX = e.clientX;
+    cursorY = e.clientY;
 
-<!-- ============================================================
-     ABOUT
-     ============================================================ -->
-<section class="about-section">
-  <p class="about-copy reveal">
-    treehouse is new york's best recurring night out. themed parties. open bar. a room full of people you actually want to meet. we've been doing this. come find out why.
-  </p>
-  <a href="https://instagram.com/treehouseevents.nyc" class="about-ig reveal" target="_blank">
-    @treehouseevents.nyc
-    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M2 6h8M7 3l3 3-3 3"/>
-    </svg>
-  </a>
-</section>
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top  = cursorY + 'px';
 
-<!-- ============================================================
-     SPONSORSHIP
-     ============================================================ -->
-<section class="sponsor-section" id="sponsor">
-  <div class="sponsor-inner">
-    <h2 class="sponsor-headline reveal">your brand belongs<br>in this room.</h2>
-    <p class="sponsor-body reveal">Treehouse partners with brands who want to show up where New York's coolest crowd actually goes. Limited sponsorship opportunities for 2026.</p>
-    <!-- REPLACE href with Canva deck URL when ready -->
-    <a href="CANVA_DECK_URL_HERE" class="btn-outline reveal" target="_blank">view the deck</a>
-  </div>
-</section>
+    if (!rafId) {
+      rafId = requestAnimationFrame(animateRing);
+    }
+  }, { passive: true });
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer>
-  <div class="footer-logo-name">treehouse.</div>
-  <div class="footer-logo-sub">Events &nbsp;|&nbsp; New York City</div>
-  <a href="https://instagram.com/treehouseevents.nyc" class="footer-ig" target="_blank">@treehouseevents.nyc</a>
-  <div class="footer-copy">&copy; 2026 Treehouse Events</div>
-</footer>
+  // Smooth ring follow via rAF
+  function animateRing() {
+    ringX += (cursorX - ringX) * 0.18;
+    ringY += (cursorY - ringY) * 0.18;
 
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
-<script>
-// ── EVENT DATE ─────────────────────────────────────────────
-// Change this one line to update the countdown target.
-// April 25 2026 @ 8pm ET. To switch to May 30: "2026-05-30T20:00:00-04:00"
-const EVENT_DATE = new Date("2026-04-25T20:00:00-04:00");
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top  = ringY + 'px';
 
-// ── NAV scroll shadow ──────────────────────────────────────
-var nav = document.getElementById('nav');
-window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// ── MOBILE MENU ────────────────────────────────────────────
-function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
-function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
-
-// ── COUNTDOWN ──────────────────────────────────────────────
-var cdDays    = document.getElementById('cd-days');
-var cdHours   = document.getElementById('cd-hours');
-var cdMinutes = document.getElementById('cd-minutes');
-var cdSeconds = document.getElementById('cd-seconds');
-
-function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
-
-function setNum(el, val) {
-  if (el.textContent !== val) {
-    el.style.opacity = '0.3';
-    setTimeout(function() {
-      el.textContent = val;
-      el.style.opacity = '1';
-    }, 120);
-    el.style.transition = 'opacity 0.12s';
+    rafId = requestAnimationFrame(animateRing);
   }
+
+  // Hover state on interactive elements
+  var interactiveEls = document.querySelectorAll(
+    'a, button, input, textarea, select, [role="button"], .gallery-item, .tab, .event-type-card'
+  );
+
+  interactiveEls.forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      document.body.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', function() {
+      document.body.classList.remove('cursor-hover');
+    });
+  });
+
+  // Inverted state on light sections
+  var lightSections = document.querySelectorAll('.section-light');
+
+  lightSections.forEach(function(section) {
+    section.addEventListener('mouseenter', function() {
+      document.body.classList.add('cursor-inverted');
+    });
+    section.addEventListener('mouseleave', function() {
+      document.body.classList.remove('cursor-inverted');
+    });
+  });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', function() {
+    cursor.style.opacity = '0';
+    cursorRing.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', function() {
+    cursor.style.opacity = '1';
+    cursorRing.style.opacity = '0.7';
+  });
 }
 
-function updateCountdown() {
-  var now  = new Date();
-  var diff = EVENT_DATE - now;
-  if (diff <= 0) {
-    cdDays.textContent = cdHours.textContent = cdMinutes.textContent = cdSeconds.textContent = '00';
-    return;
+/* ────────────────────────────────────────────────────────────
+   STICKY NAV
+   Adds .nav-scrolled class after 80px scroll
+   ──────────────────────────────────────────────────────────── */
+function initNav() {
+  var nav = document.getElementById('nav');
+  if (!nav) { return; }
+
+  function onScroll() {
+    if (window.scrollY > 80) {
+      nav.classList.add('nav-scrolled');
+    } else {
+      nav.classList.remove('nav-scrolled');
+    }
   }
-  var d = Math.floor(diff / 86400000);
-  var h = Math.floor((diff % 86400000) / 3600000);
-  var m = Math.floor((diff % 3600000)  / 60000);
-  var s = Math.floor((diff % 60000)    / 1000);
-  setNum(cdDays,    pad(d));
-  setNum(cdHours,   pad(h));
-  setNum(cdMinutes, pad(m));
-  setNum(cdSeconds, pad(s));
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // run once on load
 }
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
-// ── HERO FADE IN ───────────────────────────────────────────
-window.addEventListener('load', function() {
-  var h = document.getElementById('heroHeadline');
-  setTimeout(function() { h.classList.add('visible'); }, 100);
-});
+/* ────────────────────────────────────────────────────────────
+   HAMBURGER MENU
+   ──────────────────────────────────────────────────────────── */
+function initMobileMenu() {
+  var btn   = document.getElementById('hamburger-btn');
+  var menu  = document.getElementById('mobile-menu');
+  var close = document.getElementById('mobile-close');
 
-// ── SCROLL REVEAL ──────────────────────────────────────────
-var revealObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
+  if (!btn || !menu) { return; }
+
+  function openMenu() {
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', openMenu);
+
+  if (close) {
+    close.addEventListener('click', closeMenu);
+  }
+
+  // Close on link click
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !menu.hidden) {
+      closeMenu();
+      btn.focus();
     }
   });
-}, { threshold: 0.06 });
+}
 
-document.querySelectorAll('.reveal').forEach(function(el) {
-  revealObs.observe(el);
+/* ────────────────────────────────────────────────────────────
+   SMOOTH SCROLL
+   Intercepts anchor clicks and scrolls with nav offset
+   ──────────────────────────────────────────────────────────── */
+function initSmoothScroll() {
+  var navHeight = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+  ) || 72;
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var hash = link.getAttribute('href');
+      if (hash === '#') { return; }
+
+      var target = document.querySelector(hash);
+      if (!target) { return; }
+
+      e.preventDefault();
+
+      var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight;
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+      });
+    });
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   SCROLL ANIMATIONS
+   IntersectionObserver watches [data-animate] elements.
+   Adds .visible on intersection. Disconnects after trigger.
+   ──────────────────────────────────────────────────────────── */
+function initScrollAnimations() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: make everything visible immediately
+    document.querySelectorAll('[data-animate]').forEach(function(el) {
+      el.classList.add('visible');
+    });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('[data-animate]').forEach(function(el) {
+    observer.observe(el);
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   STAGGERED CHILDREN
+   For elements with [data-stagger], auto-assign animation-delay
+   to each direct child with 100ms increments
+   ──────────────────────────────────────────────────────────── */
+function initStagger() {
+  document.querySelectorAll('[data-stagger]').forEach(function(parent) {
+    Array.from(parent.children).forEach(function(child, i) {
+      child.style.animationDelay = (i * 100) + 'ms';
+    });
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   GALLERY COLLECTION TABS
+   Filters .gallery-item by data-collection attribute.
+   Active tab gets .tab-active class.
+   ──────────────────────────────────────────────────────────── */
+function initGalleryTabs() {
+  var tabs    = document.querySelectorAll('.gallery-tabs .tab');
+  var items   = document.querySelectorAll('.gallery-item');
+
+  if (!tabs.length || !items.length) { return; }
+
+  function filterGallery(collection) {
+    items.forEach(function(item) {
+      if (collection === 'all' || item.getAttribute('data-collection') === collection) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      // Update active tab
+      tabs.forEach(function(t) {
+        t.classList.remove('tab-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('tab-active');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Filter items
+      filterGallery(tab.getAttribute('data-collection') || 'all');
+    });
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   IMAGE ERROR HANDLING
+   Global onerror fallback that adds .img-failed to parent
+   (Inline onerror on each img tag handles individual images,
+   this catches any that slip through)
+   ──────────────────────────────────────────────────────────── */
+function initImageFallbacks() {
+  document.querySelectorAll('img').forEach(function(img) {
+    if (img.complete && img.naturalWidth === 0) {
+      img.parentNode.classList.add('img-failed');
+    }
+
+    img.addEventListener('error', function() {
+      img.parentNode.classList.add('img-failed');
+    });
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   JOIN FORM
+   Email validation + inline confirmation. No page reload.
+   ──────────────────────────────────────────────────────────── */
+function initJoinForm() {
+  var form         = document.querySelector('.join-form');
+  var emailInput   = document.getElementById('join-email');
+  var confirmation = document.getElementById('join-confirmation');
+
+  if (!form || !emailInput || !confirmation) { return; }
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var email = emailInput.value.trim();
+
+    if (!emailRegex.test(email)) {
+      emailInput.focus();
+      emailInput.style.borderColor = 'var(--accent)';
+      setTimeout(function() {
+        emailInput.style.borderColor = '';
+      }, 1500);
+      return;
+    }
+
+    // Show confirmation
+    confirmation.hidden = false;
+    confirmation.classList.add('visible');
+    emailInput.value    = '';
+
+    // Optionally hide after 6 seconds
+    setTimeout(function() {
+      confirmation.classList.remove('visible');
+      setTimeout(function() {
+        confirmation.hidden = true;
+      }, 400);
+    }, 6000);
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   HERO PARALLAX
+   Subtle translateY on hero bg image via scroll.
+   Max 80px movement. Pure JS, no libraries.
+   ──────────────────────────────────────────────────────────── */
+function initParallax() {
+  var heroBg = document.querySelector('.hero-bg img');
+  if (!heroBg) { return; }
+
+  // Only run on larger screens (skip on mobile for performance)
+  if (window.innerWidth < 768) { return; }
+
+  function onScroll() {
+    var scrollY = window.scrollY;
+    var offset  = Math.min(scrollY * 0.3, 80);
+    heroBg.style.transform = 'translateY(' + offset + 'px)';
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ────────────────────────────────────────────────────────────
+   PAGE LOAD SEQUENCE
+   Adds .page-loaded to <body> on DOMContentLoaded
+   Triggers hero stagger animations via CSS
+   ──────────────────────────────────────────────────────────── */
+function initPageLoad() {
+  document.body.classList.add('page-loaded');
+}
+
+/* ────────────────────────────────────────────────────────────
+   INIT — run all modules on DOMContentLoaded
+   ──────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  initPageLoad();
+  initCursor();
+  initNav();
+  initMobileMenu();
+  initSmoothScroll();
+  initScrollAnimations();
+  initStagger();
+  initGalleryTabs();
+  initImageFallbacks();
+  initJoinForm();
+  initParallax();
 });
 
-// ── LIGHTBOX ───────────────────────────────────────────────
-function openLightbox(card) {
-  var img = card.querySelector('img');
-  if (!img) return;
-  document.getElementById('lightboxImg').src = img.src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox(e) {
-  if (e && e.target === document.getElementById('lightboxImg')) return;
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeLightbox();
-});
-</script>
+  </script>
 </body>
 </html>
