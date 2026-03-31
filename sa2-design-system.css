@@ -1,0 +1,677 @@
+/* ============================================================
+   SA2 — DESIGN SYSTEM + GLOBAL CSS
+   treehouse. events | treehouseevents.cliffeliz.ai
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (:root)
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --g:        #1a3a1a;   /* deep forest green — primary dark bg */
+  --g2:       #2b5c1f;
+  --g3:       #3d7a28;
+  --linen:    #f0ede8;   /* primary light bg */
+  --linen2:   #e8e3db;
+  --white:    #ffffff;
+  --accent:   #7eb832;
+  --muted:    #7a7a6e;
+
+  /* Derived / alpha */
+  --g-80:     rgba(26, 58, 26, 0.80);
+  --g-40:     rgba(26, 58, 26, 0.40);
+  --g-12:     rgba(26, 58, 26, 0.12);
+  --g-06:     rgba(26, 58, 26, 0.06);
+  --linen-80: rgba(240, 237, 232, 0.80);
+  --accent-dark: #6aa228;
+
+  /* Fonts */
+  --font-display:   'Bebas Neue', sans-serif;
+  --font-editorial: 'Playfair Display', serif;
+  --font-body:      'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(4rem, 8vw, 9rem) clamp(1.5rem, 5vw, 5rem);
+  --nav-height:  72px;
+  --wrap-max:    1280px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Transitions */
+  --transition-std: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. CSS RESET
+   ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. SECTION BACKGROUND SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.section-dark {
+  background: var(--g);
+  color: var(--linen);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-light {
+  background: var(--linen);
+  color: var(--g);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   4. GRAIN TEXTURE (applied via ::after pseudo-element)
+   Sections that get grain: hero, stats, next-event, why-sponsor, join, footer
+   ──────────────────────────────────────────────────────────── */
+.section-dark.hero::after,
+.section-dark.stats::after,
+.section-dark.next-event::after,
+.section-dark.why-sponsor::after,
+.section-dark.join::after,
+.section-dark.site-footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  animation: grainShift 8s steps(1) infinite;
+}
+
+/* Content must sit above grain */
+.section-dark.hero .hero-inner,
+.section-dark.hero .hero-bg,
+.section-dark.stats .stats-band,
+.section-dark.next-event .next-event-inner,
+.section-dark.why-sponsor .why-sponsor-inner,
+.section-dark.join .join-inner,
+.section-dark.site-footer .footer-top,
+.section-dark.site-footer .footer-links,
+.section-dark.site-footer .footer-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+/* ────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY SCALE
+   ──────────────────────────────────────────────────────────── */
+
+/* Display (Bebas Neue) */
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  font-weight: 400; /* Bebas Neue is weight 400 */
+}
+
+/* Hero wordmark */
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 12rem);
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  font-weight: 400;
+}
+
+/* Editorial headings */
+h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Section label / overline */
+.section-label,
+.overline {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Body text */
+p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Caption */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+}
+
+/* ────────────────────────────────────────────────────────────
+   6. BUTTON STYLES
+   ──────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  color: currentColor;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid currentColor;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), color var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: currentColor;
+  transform: scale(1.02);
+}
+
+/* When btn-secondary is on a dark section, invert on hover */
+.section-dark .btn-secondary:hover {
+  color: var(--g);
+}
+
+.section-light .btn-secondary:hover {
+  color: var(--linen);
+}
+
+/* ────────────────────────────────────────────────────────────
+   7. ANIMATION KEYFRAMES
+   ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2%, -2%); }
+  50%  { transform: translate(3%, 1%); }
+  75%  { transform: translate(-1%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ────────────────────────────────────────────────────────────
+   8. ANIMATION TRIGGER SYSTEM
+   Elements start invisible; JS adds .visible to trigger
+   ──────────────────────────────────────────────────────────── */
+[data-animate="fadeUp"] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-animate="fadeUp"].visible {
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+[data-animate="fadeIn"] {
+  opacity: 0;
+}
+
+[data-animate="fadeIn"].visible {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+[data-animate="slideLeft"] {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+
+[data-animate="slideLeft"].visible {
+  animation: slideLeft 0.7s ease-out forwards;
+}
+
+/* Data-delay stagger system */
+[data-delay="100"].visible { animation-delay: 0.10s; }
+[data-delay="200"].visible { animation-delay: 0.20s; }
+[data-delay="300"].visible { animation-delay: 0.30s; }
+[data-delay="400"].visible { animation-delay: 0.40s; }
+[data-delay="500"].visible { animation-delay: 0.50s; }
+[data-delay="600"].visible { animation-delay: 0.60s; }
+[data-delay="700"].visible { animation-delay: 0.70s; }
+
+/* ────────────────────────────────────────────────────────────
+   9. CUSTOM CURSOR
+   ──────────────────────────────────────────────────────────── */
+.cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: none;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  transition: width var(--transition-fast), height var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+  will-change: transform;
+}
+
+/* Hover state — expanded ring */
+body.cursor-hover .cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--g);
+  opacity: 1;
+}
+
+/* Inverted state — on light sections */
+body.cursor-inverted .cursor {
+  background: var(--g);
+}
+
+body.cursor-inverted .cursor-ring {
+  border-color: var(--g);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   10. NAV STYLES
+   ──────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: transparent;
+  transition: background var(--transition-std), backdrop-filter var(--transition-std);
+}
+
+.nav.nav-scrolled {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--g-80);
+}
+
+/* Nav text/links */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--linen);
+  text-decoration: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--linen);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a.nav-ticket {
+  opacity: 1;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--linen);
+  transition: all var(--transition-std);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  background: var(--g);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu nav a {
+  font-family: var(--font-editorial);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--linen);
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.mobile-menu nav a:hover {
+  opacity: 1;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--linen);
+  opacity: 0.7;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: opacity var(--transition-fast);
+}
+
+.mobile-close:hover {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   11. IMAGE FALLBACK SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.img-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: var(--g2);
+  color: var(--linen);
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.img-failed .img-fallback {
+  display: flex;
+}
+
+/* Position parent for absolute fallback */
+.img-failed {
+  position: relative;
+}
+
+/* ────────────────────────────────────────────────────────────
+   12. FORM ELEMENTS (global)
+   ──────────────────────────────────────────────────────────── */
+input[type="email"] {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  background: transparent;
+  border: 1.5px solid var(--linen-80);
+  border-radius: var(--radius-sm);
+  color: var(--linen);
+  padding: 0.85rem 1.25rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+
+input[type="email"]::placeholder {
+  color: var(--linen);
+  opacity: 0.4;
+}
+
+input[type="email"]:focus {
+  border-color: var(--accent);
+}
+
+/* Join confirmation */
+.join-confirmation {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity var(--transition-std);
+}
+
+.join-confirmation.visible {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   13. UTILITY CLASSES
+   ──────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   14. MOBILE BREAKPOINTS (typography + base adjustments)
+       Layout overrides live in SA3
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(3rem, 6vw, 5rem) 1.5rem;
+    --nav-height: 60px;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .hero-wordmark {
+    font-size: clamp(4rem, 18vw, 7rem);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad: 2.5rem 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}

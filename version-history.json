@@ -1,0 +1,67 @@
+{
+  "site": "treehouseevents.cliffeliz.ai",
+  "repo": "tt-treehouse-public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-03-31",
+      "commit": "02e6dd4",
+      "deployed": "https://treehouseevents.cliffeliz.ai",
+      "description": "Full site rebuild — 11 sections, real event photos, new brand system",
+      "changes": [
+        "Rebuilt from 5-section placeholder to full 11-section site per spec",
+        "Added 8 real event photos from Google Drive (all 200/accessible confirmed)",
+        "New brand palette: #1a3a1a (deep forest green) + #f0ede8 (linen) + #7eb832 (accent)",
+        "Added Bebas Neue display font alongside Playfair Display + Inter",
+        "Custom cursor (8px dot + 32px ring), inverted on light sections",
+        "Grain texture on all dark sections via SVG feTurbulence",
+        "Scroll animations with IntersectionObserver (fadeUp, slideLeft, fadeIn)",
+        "Gallery with 5 vibe collection filter tabs (all / golden hour rooftop / night out / curated pours / table stories)",
+        "Sponsorship tiers: Bronze $5,000 (2 VIP) / Gold $10,000 (3 VIP) / Platinum $15,000 (5 VIP)",
+        "Stats band: 300+ guests / 5+ events / invite only",
+        "Who We Are section with event type cards",
+        "Next Event: April 25th / 75 Varick Rooftop / 10:30pm-3:30am ET",
+        "Why Sponsor: 4 numbered reasons with accent dividers",
+        "Past Sponsors: Mumm + Aperol (confirmed) + 4 Brand Partner placeholders",
+        "How It Works: 4-step flow with connecting line",
+        "Join The List: email form with inline confirmation",
+        "All contact info live: events@tigertracks.ai / (301) 646-7758 / @treehouseevents.nyc",
+        "Zero placeholder URLs (no PARTIFUL_URL_HERE, no PHOTO_URL_N)",
+        "QA: 77/77 PASS, 0 FAIL",
+        "File size: 65.9KB (under 500KB limit)"
+      ],
+      "sections": [
+        "01 Hero (dark)",
+        "02 Stats (dark)",
+        "03 Who We Are (light)",
+        "04 Next Event (dark)",
+        "05 Gallery (light)",
+        "06 Why Sponsor (dark)",
+        "07 Tiers (light)",
+        "08 Past Sponsors (dark)",
+        "09 How It Works (light)",
+        "10 Join The List (dark)",
+        "11 Footer (dark)"
+      ],
+      "images": {
+        "hero": "1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb",
+        "next_event": "1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J",
+        "gallery": [
+          "1kdBRTPP_E-LO6zIYite8dWViMAOtMFQx",
+          "1L-qICnnP40QdPGTN4M2CgxCjJeAjWDNB",
+          "1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J",
+          "1ZDAsr1UQiJruIWkPK9gTH36EZ0RVK1m8",
+          "1bQcrwyXemChT33X8o5ZBEX7u_Xz7NdZc",
+          "1Jl_qM7iv7Y8TzUGh5lJ5MlfKWO0kY3eO",
+          "1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb",
+          "1l3HBuLqLuOPgniADwyNAOG8K_mFPCouD"
+        ]
+      },
+      "qa": {
+        "total_checks": 77,
+        "pass": 77,
+        "fail": 0
+      }
+    }
+  ]
+}

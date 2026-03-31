@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>treehouse. events | new york city</title>
+  <meta name="description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="treehouse. events | new york city">
+  <meta property="og:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb">
+  <meta property="og:url" content="https://treehouseevents.cliffeliz.ai">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="treehouse. events | new york city">
+  <meta name="twitter:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb">
+
+  <!-- Fonts: Bebas Neue (display) + Playfair Display (editorial) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============================================================
+       CUSTOM CURSOR
+       ============================================================ -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="treehouse. — return to top">treehouse.</a>
+
+    <div class="nav-links" role="list">
+      <a href="#next-event" role="listitem">events</a>
+      <a href="#gallery" role="listitem">gallery</a>
+      <a href="#tiers" role="listitem">sponsor</a>
+      <a href="#join" class="nav-ticket" role="listitem">get tickets</a>
+    </div>
+
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true" hidden>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
+    <nav aria-label="Mobile navigation links">
+      <a href="#next-event">events</a>
+      <a href="#gallery">gallery</a>
+      <a href="#tiers">sponsor</a>
+      <a href="#join" class="nav-ticket">get tickets</a>
+    </nav>
+  </div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ──────────────────────────────────────────────────────────
+         01 HERO — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark hero" id="hero" aria-label="Hero">
+
+      <!-- Background image -->
+      <div class="hero-bg" role="img" aria-label="Crowd at treehouse. NYC rooftop event, golden hour">
+        <img
+          src="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb"
+          alt="DJ at Pioneer decks with NYC skyline and One WTC at golden hour, treehouse. event"
+          onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+        <div class="img-fallback" aria-hidden="true">treehouse.</div>
+      </div>
+
+      <div class="hero-inner">
+        <p class="section-label" data-animate="fadeUp">// New York City</p>
+        <h1 class="hero-wordmark" data-animate="fadeUp" data-delay="100">treehouse.</h1>
+        <p class="hero-sub" data-animate="fadeUp" data-delay="200">the party you've been waiting for.</p>
+        <div class="hero-badge" data-animate="fadeUp" data-delay="300" aria-label="New York City, invite only">
+          <span>New York City</span>
+          <span class="hero-badge-dot" aria-hidden="true">·</span>
+          <span>Invite Only</span>
+        </div>
+        <div class="hero-cta-row" data-animate="fadeUp" data-delay="400">
+          <a href="#join" class="btn-primary">join the list</a>
+          <a href="#tiers" class="btn-secondary">become a sponsor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         02 STATS — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark stats" id="stats" aria-label="Event statistics">
+      <div class="stats-band">
+        <div class="stat-item" data-animate="fadeUp" data-delay="0">
+          <span class="stat-val">300+</span>
+          <span class="stat-label">guests per event</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" data-animate="fadeUp" data-delay="100">
+          <span class="stat-val">5+</span>
+          <span class="stat-label">events produced</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" data-animate="fadeUp" data-delay="200">
+          <span class="stat-val">Invite</span>
+          <span class="stat-label">only format</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         03 WHO WE ARE — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light about" id="about" aria-label="About treehouse.">
+      <div class="about-inner">
+        <div class="about-label-col">
+          <p class="section-label about-label" aria-hidden="true">// Who We Are</p>
+        </div>
+        <div class="about-content-col">
+          <h2 data-animate="slideLeft">We curate<br>the room.</h2>
+          <p class="about-body" data-animate="fadeUp" data-delay="100">
+            treehouse. is New York's best recurring night out. Themed parties. Open bar.
+            A room full of people you actually want to meet. We've been doing this.
+            Come find out why.
+          </p>
+          <div class="event-type-cards" data-animate="fadeUp" data-delay="200" role="list" aria-label="Event types">
+            <div class="event-type-card" role="listitem">Gallery Takeovers</div>
+            <div class="event-type-card" role="listitem">Rooftop Events</div>
+            <div class="event-type-card" role="listitem">Holiday Parties</div>
+            <div class="event-type-card" role="listitem">Brand Experiences</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         04 NEXT EVENT — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark next-event" id="next-event" aria-label="Next treehouse. event">
+      <div class="next-event-inner">
+        <p class="section-label" data-animate="fadeUp">// Next Event</p>
+        <div class="next-event-grid">
+
+          <div class="event-details-block" data-animate="slideLeft">
+            <h2 class="event-date-heading">April 25th</h2>
+            <p class="event-time">10:30pm – 3:30am ET</p>
+
+            <div class="venue-block" aria-label="Venue details">
+              <p class="venue-name">75 Varick Rooftop</p>
+              <p class="venue-location">SoHo, New York City</p>
+            </div>
+
+            <p class="event-meta" aria-label="Event details: 300 to 400 guests, invite only, open bar">
+              300–400 guests · Invite Only · Open Bar
+            </p>
+
+            <a href="#join" class="btn-primary">request your invite</a>
+          </div>
+
+          <div class="event-img-block" data-animate="fadeIn" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J"
+              alt="Person laughing at NYC rooftop golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">april 25th</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         05 GALLERY — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light gallery" id="gallery" aria-label="Past events gallery">
+      <div class="gallery-inner">
+        <p class="section-label" data-animate="fadeUp">// Past Events</p>
+
+        <!-- Collection tabs -->
+        <div class="gallery-tabs" role="tablist" aria-label="Filter gallery by event type">
+          <button class="tab tab-active" role="tab" aria-selected="true"  data-collection="all"           aria-controls="gallery-collage">all</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="golden-hour"   aria-controls="gallery-collage">golden hour rooftop</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="night-out"     aria-controls="gallery-collage">night out</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="curated-pours" aria-controls="gallery-collage">curated pours</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="table-stories" aria-controls="gallery-collage">table stories</button>
+        </div>
+
+        <!-- Collage grid — 8 images -->
+        <div class="gallery-collage" id="gallery-collage" role="tabpanel">
+
+          <div class="gallery-item g1" data-collection="night-out" data-animate="fadeUp">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1kdBRTPP_E-LO6zIYite8dWViMAOtMFQx"
+              alt="Women celebrating at treehouse. party, NYC"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g2" data-collection="night-out" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1L-qICnnP40QdPGTN4M2CgxCjJeAjWDNB"
+              alt="Stylish couple with cocktails at treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g3" data-collection="golden-hour" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1HEv_xrCaiZSdFOwEbzUe7we9Hpen7P0J"
+              alt="Person laughing at NYC rooftop golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">golden hour rooftop</div>
+          </div>
+
+          <div class="gallery-item g4" data-collection="curated-pours" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1ZDAsr1UQiJruIWkPK9gTH36EZ0RVK1m8"
+              alt="Mumm rosé champagne on ice, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">curated pours</div>
+          </div>
+
+          <div class="gallery-item g5" data-collection="table-stories" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1bQcrwyXemChT33X8o5ZBEX7u_Xz7NdZc"
+              alt="Candlelit table with pink roses, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">table stories</div>
+          </div>
+
+          <div class="gallery-item g6" data-collection="night-out" data-animate="fadeUp" data-delay="100">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1Jl_qM7iv7Y8TzUGh5lJ5MlfKWO0kY3eO"
+              alt="Crowd enjoying treehouse. NYC night event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">night out</div>
+          </div>
+
+          <div class="gallery-item g7" data-collection="golden-hour" data-animate="fadeUp" data-delay="200">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1Ij_Aze4U79yMJNEALt3mbtPZu3fAcfvb"
+              alt="DJ at Pioneer decks with NYC skyline and One WTC at golden hour, treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">golden hour rooftop</div>
+          </div>
+
+          <div class="gallery-item g8" data-collection="table-stories" data-animate="fadeUp" data-delay="300">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1l3HBuLqLuOPgniADwyNAOG8K_mFPCouD"
+              alt="Charcuterie and cocktail spread at treehouse. event"
+              onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+            <div class="img-fallback" aria-hidden="true">table stories</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         06 WHY SPONSOR — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark why-sponsor" id="why-sponsor" aria-label="Why sponsor treehouse.">
+      <div class="why-sponsor-inner">
+        <p class="section-label" data-animate="fadeUp">// Why Sponsor</p>
+        <h2 data-animate="slideLeft">Your brand belongs<br>in this room.</h2>
+
+        <div class="why-rows" role="list">
+
+          <div class="why-row" role="listitem" data-animate="fadeUp">
+            <span class="why-num" aria-hidden="true">01</span>
+            <p class="why-text">Access 300–400 hand-selected NYC tastemakers, cultural insiders, and brand leaders at every event.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="100">
+            <span class="why-num" aria-hidden="true">02</span>
+            <p class="why-text">Authentic integration — your brand lives in the experience, not on a banner.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="200">
+            <span class="why-num" aria-hidden="true">03</span>
+            <p class="why-text">Social content that travels. Our crowd documents everything.</p>
+          </div>
+
+          <div class="why-divider" aria-hidden="true"></div>
+
+          <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="300">
+            <span class="why-num" aria-hidden="true">04</span>
+            <p class="why-text">Limited slots per event. We turn sponsors away to protect the room.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         07 TIERS — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light tiers" id="tiers" aria-label="Sponsorship tiers">
+      <div class="tiers-inner">
+        <p class="section-label" data-animate="fadeUp">// Sponsorship Tiers</p>
+        <h2 data-animate="slideLeft">Partner with us.</h2>
+
+        <div class="tiers-grid" role="list">
+
+          <!-- Bronze -->
+          <div class="tier-card" role="listitem" data-animate="fadeUp">
+            <div class="tier-name">Bronze</div>
+            <div class="tier-price" aria-label="Five thousand dollars">$5,000</div>
+            <ul class="tier-features" aria-label="Bronze tier features">
+              <li>2 VIP invites</li>
+              <li>Brand presence at event</li>
+              <li>Social mention</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Bronze sponsorship">get started →</a>
+          </div>
+
+          <!-- Gold — featured -->
+          <div class="tier-card tier-featured" role="listitem" data-animate="fadeUp" data-delay="100">
+            <div class="tier-name">Gold</div>
+            <div class="tier-price" aria-label="Ten thousand dollars">$10,000</div>
+            <ul class="tier-features" aria-label="Gold tier features">
+              <li>3 VIP invites</li>
+              <li>Branded activation space</li>
+              <li>Social content package</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Gold sponsorship">get started →</a>
+          </div>
+
+          <!-- Platinum -->
+          <div class="tier-card tier-platinum" role="listitem" data-animate="fadeUp" data-delay="200">
+            <div class="tier-name">Platinum</div>
+            <div class="tier-price" aria-label="Fifteen thousand dollars">$15,000</div>
+            <ul class="tier-features" aria-label="Platinum tier features">
+              <li>5 VIP invites</li>
+              <li>Title sponsorship</li>
+              <li>Full content + media package</li>
+            </ul>
+            <a href="mailto:events@tigertracks.ai" class="btn-primary" aria-label="Get started with Platinum sponsorship">get started →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         08 PAST SPONSORS — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark past-sponsors" id="past-sponsors" aria-label="Past treehouse. brand partners">
+      <div class="past-sponsors-inner">
+        <p class="section-label" data-animate="fadeUp">// Past Partners</p>
+        <h2 data-animate="slideLeft">Brands that have<br>been in the room.</h2>
+
+        <div class="past-sponsors-grid" role="list" aria-label="Past brand partners">
+          <div class="sponsor-name sponsor-lg" role="listitem">Mumm</div>
+          <div class="sponsor-name sponsor-md" role="listitem">Aperol</div>
+          <div class="sponsor-name sponsor-sm" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-lg" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-md" role="listitem">Brand Partner</div>
+          <div class="sponsor-name sponsor-sm" role="listitem">Brand Partner</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         09 HOW IT WORKS — light
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-light how-it-works" id="how-it-works" aria-label="How treehouse. works">
+      <div class="hiw-inner">
+        <p class="section-label" data-animate="fadeUp">// How It Works</p>
+
+        <div class="hiw-steps" role="list" aria-label="Four steps to join treehouse.">
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp">
+            <span class="hiw-num" aria-hidden="true">01</span>
+            <h3 class="hiw-title">Apply</h3>
+            <p class="hiw-desc">Request your invite or sponsorship package.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="100">
+            <span class="hiw-num" aria-hidden="true">02</span>
+            <h3 class="hiw-title">Get Approved</h3>
+            <p class="hiw-desc">We review every application to protect the room quality.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="200">
+            <span class="hiw-num" aria-hidden="true">03</span>
+            <h3 class="hiw-title">Show Up</h3>
+            <p class="hiw-desc">Arrive at 75 Varick Rooftop. Open bar. Curated crowd.</p>
+          </div>
+
+          <div class="hiw-step" role="listitem" data-animate="fadeUp" data-delay="300">
+            <span class="hiw-num" aria-hidden="true">04</span>
+            <h3 class="hiw-title">Come Back</h3>
+            <p class="hiw-desc">treehouse. events happen throughout the year.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         10 JOIN THE LIST — dark
+         ────────────────────────────────────────────────────────── -->
+    <section class="section-dark join" id="join" aria-label="Join the treehouse. list">
+      <div class="join-inner">
+        <p class="section-label" data-animate="fadeUp">// Get Access</p>
+        <h2 data-animate="slideLeft">Get on the list.</h2>
+        <p class="join-body" data-animate="fadeUp" data-delay="100">
+          treehouse. is invite-only. Drop your email and we'll reach out before the next event.
+        </p>
+
+        <form class="join-form" data-animate="fadeUp" data-delay="200" novalidate aria-label="Join the treehouse. mailing list">
+          <div class="join-form-row">
+            <input
+              type="email"
+              name="email"
+              id="join-email"
+              placeholder="your@email.com"
+              aria-label="Email address"
+              required
+              autocomplete="email">
+            <button type="submit" class="btn-primary" aria-label="Submit email to join the list">join</button>
+          </div>
+          <div class="join-confirmation" id="join-confirmation" role="status" aria-live="polite" hidden>
+            you're on the list.
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — dark
+       ============================================================ -->
+  <footer class="section-dark site-footer" role="contentinfo" aria-label="treehouse. footer">
+
+    <div class="footer-top">
+      <a href="#" class="footer-logo" aria-label="treehouse. — return to top">treehouse.</a>
+      <p class="footer-tagline">Events · New York City</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="treehouse. on Instagram">@treehouseevents.nyc</a>
+      <a href="mailto:events@tigertracks.ai" aria-label="Email treehouse. events">events@tigertracks.ai</a>
+      <a href="tel:+13016467758" aria-label="Call treehouse. events">(301) 646-7758</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 treehouse. events</p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
