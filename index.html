@@ -1050,13 +1050,23 @@ input[type="email"]:focus {
 
 /* Asymmetric collage grid — 8 images */
 .gallery-collage {
-  columns: 4;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
 }
-.gallery-collage .gallery-item {
-  break-inside: avoid;
-  margin-bottom: 10px;
-}
+/* Editorial grid — 12 images in 3 rows */
+.gallery-collage .g1  { grid-column: 1 / 6;  grid-row: 1; aspect-ratio: 4/3; }
+.gallery-collage .g2  { grid-column: 6 / 9;  grid-row: 1; aspect-ratio: 3/4; }
+.gallery-collage .g3  { grid-column: 9 / 13; grid-row: 1; aspect-ratio: 4/3; }
+.gallery-collage .g4  { grid-column: 1 / 4;  grid-row: 2; aspect-ratio: 3/4; }
+.gallery-collage .g5  { grid-column: 4 / 8;  grid-row: 2; aspect-ratio: 4/3; }
+.gallery-collage .g6  { grid-column: 8 / 13; grid-row: 2; aspect-ratio: 4/3; }
+.gallery-collage .g7  { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4/3; }
+.gallery-collage .g8  { grid-column: 5 / 9;  grid-row: 3; aspect-ratio: 3/4; }
+.gallery-collage .g9  { grid-column: 9 / 13; grid-row: 3; aspect-ratio: 4/3; }
+.gallery-collage .g10 { grid-column: 1 / 5;  grid-row: 4; aspect-ratio: 16/9; }
+.gallery-collage .g11 { grid-column: 5 / 9;  grid-row: 4; aspect-ratio: 16/9; }
+.gallery-collage .g12 { grid-column: 9 / 13; grid-row: 4; aspect-ratio: 16/9; }
 
 .gallery-item {
   overflow: hidden;
@@ -1833,355 +1843,67 @@ input[type="email"]:focus {
         <p class="section-label" data-animate="fadeUp">// Past Events</p>
 
         <!-- Collection tabs -->
-        <div class="gallery-tabs" role="tablist" aria-label="Filter gallery by event type">
-          <button class="tab tab-active" role="tab" aria-selected="true"  data-collection="all"           aria-controls="gallery-collage">all</button>
-          <button class="tab"            role="tab" aria-selected="false" data-collection="golden-hour"   aria-controls="gallery-collage">golden hour rooftop</button>
-          <button class="tab"            role="tab" aria-selected="false" data-collection="night-out"     aria-controls="gallery-collage">night out</button>
-          <button class="tab"            role="tab" aria-selected="false" data-collection="curated-pours" aria-controls="gallery-collage">curated pours</button>
-          <button class="tab"            role="tab" aria-selected="false" data-collection="table-stories" aria-controls="gallery-collage">table stories</button>
+        <div class="gallery-tabs" role="tablist" aria-label="Filter gallery by event">
+          <button class="tab tab-active" role="tab" aria-selected="true"  data-collection="all"          aria-controls="gallery-collage">all</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="summer-rooftop" aria-controls="gallery-collage">summer rooftop</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="october-party"  aria-controls="gallery-collage">october party</button>
+          <button class="tab"            role="tab" aria-selected="false" data-collection="holiday-party"  aria-controls="gallery-collage">holiday party</button>
+        </div>
+        <div class="gallery-event-links" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
+          <a href="/summer-rooftop.html" style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;color:var(--g);opacity:0.55;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.55">Summer Rooftop → 36 photos</a>
+          <a href="/october-party.html" style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;color:var(--g);opacity:0.55;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.55">October Party → 15 photos</a>
+          <a href="/holiday-party.html" style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;color:var(--g);opacity:0.55;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.55">Holiday Party → 15 photos</a>
         </div>
 
         <!-- Collage grid — 8 images -->
         <div class="gallery-collage" id="gallery-collage" role="tabpanel">
 
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/001.jpg" alt="treehouse. event photo 1" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g1" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="0">
+            <img src="/img/gallery/136.jpg" alt="Packed rooftop party at treehouse. NYC, crowd and skyline" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/004.jpg" alt="treehouse. event photo 2" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g2" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="100">
+            <img src="/img/gallery/094.jpg" alt="Guests celebrating at treehouse. rooftop party, NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/007.jpg" alt="treehouse. event photo 3" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g3" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="200">
+            <img src="/img/gallery/157.jpg" alt="DJs performing at sunset rooftop, treehouse. NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/010.jpg" alt="treehouse. event photo 4" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g4" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="300">
+            <img src="/img/gallery/109.jpg" alt="Group of guests at treehouse. NYC rooftop party" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/013.jpg" alt="treehouse. event photo 5" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g5" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="0">
+            <img src="/img/gallery/145.jpg" alt="Friends with cocktails and NYC skyline, treehouse. event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/016.jpg" alt="treehouse. event photo 6" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g6" data-collection="october-party" data-animate="fadeUp" data-delay="100">
+            <img src="/img/gallery/115.jpg" alt="Stylish guests at indoor treehouse. evening event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/019.jpg" alt="treehouse. event photo 7" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g7" data-collection="october-party" data-animate="fadeUp" data-delay="200">
+            <img src="/img/gallery/172.jpg" alt="Treehouse. branded ice sculpture, NYC skyline at night" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/022.jpg" alt="treehouse. event photo 8" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g8" data-collection="october-party" data-animate="fadeUp" data-delay="300">
+            <img src="/img/gallery/151.jpg" alt="Guests with cocktails at treehouse. event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/025.jpg" alt="treehouse. event photo 9" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g9" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="0">
+            <img src="/img/gallery/121.jpg" alt="Saxophonist performing at treehouse. NYC rooftop" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/028.jpg" alt="treehouse. event photo 10" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g10" data-collection="holiday-party" data-animate="fadeUp" data-delay="100">
+            <img src="/img/gallery/220.jpg" alt="Guests toasting at treehouse. holiday party" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/031.jpg" alt="treehouse. event photo 11" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g11" data-collection="holiday-party" data-animate="fadeUp" data-delay="200">
+            <img src="/img/gallery/238.jpg" alt="Couple at treehouse. holiday party, NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/034.jpg" alt="treehouse. event photo 12" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/037.jpg" alt="treehouse. event photo 13" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/040.jpg" alt="treehouse. event photo 14" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/043.jpg" alt="treehouse. event photo 15" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/046.jpg" alt="treehouse. event photo 16" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/049.jpg" alt="treehouse. event photo 17" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/052.jpg" alt="treehouse. event photo 18" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/055.jpg" alt="treehouse. event photo 19" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/058.jpg" alt="treehouse. event photo 20" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/061.jpg" alt="treehouse. event photo 21" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/064.jpg" alt="treehouse. event photo 22" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/067.jpg" alt="treehouse. event photo 23" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/070.jpg" alt="treehouse. event photo 24" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/073.jpg" alt="treehouse. event photo 25" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/076.jpg" alt="treehouse. event photo 26" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/079.jpg" alt="treehouse. event photo 27" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/082.jpg" alt="treehouse. event photo 28" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/085.jpg" alt="treehouse. event photo 29" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/088.jpg" alt="treehouse. event photo 30" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/091.jpg" alt="treehouse. event photo 31" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/094.jpg" alt="treehouse. event photo 32" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/097.jpg" alt="treehouse. event photo 33" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/100.jpg" alt="treehouse. event photo 34" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/103.jpg" alt="treehouse. event photo 35" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/106.jpg" alt="treehouse. event photo 36" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/109.jpg" alt="treehouse. event photo 37" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/112.jpg" alt="treehouse. event photo 38" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/115.jpg" alt="treehouse. event photo 39" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/118.jpg" alt="treehouse. event photo 40" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/121.jpg" alt="treehouse. event photo 41" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/124.jpg" alt="treehouse. event photo 42" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/127.jpg" alt="treehouse. event photo 43" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/130.jpg" alt="treehouse. event photo 44" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/133.jpg" alt="treehouse. event photo 45" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/136.jpg" alt="treehouse. event photo 46" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/139.jpg" alt="treehouse. event photo 47" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/142.jpg" alt="treehouse. event photo 48" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/145.jpg" alt="treehouse. event photo 49" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/148.jpg" alt="treehouse. event photo 50" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/151.jpg" alt="treehouse. event photo 51" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/154.jpg" alt="treehouse. event photo 52" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/157.jpg" alt="treehouse. event photo 53" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/160.jpg" alt="treehouse. event photo 54" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/163.jpg" alt="treehouse. event photo 55" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/166.jpg" alt="treehouse. event photo 56" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/169.jpg" alt="treehouse. event photo 57" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/172.jpg" alt="treehouse. event photo 58" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/175.jpg" alt="treehouse. event photo 59" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/178.jpg" alt="treehouse. event photo 60" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/181.jpg" alt="treehouse. event photo 61" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/184.jpg" alt="treehouse. event photo 62" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/187.jpg" alt="treehouse. event photo 63" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/190.jpg" alt="treehouse. event photo 64" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/193.jpg" alt="treehouse. event photo 65" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/196.jpg" alt="treehouse. event photo 66" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/199.jpg" alt="treehouse. event photo 67" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/202.jpg" alt="treehouse. event photo 68" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/205.jpg" alt="treehouse. event photo 69" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/208.jpg" alt="treehouse. event photo 70" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/211.jpg" alt="treehouse. event photo 71" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/214.jpg" alt="treehouse. event photo 72" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/217.jpg" alt="treehouse. event photo 73" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/220.jpg" alt="treehouse. event photo 74" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/223.jpg" alt="treehouse. event photo 75" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/226.jpg" alt="treehouse. event photo 76" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/229.jpg" alt="treehouse. event photo 77" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/232.jpg" alt="treehouse. event photo 78" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/235.jpg" alt="treehouse. event photo 79" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/238.jpg" alt="treehouse. event photo 80" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/241.jpg" alt="treehouse. event photo 81" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="100">
-            <img src="/img/gallery/244.jpg" alt="treehouse. event photo 82" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="200">
-            <img src="/img/gallery/247.jpg" alt="treehouse. event photo 83" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="300">
-            <img src="/img/gallery/250.jpg" alt="treehouse. event photo 84" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item" data-animate="fadeUp" data-delay="0">
-            <img src="/img/gallery/253.jpg" alt="treehouse. event photo 85" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="gallery-item g12" data-collection="summer-rooftop" data-animate="fadeUp" data-delay="300">
+            <img src="/img/gallery/202.jpg" alt="Stylish guests at treehouse. event, NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
             <div class="img-fallback" aria-hidden="true">treehouse.</div>
           </div>
         </div>

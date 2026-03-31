@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>treehouse. — Holiday Party</title>
+  <meta name="description" content="Treehouse goes festive. Crystal saxophonists, open bar, and the best dressed room in the city.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+
+/* ============================================================
+   SA2 — DESIGN SYSTEM + GLOBAL CSS
+   treehouse. events | treehouseevents.cliffeliz.ai
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (:root)
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --g:        #1a3a1a;   /* deep forest green — primary dark bg */
+  --g2:       #2b5c1f;
+  --g3:       #3d7a28;
+  --linen:    #f0ede8;   /* primary light bg */
+  --linen2:   #e8e3db;
+  --white:    #ffffff;
+  --accent:   #7eb832;
+  --muted:    #7a7a6e;
+
+  /* Derived / alpha */
+  --g-80:     rgba(26, 58, 26, 0.80);
+  --g-40:     rgba(26, 58, 26, 0.40);
+  --g-12:     rgba(26, 58, 26, 0.12);
+  --g-06:     rgba(26, 58, 26, 0.06);
+  --linen-80: rgba(240, 237, 232, 0.80);
+  --accent-dark: #6aa228;
+
+  /* Fonts */
+  --font-display:   'Bebas Neue', sans-serif;
+  --font-editorial: 'Playfair Display', serif;
+  --font-body:      'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(4rem, 8vw, 9rem) clamp(1.5rem, 5vw, 5rem);
+  --nav-height:  72px;
+  --wrap-max:    1280px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Transitions */
+  --transition-std: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. CSS RESET
+   ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. SECTION BACKGROUND SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.section-dark {
+  background: var(--g);
+  color: var(--linen);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-light {
+  background: var(--linen);
+  color: var(--g);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   4. GRAIN TEXTURE (applied via ::after pseudo-element)
+   Sections that get grain: hero, stats, next-event, why-sponsor, join, footer
+   ──────────────────────────────────────────────────────────── */
+.section-dark.hero::after,
+.section-dark.stats::after,
+.section-dark.next-event::after,
+.section-dark.why-sponsor::after,
+.section-dark.join::after,
+.section-dark.site-footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  animation: grainShift 8s steps(1) infinite;
+}
+
+/* Content must sit above grain */
+.section-dark.hero .hero-inner,
+.section-dark.hero .hero-bg,
+.section-dark.stats .stats-band,
+.section-dark.next-event .next-event-inner,
+.section-dark.why-sponsor .why-sponsor-inner,
+.section-dark.join .join-inner,
+.section-dark.site-footer .footer-top,
+.section-dark.site-footer .footer-links,
+.section-dark.site-footer .footer-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+/* ────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY SCALE
+   ──────────────────────────────────────────────────────────── */
+
+/* Display (Bebas Neue) */
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  font-weight: 400; /* Bebas Neue is weight 400 */
+}
+
+/* Hero wordmark */
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 12rem);
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  font-weight: 400;
+}
+
+/* Editorial headings */
+h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Section label / overline */
+.section-label,
+.overline {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Body text */
+p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Caption */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+}
+
+/* ────────────────────────────────────────────────────────────
+   6. BUTTON STYLES
+   ──────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  color: currentColor;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid currentColor;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background var(--transition-std), color var(--transition-std), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: currentColor;
+  transform: scale(1.02);
+}
+
+/* When btn-secondary is on a dark section, invert on hover */
+.section-dark .btn-secondary:hover {
+  color: var(--g);
+}
+
+.section-light .btn-secondary:hover {
+  color: var(--linen);
+}
+
+/* ────────────────────────────────────────────────────────────
+   7. ANIMATION KEYFRAMES
+   ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2%, -2%); }
+  50%  { transform: translate(3%, 1%); }
+  75%  { transform: translate(-1%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ────────────────────────────────────────────────────────────
+   8. ANIMATION TRIGGER SYSTEM
+   Elements start invisible; JS adds .visible to trigger
+   ──────────────────────────────────────────────────────────── */
+[data-animate="fadeUp"] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-animate="fadeUp"].visible {
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+[data-animate="fadeIn"] {
+  opacity: 0;
+}
+
+[data-animate="fadeIn"].visible {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+[data-animate="slideLeft"] {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+
+[data-animate="slideLeft"].visible {
+  animation: slideLeft 0.7s ease-out forwards;
+}
+
+/* Data-delay stagger system */
+[data-delay="100"].visible { animation-delay: 0.10s; }
+[data-delay="200"].visible { animation-delay: 0.20s; }
+[data-delay="300"].visible { animation-delay: 0.30s; }
+[data-delay="400"].visible { animation-delay: 0.40s; }
+[data-delay="500"].visible { animation-delay: 0.50s; }
+[data-delay="600"].visible { animation-delay: 0.60s; }
+[data-delay="700"].visible { animation-delay: 0.70s; }
+
+/* ────────────────────────────────────────────────────────────
+   9. CUSTOM CURSOR
+   ──────────────────────────────────────────────────────────── */
+.cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: none;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  transition: width var(--transition-fast), height var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+  will-change: transform;
+}
+
+/* Hover state — expanded ring */
+body.cursor-hover .cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--g);
+  opacity: 1;
+}
+
+/* Inverted state — on light sections */
+body.cursor-inverted .cursor {
+  background: var(--g);
+}
+
+body.cursor-inverted .cursor-ring {
+  border-color: var(--g);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   10. NAV STYLES
+   ──────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: transparent;
+  transition: background var(--transition-std), backdrop-filter var(--transition-std);
+}
+
+.nav.nav-scrolled {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--g-80);
+}
+
+/* Nav text/links */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--linen);
+  text-decoration: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--linen);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a.nav-ticket {
+  opacity: 1;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--linen);
+  transition: all var(--transition-std);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  background: var(--g);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu nav a {
+  font-family: var(--font-editorial);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--linen);
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.mobile-menu nav a:hover {
+  opacity: 1;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--linen);
+  opacity: 0.7;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: opacity var(--transition-fast);
+}
+
+.mobile-close:hover {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   11. IMAGE FALLBACK SYSTEM
+   ──────────────────────────────────────────────────────────── */
+.img-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: var(--g2);
+  color: var(--linen);
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.img-failed .img-fallback {
+  display: flex;
+}
+
+/* Position parent for absolute fallback */
+.img-failed {
+  position: relative;
+}
+
+/* ────────────────────────────────────────────────────────────
+   12. FORM ELEMENTS (global)
+   ──────────────────────────────────────────────────────────── */
+input[type="email"] {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  background: transparent;
+  border: 1.5px solid var(--linen-80);
+  border-radius: var(--radius-sm);
+  color: var(--linen);
+  padding: 0.85rem 1.25rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+
+input[type="email"]::placeholder {
+  color: var(--linen);
+  opacity: 0.4;
+}
+
+input[type="email"]:focus {
+  border-color: var(--accent);
+}
+
+/* Join confirmation */
+.join-confirmation {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity var(--transition-std);
+}
+
+.join-confirmation.visible {
+  opacity: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   13. UTILITY CLASSES
+   ──────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   14. MOBILE BREAKPOINTS (typography + base adjustments)
+       Layout overrides live in SA3
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(3rem, 6vw, 5rem) 1.5rem;
+    --nav-height: 60px;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .hero-wordmark {
+    font-size: clamp(4rem, 18vw, 7rem);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad: 2.5rem 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
+
+/* ============================================================
+   SA3 — SECTION LAYOUT CSS
+   treehouse. events | treehouseevents.cliffeliz.ai
+   References: SA1 class names only. SA2 variables only.
+   No new keyframes. No hardcoded colors. No hardcoded fonts.
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   SHARED WRAP UTILITY
+   ──────────────────────────────────────────────────────────── */
+.hero-inner,
+.stats-band,
+.about-inner,
+.next-event-inner,
+.gallery-inner,
+.why-sponsor-inner,
+.tiers-inner,
+.past-sponsors-inner,
+.hiw-inner,
+.join-inner,
+.footer-top,
+.footer-links,
+.footer-bottom {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding: var(--section-pad);
+  width: 100%;
+}
+
+/* ────────────────────────────────────────────────────────────
+   NAV LAYOUT
+   ──────────────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   01 HERO
+   ──────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero background image — fills section behind content */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.35;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding-top: calc(var(--nav-height) + 2rem);
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  opacity: 0.75;
+  max-width: 480px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--linen-80);
+  border-radius: 99px;
+  padding: 0.35rem 1rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.hero-badge-dot {
+  opacity: 0.5;
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   02 STATS
+   ──────────────────────────────────────────────────────────── */
+.stats {
+  /* no extra layout beyond .stats-band */
+}
+
+.stats-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--linen);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 3rem;
+  background: var(--linen);
+  opacity: 0.15;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   03 WHO WE ARE (ABOUT)
+   ──────────────────────────────────────────────────────────── */
+.about-inner {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-label-col {
+  padding-top: 0.25rem;
+}
+
+/* Rotated label */
+.about-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+}
+
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-body {
+  max-width: 560px;
+  opacity: 0.8;
+}
+
+.event-type-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.event-type-card {
+  border: 1px solid var(--g-12);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--g);
+  background: transparent;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.event-type-card:hover {
+  background: var(--g);
+  color: var(--linen);
+}
+
+/* ────────────────────────────────────────────────────────────
+   04 NEXT EVENT
+   ──────────────────────────────────────────────────────────── */
+.next-event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.event-details-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-date-heading {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+  margin-top: -0.75rem;
+}
+
+/* Venue block with accent left border */
+.venue-block {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+}
+
+.venue-name {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.venue-location {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+}
+
+.event-meta {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.event-img-block {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.event-img-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s var(--transition-std);
+}
+
+.event-img-block:hover img {
+  transform: scale(1.03);
+}
+
+/* ────────────────────────────────────────────────────────────
+   05 GALLERY
+   ──────────────────────────────────────────────────────────── */
+.gallery-inner {
+  /* uses standard wrap */
+}
+
+/* Collection tabs */
+.gallery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  border: 1px solid var(--g-12);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--g);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab:hover {
+  background: var(--g-06);
+}
+
+.tab.tab-active {
+  background: var(--g);
+  color: var(--linen);
+  border-color: var(--g);
+}
+
+/* Asymmetric collage grid — 8 images */
+.gallery-collage {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+/* Editorial grid — 12 images in 3 rows */
+.gallery-collage .g1  { grid-column: 1 / 6;  grid-row: 1; aspect-ratio: 4/3; }
+.gallery-collage .g2  { grid-column: 6 / 9;  grid-row: 1; aspect-ratio: 3/4; }
+.gallery-collage .g3  { grid-column: 9 / 13; grid-row: 1; aspect-ratio: 4/3; }
+.gallery-collage .g4  { grid-column: 1 / 4;  grid-row: 2; aspect-ratio: 3/4; }
+.gallery-collage .g5  { grid-column: 4 / 8;  grid-row: 2; aspect-ratio: 4/3; }
+.gallery-collage .g6  { grid-column: 8 / 13; grid-row: 2; aspect-ratio: 4/3; }
+.gallery-collage .g7  { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4/3; }
+.gallery-collage .g8  { grid-column: 5 / 9;  grid-row: 3; aspect-ratio: 3/4; }
+.gallery-collage .g9  { grid-column: 9 / 13; grid-row: 3; aspect-ratio: 4/3; }
+.gallery-collage .g10 { grid-column: 1 / 5;  grid-row: 4; aspect-ratio: 16/9; }
+.gallery-collage .g11 { grid-column: 5 / 9;  grid-row: 4; aspect-ratio: 16/9; }
+.gallery-collage .g12 { grid-column: 9 / 13; grid-row: 4; aspect-ratio: 16/9; }
+
+.gallery-item {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-sm);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--transition-std), filter 0.35s ease;
+  filter: brightness(0.95);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Hidden state for collection filter */
+.gallery-item.hidden {
+  display: none;
+}
+
+/* Grid placement — editorial asymmetric layout */
+/* Row 1 — portrait trio */
+.g1 { grid-column: 1 / 6;  grid-row: 1; aspect-ratio: 4 / 5; }
+.g2 { grid-column: 6 / 9;  grid-row: 1; aspect-ratio: 3 / 4; }
+.g3 { grid-column: 9 / 13; grid-row: 1; aspect-ratio: 4 / 5; }
+
+/* Row 2 — landscape trio */
+.g4 { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 5 / 4; }
+.g5 { grid-column: 5 / 9;  grid-row: 2; aspect-ratio: 5 / 4; }
+.g6 { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 5 / 4; }
+
+/* Row 3 — mixed final row */
+.g7 { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4 / 3; }
+.g8 { grid-column: 5 / 13; grid-row: 3; aspect-ratio: 16 / 9; }
+
+/* ────────────────────────────────────────────────────────────
+   06 WHY SPONSOR
+   ──────────────────────────────────────────────────────────── */
+.why-sponsor-inner {
+  /* uses standard wrap */
+}
+
+.why-sponsor-inner h2 {
+  margin-bottom: 3rem;
+  max-width: 540px;
+}
+
+.why-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 0;
+}
+
+.why-num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+
+.why-text {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  opacity: 0.85;
+}
+
+.why-divider {
+  height: 1px;
+  background: var(--linen);
+  opacity: 0.1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   07 TIERS
+   ──────────────────────────────────────────────────────────── */
+.tiers-inner h2 {
+  margin-bottom: 3rem;
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.tier-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--g-12);
+  border-radius: var(--radius-md);
+  background: var(--linen2);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tier-card:hover {
+  border-color: var(--g);
+  transform: translateY(-4px);
+}
+
+/* Gold featured tier — elevated */
+.tier-card.tier-featured {
+  border-color: var(--accent);
+  background: var(--white);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px var(--g-12);
+}
+
+.tier-card.tier-featured:hover {
+  transform: translateY(-12px);
+}
+
+/* Platinum dark treatment */
+.tier-card.tier-platinum {
+  background: var(--g);
+  color: var(--linen);
+  border-color: transparent;
+}
+
+.tier-card.tier-platinum .tier-features li {
+  color: var(--linen);
+  opacity: 0.75;
+}
+
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.tier-price {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.tier-platinum .tier-price {
+  color: var(--accent);
+}
+
+.tier-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.tier-features li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  opacity: 0.75;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.tier-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  opacity: 0.4;
+  font-size: 0.7rem;
+}
+
+/* ────────────────────────────────────────────────────────────
+   08 PAST SPONSORS
+   ──────────────────────────────────────────────────────────── */
+.past-sponsors-inner h2 {
+  margin-bottom: 3rem;
+  max-width: 480px;
+}
+
+.past-sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  align-items: baseline;
+}
+
+/* Varying font sizes for editorial rhythm */
+.sponsor-name {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  line-height: 1.1;
+}
+
+.sponsor-name:hover {
+  opacity: 1;
+}
+
+.sponsor-lg {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.sponsor-md {
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+}
+
+.sponsor-sm {
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+}
+
+/* ────────────────────────────────────────────────────────────
+   09 HOW IT WORKS
+   ──────────────────────────────────────────────────────────── */
+.hiw-inner {
+  /* uses standard wrap */
+}
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 3rem;
+}
+
+/* Connecting line via ::before on the container */
+.hiw-steps::before {
+  content: '';
+  position: absolute;
+  top: 2.2rem; /* align with center of step numbers */
+  left: calc(100% / 8);
+  right: calc(100% / 8);
+  height: 1px;
+  background: var(--g-12);
+  z-index: 0;
+}
+
+.hiw-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hiw-step:first-child {
+  padding-left: 0;
+}
+
+.hiw-step:last-child {
+  padding-right: 0;
+}
+
+.hiw-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hiw-title {
+  font-family: var(--font-editorial);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hiw-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  opacity: 0.7;
+  line-height: 1.65;
+}
+
+/* ────────────────────────────────────────────────────────────
+   10 JOIN THE LIST
+   ──────────────────────────────────────────────────────────── */
+.join {
+  text-align: center;
+}
+
+.join-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.join-body {
+  max-width: 460px;
+  opacity: 0.75;
+}
+
+.join-form {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 0.5rem;
+}
+
+.join-form-row {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid var(--linen-80);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.join-form-row:focus-within {
+  border-color: var(--accent);
+}
+
+/* Override default input styles inside form row */
+.join-form-row input[type="email"] {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  padding: 0.85rem 1.25rem;
+}
+
+.join-form-row input[type="email"]:focus {
+  border-color: transparent;
+}
+
+.join-form-row .btn-primary {
+  border-radius: 0;
+  padding: 0.85rem 1.75rem;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   11 FOOTER
+   ──────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid rgba(240, 237, 232, 0.1);
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  color: var(--linen);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
+.footer-tagline {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 2.5rem;
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--linen);
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  padding-top: 0;
+  text-align: center;
+  border-top: 1px solid rgba(240, 237, 232, 0.08);
+}
+
+.footer-copy {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.25;
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE LAYOUT OVERRIDES
+   ──────────────────────────────────────────────────────────── */
+
+/* ── 1024px ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .tiers-grid {
+    gap: 1rem;
+  }
+
+  .tier-card.tier-featured {
+    transform: translateY(-4px);
+  }
+
+  .next-event-grid {
+    gap: 3rem;
+  }
+
+  .hiw-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+  }
+
+  .hiw-steps::before {
+    display: none;
+  }
+}
+
+/* ── 768px ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links {
+    display: none;
+  }
+
+  /* About */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-label-col {
+    display: none; /* hide rotated label on mobile */
+  }
+
+  /* Next Event */
+  .next-event-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .event-img-block {
+    aspect-ratio: 16 / 9;
+    max-height: 320px;
+  }
+
+  /* Gallery */
+  .gallery-collage {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+.gallery-item { width: 100%; }
+
+  /* Tiers */
+  .tiers-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tier-card.tier-featured,
+  .tier-card.tier-featured:hover {
+    transform: none;
+  }
+
+  /* How It Works */
+  .hiw-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hiw-step {
+    padding: 0;
+    border-bottom: 1px solid var(--g-12);
+    padding-bottom: 2rem;
+  }
+
+  .hiw-step:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Join form */
+  .join-form-row {
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    overflow: visible;
+    border: none;
+    gap: 0.75rem;
+  }
+
+  .join-form-row input[type="email"] {
+    border: 1.5px solid var(--linen-80);
+    border-radius: var(--radius-sm);
+    width: 100%;
+  }
+
+  .join-form-row .btn-primary {
+    border-radius: var(--radius-sm);
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* Footer */
+  .footer-top,
+  .footer-links,
+  .footer-bottom {
+    padding: 1.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* ── 480px ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Stats */
+  .stats-band {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .stat-divider {
+    width: 3rem;
+    height: 1px;
+  }
+
+  /* Hero CTA */
+  .hero-cta-row {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-secondary {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* Past sponsors — smaller on mobile */
+  .past-sponsors-grid {
+    gap: 1rem 2rem;
+  }
+
+  .sponsor-lg { font-size: 1.5rem; }
+  .sponsor-md { font-size: 1.1rem; }
+  .sponsor-sm { font-size: 0.85rem; }
+}
+
+  
+    /* ── LOGO IMAGE RULES ─────────────────────────────────────
+       Logo is always an <img> tag — never simulated in text.
+       .logo-white: filter invert for use on dark backgrounds
+       .logo-dark: no filter for use on light backgrounds
+    ────────────────────────────────────────────────────────── */
+    .logo-img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .logo-white {
+      filter: brightness(0) invert(1);
+    }
+    .logo-dark {
+      filter: none;
+    }
+    /* Override nav-logo inherited font styles since it's now an img */
+    .nav-logo { display: flex; align-items: center; }
+    .footer-logo { display: flex; align-items: center; }
+    .hero-wordmark { display: flex; justify-content: center; }
+
+  
+
+  /* Event page extras */
+  .event-hero {
+    min-height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .event-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .event-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.5);
+  }
+  .event-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem);
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .event-hero-title {
+    font-family: var(--font-editorial);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: var(--linen);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .event-hero-sub {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--linen);
+    opacity: 0.7;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.5rem;
+  }
+  .event-page-gallery {
+    padding: var(--section-pad);
+    background: var(--linen);
+  }
+  .event-page-gallery-inner {
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+  }
+  .event-masonry {
+    columns: 3;
+    column-gap: 10px;
+  }
+  .event-masonry .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .event-masonry .gallery-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s var(--transition-std);
+  }
+  .event-masonry .gallery-item:hover img {
+    transform: scale(1.03);
+  }
+  @media (max-width: 768px) {
+    .event-masonry { columns: 2; }
+  }
+  @media (max-width: 480px) {
+    .event-masonry { columns: 1; }
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+    color: var(--g);
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .back-link:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav section-dark" id="nav" style="background:var(--g);">
+    <a href="/" class="nav-logo" aria-label="treehouse. — return to home">
+      <img src="/img/logo-correct.png" alt="treehouse. Events | New York City" class="logo-img logo-white" height="40" style="height:40px;width:auto;">
+    </a>
+    <div class="nav-links">
+      <a href="/#next-event" style="color:var(--linen);opacity:0.7;">events</a>
+      <a href="/#gallery" style="color:var(--linen);opacity:0.7;">gallery</a>
+      <a href="/#tiers" style="color:var(--linen);opacity:0.7;">sponsor</a>
+      <a href="/#join" class="btn-primary" style="padding:0.5rem 1.2rem;">get tickets</a>
+    </div>
+  </nav>
+
+  <!-- Event Hero -->
+  <section class="event-hero section-dark" style="padding-top:var(--nav-height);">
+    <div class="event-hero-bg">
+      <img src="/img/gallery/220.jpg" alt="treehouse. Holiday Party">
+    </div>
+    <div class="event-hero-content">
+      <p class="section-label" style="color:var(--accent);">December 2025 — NYC</p>
+      <h1 class="event-hero-title">Holiday Party</h1>
+      <p class="event-hero-sub">Treehouse goes festive. Crystal saxophonists, open bar, and the best dressed room in the city.</p>
+      <a href="/#join" class="btn-primary">get on the list for next time</a>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="event-page-gallery">
+    <div class="event-page-gallery-inner">
+      <a href="/" class="back-link">← back to treehouse.</a>
+      <p class="section-label">// 15 photos</p>
+      <div class="event-masonry">
+
+        <div class="gallery-item" data-animate="fadeUp" data-delay="0">
+          <img src="/img/gallery/220.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="100">
+          <img src="/img/gallery/238.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="200">
+          <img src="/img/gallery/211.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="300">
+          <img src="/img/gallery/214.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="0">
+          <img src="/img/gallery/217.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="100">
+          <img src="/img/gallery/223.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="200">
+          <img src="/img/gallery/226.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="300">
+          <img src="/img/gallery/229.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="0">
+          <img src="/img/gallery/232.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="100">
+          <img src="/img/gallery/235.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="200">
+          <img src="/img/gallery/241.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="300">
+          <img src="/img/gallery/244.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="0">
+          <img src="/img/gallery/247.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="100">
+          <img src="/img/gallery/250.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+        <div class="gallery-item" data-animate="fadeUp" data-delay="200">
+          <img src="/img/gallery/253.jpg" alt="treehouse. Holiday Party event photo" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
+          <div class="img-fallback" aria-hidden="true">treehouse.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section-dark site-footer" style="padding:3rem clamp(1.5rem,5vw,5rem);text-align:center;">
+    <a href="/" class="footer-logo" style="font-family:var(--font-display);font-size:1.8rem;color:var(--linen);opacity:0.8;text-decoration:none;">treehouse.</a>
+    <p style="font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0.3;margin-top:0.5rem;color:var(--linen);">&copy; 2026 treehouse. events</p>
+  </footer>
+
+  <script>
+  'use strict';
+  // Scroll animations
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.05});
+    document.querySelectorAll('[data-animate]').forEach(function(el) { obs.observe(el); });
+  }
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.2)' : 'none';
+  }, {passive:true});
+  </script>
+</body>
+</html>
