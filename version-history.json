@@ -3,6 +3,44 @@
   "repo": "tt-treehouse-public",
   "versions": [
     {
+      "version": "1.1.0",
+      "date": "2026-04-01",
+      "commit": "e1ff3b4",
+      "deployed": "https://treehouseevents.cliffeliz.ai",
+      "description": "Visual redesign — cinematic hero, editorial gallery, new photos from Google Drive, video placeholder, tier badge, sponsor color treatments",
+      "changes": [
+        "LOGO FIX: Replaced all 3 base64-embedded logos with /img/logo-correct.png (nav, hero, footer)",
+        "HERO: Increased opacity to 0.5, added cinematic gradient overlay, decorative rule divider, min-height: 100svh",
+        "GALLERY: New editorial masonry layout (4 rows, 11 images) replacing old 12-image grid",
+        "GALLERY: Added 92 new photos from Google Drive — 44 May Party + 48 Christmas Party",
+        "GALLERY: Tabs updated to match real events: all / may parties / october party / holiday party",
+        "GALLERY: Hover effect adds linen border + brightness boost",
+        "VIDEO: New 'The Vibe' section (04.5) with 16:9 video placeholder, ready for reel",
+        "WHY SPONSOR: Added editorial pull quote block at bottom of section",
+        "TIERS: 'Most Popular' badge on Gold tier, limited availability note below grid",
+        "TIERS: Box shadow added to all tier cards",
+        "PAST SPONSORS: Mumm styled gold (#d4af37), Aperol styled orange (#E05B1A), other brands in italic",
+        "PAST SPONSORS: Added 'Want your brand here?' CTA linking to Tiers section",
+        "CSS: Added --gold and --aperol color vars to design system",
+        "CSS: New .why-pullquote, .tier-badge, .video-reel-inner, .video-placeholder styles",
+        "File size: 72.8KB"
+      ],
+      "sections": [
+        "01 Hero (dark)",
+        "02 Stats (dark)",
+        "03 Who We Are (light)",
+        "04 Next Event (dark)",
+        "04.5 Video Reel (dark) — NEW",
+        "05 Gallery (light)",
+        "06 Why Sponsor (dark)",
+        "07 Tiers (light)",
+        "08 Past Sponsors (dark)",
+        "09 How It Works (light)",
+        "10 Join The List (dark)",
+        "11 Footer (dark)"
+      ]
+    },
+    {
       "version": "1.0.0",
       "date": "2026-03-31",
       "commit": "02e6dd4",
