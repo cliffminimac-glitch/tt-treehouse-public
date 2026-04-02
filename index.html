@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>treehouse. events | new york city</title>
   <meta name="description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="treehouse. events | new york city">
-  <meta property="og:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta property="og:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders.">
   <meta property="og:image" content="/img/sp-xmas-herogroup.jpg">
   <meta property="og:url" content="https://treehouseevents.cliffeliz.ai">
   <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="treehouse. events | new york city">
-  <meta name="twitter:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
   <meta name="twitter:image" content="/img/sp-xmas-herogroup.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,1954 +20,887 @@
 
   <style>
 /* ============================================================
-   TREEHOUSE EVENTS — Full Rebuild v2.0
+   TREEHOUSE EVENTS v3.0 — Three-Gallery Photographer Edition
    treehouseevents.cliffeliz.ai
    ============================================================ */
 
-/* 1. DESIGN TOKENS
-   ──────────────────────────────────────────────────────────── */
 :root {
-  --g:          #1a3a1a;
-  --g2:         #2b5c1f;
-  --g3:         #3d7a28;
-  --linen:      #f0ede8;
-  --linen2:     #e8e3db;
-  --white:      #ffffff;
-  --accent:     #7eb832;
-  --accent-dk:  #6aa228;
-  --muted:      #7a7a6e;
-  --gold:       #d4af37;
-  --aperol:     #e05b1a;
+  --g:       #1a3a1a;
+  --g2:      #2b5c1f;
+  --linen:   #f0ede8;
+  --linen2:  #e8e3db;
+  --white:   #ffffff;
+  --accent:  #7eb832;
+  --adk:     #6aa228;
+  --gold:    #d4af37;
+  --aperol:  #e05b1a;
 
-  --g-90:  rgba(26,58,26,0.90);
-  --g-80:  rgba(26,58,26,0.80);
-  --g-60:  rgba(26,58,26,0.60);
-  --g-40:  rgba(26,58,26,0.40);
-  --g-20:  rgba(26,58,26,0.20);
-  --g-12:  rgba(26,58,26,0.12);
-  --g-06:  rgba(26,58,26,0.06);
-  --ln-80: rgba(240,237,232,0.80);
-  --ln-20: rgba(240,237,232,0.20);
-  --ln-10: rgba(240,237,232,0.10);
+  --g90: rgba(26,58,26,0.90);
+  --g80: rgba(26,58,26,0.80);
+  --g12: rgba(26,58,26,0.12);
+  --g06: rgba(26,58,26,0.06);
+  --ln20: rgba(240,237,232,0.20);
+  --ln10: rgba(240,237,232,0.10);
+  --ln08: rgba(240,237,232,0.08);
 
-  --ff-display:   'Bebas Neue', sans-serif;
-  --ff-editorial: 'Playfair Display', serif;
-  --ff-body:      'Inter', sans-serif;
+  --ff-d: 'Bebas Neue', sans-serif;
+  --ff-e: 'Playfair Display', serif;
+  --ff-b: 'Inter', sans-serif;
 
-  --section-pad: clamp(5rem,9vw,10rem) clamp(1.5rem,5vw,5rem);
-  --nav-h: 72px;
+  --pad: clamp(4rem,8vw,9rem) clamp(1.5rem,5vw,5rem);
+  --nav: 72px;
   --wrap: 1280px;
-  --r-sm: 4px;
-  --r-md: 8px;
+  --r: 6px;
   --ease: cubic-bezier(0.4,0,0.2,1);
-  --t-std: 0.3s var(--ease);
-  --t-fast: 0.15s var(--ease);
+  --ts: 0.3s var(--ease);
+  --tf: 0.15s var(--ease);
 }
 
-/* 2. RESET
-   ──────────────────────────────────────────────────────────── */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-body {
-  font-family: var(--ff-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  background: var(--g);
-}
+html { scroll-behavior:smooth; }
+body { font-family:var(--ff-b); font-size:1rem; line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden; background:var(--g); }
 img { display:block; max-width:100%; height:auto; }
 a { color:inherit; text-decoration:none; }
 ul { list-style:none; }
 button { font-family:inherit; cursor:pointer; border:none; background:none; }
-input,button,textarea,select { font:inherit; }
 
-/* 3. SECTION SYSTEM
-   ──────────────────────────────────────────────────────────── */
-.section-dark { background:var(--g); color:var(--linen); position:relative; overflow:hidden; }
-.section-light { background:var(--linen); color:var(--g); position:relative; overflow:hidden; }
-.section-dark.section-alt { background:#0f2410; }
+/* SECTIONS */
+.dk { background:var(--g); color:var(--linen); position:relative; overflow:hidden; }
+.lt { background:var(--linen); color:var(--g); position:relative; overflow:hidden; }
+.dk2 { background:#0f2410; color:var(--linen); position:relative; overflow:hidden; }
 
-/* Grain overlay */
-.grain::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-  opacity:0.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grainShift 10s steps(1) infinite;
-}
-
+/* GRAIN */
+.grain::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:1; opacity:0.03; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .grain > * { position:relative; z-index:2; }
 
-@keyframes grainShift {
-  0%   { transform:translate(0,0) scale(1.04); }
-  20%  { transform:translate(-2%,-1%) scale(1.03); }
-  40%  { transform:translate(1%, 2%) scale(1.05); }
-  60%  { transform:translate(-1%, 1%) scale(1.04); }
-  80%  { transform:translate(2%,-2%) scale(1.03); }
-  100% { transform:translate(0,0) scale(1.04); }
-}
+/* WRAP */
+.w { max-width:var(--wrap); margin:0 auto; padding:var(--pad); width:100%; }
 
-/* 4. TYPOGRAPHY
-   ──────────────────────────────────────────────────────────── */
-.display {
-  font-family:var(--ff-display);
-  font-size:clamp(4rem,10vw,9rem);
-  letter-spacing:-0.02em;
-  line-height:0.9;
-}
-.hero-wordmark {
-  font-family:var(--ff-display);
-  font-size:clamp(5rem,14vw,13rem);
-  letter-spacing:-0.03em;
-  line-height:0.85;
-}
-h2 {
-  font-family:var(--ff-editorial);
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:700;
-  line-height:1.1;
-  letter-spacing:-0.02em;
-}
-h3 {
-  font-family:var(--ff-editorial);
-  font-size:clamp(1.1rem,2vw,1.4rem);
-  font-weight:700;
-  line-height:1.3;
-}
-.label {
-  font-family:var(--ff-body);
-  font-size:0.6rem;
-  font-weight:500;
-  letter-spacing:0.28em;
-  text-transform:uppercase;
-  opacity:0.45;
-  display:block;
-}
+/* TYPE */
+h2 { font-family:var(--ff-e); font-size:clamp(2rem,4vw,3.2rem); font-weight:700; line-height:1.1; letter-spacing:-0.02em; }
+h3 { font-family:var(--ff-e); font-size:clamp(1rem,2vw,1.4rem); font-weight:700; line-height:1.3; }
 p { font-size:0.95rem; line-height:1.8; font-weight:300; }
-.caption { font-size:0.7rem; font-weight:400; opacity:0.55; letter-spacing:0.04em; }
+.lbl { font-family:var(--ff-b); font-size:0.58rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; opacity:0.42; display:block; }
+.cap { font-size:0.68rem; font-weight:400; opacity:0.52; letter-spacing:0.04em; }
 
-/* 5. BUTTONS
-   ──────────────────────────────────────────────────────────── */
-.btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.5rem;
-  padding:0.9rem 2.4rem;
-  font-family:var(--ff-body);
-  font-size:0.72rem;
-  font-weight:600;
-  letter-spacing:0.1em;
-  text-transform:lowercase;
-  border-radius:var(--r-sm);
-  transition:background var(--t-std), color var(--t-std), transform var(--t-fast), border-color var(--t-std);
-  white-space:nowrap;
-  cursor:pointer;
-  text-decoration:none;
-}
-.btn-primary {
-  background:var(--accent);
-  color:var(--white);
-  border:1.5px solid var(--accent);
-}
-.btn-primary:hover { background:var(--accent-dk); border-color:var(--accent-dk); transform:scale(1.02); }
-.btn-secondary {
-  background:transparent;
-  color:currentColor;
-  border:1.5px solid currentColor;
-}
-.btn-secondary:hover { background:currentColor; transform:scale(1.02); }
-.section-dark .btn-secondary:hover { color:var(--g); }
-.section-light .btn-secondary:hover { color:var(--linen); }
-.btn-ghost {
-  background:rgba(255,255,255,0.08);
-  color:var(--linen);
-  border:1.5px solid var(--ln-20);
-  backdrop-filter:blur(6px);
-}
-.btn-ghost:hover { background:rgba(255,255,255,0.14); border-color:rgba(240,237,232,0.35); transform:scale(1.02); }
+/* BUTTONS */
+.btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.9rem 2.2rem; font-family:var(--ff-b); font-size:0.7rem; font-weight:600; letter-spacing:0.1em; text-transform:lowercase; border-radius:var(--r); transition:background var(--ts),color var(--ts),transform var(--tf); cursor:pointer; white-space:nowrap; border:1.5px solid transparent; }
+.btn-p { background:var(--accent); color:var(--white); border-color:var(--accent); }
+.btn-p:hover { background:var(--adk); border-color:var(--adk); transform:scale(1.02); }
+.btn-s { background:transparent; color:currentColor; border-color:currentColor; }
+.btn-s:hover { background:currentColor; transform:scale(1.02); }
+.dk .btn-s:hover, .dk2 .btn-s:hover { color:var(--g); }
+.lt .btn-s:hover { color:var(--linen); }
+.btn-g { background:rgba(255,255,255,0.07); color:var(--linen); border-color:var(--ln20); backdrop-filter:blur(6px); }
+.btn-g:hover { background:rgba(255,255,255,0.13); border-color:rgba(240,237,232,0.35); transform:scale(1.02); }
 
-/* 6. ANIMATIONS
-   ──────────────────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(28px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity:0; }
-  to   { opacity:1; }
-}
-@keyframes slideLeft {
-  from { opacity:0; transform:translateX(-36px); }
-  to   { opacity:1; transform:translateX(0); }
-}
-[data-animate="fadeUp"]    { opacity:0; transform:translateY(28px); }
-[data-animate="fadeIn"]    { opacity:0; }
-[data-animate="slideLeft"] { opacity:0; transform:translateX(-36px); }
-[data-animate="fadeUp"].visible    { animation:fadeUp    0.75s ease-out forwards; }
-[data-animate="fadeIn"].visible    { animation:fadeIn    0.75s ease-out forwards; }
-[data-animate="slideLeft"].visible { animation:slideLeft 0.75s ease-out forwards; }
-[data-delay="100"].visible  { animation-delay:0.10s; }
-[data-delay="200"].visible  { animation-delay:0.20s; }
-[data-delay="300"].visible  { animation-delay:0.30s; }
-[data-delay="400"].visible  { animation-delay:0.40s; }
-[data-delay="500"].visible  { animation-delay:0.50s; }
-[data-delay="600"].visible  { animation-delay:0.60s; }
-[data-delay="700"].visible  { animation-delay:0.70s; }
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideLeft { from{opacity:0;transform:translateX(-32px)} to{opacity:1;transform:translateX(0)} }
+[data-a="u"] { opacity:0; transform:translateY(24px); }
+[data-a="f"] { opacity:0; }
+[data-a="l"] { opacity:0; transform:translateX(-32px); }
+[data-a="u"].on { animation:fadeUp 0.7s ease-out forwards; }
+[data-a="f"].on { animation:fadeIn 0.7s ease-out forwards; }
+[data-a="l"].on { animation:slideLeft 0.7s ease-out forwards; }
+[data-d="1"].on{animation-delay:.1s}[data-d="2"].on{animation-delay:.2s}[data-d="3"].on{animation-delay:.3s}[data-d="4"].on{animation-delay:.4s}[data-d="5"].on{animation-delay:.5s}[data-d="6"].on{animation-delay:.6s}
 
-/* 7. CUSTOM CURSOR
-   ──────────────────────────────────────────────────────────── */
-.cursor, .cursor-ring {
-  position:fixed; top:0; left:0;
-  pointer-events:none; z-index:9999;
-  transform:translate(-50%,-50%);
-  will-change:transform;
-  transition:none;
-}
-.cursor { width:8px; height:8px; background:var(--accent); border-radius:50%; }
-.cursor-ring {
-  width:32px; height:32px;
-  border:1.5px solid var(--accent);
-  border-radius:50%; opacity:0.7;
-  transition:width var(--t-fast), height var(--t-fast), border-color var(--t-fast), opacity var(--t-fast);
-}
-body.cursor-hover .cursor-ring { width:48px; height:48px; opacity:1; }
-body.cursor-inverted .cursor { background:var(--g); }
-body.cursor-inverted .cursor-ring { border-color:var(--g); }
-@media(hover:none) { .cursor,.cursor-ring { display:none; } }
+/* CURSOR */
+.cur,.cur-r { position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); will-change:transform; }
+.cur { width:8px; height:8px; background:var(--accent); border-radius:50%; }
+.cur-r { width:32px; height:32px; border:1.5px solid var(--accent); border-radius:50%; opacity:0.7; transition:width var(--tf),height var(--tf),opacity var(--tf); }
+body.ch .cur-r { width:46px; height:46px; opacity:1; }
+body.ci .cur { background:var(--g); }
+body.ci .cur-r { border-color:var(--g); }
+@media(hover:none){.cur,.cur-r{display:none}}
 
-/* 8. NAV
-   ──────────────────────────────────────────────────────────── */
-.nav {
-  position:fixed;
-  top:0; left:0; right:0;
-  z-index:1000;
-  height:var(--nav-h);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 clamp(1.5rem,5vw,4rem);
-  transition:background var(--t-std), backdrop-filter var(--t-std), box-shadow var(--t-std);
-}
-.nav.scrolled {
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  background:var(--g-90);
-  box-shadow:0 1px 0 rgba(240,237,232,0.08);
-}
-.nav-logo { display:flex; align-items:center; }
-.nav-logo img { height:38px; width:auto; }
+/* NAV */
+.nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:var(--nav); display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1.5rem,5vw,4rem); transition:background var(--ts),box-shadow var(--ts); }
+.nav.sc { backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:var(--g90); box-shadow:0 1px 0 var(--ln08); }
+.nav-logo img { height:36px; width:auto; }
 .nav-links { display:flex; align-items:center; gap:2.5rem; }
-.nav-links a {
-  font-family:var(--ff-body);
-  font-size:0.68rem;
-  font-weight:500;
-  letter-spacing:0.1em;
-  text-transform:lowercase;
-  color:var(--linen);
-  opacity:0.65;
-  transition:opacity var(--t-fast);
-}
-.nav-links a:hover { opacity:1; }
-.nav-cta { opacity:1 !important; }
-.hamburger { display:none; flex-direction:column; gap:5px; padding:4px; }
-.hamburger span { display:block; width:22px; height:1.5px; background:var(--linen); transition:all var(--t-std); }
-.mobile-menu {
-  position:fixed; inset:0; z-index:990;
-  background:var(--g);
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  gap:3rem;
-}
-.mobile-menu[hidden] { display:none; }
-.mobile-menu nav a {
-  font-family:var(--ff-editorial);
-  font-size:2.5rem;
-  font-weight:700;
-  color:var(--linen);
-  opacity:0.85;
-  display:block;
-  text-align:center;
-  transition:opacity var(--t-fast);
-}
-.mobile-menu nav a:hover { opacity:1; }
-.mobile-close {
-  position:absolute; top:1.5rem; right:2rem;
-  font-size:1.5rem; color:var(--linen); opacity:0.6;
-  cursor:pointer; background:none; border:none;
-  transition:opacity var(--t-fast);
-}
-.mobile-close:hover { opacity:1; }
+.nav-links a { font-size:0.68rem; font-weight:500; letter-spacing:0.1em; text-transform:lowercase; color:var(--linen); opacity:0.6; transition:opacity var(--tf); }
+.nav-links a:hover, .nav-links a.hi { opacity:1; }
+.ham { display:none; flex-direction:column; gap:5px; padding:4px; }
+.ham span { display:block; width:22px; height:1.5px; background:var(--linen); transition:all var(--ts); }
+.mob { position:fixed; inset:0; z-index:990; background:var(--g); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3rem; }
+.mob[hidden] { display:none; }
+.mob a { font-family:var(--ff-e); font-size:2.5rem; font-weight:700; color:var(--linen); opacity:0.85; display:block; text-align:center; transition:opacity var(--tf); }
+.mob a:hover { opacity:1; }
+.mob-x { position:absolute; top:1.5rem; right:2rem; font-size:1.5rem; color:var(--linen); opacity:0.6; cursor:pointer; background:none; border:none; }
 
-/* 9. IMAGE FALLBACK
-   ──────────────────────────────────────────────────────────── */
-.img-fallback {
-  display:none; position:absolute; inset:0;
-  background:var(--g2); color:var(--linen);
-  align-items:center; justify-content:center;
-  font-family:var(--ff-display);
-  font-size:1.2rem; letter-spacing:0.1em;
-  opacity:0.5; text-align:center;
-}
-.img-failed .img-fallback { display:flex; }
-.img-failed { position:relative; }
+/* IMAGE FALLBACK */
+.if { display:none; position:absolute; inset:0; background:var(--g2); color:var(--linen); align-items:center; justify-content:center; font-family:var(--ff-d); font-size:1.1rem; letter-spacing:0.1em; opacity:0.5; }
+.fail .if { display:flex; }
+.fail { position:relative; }
 
-/* 10. WRAP UTILITY
-   ──────────────────────────────────────────────────────────── */
-.wrap {
-  max-width:var(--wrap);
-  margin:0 auto;
-  padding:var(--section-pad);
-  width:100%;
-}
+/* ── HERO ── */
+.hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; z-index:0; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.52; }
+.hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(26,58,26,0.15) 0%, transparent 30%, rgba(26,58,26,0.55) 75%, rgba(26,58,26,0.88) 100%), linear-gradient(to right, rgba(26,58,26,0.25) 0%, transparent 60%); z-index:1; }
+.hero-inner { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.5rem; padding:calc(var(--nav) + 2rem) clamp(1.5rem,5vw,4rem) 3rem; max-width:980px; }
+.hero-eye { display:inline-flex; align-items:center; gap:0.75rem; font-size:0.58rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--linen); opacity:0.55; }
+.hero-eye::before,.hero-eye::after { content:''; display:block; width:2rem; height:1px; background:var(--linen); opacity:0.35; }
+.hero-wm img { height:clamp(72px,15vw,150px); width:auto; }
+.hero-rule { width:48px; height:1px; background:var(--accent); opacity:0.75; }
+.hero-sub { font-family:var(--ff-e); font-style:italic; font-size:clamp(0.95rem,2vw,1.3rem); font-weight:400; opacity:0.78; max-width:400px; line-height:1.5; }
+.hero-badge { display:inline-flex; align-items:center; gap:0.6rem; border:1px solid var(--ln20); border-radius:99px; padding:0.4rem 1.1rem; font-size:0.56rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; opacity:0.72; }
+.hero-ctas { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:0.5rem; }
+.scroll-hint { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:0.5rem; opacity:0.35; animation:bob 2.5s ease-in-out infinite; }
+.scroll-hint-line { width:1px; height:2.5rem; background:var(--linen); }
+@keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-/* ============================================================
-   SECTION STYLES
-   ============================================================ */
+/* ── STATS ── */
+.stats-band { display:flex; align-items:stretch; justify-content:center; padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,5rem); max-width:var(--wrap); margin:0 auto; border-top:1px solid var(--ln10); border-bottom:1px solid var(--ln10); }
+.stat { display:flex; flex-direction:column; align-items:center; gap:0.35rem; flex:1; text-align:center; padding:0 2rem; }
+.stat-v { font-family:var(--ff-d); font-size:clamp(2.5rem,5vw,4.5rem); line-height:1; letter-spacing:-0.02em; }
+.stat-l { font-size:0.58rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; opacity:0.42; }
+.stat-div { width:1px; align-self:stretch; background:var(--ln10); flex-shrink:0; }
 
-/* 11. HERO
-   ──────────────────────────────────────────────────────────── */
-.hero {
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-bg {
-  position:absolute;
-  inset:0;
-  z-index:0;
-}
-
-.hero-bg img {
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:center 30%;
-  opacity:0.55;
-  transition:transform 0.6s ease-out;
-}
-
-/* Multi-layer cinematic overlay */
-.hero-bg::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom, rgba(26,58,26,0.15) 0%, transparent 30%, rgba(26,58,26,0.5) 70%, rgba(26,58,26,0.85) 100%),
-    linear-gradient(to right, rgba(26,58,26,0.3) 0%, transparent 60%);
-  z-index:1;
-}
-
-.hero-inner {
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:1.5rem;
-  padding-top:calc(var(--nav-h) + 2rem);
-  padding-left:clamp(1.5rem,5vw,4rem);
-  padding-right:clamp(1.5rem,5vw,4rem);
-  max-width:1000px;
-}
-
-.hero-eyebrow {
-  display:inline-flex;
-  align-items:center;
-  gap:0.75rem;
-  font-size:0.6rem;
-  font-weight:500;
-  letter-spacing:0.28em;
-  text-transform:uppercase;
-  color:var(--linen);
-  opacity:0.6;
-}
-
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content:'';
-  display:block;
-  width:2rem;
-  height:1px;
-  background:var(--linen);
-  opacity:0.4;
-}
-
-.hero-wordmark img { height:clamp(80px,16vw,160px); width:auto; }
-
-.hero-rule {
-  width:50px; height:1px;
-  background:var(--accent);
-  opacity:0.8;
-}
-
-.hero-sub {
-  font-family:var(--ff-editorial);
-  font-style:italic;
-  font-size:clamp(1rem,2vw,1.35rem);
-  font-weight:400;
-  opacity:0.8;
-  max-width:420px;
-  line-height:1.5;
-}
-
-.hero-badge {
-  display:inline-flex;
-  align-items:center;
-  gap:0.6rem;
-  border:1px solid var(--ln-20);
-  border-radius:99px;
-  padding:0.4rem 1.1rem;
-  font-size:0.58rem;
-  font-weight:500;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  opacity:0.75;
-}
-
-.hero-badge-dot { opacity:0.4; }
-
-.hero-cta-row {
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:0.5rem;
-}
-
-/* Scroll indicator */
-.scroll-hint {
-  position:absolute;
-  bottom:2.5rem;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0.5rem;
-  opacity:0.4;
-  animation:scrollBob 2.5s ease-in-out infinite;
-}
-
-.scroll-hint-line {
-  width:1px;
-  height:3rem;
-  background:var(--linen);
-}
-
-.scroll-hint-label {
-  font-size:0.55rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--linen);
-  writing-mode:vertical-rl;
-}
-
-@keyframes scrollBob {
-  0%,100% { transform:translateX(-50%) translateY(0); opacity:0.4; }
-  50%      { transform:translateX(-50%) translateY(8px); opacity:0.2; }
-}
-
-/* 12. STATS BAND
-   ──────────────────────────────────────────────────────────── */
-.stats-band {
-  display:flex;
-  align-items:stretch;
-  justify-content:center;
-  padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,5vw,5rem);
-  max-width:var(--wrap);
-  margin:0 auto;
-  border-top:1px solid var(--ln-10);
-  border-bottom:1px solid var(--ln-10);
-}
-
-.stat-item {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0.35rem;
-  flex:1;
-  text-align:center;
-  padding:0 2rem;
-}
-
-.stat-val {
-  font-family:var(--ff-display);
-  font-size:clamp(2.5rem,5vw,4.5rem);
-  line-height:1;
-  letter-spacing:-0.02em;
-  color:var(--linen);
-}
-
-.stat-label {
-  font-size:0.6rem;
-  font-weight:500;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  opacity:0.45;
-}
-
-.stat-div {
-  width:1px;
-  align-self:stretch;
-  background:var(--ln-10);
-  flex-shrink:0;
-}
-
-/* 13. ABOUT
-   ──────────────────────────────────────────────────────────── */
-.about-inner {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6rem;
-  align-items:center;
-}
-
+/* ── ABOUT ── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
 .about-text h2 { margin-bottom:1.5rem; }
-.about-text p { max-width:480px; opacity:0.75; margin-bottom:1rem; }
-.about-text p:last-of-type { margin-bottom:1.75rem; }
+.about-text p { max-width:480px; opacity:0.72; margin-bottom:1rem; }
+.about-text p:last-of-type { margin-bottom:2rem; }
+.tags { display:flex; flex-wrap:wrap; gap:0.6rem; }
+.tag { border:1px solid var(--g12); border-radius:var(--r); padding:0.42rem 1rem; font-size:0.7rem; font-weight:500; letter-spacing:0.06em; text-transform:lowercase; cursor:default; transition:background var(--tf),color var(--tf); }
+.tag:hover { background:var(--g); color:var(--linen); }
+.about-vis { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; position:relative; }
+.about-vis img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.about-vis:hover img { transform:scale(1.03); }
 
-.event-tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.6rem;
-  margin-top:0.25rem;
-}
+/* ── NEXT EVENT ── */
+.event-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.event-date { font-family:var(--ff-e); font-size:clamp(2.8rem,5.5vw,5rem); font-weight:700; line-height:1; letter-spacing:-0.02em; margin-bottom:0.25rem; }
+.event-time { font-size:0.82rem; opacity:0.5; letter-spacing:0.06em; }
+.venue { border-left:3px solid var(--accent); padding-left:1.5rem; margin:1.75rem 0; }
+.venue-n { font-family:var(--ff-e); font-size:1.2rem; font-weight:700; }
+.venue-l { font-size:0.78rem; opacity:0.48; margin-top:0.2rem; }
+.event-meta { font-size:0.66rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; opacity:0.48; margin-bottom:1.75rem; }
+.event-img { border-radius:var(--r); overflow:hidden; aspect-ratio:3/4; position:relative; }
+.event-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.event-img:hover img { transform:scale(1.03); }
 
-.event-tag {
-  border:1px solid var(--g-12);
-  border-radius:var(--r-sm);
-  padding:0.45rem 1rem;
-  font-size:0.7rem;
-  font-weight:500;
-  letter-spacing:0.06em;
-  text-transform:lowercase;
-  color:var(--g);
-  background:transparent;
-  transition:background var(--t-fast), color var(--t-fast);
-  cursor:default;
-}
+/* ── VIDEO REEL ── */
+.vr-inner { max-width:900px; margin:0 auto; padding:var(--pad); text-align:center; }
+.vr-inner .lbl { margin-bottom:1.5rem; }
+.vr-box { aspect-ratio:16/9; background:rgba(255,255,255,0.03); border:1px solid var(--ln10); border-radius:var(--r); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.25rem; cursor:pointer; transition:background var(--ts),border-color var(--ts); }
+.vr-box:hover { background:rgba(255,255,255,0.06); border-color:var(--ln20); }
+.vr-play { width:60px; height:60px; border-radius:50%; background:rgba(126,184,50,0.12); border:1.5px solid rgba(126,184,50,0.3); display:flex; align-items:center; justify-content:center; transition:background var(--ts),border-color var(--ts),transform var(--tf); }
+.vr-play svg { fill:var(--accent); width:20px; height:20px; margin-left:3px; }
+.vr-box:hover .vr-play { background:rgba(126,184,50,0.22); border-color:var(--accent); transform:scale(1.1); }
 
-.event-tag:hover { background:var(--g); color:var(--linen); }
+/* ── EVENT SECTIONS (3 photographer galleries) ── */
+.ev-section { padding:0; }
+.ev-header { padding:clamp(4rem,7vw,7rem) clamp(1.5rem,5vw,5rem) clamp(2rem,4vw,3rem); max-width:var(--wrap); margin:0 auto; }
+.ev-header .lbl { margin-bottom:1rem; }
+.ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:1rem; }
+.ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:2rem; }
+.ev-meta-row { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+.ev-date { font-size:0.68rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; opacity:0.45; }
+.ev-credit { font-size:0.62rem; opacity:0.35; font-style:italic; }
 
-.about-visual {
-  position:relative;
-  border-radius:var(--r-md);
-  overflow:hidden;
-  aspect-ratio:4/5;
-}
+/* MASONRY GRID */
+.photo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:0 6px 6px; }
+.photo-item { overflow:hidden; cursor:pointer; position:relative; border-radius:4px; }
+.photo-item.tall { grid-row:span 2; }
+.photo-item.wide { grid-column:span 2; }
+.photo-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
+.photo-item::after { content:''; position:absolute; inset:0; border:1px solid transparent; pointer-events:none; z-index:2; transition:border-color var(--ts); }
+.photo-item:hover img { transform:scale(1.05); filter:brightness(1.05); }
+.photo-item:hover::after { border-color:rgba(240,237,232,0.3); }
+.photo-item .if { font-size:0.9rem; }
 
-.about-visual img {
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:center;
-  transition:transform 0.6s var(--ease);
-}
+/* Photo height for fixed rows */
+.photo-item { min-height:160px; }
+.photo-item.tall { min-height:326px; }
 
-.about-visual:hover img { transform:scale(1.03); }
-
-/* 14. NEXT EVENT
-   ──────────────────────────────────────────────────────────── */
-.next-event-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5rem;
-  align-items:center;
-}
-
-.event-details { display:flex; flex-direction:column; gap:1.75rem; }
-
-.event-date {
-  font-family:var(--ff-editorial);
-  font-size:clamp(3rem,6vw,5rem);
-  font-weight:700;
-  line-height:1;
-  letter-spacing:-0.02em;
-}
-
-.event-time {
-  font-size:0.82rem;
-  font-weight:400;
-  letter-spacing:0.06em;
-  opacity:0.55;
-  margin-top:-1.25rem;
-}
-
-.venue-block {
-  border-left:3px solid var(--accent);
-  padding-left:1.5rem;
-}
-
-.venue-name {
-  font-family:var(--ff-editorial);
-  font-size:1.25rem;
-  font-weight:700;
-  line-height:1.3;
-}
-
-.venue-loc {
-  font-size:0.78rem;
-  opacity:0.5;
-  margin-top:0.25rem;
-  letter-spacing:0.04em;
-}
-
-.event-meta {
-  font-size:0.68rem;
-  font-weight:500;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  opacity:0.5;
-}
-
-.event-img-block {
-  position:relative;
-  border-radius:var(--r-md);
-  overflow:hidden;
-  aspect-ratio:3/4;
-}
-
-.event-img-block img {
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:center top;
-  transition:transform 0.6s var(--ease);
-}
-
-.event-img-block:hover img { transform:scale(1.03); }
-
-/* 15. VIDEO REEL
-   ──────────────────────────────────────────────────────────── */
-.video-reel-inner {
-  max-width:900px;
-  margin:0 auto;
-  padding:var(--section-pad);
-  text-align:center;
-}
-
-.video-reel-inner .label { margin-bottom:1.25rem; }
-
-.video-placeholder {
-  aspect-ratio:16/9;
-  background:rgba(255,255,255,0.03);
-  border:1px solid var(--ln-10);
-  border-radius:var(--r-md);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:1.25rem;
-  cursor:pointer;
-  transition:background var(--t-std), border-color var(--t-std);
-  margin-top:1.5rem;
-}
-
-.video-placeholder:hover {
-  background:rgba(255,255,255,0.06);
-  border-color:var(--ln-20);
-}
-
-.video-play {
-  width:64px; height:64px;
-  border-radius:50%;
-  background:rgba(126,184,50,0.15);
-  border:1.5px solid rgba(126,184,50,0.4);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:background var(--t-std), border-color var(--t-std), transform var(--t-fast);
-}
-
-.video-play svg { fill:var(--accent); width:22px; height:22px; margin-left:3px; }
-.video-placeholder:hover .video-play {
-  background:rgba(126,184,50,0.25);
-  border-color:var(--accent);
-  transform:scale(1.08);
-}
-
-.video-placeholder .caption { opacity:0.35; }
-
-/* 16. GALLERY
-   ──────────────────────────────────────────────────────────── */
-.gallery-inner .label { margin-bottom:1.25rem; }
-
-.gallery-tabs {
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.5rem;
-  margin-bottom:2.5rem;
-}
-
-.tab {
-  padding:0.42rem 1.1rem;
-  border-radius:99px;
-  border:1px solid var(--g-12);
-  font-size:0.63rem;
-  font-weight:500;
-  letter-spacing:0.1em;
-  text-transform:lowercase;
-  color:var(--g);
-  background:transparent;
-  cursor:pointer;
-  transition:background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
-}
-
-.tab:hover { background:var(--g-06); }
-.tab.active { background:var(--g); color:var(--linen); border-color:var(--g); }
-
-/* Editorial masonry grid — 20 images, 5 rows */
-.gallery-grid {
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:8px;
-}
-
-/* Row 1: hero-wide + portrait */
-.gi-1  { grid-column:1/8;   grid-row:1; aspect-ratio:16/9; }
-.gi-2  { grid-column:8/13;  grid-row:1; aspect-ratio:4/5; }
-
-/* Row 2: portrait + wide + portrait */
-.gi-3  { grid-column:1/4;   grid-row:2; aspect-ratio:3/4; }
-.gi-4  { grid-column:4/9;   grid-row:2; aspect-ratio:5/4; }
-.gi-5  { grid-column:9/13;  grid-row:2; aspect-ratio:3/4; }
-
-/* Row 3: four equal squares */
-.gi-6  { grid-column:1/4;   grid-row:3; aspect-ratio:1/1; }
-.gi-7  { grid-column:4/7;   grid-row:3; aspect-ratio:1/1; }
-.gi-8  { grid-column:7/10;  grid-row:3; aspect-ratio:1/1; }
-.gi-9  { grid-column:10/13; grid-row:3; aspect-ratio:1/1; }
-
-/* Row 4: medium + wide */
-.gi-10 { grid-column:1/5;   grid-row:4; aspect-ratio:5/4; }
-.gi-11 { grid-column:5/13;  grid-row:4; aspect-ratio:16/9; }
-
-/* Row 5: wide + portrait + square */
-.gi-12 { grid-column:1/6;   grid-row:5; aspect-ratio:4/3; }
-.gi-13 { grid-column:6/9;   grid-row:5; aspect-ratio:3/4; }
-.gi-14 { grid-column:9/11;  grid-row:5; aspect-ratio:1/1; }
-.gi-15 { grid-column:11/13; grid-row:5; aspect-ratio:1/1; }
-
-.gallery-item {
-  overflow:hidden;
-  cursor:pointer;
-  position:relative;
-  border-radius:var(--r-sm);
-}
-
-.gallery-item img {
-  width:100%; height:100%;
-  object-fit:cover;
-  transition:transform 0.55s var(--ease), filter 0.35s ease;
-  filter:brightness(0.93);
-}
-
-.gallery-item::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  border:1px solid transparent;
-  border-radius:var(--r-sm);
-  pointer-events:none;
-  z-index:2;
-  transition:border-color var(--t-std);
-}
-
-.gallery-item:hover img { transform:scale(1.05); filter:brightness(1.06); }
-.gallery-item:hover::after { border-color:rgba(240,237,232,0.4); }
-.gallery-item.hidden { display:none; }
-
-/* 17. WHY SPONSOR
-   ──────────────────────────────────────────────────────────── */
-.why-layout {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6rem;
-  align-items:start;
-}
-
-.why-heading { max-width:460px; margin-bottom:2.5rem; }
-.why-heading .label { margin-bottom:1.25rem; }
-
+/* ── WHY SPONSOR ── */
+.why-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+.why-h { margin-bottom:2.5rem; }
+.why-h .lbl { margin-bottom:1rem; }
 .why-rows { display:flex; flex-direction:column; }
-
-.why-row {
-  display:grid;
-  grid-template-columns:2.5rem 1fr;
-  gap:1.5rem;
-  align-items:start;
-  padding:1.75rem 0;
-  border-bottom:1px solid var(--ln-10);
-}
+.why-row { display:grid; grid-template-columns:2.5rem 1fr; gap:1.5rem; align-items:start; padding:1.75rem 0; border-bottom:1px solid var(--ln10); }
 .why-row:last-of-type { border-bottom:none; }
+.why-n { font-family:var(--ff-d); font-size:1.1rem; color:var(--accent); padding-top:0.1rem; line-height:1.5; }
+.why-t { font-size:0.95rem; font-weight:300; line-height:1.75; opacity:0.8; }
+.why-quote { margin-top:2.5rem; padding:1.75rem 2rem; border-left:3px solid var(--accent); background:rgba(126,184,50,0.06); border-radius:0 var(--r) var(--r) 0; }
+.why-quote blockquote { font-family:var(--ff-e); font-style:italic; font-size:clamp(1rem,2vw,1.35rem); font-weight:400; line-height:1.5; opacity:0.88; margin-bottom:0.75rem; }
+.why-quote cite { font-size:0.6rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; opacity:0.4; font-style:normal; }
+.why-vis { position:sticky; top:calc(var(--nav) + 2rem); display:flex; flex-direction:column; gap:6px; }
+.why-vis-main { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; position:relative; }
+.why-vis-main img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.why-vis-main:hover img { transform:scale(1.03); }
+.why-vis-sub { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.why-vs-item { border-radius:4px; overflow:hidden; aspect-ratio:4/3; position:relative; }
+.why-vs-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.why-vs-item:hover img { transform:scale(1.04); }
 
-.why-num {
-  font-family:var(--ff-display);
-  font-size:1.1rem;
-  letter-spacing:0.05em;
-  color:var(--accent);
-  padding-top:0.1rem;
-  line-height:1.5;
-}
-
-.why-text { font-size:0.95rem; font-weight:300; line-height:1.75; opacity:0.8; }
-
-.why-pullquote {
-  margin-top:3rem;
-  padding:2rem 2rem;
-  border-left:3px solid var(--accent);
-  background:rgba(126,184,50,0.06);
-  border-radius:0 var(--r-md) var(--r-md) 0;
-}
-
-.why-pullquote blockquote {
-  font-family:var(--ff-editorial);
-  font-style:italic;
-  font-size:clamp(1rem,2vw,1.4rem);
-  font-weight:400;
-  line-height:1.5;
-  color:var(--linen);
-  opacity:0.9;
-  margin-bottom:0.75rem;
-}
-
-.why-pullquote cite {
-  font-family:var(--ff-body);
-  font-size:0.62rem;
-  font-weight:500;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  opacity:0.4;
-  font-style:normal;
-}
-
-.why-visual {
-  position:sticky;
-  top:calc(var(--nav-h) + 2rem);
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.why-visual-main {
-  border-radius:var(--r-md);
-  overflow:hidden;
-  aspect-ratio:4/5;
-}
-
-.why-visual-main img {
-  width:100%; height:100%;
-  object-fit:cover;
-  transition:transform 0.6s var(--ease);
-}
-
-.why-visual-main:hover img { transform:scale(1.03); }
-
-.why-visual-sub {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.why-visual-sub-item {
-  border-radius:var(--r-sm);
-  overflow:hidden;
-  aspect-ratio:4/3;
-}
-
-.why-visual-sub-item img {
-  width:100%; height:100%;
-  object-fit:cover;
-  transition:transform 0.6s var(--ease);
-}
-
-.why-visual-sub-item:hover img { transform:scale(1.04); }
-
-/* 18. TIERS
-   ──────────────────────────────────────────────────────────── */
-.tiers-inner .label { margin-bottom:1.25rem; }
+/* ── TIERS ── */
+.tiers-inner .lbl { margin-bottom:1rem; }
 .tiers-inner h2 { margin-bottom:0.75rem; }
-.tiers-subtitle { font-size:0.9rem; opacity:0.6; margin-bottom:3rem; max-width:460px; }
+.tiers-sub { font-size:0.88rem; opacity:0.58; margin-bottom:3rem; max-width:460px; }
+.tiers-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; align-items:start; }
+.tier { display:flex; flex-direction:column; gap:1.5rem; padding:2.5rem 2rem; border:1px solid var(--g12); border-radius:var(--r); background:var(--linen2); position:relative; transition:border-color var(--tf),transform var(--tf),box-shadow var(--tf); box-shadow:0 2px 16px var(--g06); }
+.tier:hover { border-color:var(--g12); transform:translateY(-3px); box-shadow:0 8px 32px var(--g12); }
+.tier.gold { border-color:var(--accent); background:var(--white); transform:translateY(-8px); box-shadow:0 12px 48px var(--g12); }
+.tier.gold:hover { transform:translateY(-12px); }
+.tier.plat { background:var(--g); color:var(--linen); border-color:rgba(240,237,232,0.12); }
+.tier.plat .tier-feat li { opacity:0.7; }
+.tier-badge { position:absolute; top:0; right:0; background:var(--accent); color:var(--white); font-size:0.52rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:0.35rem 0.8rem; border-radius:0 var(--r) 0 var(--r); }
+.tier-name { font-family:var(--ff-d); font-size:1.8rem; letter-spacing:0.04em; line-height:1; }
+.tier-price { font-family:var(--ff-e); font-size:clamp(2rem,3.5vw,2.8rem); font-weight:700; line-height:1; color:var(--accent); }
+.tier-div { height:1px; background:currentColor; opacity:0.1; }
+.tier-feat { display:flex; flex-direction:column; gap:0.65rem; flex:1; }
+.tier-feat li { font-size:0.82rem; font-weight:300; opacity:0.7; padding-left:1.1rem; position:relative; line-height:1.5; }
+.tier-feat li::before { content:'—'; position:absolute; left:0; opacity:0.35; font-size:0.68rem; }
+.tiers-note { text-align:center; margin-top:2.5rem; font-size:0.64rem; opacity:0.38; font-style:italic; }
 
-.tiers-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.25rem;
-  align-items:start;
-}
-
-.tier-card {
-  display:flex;
-  flex-direction:column;
-  gap:1.5rem;
-  padding:2.5rem 2rem;
-  border:1px solid var(--g-12);
-  border-radius:var(--r-md);
-  background:var(--linen2);
-  transition:border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
-  box-shadow:0 2px 16px var(--g-06);
-  position:relative;
-}
-
-.tier-card:hover { border-color:var(--g-40); transform:translateY(-3px); box-shadow:0 8px 32px var(--g-12); }
-
-.tier-card.tier-gold {
-  border-color:var(--accent);
-  background:var(--white);
-  transform:translateY(-8px);
-  box-shadow:0 12px 48px var(--g-12), 0 0 0 1px var(--accent);
-}
-
-.tier-card.tier-gold:hover { transform:translateY(-12px); }
-
-.tier-card.tier-platinum {
-  background:var(--g);
-  color:var(--linen);
-  border-color:rgba(240,237,232,0.12);
-}
-
-.tier-card.tier-platinum .tier-features li { opacity:0.7; }
-
-.tier-badge {
-  position:absolute;
-  top:0; right:0;
-  background:var(--accent);
-  color:var(--white);
-  font-family:var(--ff-body);
-  font-size:0.52rem;
-  font-weight:700;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  padding:0.35rem 0.8rem;
-  border-radius:0 var(--r-md) 0 var(--r-md);
-}
-
-.tier-name {
-  font-family:var(--ff-display);
-  font-size:1.8rem;
-  letter-spacing:0.04em;
-  line-height:1;
-}
-
-.tier-price {
-  font-family:var(--ff-editorial);
-  font-size:clamp(2rem,3.5vw,2.8rem);
-  font-weight:700;
-  line-height:1;
-  color:var(--accent);
-}
-
-.tier-platinum .tier-price { color:var(--accent); }
-
-.tier-divider {
-  height:1px;
-  background:currentColor;
-  opacity:0.1;
-}
-
-.tier-features {
-  display:flex;
-  flex-direction:column;
-  gap:0.65rem;
-  flex:1;
-}
-
-.tier-features li {
-  font-size:0.82rem;
-  font-weight:300;
-  opacity:0.7;
-  padding-left:1.1rem;
-  position:relative;
-  line-height:1.5;
-}
-
-.tier-features li::before {
-  content:'—';
-  position:absolute;
-  left:0;
-  opacity:0.35;
-  font-size:0.68rem;
-}
-
-.tiers-note {
-  text-align:center;
-  margin-top:2.5rem;
-  font-size:0.65rem;
-  letter-spacing:0.08em;
-  color:var(--g);
-  opacity:0.4;
-  font-style:italic;
-}
-
-/* 19. PAST PARTNERS
-   ──────────────────────────────────────────────────────────── */
+/* ── PARTNERS ── */
 .partners-inner h2 { margin-bottom:0.75rem; }
-.partners-subtext { font-size:0.9rem; opacity:0.6; margin-bottom:3rem; max-width:480px; }
+.partners-sub { font-size:0.88rem; opacity:0.58; margin-bottom:3rem; max-width:480px; }
+.partners-grid { display:flex; flex-wrap:wrap; gap:1.5rem 3.5rem; align-items:baseline; margin-bottom:3rem; }
+.pn { font-family:var(--ff-e); font-weight:700; opacity:0.62; transition:opacity var(--tf); line-height:1.1; }
+.pn:hover { opacity:1; }
+.pn-xl { font-size:clamp(2rem,4.5vw,3.5rem); }
+.pn-lg { font-size:clamp(1.5rem,3.5vw,2.5rem); }
+.pn-md { font-size:clamp(1.1rem,2.5vw,1.8rem); }
+.pn-sm { font-size:clamp(0.9rem,1.8vw,1.2rem); }
+.pn-mumm { color:var(--gold); font-family:var(--ff-d); letter-spacing:0.03em; }
+.pn-aperol { color:var(--aperol); font-family:var(--ff-d); letter-spacing:0.03em; }
+.pn-other { font-style:italic; opacity:0.38 !important; }
+.partners-cta { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; padding-top:2rem; border-top:1px solid var(--ln10); }
+.partners-cta p { font-size:0.84rem; opacity:0.58; margin:0; }
 
-.partners-grid {
-  display:flex;
-  flex-wrap:wrap;
-  gap:1.5rem 3.5rem;
-  align-items:baseline;
-  margin-bottom:3rem;
-}
-
-.partner-name {
-  font-family:var(--ff-editorial);
-  font-weight:700;
-  opacity:0.65;
-  transition:opacity var(--t-fast);
-  line-height:1.1;
-}
-
-.partner-name:hover { opacity:1; }
-.partner-xl { font-size:clamp(2rem,4.5vw,3.5rem); }
-.partner-lg { font-size:clamp(1.5rem,3.5vw,2.5rem); }
-.partner-md { font-size:clamp(1.1rem,2.5vw,1.8rem); }
-.partner-sm { font-size:clamp(0.9rem,1.8vw,1.2rem); }
-
-.partner-mumm  { color:var(--gold); font-family:var(--ff-display); letter-spacing:0.03em; }
-.partner-aperol { color:var(--aperol); font-family:var(--ff-display); letter-spacing:0.03em; }
-.partner-other { font-style:italic; opacity:0.4 !important; }
-
-.partners-cta {
-  display:flex;
-  align-items:center;
-  gap:1.5rem;
-  flex-wrap:wrap;
-  padding-top:2rem;
-  border-top:1px solid var(--ln-10);
-}
-
-.partners-cta p { font-size:0.85rem; opacity:0.6; margin:0; }
-
-/* 20. HOW IT WORKS
-   ──────────────────────────────────────────────────────────── */
-.hiw-inner .label { margin-bottom:1.25rem; }
+/* ── HOW IT WORKS ── */
+.hiw-inner .lbl { margin-bottom:1rem; }
 .hiw-inner h2 { margin-bottom:3rem; }
-
-.hiw-steps {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0;
-  position:relative;
-}
-
-.hiw-steps::before {
-  content:'';
-  position:absolute;
-  top:2rem;
-  left:12.5%; right:12.5%;
-  height:1px;
-  background:var(--g-12);
-  z-index:0;
-}
-
-.hiw-step {
-  display:flex;
-  flex-direction:column;
-  gap:0.75rem;
-  padding:0 1.5rem;
-  position:relative;
-  z-index:1;
-}
-
+.hiw-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+.hiw-steps::before { content:''; position:absolute; top:2rem; left:12.5%; right:12.5%; height:1px; background:var(--g12); z-index:0; }
+.hiw-step { display:flex; flex-direction:column; gap:0.75rem; padding:0 1.5rem; position:relative; z-index:1; }
 .hiw-step:first-child { padding-left:0; }
 .hiw-step:last-child { padding-right:0; }
+.hiw-n { font-family:var(--ff-d); font-size:2.5rem; line-height:1; color:var(--accent); margin-bottom:0.5rem; }
+.hiw-t { font-family:var(--ff-e); font-size:1rem; font-weight:700; }
+.hiw-d { font-size:0.82rem; font-weight:300; opacity:0.62; line-height:1.7; }
 
-.hiw-num {
-  font-family:var(--ff-display);
-  font-size:2.5rem;
-  line-height:1;
-  color:var(--accent);
-  letter-spacing:0.02em;
-  display:block;
-  margin-bottom:0.5rem;
-}
-
-.hiw-title {
-  font-family:var(--ff-editorial);
-  font-size:1rem;
-  font-weight:700;
-  line-height:1.3;
-}
-
-.hiw-desc { font-size:0.82rem; font-weight:300; opacity:0.65; line-height:1.7; }
-
-/* 21. JOIN
-   ──────────────────────────────────────────────────────────── */
+/* ── JOIN ── */
 .join { text-align:center; }
-
-.join-inner {
-  max-width:640px;
-  margin:0 auto;
-  padding:var(--section-pad);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:1.25rem;
-}
-
+.join-inner { max-width:600px; margin:0 auto; padding:var(--pad); display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
 .join-inner h2 { margin-bottom:0.25rem; }
-.join-body { max-width:420px; opacity:0.7; }
-
-.join-form { width:100%; max-width:520px; margin-top:0.75rem; }
-
-.join-row {
-  display:flex;
-  border:1.5px solid var(--ln-20);
-  border-radius:var(--r-sm);
-  overflow:hidden;
-  transition:border-color var(--t-fast);
-}
-
+.join-body { max-width:420px; opacity:0.68; }
+.join-form { width:100%; max-width:500px; margin-top:0.75rem; }
+.join-row { display:flex; border:1.5px solid var(--ln20); border-radius:var(--r); overflow:hidden; transition:border-color var(--tf); }
 .join-row:focus-within { border-color:var(--accent); }
+.join-row input { flex:1; padding:1rem 1.25rem; background:transparent; border:none; outline:none; color:var(--linen); font-family:var(--ff-b); font-size:0.88rem; font-weight:300; }
+.join-row input::placeholder { color:var(--linen); opacity:0.32; }
+.join-row .btn-p { border-radius:0; padding:1rem 1.75rem; }
+.join-ok { font-family:var(--ff-e); font-style:italic; font-size:1rem; color:var(--accent); margin-top:0.75rem; opacity:0; transition:opacity var(--ts); }
+.join-ok.show { opacity:1; }
 
-.join-row input[type="email"] {
-  flex:1;
-  padding:1rem 1.25rem;
-  background:transparent;
-  border:none;
-  outline:none;
-  color:var(--linen);
-  font-family:var(--ff-body);
-  font-size:0.88rem;
-  font-weight:300;
-}
+/* ── FOOTER ── */
+.foot-top { display:flex; flex-direction:column; align-items:center; text-align:center; gap:0.6rem; padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,5rem) 2rem; }
+.foot-logo img { height:65px; width:auto; opacity:0.82; transition:opacity var(--tf); }
+.foot-logo:hover img { opacity:1; }
+.foot-tag { font-size:0.56rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; opacity:0.28; }
+.foot-links { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0.5rem 2.5rem; padding:0 clamp(1.5rem,5vw,5rem) 2rem; }
+.foot-links a { font-size:0.68rem; opacity:0.42; letter-spacing:0.06em; transition:opacity var(--tf); }
+.foot-links a:hover { opacity:1; }
+.foot-btm { padding:1.5rem clamp(1.5rem,5vw,5rem); text-align:center; border-top:1px solid var(--ln08); }
+.foot-copy { font-size:0.54rem; opacity:0.2; letter-spacing:0.1em; text-transform:uppercase; }
 
-.join-row input[type="email"]::placeholder { color:var(--linen); opacity:0.35; }
-
-.join-row .btn-primary { border-radius:0; padding:1rem 1.75rem; }
-
-.join-confirm {
-  font-family:var(--ff-editorial);
-  font-style:italic;
-  font-size:1rem;
-  color:var(--accent);
-  margin-top:1rem;
-  opacity:0;
-  transition:opacity var(--t-std);
-}
-
-.join-confirm.show { opacity:1; }
-
-/* 22. FOOTER
-   ──────────────────────────────────────────────────────────── */
-.footer-top {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:0.6rem;
-  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,5rem) 2rem;
-}
-
-.footer-logo { display:flex; align-items:center; }
-.footer-logo img { height:70px; width:auto; opacity:0.85; transition:opacity var(--t-fast); }
-.footer-logo:hover img { opacity:1; }
-.footer-tagline { font-size:0.58rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; opacity:0.3; }
-
-.footer-links {
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  gap:0.5rem 2.5rem;
-  padding:0 clamp(1.5rem,5vw,5rem) 2rem;
-}
-
-.footer-links a {
-  font-size:0.7rem;
-  font-weight:400;
-  letter-spacing:0.06em;
-  color:var(--linen);
-  opacity:0.45;
-  transition:opacity var(--t-fast);
-}
-
-.footer-links a:hover { opacity:1; }
-
-.footer-bottom {
-  padding:1.5rem clamp(1.5rem,5vw,5rem);
-  text-align:center;
-  border-top:1px solid var(--ln-10);
-}
-
-.footer-copy {
-  font-size:0.55rem;
-  font-weight:400;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  opacity:0.22;
-}
-
-/* ============================================================
-   FORMS
-   ============================================================ */
-.sr-only {
-  position:absolute; width:1px; height:1px;
-  padding:0; margin:-1px; overflow:hidden;
-  clip:rect(0,0,0,0); white-space:nowrap; border:0;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* ── RESPONSIVE ── */
 @media(max-width:1024px) {
-  .about-inner { gap:4rem; }
-  .next-event-grid { gap:3rem; }
-  .why-layout { gap:4rem; }
-  .tiers-grid { gap:1rem; }
-  .tier-card.tier-gold { transform:translateY(-4px); }
-  .tier-card.tier-gold:hover { transform:translateY(-8px); }
+  .about-grid,.event-grid,.why-layout { gap:3.5rem; }
+  .tier.gold { transform:translateY(-4px); }
+  .tier.gold:hover { transform:translateY(-8px); }
   .hiw-steps { grid-template-columns:repeat(2,1fr); gap:3rem 2rem; }
   .hiw-steps::before { display:none; }
+  .photo-grid { grid-template-columns:repeat(3,1fr); }
 }
 
 @media(max-width:768px) {
-  :root { --nav-h:60px; }
-
+  :root { --nav:60px; }
   .nav-links { display:none; }
-  .hamburger { display:flex; }
-
-  .hero-inner { gap:1.25rem; }
-
-  .stats-band { flex-direction:column; gap:0; padding:2rem 1.5rem; }
-  .stat-item { padding:1.5rem 0; }
-  .stat-div { width:3rem; height:1px; align-self:auto; }
-
-  .about-inner { grid-template-columns:1fr; gap:2.5rem; }
-  .about-visual { aspect-ratio:16/9; max-height:360px; order:-1; }
-
-  .next-event-grid { grid-template-columns:1fr; gap:2.5rem; }
-  .event-img-block { aspect-ratio:16/9; max-height:320px; }
-
-  .gallery-grid { display:flex; flex-direction:column; gap:8px; }
-  .gallery-item { width:100%; aspect-ratio:4/3 !important; }
-
-  .why-layout { grid-template-columns:1fr; gap:3rem; }
-  .why-visual { position:static; }
-  .why-visual-main { aspect-ratio:16/9; }
-
+  .ham { display:flex; }
+  .about-grid,.event-grid,.why-layout { grid-template-columns:1fr; }
+  .about-vis { aspect-ratio:16/9; max-height:320px; order:-1; }
+  .event-img { aspect-ratio:16/9; max-height:300px; }
+  .why-vis { position:static; }
+  .why-vis-main { aspect-ratio:16/9; }
   .tiers-grid { grid-template-columns:1fr; }
-  .tier-card.tier-gold { transform:none; }
-  .tier-card.tier-gold:hover { transform:translateY(-4px); }
-
+  .tier.gold { transform:none; }
   .hiw-steps { grid-template-columns:1fr; gap:2rem; }
-  .hiw-step { padding:0 0 2rem; border-bottom:1px solid var(--g-12); }
+  .hiw-step { padding:0 0 2rem; border-bottom:1px solid var(--g12); }
   .hiw-step:last-child { border-bottom:none; padding-bottom:0; }
-
   .join-row { flex-direction:column; border:none; gap:0.75rem; overflow:visible; }
-  .join-row input[type="email"] {
-    border:1.5px solid var(--ln-20);
-    border-radius:var(--r-sm);
-    width:100%;
-  }
-  .join-row .btn-primary { border-radius:var(--r-sm); width:100%; min-height:52px; }
-
-  .hero-cta-row { flex-direction:column; width:100%; max-width:300px; }
-  .hero-cta-row .btn { width:100%; min-height:52px; justify-content:center; }
-
+  .join-row input { border:1.5px solid var(--ln20); border-radius:var(--r); width:100%; }
+  .join-row .btn-p { border-radius:var(--r); width:100%; min-height:52px; }
+  .hero-ctas { flex-direction:column; width:100%; max-width:300px; }
+  .hero-ctas .btn { width:100%; min-height:52px; justify-content:center; }
   .scroll-hint { display:none; }
+  .photo-grid { grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px 4px; }
+  .photo-item.wide { grid-column:span 1; }
+  .stats-band { flex-direction:column; gap:0; padding:2rem 1.5rem; }
+  .stat { padding:1.5rem 0; }
+  .stat-div { width:3rem; height:1px; align-self:auto; }
 }
 
 @media(max-width:480px) {
+  .photo-grid { grid-template-columns:1fr 1fr; }
+  .photo-item.tall { grid-row:span 1; }
   .partners-grid { gap:1rem 2.5rem; }
-  .partner-xl { font-size:1.8rem; }
-  .partner-lg { font-size:1.4rem; }
-  .partner-md { font-size:1.1rem; }
-
-  .footer-links { flex-direction:column; gap:0.75rem; }
+  .pn-xl { font-size:1.8rem; }
+  .pn-lg { font-size:1.4rem; }
+  .foot-links { flex-direction:column; gap:0.75rem; }
 }
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
   </style>
 </head>
 <body>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-r" id="cur-r" aria-hidden="true"></div>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-    <a href="#" class="nav-logo" aria-label="treehouse. — home">
-      <img src="/img/logo-transparent.png" alt="treehouse. Events" height="38">
-    </a>
-    <div class="nav-links" role="list">
-      <a href="#events" role="listitem">events</a>
-      <a href="#gallery" role="listitem">gallery</a>
-      <a href="#tiers" role="listitem">sponsor</a>
-      <a href="#join" class="nav-cta" role="listitem">get tickets</a>
-    </div>
-    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true" hidden>
-    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
-    <nav aria-label="Mobile links">
-      <a href="#events">events</a>
-      <a href="#gallery">gallery</a>
-      <a href="#tiers">sponsor</a>
-      <a href="#join">get tickets</a>
-    </nav>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" aria-label="treehouse. — home">
+    <img src="/img/logo-transparent.png" alt="treehouse. Events" height="36">
+  </a>
+  <div class="nav-links">
+    <a href="#sundrenched">may</a>
+    <a href="#midnight-glow">december</a>
+    <a href="#golden-hour">october</a>
+    <a href="#tiers" class="hi">sponsor</a>
+    <a href="#join">get tickets</a>
   </div>
+  <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <main id="main-content">
+<div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
+  <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
+  <nav>
+    <a href="#sundrenched">may</a>
+    <a href="#midnight-glow">december</a>
+    <a href="#golden-hour">october</a>
+    <a href="#tiers">sponsor</a>
+    <a href="#join">get tickets</a>
+  </nav>
+</div>
 
-    <!-- ══════════════════════════════════════════════════════
-         01 HERO
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark hero grain" id="hero" aria-label="treehouse. events hero">
+<main>
 
-      <div class="hero-bg" role="img" aria-label="Packed sold-out crowd at treehouse. NYC event">
-        <img
-          src="/img/sp-xmas-herogroup.jpg"
-          alt="Packed crowd at treehouse. holiday party NYC — sell-out energy"
-          fetchpriority="high"
-          onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-        <div class="img-fallback" aria-hidden="true">treehouse.</div>
-      </div>
-
-      <div class="hero-inner">
-        <div class="hero-eyebrow" data-animate="fadeIn" aria-label="New York City · Invite Only">
-          New York City <span class="hero-badge-dot" aria-hidden="true">·</span> Invite Only
-        </div>
-
-        <div class="hero-wordmark" data-animate="fadeIn" data-delay="100">
-          <img src="/img/logo-transparent.png" alt="treehouse." height="140">
-        </div>
-
-        <div class="hero-rule" data-animate="fadeIn" data-delay="200" aria-hidden="true"></div>
-
-        <p class="hero-sub" data-animate="fadeUp" data-delay="300">
-          the party you've been waiting for.
-        </p>
-
-        <div class="hero-badge" data-animate="fadeUp" data-delay="400" aria-label="Next event: April 25th at 75 Varick Rooftop">
-          <span>Next Event</span>
-          <span class="hero-badge-dot" aria-hidden="true">·</span>
-          <span>April 25th — 75 Varick Rooftop</span>
-        </div>
-
-        <div class="hero-cta-row" data-animate="fadeUp" data-delay="500">
-          <a href="#join" class="btn btn-primary">request invite</a>
-          <a href="#tiers" class="btn btn-ghost">become a sponsor</a>
-        </div>
-      </div>
-
-      <div class="scroll-hint" aria-hidden="true">
-        <div class="scroll-hint-line"></div>
-        <span class="scroll-hint-label">scroll</span>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         02 STATS
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark" id="stats" aria-label="treehouse. by the numbers">
-      <div class="stats-band">
-        <div class="stat-item" data-animate="fadeUp">
-          <span class="stat-val">300+</span>
-          <span class="stat-label">guests per event</span>
-        </div>
-        <div class="stat-div" aria-hidden="true"></div>
-        <div class="stat-item" data-animate="fadeUp" data-delay="100">
-          <span class="stat-val">5+</span>
-          <span class="stat-label">events produced</span>
-        </div>
-        <div class="stat-div" aria-hidden="true"></div>
-        <div class="stat-item" data-animate="fadeUp" data-delay="200">
-          <span class="stat-val">100%</span>
-          <span class="stat-label">sold out every time</span>
-        </div>
-        <div class="stat-div" aria-hidden="true"></div>
-        <div class="stat-item" data-animate="fadeUp" data-delay="300">
-          <span class="stat-val">NYC</span>
-          <span class="stat-label">invite only</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         03 WHO WE ARE
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-light" id="about" aria-label="About treehouse.">
-      <div class="wrap about-inner">
-        <div class="about-text" data-animate="slideLeft">
-          <span class="label">// Who We Are</span>
-          <h2>We curate<br>the room.</h2>
-          <p>
-            treehouse. is New York's best recurring night out. Themed parties.
-            Open bar. A room full of people you actually want to meet.
-            We've been building this crowd for years — come find out why
-            every event sells out before we announce it.
-          </p>
-          <p>
-            Part cultural salon, part party, all treehouse.
-          </p>
-          <div class="event-tags" role="list" aria-label="Event types">
-            <span class="event-tag" role="listitem">Gallery Takeovers</span>
-            <span class="event-tag" role="listitem">Rooftop Events</span>
-            <span class="event-tag" role="listitem">Holiday Parties</span>
-            <span class="event-tag" role="listitem">Brand Experiences</span>
-          </div>
-        </div>
-        <div class="about-visual" data-animate="fadeIn" data-delay="200">
-          <img
-            src="/img/sp-may-fiverooftop.jpg"
-            alt="Five-up squad with cocktails at golden hour, treehouse. NYC rooftop"
-            loading="lazy"
-            onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-          <div class="img-fallback" aria-hidden="true">treehouse.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         04 NEXT EVENT
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark grain" id="events" aria-label="Next treehouse. event">
-      <div class="wrap next-event-grid">
-        <div class="event-details" data-animate="slideLeft">
-          <span class="label">// Next Event</span>
-          <h2 class="event-date">April 25th</h2>
-          <p class="event-time">Doors 10:30pm — 3:30am ET</p>
-          <div class="venue-block" aria-label="Venue: 75 Varick Rooftop, SoHo New York">
-            <p class="venue-name">75 Varick Rooftop</p>
-            <p class="venue-loc">SoHo, New York City</p>
-          </div>
-          <p class="event-meta" aria-label="300 to 400 guests, invite only, open bar">
-            300–400 guests · Invite Only · Open Bar
-          </p>
-          <div>
-            <a href="#join" class="btn btn-primary">request your invite</a>
-          </div>
-        </div>
-        <div class="event-img-block" data-animate="fadeIn" data-delay="200">
-          <img
-            src="/img/sp-may-aperol-hero.jpg"
-            alt="Aperol Spritz activation with Manhattan skyline at treehouse. NYC rooftop event"
-            loading="lazy"
-            onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-          <div class="img-fallback" aria-hidden="true">apr 25</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         04.5 THE VIBE
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark" id="video-reel" aria-label="treehouse. highlight reel">
-      <div class="video-reel-inner wrap" style="text-align:center;">
-        <span class="label" data-animate="fadeUp">// The Vibe</span>
-        <div class="video-placeholder" data-animate="fadeIn" data-delay="100" role="img" aria-label="Highlight reel — coming soon">
-          <div class="video-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <p class="caption">Highlight Reel — Coming Soon</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         05 GALLERY
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-light" id="gallery" aria-label="treehouse. past events gallery">
-      <div class="wrap gallery-inner">
-        <span class="label" data-animate="fadeUp">// Past Events</span>
-
-        <div class="gallery-tabs" role="tablist" aria-label="Filter by event" data-animate="fadeUp" data-delay="100">
-          <button class="tab active" role="tab" aria-selected="true" data-collection="all" aria-controls="gallery-grid">all events</button>
-          <button class="tab" role="tab" aria-selected="false" data-collection="may-parties" aria-controls="gallery-grid">may parties</button>
-          <button class="tab" role="tab" aria-selected="false" data-collection="holiday-party" aria-controls="gallery-grid">holiday party</button>
-        </div>
-
-        <div class="gallery-grid" id="gallery-grid" role="tabpanel" data-animate="fadeIn" data-delay="200">
-
-          <!-- Row 1 -->
-          <div class="gallery-item gi-1" data-collection="may-parties">
-            <img src="/img/sp-may-sunglasses.jpg" alt="Sold-out crowd at treehouse. NYC rooftop, city skyline" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-2" data-collection="holiday-party">
-            <img src="/img/sp-xmas-herogroup.jpg" alt="Two stylish guests at treehouse. evening event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="gallery-item gi-3" data-collection="holiday-party">
-            <img src="/img/sp-xmas-editorial.jpg" alt="treehouse. holiday party crowd, packed venue" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-4" data-collection="may-parties">
-            <img src="/img/sp-may-aperol-hero.jpg" alt="Curated Aperol bar setup with NYC skyline, treehouse. event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-5" data-collection="may-parties">
-            <img src="/img/sp-may-girlsquad.jpg" alt="Stylish guests at treehouse. May party, NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-
-          <!-- Row 3 -->
-          <div class="gallery-item gi-6" data-collection="holiday-party">
-            <img src="/img/sp-xmas-martini.jpg" alt="Guests laughing at treehouse. holiday party" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-7" data-collection="may-parties">
-            <img src="/img/sp-may-goldentrio.jpg" alt="Elegant tablescape at treehouse. October event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-8" data-collection="may-parties">
-            <img src="/img/sp-xmas-twocktails.jpg" alt="Stylish group at treehouse. May party" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-9" data-collection="may-parties">
-            <img src="/img/sp-may-disconight.jpg" alt="Friends at treehouse. October event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-
-          <!-- Row 4 -->
-          <div class="gallery-item gi-10" data-collection="may-parties">
-            <img src="/img/sp-may-warmtrio.jpg" alt="Laughing guests at treehouse. May rooftop party" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-11" data-collection="holiday-party">
-            <img src="/img/sp-xmas-crowddrinks.jpg" alt="treehouse. holiday party, packed dancefloor NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-
-          <!-- Row 5 -->
-          <div class="gallery-item gi-12" data-collection="may-parties">
-            <img src="/img/sp-may-fiverooftop.jpg" alt="Couple at treehouse. May party, NYC" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-13" data-collection="holiday-party">
-            <img src="/img/sp-xmas-couple-red.jpg" alt="Guests at treehouse. October event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-14" data-collection="holiday-party">
-            <img src="/img/sp-xmas-photobooth.jpg" alt="treehouse. holiday themed performance" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="gallery-item gi-15" data-collection="may-parties">
-            <img src="/img/sp-xmas-guygroup.jpg" alt="Friends at treehouse. spring rooftop event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         06 WHY SPONSOR
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark grain" id="why-sponsor" aria-label="Why sponsor treehouse.">
-      <div class="wrap why-layout">
-
-        <div class="why-content">
-          <div class="why-heading">
-            <span class="label">// Why Sponsor</span>
-            <h2>Your brand<br>belongs<br>in this room.</h2>
-          </div>
-
-          <div class="why-rows" role="list">
-            <div class="why-row" role="listitem" data-animate="fadeUp">
-              <span class="why-num" aria-hidden="true">01</span>
-              <p class="why-text">Access 300–400 hand-selected NYC tastemakers, cultural insiders, and brand decision-makers at every event.</p>
-            </div>
-            <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="100">
-              <span class="why-num" aria-hidden="true">02</span>
-              <p class="why-text">Authentic integration — your brand lives inside the experience, not on a banner in the corner.</p>
-            </div>
-            <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="200">
-              <span class="why-num" aria-hidden="true">03</span>
-              <p class="why-text">Social content that travels. Our crowd documents everything. Real reach, real audience.</p>
-            </div>
-            <div class="why-row" role="listitem" data-animate="fadeUp" data-delay="300">
-              <span class="why-num" aria-hidden="true">04</span>
-              <p class="why-text">Limited slots per event. We turn sponsors away to protect the room. This is a scarce opportunity.</p>
-            </div>
-          </div>
-
-          <div class="why-pullquote" data-animate="fadeUp" data-delay="400">
-            <blockquote>"The most well-curated crowd I've ever activated with."</blockquote>
-            <cite>— Brand Partner, 2025</cite>
-          </div>
-        </div>
-
-        <div class="why-visual" data-animate="fadeIn" data-delay="100" aria-hidden="true">
-          <div class="why-visual-main">
-            <img src="/img/sp-may-aperol-hero.jpg" alt="Curated bar setup at treehouse. NYC event" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-            <div class="img-fallback" aria-hidden="true">treehouse.</div>
-          </div>
-          <div class="why-visual-sub">
-            <div class="why-visual-sub-item">
-              <img src="/img/sp-may-sunglasses.jpg" alt="Crowd at treehouse. rooftop" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-              <div class="img-fallback" aria-hidden="true">treehouse.</div>
-            </div>
-            <div class="why-visual-sub-item">
-              <img src="/img/sp-xmas-martini.jpg" alt="treehouse. holiday party energy" loading="lazy" onerror="this.onerror=null; this.parentNode.classList.add('img-failed')">
-              <div class="img-fallback" aria-hidden="true">treehouse.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         07 TIERS
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-light" id="tiers" aria-label="Sponsorship tiers">
-      <div class="wrap tiers-inner">
-        <span class="label" data-animate="fadeUp">// Sponsorship Packages</span>
-        <h2 data-animate="slideLeft">Partner with us.</h2>
-        <p class="tiers-subtitle" data-animate="fadeUp" data-delay="100">
-          Three ways to get your brand into the room. Every tier includes direct access to a curated NYC audience.
-        </p>
-
-        <div class="tiers-grid" role="list" data-animate="fadeUp" data-delay="200">
-
-          <div class="tier-card" role="listitem">
-            <div class="tier-name">Bronze</div>
-            <div class="tier-price" aria-label="Five thousand dollars">$5,000</div>
-            <div class="tier-divider" aria-hidden="true"></div>
-            <ul class="tier-features" aria-label="Bronze tier benefits">
-              <li>2 VIP invites per event</li>
-              <li>Brand presence at venue</li>
-              <li>Social mention + tag</li>
-              <li>Post-event recap</li>
-            </ul>
-            <a href="mailto:events@tigertracks.ai?subject=Bronze Sponsorship" class="btn btn-secondary" aria-label="Inquire about Bronze sponsorship">inquire →</a>
-          </div>
-
-          <div class="tier-card tier-gold" role="listitem">
-            <div class="tier-badge" aria-label="Most popular tier">Most Popular</div>
-            <div class="tier-name">Gold</div>
-            <div class="tier-price" aria-label="Ten thousand dollars">$10,000</div>
-            <div class="tier-divider" aria-hidden="true"></div>
-            <ul class="tier-features" aria-label="Gold tier benefits">
-              <li>3 VIP invites per event</li>
-              <li>Branded activation space</li>
-              <li>Social content package</li>
-              <li>Dedicated IG stories + posts</li>
-              <li>Logo on all event materials</li>
-            </ul>
-            <a href="mailto:events@tigertracks.ai?subject=Gold Sponsorship" class="btn btn-primary" aria-label="Inquire about Gold sponsorship">inquire →</a>
-          </div>
-
-          <div class="tier-card tier-platinum" role="listitem">
-            <div class="tier-name">Platinum</div>
-            <div class="tier-price" aria-label="Fifteen thousand dollars">$15,000</div>
-            <div class="tier-divider" aria-hidden="true"></div>
-            <ul class="tier-features" aria-label="Platinum tier benefits">
-              <li>5 VIP invites per event</li>
-              <li>Title sponsorship</li>
-              <li>Full content + media package</li>
-              <li>Custom brand activation</li>
-              <li>Email list co-ownership</li>
-              <li>Year-round partnership</li>
-            </ul>
-            <a href="mailto:events@tigertracks.ai?subject=Platinum Sponsorship" class="btn btn-primary" aria-label="Inquire about Platinum sponsorship">inquire →</a>
-          </div>
-
-        </div>
-
-        <p class="tiers-note" data-animate="fadeUp">
-          Limited availability per event — sponsorship slots fill 6–8 weeks out.
-        </p>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         08 PAST PARTNERS
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark grain" id="partners" aria-label="Past treehouse. brand partners">
-      <div class="wrap partners-inner">
-        <span class="label" data-animate="fadeUp">// Past Partners</span>
-        <h2 data-animate="slideLeft">Brands that have<br>been in the room.</h2>
-        <p class="partners-subtext" data-animate="fadeUp" data-delay="100">
-          We've activated with some of the best. They came back.
-        </p>
-
-        <div class="partners-grid" role="list" aria-label="Past brand partners" data-animate="fadeUp" data-delay="200">
-          <div class="partner-name partner-xl partner-mumm" role="listitem">Mumm</div>
-          <div class="partner-name partner-lg partner-aperol" role="listitem">Aperol</div>
-          <div class="partner-name partner-md partner-other" role="listitem">Grey Goose</div>
-          <div class="partner-name partner-xl partner-other" role="listitem">St-Germain</div>
-          <div class="partner-name partner-md partner-other" role="listitem">Cointreau</div>
-          <div class="partner-name partner-sm partner-other" role="listitem">Hendrick's</div>
-        </div>
-
-        <div class="partners-cta" data-animate="fadeUp" data-delay="300">
-          <p>Ready to bring your brand into the room?</p>
-          <a href="#tiers" class="btn btn-secondary">see sponsorship packages</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         09 HOW IT WORKS
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-light" id="how-it-works" aria-label="How treehouse. works">
-      <div class="wrap hiw-inner">
-        <span class="label" data-animate="fadeUp">// How It Works</span>
-        <h2 data-animate="slideLeft">Four steps<br>to the room.</h2>
-
-        <div class="hiw-steps" role="list" data-animate="fadeUp" data-delay="100">
-          <div class="hiw-step" role="listitem">
-            <span class="hiw-num" aria-hidden="true">01</span>
-            <h3 class="hiw-title">Apply</h3>
-            <p class="hiw-desc">Request your invite or sponsorship package below.</p>
-          </div>
-          <div class="hiw-step" role="listitem">
-            <span class="hiw-num" aria-hidden="true">02</span>
-            <h3 class="hiw-title">Get Approved</h3>
-            <p class="hiw-desc">We review every application to protect the room quality.</p>
-          </div>
-          <div class="hiw-step" role="listitem">
-            <span class="hiw-num" aria-hidden="true">03</span>
-            <h3 class="hiw-title">Show Up</h3>
-            <p class="hiw-desc">Arrive at 75 Varick Rooftop. Open bar. Your kind of crowd.</p>
-          </div>
-          <div class="hiw-step" role="listitem">
-            <span class="hiw-num" aria-hidden="true">04</span>
-            <h3 class="hiw-title">Come Back</h3>
-            <p class="hiw-desc">treehouse. events run throughout the year. See you next time.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════
-         10 JOIN THE LIST
-         ══════════════════════════════════════════════════════ -->
-    <section class="section-dark grain join" id="join" aria-label="Join the treehouse. list">
-      <div class="join-inner">
-        <span class="label" data-animate="fadeUp">// Get Access</span>
-        <h2 data-animate="slideLeft">Get on the list.</h2>
-        <p class="join-body" data-animate="fadeUp" data-delay="100">
-          treehouse. is invite-only. Drop your email and we'll reach out before the next event.
-        </p>
-        <form class="join-form" novalidate aria-label="Join the treehouse. mailing list" data-animate="fadeUp" data-delay="200">
-          <div class="join-row">
-            <input
-              type="email"
-              id="join-email"
-              name="email"
-              placeholder="your@email.com"
-              aria-label="Email address"
-              required
-              autocomplete="email">
-            <button type="submit" class="btn btn-primary">join</button>
-          </div>
-          <p class="join-confirm" id="join-confirm" role="status" aria-live="polite">you're on the list.</p>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="section-dark" role="contentinfo" aria-label="treehouse. footer">
-
-    <div class="footer-top">
-      <a href="#" class="footer-logo" aria-label="treehouse. — back to top">
-        <img src="/img/logo-transparent.png" alt="treehouse. Events | New York City" height="70">
-      </a>
-      <p class="footer-tagline">Events · New York City</p>
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="dk hero grain" id="hero">
+  <div class="hero-bg" role="img" aria-label="Packed crowd at treehouse. NYC event">
+    <img src="/img/sp-xmas-herogroup.jpg" alt="Sold-out crowd at treehouse. NYC — aspirational urban nightlife" fetchpriority="high" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+    <div class="if">treehouse.</div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eye" data-a="f" aria-label="New York City · Invite Only">
+      New York City <span aria-hidden="true">·</span> Invite Only
     </div>
-
-    <nav class="footer-links" aria-label="Footer links">
-      <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="treehouse. on Instagram">@treehouseevents.nyc</a>
-      <a href="mailto:events@tigertracks.ai" aria-label="Email treehouse.">events@tigertracks.ai</a>
-      <a href="tel:+13016467758" aria-label="Call treehouse.">(301) 646-7758</a>
-    </nav>
-
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 treehouse. events — new york city</p>
+    <div class="hero-wm" data-a="f" data-d="1">
+      <img src="/img/logo-transparent.png" alt="treehouse." height="130">
     </div>
+    <div class="hero-rule" data-a="f" data-d="2" aria-hidden="true"></div>
+    <p class="hero-sub" data-a="u" data-d="3">the party you've been waiting for.</p>
+    <div class="hero-badge" data-a="u" data-d="4">
+      <span>Next Event</span>
+      <span aria-hidden="true">·</span>
+      <span>April 25th — 75 Varick Rooftop</span>
+    </div>
+    <div class="hero-ctas" data-a="u" data-d="5">
+      <a href="#join" class="btn btn-p">request invite</a>
+      <a href="#tiers" class="btn btn-g">become a sponsor</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
 
-  </footer>
+<!-- STATS -->
+<section class="dk">
+  <div class="stats-band">
+    <div class="stat" data-a="u"><span class="stat-v">300+</span><span class="stat-l">guests per event</span></div>
+    <div class="stat-div"></div>
+    <div class="stat" data-a="u" data-d="1"><span class="stat-v">3</span><span class="stat-l">sold-out events</span></div>
+    <div class="stat-div"></div>
+    <div class="stat" data-a="u" data-d="2"><span class="stat-v">100%</span><span class="stat-l">sold out every time</span></div>
+    <div class="stat-div"></div>
+    <div class="stat" data-a="u" data-d="3"><span class="stat-v">NYC</span><span class="stat-l">invite only</span></div>
+  </div>
+</section>
 
-  <script>
+<!-- ABOUT -->
+<section class="lt" id="about">
+  <div class="w about-grid">
+    <div class="about-text" data-a="l">
+      <span class="lbl" style="margin-bottom:1.25rem">// Who We Are</span>
+      <h2>We curate<br>the room.</h2>
+      <p>treehouse. is New York's best recurring night out. Themed parties. Open bar. A room full of people you actually want to meet. We've been building this crowd — come find out why every event sells out before we announce it.</p>
+      <p>Part cultural salon, part party, all treehouse.</p>
+      <div class="tags">
+        <span class="tag">Gallery Takeovers</span>
+        <span class="tag">Rooftop Events</span>
+        <span class="tag">Holiday Parties</span>
+        <span class="tag">Brand Experiences</span>
+      </div>
+    </div>
+    <div class="about-vis" data-a="f" data-d="2">
+      <img src="/img/sp-may-fiverooftop.jpg" alt="Five-up squad with cocktails at golden hour, treehouse. NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+      <div class="if">treehouse.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT EVENT -->
+<section class="dk grain" id="events">
+  <div class="w event-grid">
+    <div data-a="l">
+      <span class="lbl" style="margin-bottom:1.25rem">// Next Event</span>
+      <h2 class="event-date">April 25th</h2>
+      <p class="event-time">Doors 10:30pm — 3:30am ET</p>
+      <div class="venue">
+        <p class="venue-n">75 Varick Rooftop</p>
+        <p class="venue-l">SoHo, New York City</p>
+      </div>
+      <p class="event-meta">300–400 guests · Invite Only · Open Bar</p>
+      <a href="#join" class="btn btn-p">request your invite</a>
+    </div>
+    <div class="event-img" data-a="f" data-d="2">
+      <img src="/img/sp-may-aperol-hero.jpg" alt="Aperol Spritz activation with Manhattan skyline at treehouse. NYC rooftop event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+      <div class="if">apr 25</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO REEL -->
+<section class="dk">
+  <div class="vr-inner">
+    <span class="lbl" data-a="u">// The Vibe</span>
+    <div class="vr-box" data-a="f" data-d="1" role="img" aria-label="Highlight reel — coming soon">
+      <div class="vr-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p class="cap">Highlight Reel — Coming Soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EVENT 1 — MAY 31 — "SUNDRENCHED"
+     Photographer: Curtis Pan
+     CDN: pictime.../45706445/nwqtucq3vnbq748frx/lowres/{id}_v1.jpg
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lt ev-section" id="sundrenched">
+  <div class="ev-header">
+    <span class="lbl">// May 31, 2025 · Photos by Curtis Pan</span>
+    <h2 class="ev-title">SUNDRENCHED</h2>
+    <p class="ev-desc">Golden hour hit and nobody went home. Rooftop. Cocktails. A crowd that knew how to move.</p>
+    <div class="ev-meta-row">
+      <span class="ev-date">75 Varick Rooftop, NYC</span>
+      <span class="ev-credit">Photos: Curtis Pan · <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" style="text-decoration:underline;opacity:0.5">Full gallery →</a></span>
+    </div>
+  </div>
+  <div class="photo-grid" id="grid-may">
+    <!-- 20 best sponsor-appeal photos from May 31 gallery -->
+    <!-- Priority: group dancing (p1) > product placement (p2) > crowd energy (p3) > atmosphere (p4) -->
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873140_v1.jpg" alt="Group dancing candid at treehouse. May 31 Sundrenched event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873062_v1.jpg" alt="Bottles displayed at treehouse. Sundrenched rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873099_v1.jpg" alt="Live performance at treehouse. May Sundrenched event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718872986_v1.jpg" alt="Group energy at treehouse. Sundrenched NYC rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873188_v1.jpg" alt="Group dancing under tent at treehouse. May rooftop event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873117_v1.jpg" alt="Two stylish women at treehouse. Sundrenched event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873200_v1.jpg" alt="Rooftop crowd mingling at treehouse. May event with NYC views" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873182_v1.jpg" alt="Laughing couple at treehouse. Sundrenched NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873476_v1.jpg" alt="Packed crowd dancing with arms raised at treehouse. Sundrenched" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873249_v1.jpg" alt="Group of friends with cocktails at treehouse. May event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873273_v1.jpg" alt="Mixed group laughing in circle at treehouse. Sundrenched NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873285_v1.jpg" alt="Crowd arms up dancing at treehouse. May 31 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873344_v1.jpg" alt="Packed crowd dancing candid at treehouse. Sundrenched NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873094_v1.jpg" alt="Rosé champagne product placement at treehouse. May event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873350_v1.jpg" alt="Group with branded cups at treehouse. Sundrenched NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873368_v1.jpg" alt="Four women arriving at treehouse. Sundrenched event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873435_v1.jpg" alt="Large group dancing candid at treehouse. Sundrenched May party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873122_v1.jpg" alt="Stylish duo at treehouse. Sundrenched NYC rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/45/706/45706445/nwqtucq3vnbq748frx/lowres/10718873482_v1.jpg" alt="Crowd energy at treehouse. Sundrenched May 31 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EVENT 2 — DEC 12 — "MIDNIGHT GLOW"
+     Photographer: Curtis Pan
+     CDN: pictime.../49749688/si2g5gklj9hlxcqi4p/lowres/{id}.jpg
+     ═══════════════════════════════════════════════════════════ -->
+<section class="dk2 ev-section grain" id="midnight-glow">
+  <div class="ev-header">
+    <span class="lbl">// December 12, 2025 · Photos by Curtis Pan</span>
+    <h2 class="ev-title">MIDNIGHT GLOW</h2>
+    <p class="ev-desc">Costumes, cocktails, and a crowd that doesn't do anything halfway. December never looked this good.</p>
+    <div class="ev-meta-row">
+      <span class="ev-date">NYC Venue · Holiday Edition</span>
+      <span class="ev-credit">Photos: Curtis Pan · <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" style="text-decoration:underline;opacity:0.5">Full gallery →</a></span>
+    </div>
+  </div>
+  <div class="photo-grid" id="grid-dec">
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369455.jpg" alt="CABAL product display at treehouse. Midnight Glow holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369521.jpg" alt="Grinch dancing with guest at treehouse. Midnight Glow party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369492.jpg" alt="Festive group posing at treehouse. December 12 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369570.jpg" alt="Group dancing with Santa character at treehouse. Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369560.jpg" alt="Branded bar area with attendee at treehouse. Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369550.jpg" alt="Two stylish women at treehouse. December event branded backdrop" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369580.jpg" alt="Candid crowd socializing at treehouse. Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369630.jpg" alt="Treehouse branded arch glowing at treehouse. December 12 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369660.jpg" alt="Group of four women laughing at treehouse. Midnight Glow party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369670.jpg" alt="Couple dancing in red dress at treehouse. December Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369680.jpg" alt="Crowd at peak energy at treehouse. December 12 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369700.jpg" alt="Packed venue with green lights and balloons at treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369710.jpg" alt="Two women dancing at treehouse. Midnight Glow fashion energy" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369720.jpg" alt="Group with drinks in hand at treehouse. December 12 holiday" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369800.jpg" alt="Crowd energy with balloons at treehouse. Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369780.jpg" alt="Woman in red dress dancing in crowd at treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509369730.jpg" alt="Five friends at treehouse. Midnight Glow holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509370142.jpg" alt="Group candid with costumes and joy at treehouse. December event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509370152.jpg" alt="Group dancing candid at treehouse. Midnight Glow" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/49/749/49749688/si2g5gklj9hlxcqi4p/lowres/11509370172.jpg" alt="Dancing interaction at treehouse. December 12 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EVENT 3 — OCT 18 — "GOLDEN HOUR"
+     Photographer: Curtis Pan
+     CDN: pictime.../48212823/79rk68l1m1im92fb32/lowres/{id}.jpg
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lt ev-section" id="golden-hour">
+  <div class="ev-header">
+    <span class="lbl">// October 18, 2025 · Photos by Curtis Pan</span>
+    <h2 class="ev-title">GOLDEN HOUR</h2>
+    <p class="ev-desc">Warm light, curated cocktails, and a crowd dressed for the moment. October at its finest.</p>
+    <div class="ev-meta-row">
+      <span class="ev-date">NYC Outdoor Venue · Fall Edition</span>
+      <span class="ev-credit">Photos: Curtis Pan · <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" style="text-decoration:underline;opacity:0.5">Full gallery →</a></span>
+    </div>
+  </div>
+  <div class="photo-grid" id="grid-oct">
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843551.jpg" alt="Branded bottles displayed at treehouse. Golden Hour October event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843899.jpg" alt="Couple dancing outdoors at treehouse. Golden Hour October" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843563.jpg" alt="Branded product close-up at treehouse. October 18 event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843614.jpg" alt="Stylish group posing at treehouse. Golden Hour NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843696.jpg" alt="Candid group women walking at treehouse. October event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843684.jpg" alt="Social interaction with drink at treehouse. Golden Hour" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843875.jpg" alt="Crowd energy with drinks raised at treehouse. October 18" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843760.jpg" alt="Golden hour group at treehouse. NYC fall event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843803.jpg" alt="Group laughing together at treehouse. Golden Hour NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843771.jpg" alt="Candid conversation at treehouse. October 18 Golden Hour" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843881.jpg" alt="Saxophonist performing at treehouse. Golden Hour October" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item tall"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844406.jpg" alt="Group of guys with energy at treehouse. October event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843839.jpg" alt="Aspirational skyline moment at treehouse. Golden Hour NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239843912.jpg" alt="Social group candid at treehouse. October Golden Hour" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844424.jpg" alt="Women chatting with drinks at treehouse. October 18" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844495.jpg" alt="Diverse stylish group at treehouse. Golden Hour NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844501.jpg" alt="Crowd with drinks raised at treehouse. October Golden Hour" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item wide"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844430.jpg" alt="Branded bottle with lemonade setup at treehouse. October event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+    <div class="photo-item"><img src="https://pictime6eus1public-pub-f5djhafrcqd3djf7.a02.azurefd.net/pictures/48/212/48212823/79rk68l1m1im92fb32/lowres/11239844507.jpg" alt="Radiant smile with drink at treehouse. Golden Hour NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  </div>
+</section>
+
+<!-- WHY SPONSOR -->
+<section class="dk grain" id="why-sponsor">
+  <div class="w why-layout">
+    <div class="why-left">
+      <div class="why-h">
+        <span class="lbl" style="margin-bottom:1rem">// Why Sponsor</span>
+        <h2>Your brand<br>belongs<br>in this room.</h2>
+      </div>
+      <div class="why-rows">
+        <div class="why-row" data-a="u">
+          <span class="why-n">01</span>
+          <p class="why-t">Access 300–400 hand-selected NYC tastemakers, cultural insiders, and brand decision-makers at every event.</p>
+        </div>
+        <div class="why-row" data-a="u" data-d="1">
+          <span class="why-n">02</span>
+          <p class="why-t">Authentic integration — your brand lives inside the experience, not on a banner in the corner.</p>
+        </div>
+        <div class="why-row" data-a="u" data-d="2">
+          <span class="why-n">03</span>
+          <p class="why-t">Social content that travels. Our crowd documents everything. Real reach, real audience.</p>
+        </div>
+        <div class="why-row" data-a="u" data-d="3">
+          <span class="why-n">04</span>
+          <p class="why-t">Limited slots per event. We turn sponsors away to protect the room. This is a scarce opportunity.</p>
+        </div>
+      </div>
+      <div class="why-quote" data-a="u" data-d="4">
+        <blockquote>"The most well-curated crowd I've ever activated with."</blockquote>
+        <cite>— Brand Partner, 2025</cite>
+      </div>
+    </div>
+    <div class="why-vis" data-a="f" data-d="1" aria-hidden="true">
+      <div class="why-vis-main">
+        <img src="/img/sp-xmas-martini.jpg" alt="Cocktail moment at treehouse. NYC event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+        <div class="if">treehouse.</div>
+      </div>
+      <div class="why-vis-sub">
+        <div class="why-vs-item">
+          <img src="/img/sp-may-sunglasses.jpg" alt="Golden hour couple with drinks at treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+          <div class="if">treehouse.</div>
+        </div>
+        <div class="why-vs-item">
+          <img src="/img/sp-xmas-crowddrinks.jpg" alt="Crowd drinks raised at treehouse. holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+          <div class="if">treehouse.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="lt" id="tiers">
+  <div class="w tiers-inner">
+    <span class="lbl" data-a="u" style="margin-bottom:1rem">// Sponsorship Packages</span>
+    <h2 data-a="l">Partner with us.</h2>
+    <p class="tiers-sub" data-a="u" data-d="1">Three ways to get your brand into the room. Every tier includes direct access to a curated NYC audience.</p>
+    <div class="tiers-grid" data-a="u" data-d="2">
+      <div class="tier">
+        <div class="tier-name">Bronze</div>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-div"></div>
+        <ul class="tier-feat">
+          <li>2 VIP invites per event</li>
+          <li>Brand presence at venue</li>
+          <li>Social mention + tag</li>
+          <li>Post-event recap</li>
+        </ul>
+        <a href="mailto:events@tigertracks.ai?subject=Bronze%20Sponsorship%20Inquiry" class="btn btn-s">inquire →</a>
+      </div>
+      <div class="tier gold">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-name">Gold</div>
+        <div class="tier-price">$10,000</div>
+        <div class="tier-div"></div>
+        <ul class="tier-feat">
+          <li>3 VIP invites per event</li>
+          <li>Branded activation space</li>
+          <li>Social content package</li>
+          <li>Dedicated IG stories + posts</li>
+          <li>Logo on all event materials</li>
+        </ul>
+        <a href="mailto:events@tigertracks.ai?subject=Gold%20Sponsorship%20Inquiry" class="btn btn-p">inquire →</a>
+      </div>
+      <div class="tier plat">
+        <div class="tier-name">Platinum</div>
+        <div class="tier-price">$15,000</div>
+        <div class="tier-div"></div>
+        <ul class="tier-feat">
+          <li>5 VIP invites per event</li>
+          <li>Title sponsorship</li>
+          <li>Full content + media package</li>
+          <li>Custom brand activation</li>
+          <li>Email list co-ownership</li>
+          <li>Year-round partnership</li>
+        </ul>
+        <a href="mailto:events@tigertracks.ai?subject=Platinum%20Sponsorship%20Inquiry" class="btn btn-p">inquire →</a>
+      </div>
+    </div>
+    <p class="tiers-note" data-a="u">Limited availability per event — sponsorship slots fill 6–8 weeks out.</p>
+  </div>
+</section>
+
+<!-- PAST PARTNERS -->
+<section class="dk grain" id="partners">
+  <div class="w partners-inner">
+    <span class="lbl" data-a="u" style="margin-bottom:1rem">// Past Partners</span>
+    <h2 data-a="l">Brands that have<br>been in the room.</h2>
+    <p class="partners-sub" data-a="u" data-d="1">We've activated with some of the best. They came back.</p>
+    <div class="partners-grid" data-a="u" data-d="2">
+      <div class="pn pn-xl pn-mumm">Mumm</div>
+      <div class="pn pn-lg pn-aperol">Aperol</div>
+      <div class="pn pn-md pn-other">Grey Goose</div>
+      <div class="pn pn-xl pn-other">St-Germain</div>
+      <div class="pn pn-md pn-other">Cointreau</div>
+      <div class="pn pn-sm pn-other">Hendrick's</div>
+    </div>
+    <div class="partners-cta" data-a="u" data-d="3">
+      <p>Ready to bring your brand into the room?</p>
+      <a href="#tiers" class="btn btn-s">see sponsorship packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="lt" id="how-it-works">
+  <div class="w hiw-inner">
+    <span class="lbl" data-a="u" style="margin-bottom:1rem">// How It Works</span>
+    <h2 data-a="l">Four steps<br>to the room.</h2>
+    <div class="hiw-steps" data-a="u" data-d="1">
+      <div class="hiw-step">
+        <span class="hiw-n">01</span>
+        <h3 class="hiw-t">Apply</h3>
+        <p class="hiw-d">Request your invite or sponsorship package below.</p>
+      </div>
+      <div class="hiw-step">
+        <span class="hiw-n">02</span>
+        <h3 class="hiw-t">Get Approved</h3>
+        <p class="hiw-d">We review every application to protect the room quality.</p>
+      </div>
+      <div class="hiw-step">
+        <span class="hiw-n">03</span>
+        <h3 class="hiw-t">Show Up</h3>
+        <p class="hiw-d">Arrive at 75 Varick Rooftop. Open bar. Your kind of crowd.</p>
+      </div>
+      <div class="hiw-step">
+        <span class="hiw-n">04</span>
+        <h3 class="hiw-t">Come Back</h3>
+        <p class="hiw-d">treehouse. events run throughout the year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="dk grain join" id="join">
+  <div class="join-inner">
+    <span class="lbl" data-a="u">// Get Access</span>
+    <h2 data-a="l">Get on the list.</h2>
+    <p class="join-body" data-a="u" data-d="1">treehouse. is invite-only. Drop your email and we'll reach out before the next event.</p>
+    <form class="join-form" novalidate data-a="u" data-d="2">
+      <div class="join-row">
+        <input type="email" id="join-email" name="email" placeholder="your@email.com" aria-label="Email address" required autocomplete="email">
+        <button type="submit" class="btn btn-p">join</button>
+      </div>
+      <p class="join-ok" id="join-ok" role="status" aria-live="polite">you're on the list.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="dk" role="contentinfo">
+  <div class="foot-top">
+    <a href="#" class="foot-logo" aria-label="treehouse. — back to top">
+      <img src="/img/logo-transparent.png" alt="treehouse. Events | New York City" height="65">
+    </a>
+    <p class="foot-tag">Events · New York City</p>
+  </div>
+  <nav class="foot-links" aria-label="Footer links">
+    <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer">@treehouseevents.nyc</a>
+    <a href="mailto:events@tigertracks.ai">events@tigertracks.ai</a>
+    <a href="tel:+13016467758">(301) 646-7758</a>
+  </nav>
+  <div class="foot-btm">
+    <p class="foot-copy">&copy; 2026 treehouse. events — new york city</p>
+  </div>
+</footer>
+
+<script>
 'use strict';
 
-/* CUSTOM CURSOR */
-function initCursor() {
-  if (!window.matchMedia('(hover: hover)').matches) return;
-  var dot  = document.getElementById('cursor');
-  var ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-
-  var mx=0, my=0, rx=0, ry=0, raf=null;
-
-  document.addEventListener('mousemove', function(e) {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-    if (!raf) raf = requestAnimationFrame(animRing);
-  }, { passive:true });
-
-  function animRing() {
-    rx += (mx-rx)*0.16; ry += (my-ry)*0.16;
-    ring.style.left = rx+'px'; ring.style.top = ry+'px';
-    raf = requestAnimationFrame(animRing);
-  }
-
-  document.querySelectorAll('a,button,input,[role="button"],.gallery-item,.tab,.event-tag').forEach(function(el) {
-    el.addEventListener('mouseenter', function(){ document.body.classList.add('cursor-hover'); });
-    el.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-hover'); });
+/* CURSOR */
+(function(){
+  if(!window.matchMedia('(hover:hover)').matches) return;
+  var dot=document.getElementById('cur'), ring=document.getElementById('cur-r');
+  if(!dot||!ring) return;
+  var mx=0,my=0,rx=0,ry=0,raf=null;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+    if(!raf) raf=requestAnimationFrame(ar);
+  },{passive:true});
+  function ar(){ rx+=(mx-rx)*0.16; ry+=(my-ry)*0.16; ring.style.left=rx+'px'; ring.style.top=ry+'px'; raf=requestAnimationFrame(ar); }
+  document.querySelectorAll('a,button,input,[role="button"],.photo-item,.tag').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ document.body.classList.add('ch'); });
+    el.addEventListener('mouseleave',function(){ document.body.classList.remove('ch'); });
   });
-
-  document.querySelectorAll('.section-light').forEach(function(s) {
-    s.addEventListener('mouseenter', function(){ document.body.classList.add('cursor-inverted'); });
-    s.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-inverted'); });
+  document.querySelectorAll('.lt').forEach(function(s){
+    s.addEventListener('mouseenter',function(){ document.body.classList.add('ci'); });
+    s.addEventListener('mouseleave',function(){ document.body.classList.remove('ci'); });
   });
+  document.addEventListener('mouseleave',function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+  document.addEventListener('mouseenter',function(){ dot.style.opacity='1'; ring.style.opacity='0.7'; });
+})();
 
-  document.addEventListener('mouseleave', function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
-  document.addEventListener('mouseenter', function(){ dot.style.opacity='1'; ring.style.opacity='0.7'; });
-}
-
-/* NAV SCROLL */
-function initNav() {
-  var nav = document.getElementById('nav');
-  if (!nav) return;
-  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 60); }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  onScroll();
-}
+/* NAV */
+(function(){
+  var nav=document.getElementById('nav');
+  if(!nav) return;
+  function check(){ nav.classList.toggle('sc', window.scrollY>60); }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
 
 /* HAMBURGER */
-function initHamburger() {
-  var btn   = document.getElementById('hamburger-btn');
-  var menu  = document.getElementById('mobile-menu');
-  var close = document.getElementById('mobile-close');
-  if (!btn||!menu) return;
-
-  function open()  { menu.hidden=false; btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-  function shut()  { menu.hidden=true;  btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-
-  btn.addEventListener('click', open);
-  if (close) close.addEventListener('click', shut);
-  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
-  document.addEventListener('keydown', function(e){ if (e.key==='Escape'&&!menu.hidden){ shut(); btn.focus(); } });
-}
+(function(){
+  var btn=document.getElementById('ham'), menu=document.getElementById('mob'), x=document.getElementById('mob-x');
+  if(!btn||!menu) return;
+  function open(){ menu.hidden=false; btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function shut(){ menu.hidden=true; btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  btn.addEventListener('click',open);
+  if(x) x.addEventListener('click',shut);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',shut); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!menu.hidden){ shut(); btn.focus(); } });
+})();
 
 /* SMOOTH SCROLL */
-function initSmoothScroll() {
-  var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var hash = a.getAttribute('href');
-      if (hash==='#') return;
-      var tgt = document.querySelector(hash);
-      if (!tgt) return;
+(function(){
+  var nh=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav'))||72;
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var h=a.getAttribute('href');
+      if(h==='#') return;
+      var t=document.querySelector(h);
+      if(!t) return;
       e.preventDefault();
-      window.scrollTo({ top: tgt.getBoundingClientRect().top + window.scrollY - navH, behavior:'smooth' });
+      window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-nh,behavior:'smooth'});
     });
   });
-}
+})();
 
 /* SCROLL ANIMATIONS */
-function initAnimations() {
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('[data-animate]').forEach(function(el){ el.classList.add('visible'); });
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('[data-a]').forEach(function(el){ el.classList.add('on'); });
     return;
   }
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
-  document.querySelectorAll('[data-animate]').forEach(function(el){ obs.observe(el); });
-}
-
-/* GALLERY TABS */
-function initGalleryTabs() {
-  var tabs  = document.querySelectorAll('.gallery-tabs .tab');
-  var items = document.querySelectorAll('.gallery-item');
-  if (!tabs.length||!items.length) return;
-
-  function filter(col) {
-    items.forEach(function(it) {
-      it.classList.toggle('hidden', col!=='all' && it.getAttribute('data-collection')!==col);
-    });
-  }
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      filter(tab.getAttribute('data-collection')||'all');
-    });
-  });
-}
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+  },{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-a]').forEach(function(el){ obs.observe(el); });
+})();
 
 /* IMAGE FALLBACKS */
-function initImgFallbacks() {
-  document.querySelectorAll('img').forEach(function(img) {
-    if (img.complete && img.naturalWidth===0) img.parentNode.classList.add('img-failed');
-    img.addEventListener('error', function(){ img.parentNode.classList.add('img-failed'); });
-  });
-}
+document.querySelectorAll('img').forEach(function(img){
+  if(img.complete&&img.naturalWidth===0) img.parentNode.classList.add('fail');
+  img.addEventListener('error',function(){ img.parentNode.classList.add('fail'); });
+});
 
 /* JOIN FORM */
-function initJoinForm() {
-  var form    = document.querySelector('.join-form');
-  var email   = document.getElementById('join-email');
-  var confirm = document.getElementById('join-confirm');
-  if (!form||!email||!confirm) return;
-
-  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  form.addEventListener('submit', function(e) {
+(function(){
+  var form=document.querySelector('.join-form'), email=document.getElementById('join-email'), ok=document.getElementById('join-ok');
+  if(!form||!email||!ok) return;
+  var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    if (!re.test(email.value.trim())) {
-      email.focus();
-      return;
-    }
-    confirm.classList.add('show');
-    email.value = '';
-    setTimeout(function(){ confirm.classList.remove('show'); }, 6000);
+    if(!re.test(email.value.trim())){ email.focus(); return; }
+    ok.classList.add('show');
+    email.value='';
+    setTimeout(function(){ ok.classList.remove('show'); }, 6000);
   });
-}
+})();
 
-/* HERO PARALLAX */
-function initParallax() {
-  var img = document.querySelector('.hero-bg img');
-  if (!img || window.innerWidth < 768) return;
-  window.addEventListener('scroll', function() {
-    img.style.transform = 'translateY(' + Math.min(window.scrollY * 0.28, 90) + 'px)';
-  }, { passive:true });
-}
-
-/* INIT */
-document.addEventListener('DOMContentLoaded', function() {
-  initCursor();
-  initNav();
-  initHamburger();
-  initSmoothScroll();
-  initAnimations();
-  initGalleryTabs();
-  initImgFallbacks();
-  initJoinForm();
-  initParallax();
-  document.body.classList.add('loaded');
-});
-  </script>
+/* PARALLAX */
+(function(){
+  var img=document.querySelector('.hero-bg img');
+  if(!img||window.innerWidth<768) return;
+  window.addEventListener('scroll',function(){ img.style.transform='translateY('+Math.min(window.scrollY*0.28,90)+'px)'; },{passive:true});
+})();
+</script>
 </body>
 </html>
