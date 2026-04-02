@@ -168,7 +168,7 @@ body.ci .cur-r { border-color:var(--g); }
 .tag { border:1px solid var(--g12); border-radius:var(--r); padding:0.42rem 1rem; font-size:0.7rem; font-weight:500; letter-spacing:0.06em; text-transform:lowercase; cursor:default; transition:background var(--tf),color var(--tf); }
 .tag:hover { background:var(--g); color:var(--linen); }
 .about-vis { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; position:relative; }
-.about-vis img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.about-vis img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform 0.6s var(--ease); }
 .about-vis:hover img { transform:scale(1.03); }
 
 /* ── NEXT EVENT ── */
@@ -180,7 +180,7 @@ body.ci .cur-r { border-color:var(--g); }
 .venue-l { font-size:0.78rem; opacity:0.48; margin-top:0.2rem; }
 .event-meta { font-size:0.66rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; opacity:0.48; margin-bottom:1.75rem; }
 .event-img { border-radius:var(--r); overflow:hidden; aspect-ratio:3/4; position:relative; }
-.event-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.event-img img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform 0.6s var(--ease); }
 .event-img:hover img { transform:scale(1.03); }
 
 /* ── VIDEO REEL ── */
@@ -207,15 +207,15 @@ body.ci .cur-r { border-color:var(--g); }
 .photo-item { overflow:hidden; cursor:pointer; position:relative; border-radius:4px; }
 .photo-item.tall { grid-row:span 2; }
 .photo-item.wide { grid-column:span 2; }
-.photo-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
+.photo-item img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
 .photo-item::after { content:''; position:absolute; inset:0; border:1px solid transparent; pointer-events:none; z-index:2; transition:border-color var(--ts); }
 .photo-item:hover img { transform:scale(1.05); filter:brightness(1.05); }
 .photo-item:hover::after { border-color:rgba(240,237,232,0.3); }
 .photo-item .if { font-size:0.9rem; }
 
 /* Photo height for fixed rows */
-.photo-item { min-height:160px; }
-.photo-item.tall { min-height:326px; }
+.photo-item { min-height:140px; }
+.photo-item.tall { min-height:280px; }
 
 /* ── WHY SPONSOR ── */
 .why-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
@@ -231,7 +231,7 @@ body.ci .cur-r { border-color:var(--g); }
 .why-quote cite { font-size:0.6rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; opacity:0.4; font-style:normal; }
 .why-vis { position:sticky; top:calc(var(--nav) + 2rem); display:flex; flex-direction:column; gap:6px; }
 .why-vis-main { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; position:relative; }
-.why-vis-main img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.why-vis-main img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform 0.6s var(--ease); }
 .why-vis-main:hover img { transform:scale(1.03); }
 .why-vis-sub { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
 .why-vs-item { border-radius:4px; overflow:hidden; aspect-ratio:4/3; position:relative; }
@@ -399,10 +399,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="dk hero grain" id="hero">
   <div class="hero-bg" role="img" aria-label="Packed crowd at treehouse. NYC event">
-    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.52;z-index:0;">
-      <source src="/img/hero-video.mp4" type="video/mp4">
-    </video>
-    <img src="/img/hero-new.jpg" alt="Packed rooftop crowd at treehouse. NYC — One WTC skyline golden hour" fetchpriority="high" style="object-position:center 40%;" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+    <img src="/img/hero-new.jpg" alt="Packed rooftop crowd at treehouse. NYC — One WTC skyline golden hour" fetchpriority="high" style="object-position:center 30%;" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
     <div class="if">treehouse.</div>
   </div>
   <div class="hero-inner">
@@ -479,7 +476,7 @@ body.ci .cur-r { border-color:var(--g); }
       <a href="#join" class="btn btn-p">request your invite</a>
     </div>
     <div class="event-img" data-a="f" data-d="2">
-      <img src="/img/main-photo-2.jpg" alt="Aperol Spritz activation with Manhattan skyline at treehouse. NYC rooftop event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+      <img src="/img/rooftop-view.jpg" alt="75 Varick Rooftop — April 25 treehouse. NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
       <div class="if">apr 25</div>
     </div>
   </div>
@@ -489,11 +486,11 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk">
   <div class="vr-inner">
     <span class="lbl" data-a="u">// The Vibe</span>
-    <div class="vr-box" data-a="f" data-d="1" role="img" aria-label="Highlight reel — coming soon">
-      <div class="vr-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <p class="cap">Highlight Reel — Coming Soon</p>
+    <div class="vr-box" data-a="f" data-d="1" style="padding:0;overflow:hidden;background:#0f2410;">
+      <video controls muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="/img/hero-video.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
     </div>
   </div>
 </section>
@@ -740,7 +737,7 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
     <div class="why-vis" data-a="f" data-d="1" aria-hidden="true">
       <div class="why-vis-main">
-        <img src="/img/sp-xmas-martini.jpg" alt="Cocktail moment at treehouse. NYC event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+        <img src="/img/dj.jpg" alt="DJ set at treehouse. NYC event — premium brand experience" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
         <div class="if">treehouse.</div>
       </div>
       <div class="why-vis-sub">
