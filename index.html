@@ -207,15 +207,15 @@ body.ci .cur-r { border-color:var(--g); }
 .photo-item { overflow:hidden; cursor:pointer; position:relative; border-radius:4px; }
 .photo-item.tall { grid-row:span 2; }
 .photo-item.wide { grid-column:span 2; }
-.photo-item img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
+.photo-item img { width:100%; height:auto; object-fit:contain; object-position:center top; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
 .photo-item::after { content:''; position:absolute; inset:0; border:1px solid transparent; pointer-events:none; z-index:2; transition:border-color var(--ts); }
 .photo-item:hover img { transform:scale(1.05); filter:brightness(1.05); }
 .photo-item:hover::after { border-color:rgba(240,237,232,0.3); }
 .photo-item .if { font-size:0.9rem; }
 
 /* Photo height for fixed rows */
-.photo-item { min-height:140px; }
-.photo-item.tall { min-height:280px; }
+.photo-item { min-height:0; }
+.photo-item.tall { min-height:0; }
 
 /* ── WHY SPONSOR ── */
 .why-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
@@ -368,13 +368,16 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo" aria-label="treehouse. — home">
+  <a href="/" class="nav-logo" aria-label="treehouse. — home">
     <img src="/img/logo.png" alt="treehouse. Events" height="40" style="filter:brightness(0) invert(1);">
   </a>
   <div class="nav-links">
     <a href="#tribeca-rooftop">tribeca</a>
     <a href="#soho-soiree">soho</a>
     <a href="#christmas-nyc">christmas</a>
+    <a href="#dinner-parties">dinner</a>
+    <a href="#knox-day">knox</a>
+    <a href="#west-village">west village</a>
     <a href="#tiers" class="hi">sponsor</a>
     <a href="#join">get tickets</a>
   </div>
@@ -389,6 +392,9 @@ body.ci .cur-r { border-color:var(--g); }
     <a href="#tribeca-rooftop">tribeca</a>
     <a href="#soho-soiree">soho</a>
     <a href="#christmas-nyc">christmas</a>
+    <a href="#dinner-parties">dinner</a>
+    <a href="#knox-day">knox</a>
+    <a href="#west-village">west village</a>
     <a href="#tiers">sponsor</a>
     <a href="#join">get tickets</a>
   </nav>
@@ -487,7 +493,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="vr-inner">
     <span class="lbl" data-a="u">// The Vibe</span>
     <div class="vr-box" data-a="f" data-d="1" style="padding:0;overflow:hidden;background:#0f2410;">
-      <video controls muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+      <video autoplay controls muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="/img/hero-video.mp4" type="video/mp4">
         Your browser does not support video.
       </video>
@@ -918,9 +924,12 @@ body.ci .cur-r { border-color:var(--g); }
     <span class="lbl" data-a="u">// Get Access</span>
     <h2 data-a="l">Get on the list.</h2>
     <p class="join-body" data-a="u" data-d="1">treehouse. is invite-only. Drop your email and we'll reach out before the next event.</p>
-    <form class="join-form" novalidate data-a="u" data-d="2">
+    <form class="join-form" action="https://formspree.io/f/xwpbkqod" method="POST" novalidate data-a="u" data-d="2">
       <div class="join-row">
         <input type="email" id="join-email" name="email" placeholder="your@email.com" aria-label="Email address" required autocomplete="email">
+        <input type="hidden" name="_subject" value="New treehouse. invite request">
+        <input type="hidden" name="_replyto" value="">
+        <input type="text" name="_gotcha" style="display:none">
         <button type="submit" class="btn btn-p">join</button>
       </div>
       <p class="join-ok" id="join-ok" role="status" aria-live="polite">you're on the list.</p>
@@ -933,7 +942,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- FOOTER -->
 <footer class="dk" role="contentinfo">
   <div class="foot-top">
-    <a href="#" class="foot-logo" aria-label="treehouse. — back to top">
+    <a href="#" class="foot-logo" aria-label="treehouse. — back to top" title="Back to top">
       <img src="/img/logo.png" alt="treehouse. Events | New York City" height="80" style="filter:brightness(0) invert(1);">
     </a>
     <p class="foot-tag">Events · New York City</p>
@@ -1029,17 +1038,39 @@ document.querySelectorAll('img').forEach(function(img){
   img.addEventListener('error',function(){ img.parentNode.classList.add('fail'); });
 });
 
-/* JOIN FORM */
+/* JOIN FORM — wired to Formspree */
 (function(){
   var form=document.querySelector('.join-form'), email=document.getElementById('join-email'), ok=document.getElementById('join-ok');
   if(!form||!email||!ok) return;
   var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!re.test(email.value.trim())){ email.focus(); return; }
-    ok.classList.add('show');
-    email.value='';
-    setTimeout(function(){ ok.classList.remove('show'); }, 6000);
+    var val=email.value.trim();
+    if(!re.test(val)){ email.focus(); return; }
+    var btn=form.querySelector('button[type="submit"]');
+    if(btn) btn.disabled=true;
+    fetch(form.action,{
+      method:'POST',
+      headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify({email:val,_subject:'New treehouse. invite request'})
+    }).then(function(r){
+      if(r.ok){
+        ok.textContent="you're on the list.";
+        ok.classList.add('show');
+        email.value='';
+        setTimeout(function(){ ok.classList.remove('show'); },6000);
+      } else {
+        ok.textContent="something went wrong — email events@tigertracks.ai";
+        ok.classList.add('show');
+        setTimeout(function(){ ok.classList.remove('show'); },8000);
+      }
+    }).catch(function(){
+      ok.textContent="offline — email events@tigertracks.ai";
+      ok.classList.add('show');
+      setTimeout(function(){ ok.classList.remove('show'); },8000);
+    }).finally(function(){
+      if(btn) btn.disabled=false;
+    });
   });
 })();
 
