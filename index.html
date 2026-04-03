@@ -189,8 +189,8 @@ body.ci .cur-r { border-color:var(--g); }
 .vibe-video-slot { margin:0 auto; }
 
 /* ── EVENT SECTIONS (3 photographer galleries) ── */
-.ev-section { padding:0; }
-.ev-header { padding:5rem clamp(1.5rem,5vw,5rem) 2rem; max-width:var(--wrap); margin:0 auto; }
+.ev-section { padding:80px 0 0; }
+.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 2rem; max-width:var(--wrap); margin:0 auto; }
 .ev-header .lbl { margin-bottom:1rem; }
 .ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:1rem; }
 .ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:2rem; }
@@ -249,6 +249,10 @@ body.ci .cur-r { border-color:var(--g); }
 @media(max-width:768px){
   .gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); gap:2px; }
   .photo-grid { grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px 4px; }
+  .ev-section { padding:48px 0 0; }
+  .brands-grid { display:grid !important; grid-template-columns:repeat(2,1fr) !important; gap:16px !important; justify-items:center; }
+  .btn { min-height:48px; }
+  .about-vis { height:280px; }
 }
 .photo-item { overflow:hidden; cursor:default; position:relative; border-radius:4px; }
 .photo-item.tall { grid-row:span 2; }
@@ -521,7 +525,7 @@ body.ci .cur-r { border-color:var(--g); }
       </div>
     </div>
     <div class="about-vis" data-a="f" data-d="2">
-      <img src="/img/main-photo-1.jpg" alt="Five-up squad with cocktails at golden hour, treehouse. NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+      <img src="/img/dj.jpg" alt="DJ performing at treehouse. NYC event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
       <div class="if">treehouse.</div>
     </div>
   </div>
@@ -1048,7 +1052,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="w">
     <span class="lbl" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
     <h2 data-a="l" style="margin-bottom:0.75rem">Brands That Have Been in the Room</h2>
-    <p style="font-size:1.1rem;font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">Over 1,500 guests served across 5 events.</p>
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">Over 1,500 guests served across 5 events.</p>
 
     <div class="brands-grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;padding:40px 0;">
       <img src="/img/logos/zakuska.png" alt="Zakuska Vodka" class="brand-logo" loading="lazy">
@@ -1072,7 +1076,7 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
 
     <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
-      <p style="font-family:var(--ff-e);font-style:italic;font-size:1.1rem;opacity:0.72;margin-bottom:1.25rem;">Your brand. This room. Limited spots for 2026.</p>
+      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Your brand. This room. Limited spots for 2026.</p>
       <a href="#tiers" class="btn btn-p">see sponsorship packages</a>
     </div>
   </div>
