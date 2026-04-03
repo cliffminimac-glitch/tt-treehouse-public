@@ -209,7 +209,8 @@ body.ci .cur-r { border-color:var(--g); }
   margin:0;
   padding:0;
 }
-.gallery-collapsed { display:none; }
+.gallery-collapsed { overflow:hidden; max-height:0; opacity:0; transition:max-height 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s ease; display:block !important; grid-template-columns:repeat(3,1fr); gap:3px; }
+.gallery-collapsed.is-open { max-height:9999px; opacity:1; }
 .gallery-item {
   aspect-ratio:1/1;
   overflow:hidden;
@@ -396,6 +397,9 @@ body.ci .cur-r { border-color:var(--g); }
   .stats-band { flex-direction:column; gap:0; padding:2rem 1.5rem; }
   .stat { padding:1.5rem 0; }
   .stat-div { width:3rem; height:1px; align-self:auto; }
+  .curate-section { height:60vh; min-height:400px; }
+  .curate-copy { bottom:32px; }
+  .curate-copy h2 { font-size:1.8rem; }
 }
 
 @media(max-width:480px) {
@@ -409,8 +413,8 @@ body.ci .cur-r { border-color:var(--g); }
 
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-.lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; flex-direction:column; }
-.lightbox.is-open { display:flex; }
+.lightbox { display:flex; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; flex-direction:column; }
+
 .lightbox-media { display:flex; align-items:center; justify-content:center; max-width:90vw; max-height:82vh; }
 .lightbox-media img { max-width:90vw; max-height:82vh; object-fit:contain; border-radius:4px; display:block; }
 .lightbox-media video { max-width:90vw; max-height:82vh; border-radius:4px; }
@@ -422,6 +426,36 @@ body.ci .cur-r { border-color:var(--g); }
 .brand-logo { height:56px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(100%);opacity:0.75;transition:filter 0.2s,opacity 0.2s; }
 .brand-logo:hover { filter:grayscale(0%);opacity:1; }
 @media(max-width:768px){ .brand-logo { height:40px; } }
+
+.reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+.reveal.is-visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.1s; }
+.reveal-delay-2 { transition-delay:0.2s; }
+.reveal-delay-3 { transition-delay:0.3s; }
+.gallery-item { transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
+.gallery-item:hover { transform:scale(1.04); z-index:2; }
+.gallery-item img { transition:filter 0.35s ease; }
+.gallery-item:hover img { filter:brightness(1.08) saturate(1.1); }
+.gallery-toggle { transition:background 0.25s ease,color 0.25s ease,transform 0.15s ease,border-color 0.25s ease; }
+.gallery-toggle:hover { transform:scale(1.02); }
+.gallery-toggle:active { transform:scale(0.98); }
+.lightbox { opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
+.lightbox.is-open { opacity:1; pointer-events:all; }
+.lightbox-media img, .lightbox-media video { opacity:0; transform:scale(0.96); transition:opacity 0.3s ease,transform 0.3s ease; }
+.lightbox-media.loaded img, .lightbox-media.loaded video { opacity:1; transform:scale(1); }
+.brand-logo { transition:filter 0.3s ease,opacity 0.3s ease,transform 0.25s ease; }
+.brand-logo:hover { filter:grayscale(0%); opacity:1; transform:scale(1.08); }
+.nav-links a { position:relative; }
+.nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
+.nav-links a:hover::after { width:100%; }
+.curate-section { position:relative; width:100%; height:70vh; min-height:500px; overflow:hidden; }
+.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+.curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,58,26,0.88) 0%,rgba(26,58,26,0.3) 50%,rgba(26,58,26,0) 100%); }
+.curate-section .curate-copy { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; }
+.curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
+.curate-copy p { font-size:1rem; line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; }
+.curate-copy .tag { background:rgba(26,58,26,0.4); border-color:rgba(240,237,232,0.2); color:#f0ede8; }
+.curate-copy .tag:hover { background:rgba(240,237,232,0.15); color:#f0ede8; }
   </style>
 <script src="/photos.js"></script>
 </head>
@@ -498,7 +532,7 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- STATS -->
 <section class="dk">
-  <div class="stats-band">
+  <div class="stats-band reveal">
     <div class="stat" data-a="u"><span class="stat-v">1,500+</span><span class="stat-l">guests served</span></div>
     <div class="stat-div"></div>
     <div class="stat" data-a="u" data-d="1"><span class="stat-v">5</span><span class="stat-l">sold-out events</span></div>
@@ -578,7 +612,7 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- PARTY 1: TRIBECA ROOFTOP -->
 <section class="lt ev-section" id="tribeca-rooftop">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// October 2024 · treehouse. NYC</span>
     <h2 class="ev-title">TRIBECA ROOFTOP</h2>
     <p class="ev-desc">The rooftop that started it all — golden light, a crowd dressed for the moment, and a view of the city that made everyone stay late.</p>
@@ -647,7 +681,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- PARTY 2: SOHO SOIREE -->
 <section class="dk ev-section grain" id="soho-soiree">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// May 2024 · treehouse. NYC</span>
     <h2 class="ev-title">SOHO SOIREE</h2>
     <p class="ev-desc">SoHo after dark. The crowd turned up, the bar stayed open, and nobody wanted to be the first one to leave.</p>
@@ -716,7 +750,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- PARTY 3: CHRISTMAS IN NYC -->
 <section class="lt ev-section" id="christmas-nyc">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// December 2024 · treehouse. NYC</span>
     <h2 class="ev-title">CHRISTMAS IN NYC</h2>
     <p class="ev-desc">December in New York, treehouse. style. Cocktails, costumes, and a room that didn't need a dress code to look this good.</p>
@@ -783,7 +817,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- PARTY 4: DINNER PARTIES -->
 <section class="dk ev-section grain" id="dinner-parties">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// 2024 Series · treehouse. NYC</span>
     <h2 class="ev-title">DINNER PARTIES</h2>
     <p class="ev-desc">Intimate, intentional, and exactly the kind of evening that's hard to explain but impossible to forget.</p>
@@ -832,7 +866,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- PARTY 5: KNOX DAY -->
 <section class="lt ev-section" id="knox-day">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// Summer 2024 · treehouse. NYC</span>
     <h2 class="ev-title">KNOX DAY</h2>
     <p class="ev-desc">A day-into-night that proved treehouse. doesn't need darkness to set the mood. Sunlit, effortless, and completely sold out.</p>
@@ -870,7 +904,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- PARTY 6: WEST VILLAGE -->
 <section class="dk ev-section grain" id="west-village">
-  <div class="ev-header">
+  <div class="ev-header reveal">
     <span class="lbl">// Spring 2024 · treehouse. NYC</span>
     <h2 class="ev-title">WEST VILLAGE</h2>
     <p class="ev-desc">The West Village showed up the way it always does — effortlessly stylish, undeniably alive, and exactly the crowd you want to be in.</p>
@@ -1231,6 +1265,15 @@ body.ci .cur-r { border-color:var(--g); }
   document.querySelectorAll('[data-a]').forEach(function(el){ obs.observe(el); });
 })();
 
+/* REVEAL SCROLL ANIMATIONS */
+(function(){
+  var revEls=document.querySelectorAll(".reveal");
+  if(!revEls.length) return;
+  if(!("IntersectionObserver" in window)){ revEls.forEach(function(el){ el.classList.add("is-visible"); }); return; }
+  var revObs=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("is-visible"); revObs.unobserve(e.target); } }); },{threshold:0.15});
+  revEls.forEach(function(el){ revObs.observe(el); });
+})();
+
 /* IMAGE FALLBACKS */
 document.querySelectorAll('img').forEach(function(img){
   if(img.complete&&img.naturalWidth===0) img.parentNode.classList.add('fail');
@@ -1322,6 +1365,7 @@ document.querySelectorAll('img').forEach(function(img){
     var vid=lbMedia.querySelector("video");
     if(vid) vid.pause();
     lbMedia.innerHTML="";
+    lbMedia.classList.remove("loaded");
     var item=items[idx];
     if(item.type==="video"){
       var v=document.createElement("video");
@@ -1330,9 +1374,11 @@ document.querySelectorAll('img').forEach(function(img){
       s.src=item.src; s.type="video/mp4";
       v.appendChild(s);
       lbMedia.appendChild(v);
+      lbMedia.classList.add("loaded");
     } else {
       var img=document.createElement("img");
       img.src=item.src; img.alt=item.alt||"";
+      img.onload=function(){ lbMedia.classList.add("loaded"); };
       lbMedia.appendChild(img);
     }
     lbCount.textContent=(idx+1)+" / "+items.length;
@@ -1383,11 +1429,12 @@ document.querySelectorAll('img').forEach(function(img){
     var col=document.getElementById(colId);
     if(!col){ btn.style.display="none"; return; }
     var n=parseInt(btn.dataset.count)||col.querySelectorAll(".gallery-item").length;
-    btn.textContent="Show More Photos ("+n+" more)";
+    btn.textContent="View All Photos ("+n+" more)";
     btn.addEventListener("click",function(){
-      var open=col.style.display==="none";
-      col.style.display=open?"grid":"none";
-      btn.textContent=open?"Show Less \u2191":"Show More Photos ("+n+" more)";
+      var isOpen=col.classList.contains("is-open");
+      col.classList.toggle("is-open");
+      btn.textContent=isOpen?"View All Photos ("+n+" more)":"Show Less \u2191";
+      if(isOpen){ var sec=btn.closest("section"); if(sec) sec.scrollIntoView({behavior:"smooth"}); }
     });
   });
 })();
