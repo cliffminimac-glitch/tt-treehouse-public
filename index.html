@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>treehouse. events | new york city</title>
-  <meta name="description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders. Next event: April 25th @ 75 Varick Rooftop.">
+  <meta name="description" content="treehouse. throws the best parties in New York. Invite only. Open bar. Next event: April 25th at 75 Varick Rooftop.">
   <meta property="og:title" content="treehouse. events | new york city">
-  <meta property="og:description" content="Treehouse curates sold-out experiences bringing together NYC's top cultural insiders, tastemakers, and brand leaders.">
+  <meta property="og:description" content="The best night out in New York. Invite only. Open bar. You'll want to be there.">
   <meta property="og:image" content="/img/sp-xmas-herogroup.jpg">
   <meta property="og:url" content="https://treehouseevents.cliffeliz.ai">
   <meta property="og:type" content="website">
@@ -464,6 +464,72 @@ body.ci .cur-r { border-color:var(--g); }
 .curate-copy p { font-size:1rem; line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; }
 .curate-copy .tag { background:rgba(26,58,26,0.4); border-color:rgba(240,237,232,0.2); color:#f0ede8; }
 .curate-copy .tag:hover { background:rgba(240,237,232,0.15); color:#f0ede8; }
+
+/* ── MARQUEE TICKER ── */
+.marquee-wrap { overflow:hidden; border-top:1px solid var(--ln10); border-bottom:1px solid var(--ln10); padding:0.9rem 0; background:var(--g); }
+.marquee-track { display:flex; gap:0; white-space:nowrap; animation:marquee 28s linear infinite; }
+.marquee-track:hover { animation-play-state:paused; }
+.marquee-item { display:inline-flex; align-items:center; gap:1.5rem; padding:0 2.5rem; font-family:var(--ff-d); font-size:0.9rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--linen); opacity:0.38; }
+.marquee-dot { width:4px; height:4px; border-radius:50%; background:var(--accent); opacity:0.7; flex-shrink:0; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── VENUE CAROUSEL ── */
+.venue-carousel { position:relative; width:100%; aspect-ratio:16/9; border-radius:var(--r); overflow:hidden; background:#0f2410; }
+.vc-slide { position:absolute; inset:0; opacity:0; transition:opacity 1.1s ease; }
+.vc-slide.active { opacity:1; }
+.vc-slide img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.vc-dots { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:7px; z-index:3; }
+.vc-dot { width:6px; height:6px; border-radius:50%; background:rgba(240,237,232,0.35); border:none; cursor:pointer; padding:0; transition:background 0.25s,transform 0.25s; }
+.vc-dot.active { background:var(--accent); transform:scale(1.3); }
+.vc-btn { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:40px; height:40px; border-radius:50%; border:1px solid rgba(240,237,232,0.25); background:rgba(10,28,10,0.45); color:var(--linen); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; backdrop-filter:blur(6px); }
+.vc-btn:hover { background:rgba(10,28,10,0.7); }
+.vc-prev { left:14px; }
+.vc-next { right:14px; }
+@media(max-width:768px){ .vc-btn { display:none; } }
+
+/* ── VIDEO SECTION UPGRADE ── */
+.vr-inner { max-width:860px; margin:0 auto; padding:var(--pad); text-align:center; }
+.vr-inner .lbl { margin-bottom:1.5rem; }
+.vibe-video-slot { position:relative; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.5); }
+.vibe-video-slot video { width:100%; display:block; border-radius:12px; max-height:480px; object-fit:cover; }
+
+/* ── GALLERY EXPANDED FIX (Task 5) ── */
+.gallery-collapsed.is-open { max-height:75vh; overflow-y:auto; scroll-behavior:smooth; }
+.gallery-collapsed.is-open::-webkit-scrollbar { width:4px; }
+.gallery-collapsed.is-open::-webkit-scrollbar-track { background:transparent; }
+.gallery-collapsed.is-open::-webkit-scrollbar-thumb { background:var(--ln20); border-radius:2px; }
+.gallery-item { aspect-ratio:unset; min-height:0; }
+.gallery-item img { width:100%; height:auto; object-fit:contain; object-position:center; aspect-ratio:unset; display:block; }
+.gallery-collapse-btn { display:block; width:100%; text-align:center; padding:1rem; font-family:var(--ff-b); font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:lowercase; color:currentColor; opacity:0.55; cursor:pointer; border:none; background:none; transition:opacity 0.2s; margin-top:0.5rem; }
+.gallery-collapse-btn:hover { opacity:1; }
+
+/* ── STATS COUNTER ── */
+.stat-v[data-count] { transition:none; }
+
+/* ── SECOND PASS: SECTION DIVIDERS ── */
+.ev-section { border-top:1px solid rgba(126,184,50,0.08); }
+
+/* ── NEXT EVENT SECTION RESIZE ── */
+.event-grid { gap:4rem; }
+.event-img { aspect-ratio:16/9; max-height:420px; }
+.event-img img { object-position:center 40%; }
+@media(max-width:768px){ .event-img { aspect-ratio:16/9; max-height:260px; } }
+
+/* ── SECOND PASS: HOW IT WORKS POLISH ── */
+.hiw-step { background:var(--g06); border-radius:var(--r); padding:2rem 1.5rem; }
+@media(max-width:1024px){ .hiw-step { padding:1.75rem 1.25rem; } }
+@media(max-width:768px){ .hiw-step { padding:1.5rem 1rem; } }
+
+/* ── SECOND PASS: QUOTE STYLE ── */
+.why-quote { border-left:3px solid var(--accent); background:linear-gradient(135deg,rgba(126,184,50,0.08),rgba(126,184,50,0.03)); }
+
+/* ── SECOND PASS: JOIN SECTION BG ── */
+.join { background:linear-gradient(180deg, var(--g) 0%, #0f2410 100%); }
+
+/* ── SECOND PASS: MOBILE NAV POLISH ── */
+.mob { background:linear-gradient(180deg,var(--g) 0%,#0a1c0a 100%); gap:2.5rem; }
+.mob a { font-size:2.2rem; }
+.mob::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.025; pointer-events:none; }
   </style>
 <script src="/photos.js"></script>
 </head>
@@ -522,7 +588,7 @@ body.ci .cur-r { border-color:var(--g); }
       <img src="/img/logo.png" alt="treehouse." height="120" style="filter:brightness(0) invert(1);">
     </div>
     <div class="hero-rule" data-a="f" data-d="2" aria-hidden="true"></div>
-    <p class="hero-sub" data-a="u" data-d="3">the party you've been waiting for.</p>
+    <p class="hero-sub" data-a="u" data-d="3">you already know someone who's been.</p>
     <div class="hero-badge" data-a="u" data-d="4">
       <span>Next Event</span>
       <span aria-hidden="true">·</span>
@@ -541,15 +607,37 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- STATS -->
 <section class="dk">
   <div class="stats-band reveal">
-    <div class="stat" data-a="u"><span class="stat-v">1,500+</span><span class="stat-l">guests served</span></div>
+    <div class="stat" data-a="u"><span class="stat-v" data-count="1500">0</span><span class="stat-l">people in the room</span></div>
     <div class="stat-div"></div>
-    <div class="stat" data-a="u" data-d="1"><span class="stat-v">5</span><span class="stat-l">sold-out events</span></div>
+    <div class="stat" data-a="u" data-d="1"><span class="stat-v" data-count="5">0</span><span class="stat-l">events, all sold out</span></div>
     <div class="stat-div"></div>
-    <div class="stat" data-a="u" data-d="2"><span class="stat-v">100%</span><span class="stat-l">sold out every time</span></div>
+    <div class="stat" data-a="u" data-d="2"><span class="stat-v">NYC</span><span class="stat-l">invite only</span></div>
     <div class="stat-div"></div>
-    <div class="stat" data-a="u" data-d="3"><span class="stat-v">NYC</span><span class="stat-l">invite only</span></div>
+    <div class="stat" data-a="u" data-d="3"><span class="stat-v">Apr 25</span><span class="stat-l">next event</span></div>
   </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">SoHo Soiree<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Dinner Parties<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Knox Day<span class="marquee-dot"></span></span>
+    <span class="marquee-item">West Village<span class="marquee-dot"></span></span>
+    <span class="marquee-item">75 Varick Rooftop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">SoHo Soiree<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Dinner Parties<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Knox Day<span class="marquee-dot"></span></span>
+    <span class="marquee-item">West Village<span class="marquee-dot"></span></span>
+    <span class="marquee-item">75 Varick Rooftop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="curate-section" id="about">
@@ -558,12 +646,12 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="curate-copy reveal">
     <span class="lbl" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
     <h2>We curate<br>the room.</h2>
-    <p>treehouse. is New York's best recurring night out. Themed parties. Open bar. A room full of people you actually want to meet. We've been building this crowd — come find out why every event sells out before we announce it.</p>
+    <p>Themed parties. Open bar. A room full of people you actually want to meet. Five events in, still selling out before we announce them.</p>
     <div class="tags" style="justify-content:center;margin-top:1.5rem;">
-      <span class="tag">Gallery Takeovers</span>
+      <span class="tag">Rooftop Takeovers</span>
       <span class="tag">Rooftop Events</span>
       <span class="tag">Holiday Parties</span>
-      <span class="tag">Brand Experiences</span>
+      <span class="tag">Brand Nights</span>
     </div>
   </div>
 </section>
@@ -592,18 +680,28 @@ body.ci .cur-r { border-color:var(--g); }
       <p class="event-meta">300–400 guests · Invite Only · Open Bar</p>
       <a href="#join" class="btn btn-p">request your invite</a>
     </div>
-    <div class="event-img" data-a="f" data-d="2">
-      <img src="/img/rooftop-view.jpg" alt="75 Varick Rooftop — April 25 treehouse. NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
-      <div class="if">apr 25</div>
+    <div class="event-img" data-a="f" data-d="2" style="aspect-ratio:16/9;overflow:hidden;border-radius:var(--r);">
+      <div class="venue-carousel" id="venueCarousel">
+        <div class="vc-slide active"><img src="/img/varick-1.jpg" alt="75 Varick Rooftop — NYC skyline at dusk" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-2.jpg" alt="75 Varick Rooftop — venue interior" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-3.jpg" alt="75 Varick Rooftop — event space" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-4.jpg" alt="75 Varick Rooftop — rooftop view" loading="lazy"></div>
+        <button class="vc-btn vc-prev" aria-label="Previous photo">&#8592;</button>
+        <button class="vc-btn vc-next" aria-label="Next photo">&#8594;</button>
+        <div class="vc-dots">
+          <button class="vc-dot active" aria-label="Photo 1"></button>
+          <button class="vc-dot" aria-label="Photo 2"></button>
+          <button class="vc-dot" aria-label="Photo 3"></button>
+          <button class="vc-dot" aria-label="Photo 4"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
 <!-- VIDEO REEL -->
-<section class="dk">
+<section class="dk grain" id="vibe" style="padding:4rem 0;">
   <div class="vr-inner">
-    <span class="lbl" data-a="u">// The Vibe</span>
-    <div class="vibe-video-slot" data-a="f" data-d="1">
+    <span class="lbl">// The Vibe</span> <div class="vibe-video-slot" data-a="f" data-d="1">
       <video autoplay muted loop playsinline controls style="width:100%;border-radius:6px;max-height:500px;object-fit:cover;">
         <source src="/img/hero-video.mp4" type="video/mp4">
       </video>
@@ -618,7 +716,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// October 2024 · treehouse. NYC</span>
     <h2 class="ev-title">TRIBECA ROOFTOP</h2>
-    <p class="ev-desc">The rooftop that started it all — golden light, a crowd dressed for the moment, and a view of the city that made everyone stay late.</p>
+    <p class="ev-desc">First one. Tribeca rooftop, golden hour, One WTC in the background. The bar closed late and nobody left early.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Tribeca, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -687,7 +785,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// May 2024 · treehouse. NYC</span>
     <h2 class="ev-title">SOHO SOIREE</h2>
-    <p class="ev-desc">SoHo after dark. The crowd turned up, the bar stayed open, and nobody wanted to be the first one to leave.</p>
+    <p class="ev-desc">SoHo after dark. Open bar, good music, better people. Sold out in 48 hours.</p>
     <div class="ev-meta-row">
       <span class="ev-date">SoHo, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -756,7 +854,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// December 2024 · treehouse. NYC</span>
     <h2 class="ev-title">CHRISTMAS IN NYC</h2>
-    <p class="ev-desc">December in New York, treehouse. style. Cocktails, costumes, and a room that didn't need a dress code to look this good.</p>
+    <p class="ev-desc">December in New York. Everyone dressed up, nobody was trying too hard, and the ice luge was a good idea.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Midtown, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -823,7 +921,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// 2024 Series · treehouse. NYC</span>
     <h2 class="ev-title">DINNER PARTIES</h2>
-    <p class="ev-desc">Intimate, intentional, and exactly the kind of evening that's hard to explain but impossible to forget.</p>
+    <p class="ev-desc">Small tables, long nights, good conversation. The kind of dinner where nobody checks their phone.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Various Venues, New York City</span>
     </div>
@@ -872,7 +970,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// Summer 2024 · treehouse. NYC</span>
     <h2 class="ev-title">KNOX DAY</h2>
-    <p class="ev-desc">A day-into-night that proved treehouse. doesn't need darkness to set the mood. Sunlit, effortless, and completely sold out.</p>
+    <p class="ev-desc">Brooklyn, daytime, open bar. Turns out treehouse. works in sunlight too. Sold out before noon.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Brooklyn, New York City</span>
     </div>
@@ -910,7 +1008,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="ev-header reveal">
     <span class="lbl">// Spring 2024 · treehouse. NYC</span>
     <h2 class="ev-title">WEST VILLAGE</h2>
-    <p class="ev-desc">The West Village showed up the way it always does — effortlessly stylish, undeniably alive, and exactly the crowd you want to be in.</p>
+    <p class="ev-desc">West Village on a Friday. The crowd showed up dressed, the bar stayed open, and the playlist was right.</p>
     <div class="ev-meta-row">
       <span class="ev-date">West Village, New York City</span>
     </div>
@@ -979,29 +1077,29 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="why-left">
       <div class="why-h">
         <span class="lbl" style="margin-bottom:1rem">// Why Sponsor</span>
-        <h2>Your brand<br>belongs<br>in this room.</h2>
+        <h2>Your brand<br>in the<br>right room.</h2>
       </div>
       <div class="why-rows">
         <div class="why-row" data-a="u">
           <span class="why-n">01</span>
-          <p class="why-t">Access 300–400 hand-selected NYC tastemakers, cultural insiders, and brand decision-makers at every event.</p>
+          <p class="why-t">300–400 people per event. Not a mass audience — the right audience. The kind that actually tries new things.</p>
         </div>
         <div class="why-row" data-a="u" data-d="1">
           <span class="why-n">02</span>
-          <p class="why-t">Authentic integration — your brand lives inside the experience, not on a banner in the corner.</p>
+          <p class="why-t">Your brand is part of the night, not a banner in the corner. People remember what they experienced, not what they saw.</p>
         </div>
         <div class="why-row" data-a="u" data-d="2">
           <span class="why-n">03</span>
-          <p class="why-t">Social content that travels. Our crowd documents everything. Real reach, real audience.</p>
+          <p class="why-t">Our crowd documents everything. The photos are good, the reach is real, and the audience isn't bots.</p>
         </div>
         <div class="why-row" data-a="u" data-d="3">
           <span class="why-n">04</span>
-          <p class="why-t">Limited slots per event. We turn sponsors away to protect the room. This is a scarce opportunity.</p>
+          <p class="why-t">One sponsor per category per event. We turn brands away to protect the room. This is a limited slot.</p>
         </div>
       </div>
       <div class="why-quote" data-a="u" data-d="4">
-        <blockquote>"The most well-curated crowd I've ever activated with."</blockquote>
-        <cite>— Brand Partner, 2025</cite>
+        <blockquote>"Best activation we've done in New York. The crowd was exactly who we needed to reach."</blockquote>
+        <cite>— Brand Partner, 2024</cite>
       </div>
     </div>
     <div class="why-vis" data-a="f" data-d="1" aria-hidden="true">
@@ -1093,8 +1191,8 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk grain" id="partners">
   <div class="w">
     <span class="lbl" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
-    <h2 data-a="l" style="margin-bottom:0.75rem">Brands That Have Been in the Room</h2>
-    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">Over 1,500 guests served across 5 events.</p>
+    <h2 data-a="l" style="margin-bottom:0.75rem">Brands that showed up.</h2>
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. 1,500+ people in the room.</p>
 
     <div class="brands-grid-wrap">
       <img src="/img/logos/zakuska.png" alt="Zakuska Vodka" class="brand-logo" loading="lazy">
@@ -1118,7 +1216,7 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
 
     <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
-      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Your brand. This room. Limited spots for 2026.</p>
+      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Limited spots left for 2026. Once they're gone, they're gone.</p>
       <a href="#tiers" class="btn btn-p">see sponsorship packages</a>
     </div>
   </div>
@@ -1128,27 +1226,27 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="lt" id="how-it-works">
   <div class="w hiw-inner">
     <span class="lbl" data-a="u" style="margin-bottom:1rem">// How It Works</span>
-    <h2 data-a="l">Four steps<br>to the room.</h2>
+    <h2 data-a="l">How to<br>get in.</h2>
     <div class="hiw-steps" data-a="u" data-d="1">
       <div class="hiw-step">
         <span class="hiw-n">01</span>
         <h3 class="hiw-t">Apply</h3>
-        <p class="hiw-d">Request your invite or sponsorship package below.</p>
+        <p class="hiw-d">Drop your email below. We'll reach out before the next event.</p>
       </div>
       <div class="hiw-step">
         <span class="hiw-n">02</span>
         <h3 class="hiw-t">Get Approved</h3>
-        <p class="hiw-d">We review every application to protect the room quality.</p>
+        <p class="hiw-d">We keep the list tight. Not everyone gets in, and that's the point.</p>
       </div>
       <div class="hiw-step">
         <span class="hiw-n">03</span>
         <h3 class="hiw-t">Show Up</h3>
-        <p class="hiw-d">Arrive at 75 Varick Rooftop. Open bar. Your kind of crowd.</p>
+        <p class="hiw-d">Show up at 75 Varick. Open bar from the jump. You'll know people.</p>
       </div>
       <div class="hiw-step">
         <span class="hiw-n">04</span>
         <h3 class="hiw-t">Come Back</h3>
-        <p class="hiw-d">treehouse. events run throughout the year.</p>
+        <p class="hiw-d">We run events all year. Once you're in, you're in.</p>
       </div>
     </div>
   </div>
@@ -1159,7 +1257,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="join-inner">
     <span class="lbl" data-a="u">// Get Access</span>
     <h2 data-a="l">Get on the list.</h2>
-    <p class="join-body" data-a="u" data-d="1">treehouse. is invite-only. Drop your email and we'll reach out before the next event.</p>
+    <p class="join-body" data-a="u" data-d="1">Invite only. Drop your email and we'll reach out before April 25th. No spam, just the invite.</p>
     <form class="join-form" action="https://formspree.io/f/xwpbkqod" method="POST" novalidate data-a="u" data-d="2">
       <div class="join-row">
         <input type="email" id="join-email" name="email" placeholder="your@email.com" aria-label="Email address" required autocomplete="email">
@@ -1326,6 +1424,54 @@ document.querySelectorAll('img').forEach(function(img){
   window.addEventListener('scroll',function(){ img.style.transform='translateY('+Math.min(window.scrollY*0.28,90)+'px)'; },{passive:true});
 })();
 
+/* VENUE CAROUSEL */
+(function(){
+  var car=document.getElementById('venueCarousel');
+  if(!car) return;
+  var slides=car.querySelectorAll('.vc-slide');
+  var dots=car.querySelectorAll('.vc-dot');
+  var prev=car.querySelector('.vc-prev');
+  var next=car.querySelector('.vc-next');
+  var idx=0, timer=null;
+  function go(n){
+    slides[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx=(n+slides.length)%slides.length;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+  function auto(){ timer=setInterval(function(){ go(idx+1); },4000); }
+  if(prev) prev.addEventListener('click',function(){ clearInterval(timer); go(idx-1); auto(); });
+  if(next) next.addEventListener('click',function(){ clearInterval(timer); go(idx+1); auto(); });
+  dots.forEach(function(d,i){ d.addEventListener('click',function(){ clearInterval(timer); go(i); auto(); }); });
+  auto();
+})();
+
+/* ANIMATED STATS COUNTER */
+(function(){
+  var els=document.querySelectorAll('.stat-v[data-count]');
+  if(!els.length) return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target;
+      var target=parseInt(el.dataset.count);
+      var suffix=target>=1000?'+':'';
+      var dur=1600, start=null;
+      function step(ts){
+        if(!start) start=ts;
+        var p=Math.min((ts-start)/dur,1);
+        var ease=1-Math.pow(1-p,3);
+        el.textContent=Math.floor(ease*target)+(p>=1?suffix:'');
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      obs.unobserve(el);
+    });
+  },{threshold:0.5});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
 </script>
 
 <div id="lightbox" class="lightbox">
@@ -1437,7 +1583,14 @@ document.querySelectorAll('img').forEach(function(img){
       var isOpen=col.classList.contains("is-open");
       col.classList.toggle("is-open");
       btn.textContent=isOpen?"View All Photos ("+n+" more)":"Show Less \u2191";
-      if(isOpen){ var sec=btn.closest("section"); if(sec) sec.scrollIntoView({behavior:"smooth"}); }
+      if(isOpen){
+        var sec=btn.closest("section");
+        if(sec){
+          var nh=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav'))||72;
+          var top=sec.getBoundingClientRect().top+window.scrollY-nh-16;
+          window.scrollTo({top:top,behavior:"smooth"});
+        }
+      }
     });
   });
 })();
