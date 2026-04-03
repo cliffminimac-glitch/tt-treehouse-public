@@ -211,21 +211,23 @@ body.ci .cur-r { border-color:var(--g); }
 }
 .gallery-collapsed { display:none; }
 .gallery-item {
+  aspect-ratio:1/1;
   overflow:hidden;
+  background:#1a3a1a;
+  cursor:zoom-in;
+  position:relative;
   margin:0;
   padding:0;
-  aspect-ratio:4/3;
-  background:var(--g);
 }
 .gallery-item img {
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center top;
+  object-position:center 30%;
   display:block;
   transition:transform 0.3s ease;
 }
-.gallery-item:hover img { transform:scale(1.03); cursor:zoom-in; }
+.gallery-item:hover img { transform:scale(1.05); }
 .gallery-toggle-btn {
   display:block;
   width:100%;
@@ -571,14 +573,14 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- ═══════════════ 6 PARTY SECTIONS — v6 FINAL + Design Audit ═══════════════ -->
 
 <!-- PARTY 1: TRIBECA ROOFTOP -->
-<section class="lt ev-section ev-section" id="tribeca-rooftop">
+<section class="lt ev-section" id="tribeca-rooftop">
   <div class="ev-header">
-    <span class="lbl">// Party 1</span>
+    <span class="lbl">// October 2024 · treehouse. NYC</span>
     <h2 class="ev-title">TRIBECA ROOFTOP</h2>
     <p class="ev-desc">The rooftop that started it all — golden light, a crowd dressed for the moment, and a view of the city that made everyone stay late.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
-      <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
+      <span class="ev-date">Tribeca, New York City</span>
+      <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-tribeca-rooftop">
@@ -635,17 +637,19 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-049.jpg" alt="treehouse. Tribeca Rooftop event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-050.jpg" alt="treehouse. Tribeca Rooftop event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-tribeca-rooftop'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-tribeca-rooftop" data-count="25" style="font-size:0.65rem;">Show More Photos (25 more)</button>
+  </div>
 </section>
 <!-- PARTY 2: SOHO SOIREE -->
-<section class="dk ev-section grain ev-section" id="soho-soiree">
+<section class="dk ev-section grain" id="soho-soiree">
   <div class="ev-header">
-    <span class="lbl">// Party 2</span>
+    <span class="lbl">// May 2024 · treehouse. NYC</span>
     <h2 class="ev-title">SOHO SOIREE</h2>
     <p class="ev-desc">SoHo after dark. The crowd turned up, the bar stayed open, and nobody wanted to be the first one to leave.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
-      <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
+      <span class="ev-date">SoHo, New York City</span>
+      <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-soho-soiree">
@@ -702,17 +706,19 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-049.jpg" alt="treehouse. SoHo Soiree event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-050.jpg" alt="treehouse. SoHo Soiree event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-soho-soiree'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-soho-soiree" data-count="25" style="font-size:0.65rem;">Show More Photos (25 more)</button>
+  </div>
 </section>
 <!-- PARTY 3: CHRISTMAS IN NYC -->
-<section class="lt ev-section ev-section" id="christmas-nyc">
+<section class="lt ev-section" id="christmas-nyc">
   <div class="ev-header">
-    <span class="lbl">// Party 3</span>
+    <span class="lbl">// December 2024 · treehouse. NYC</span>
     <h2 class="ev-title">CHRISTMAS IN NYC</h2>
     <p class="ev-desc">December in New York, treehouse. style. Cocktails, costumes, and a room that didn't need a dress code to look this good.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
-      <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
+      <span class="ev-date">Midtown, New York City</span>
+      <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-christmas-nyc">
@@ -767,16 +773,18 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-047.jpg" alt="treehouse. Christmas in NYC event photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-048.jpg" alt="treehouse. Christmas in NYC event photo 48" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-christmas-nyc'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (23 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (23 more)</button>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-christmas-nyc" data-count="23" style="font-size:0.65rem;">Show More Photos (23 more)</button>
+  </div>
 </section>
 <!-- PARTY 4: DINNER PARTIES -->
-<section class="dk ev-section grain ev-section" id="dinner-parties">
+<section class="dk ev-section grain" id="dinner-parties">
   <div class="ev-header">
-    <span class="lbl">// Party 4</span>
+    <span class="lbl">// 2024 Series · treehouse. NYC</span>
     <h2 class="ev-title">DINNER PARTIES</h2>
     <p class="ev-desc">Intimate, intentional, and exactly the kind of evening that's hard to explain but impossible to forget.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
+      <span class="ev-date">Various Venues, New York City</span>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-dinner-parties">
@@ -814,16 +822,18 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-030.jpg" alt="treehouse. Dinner Parties event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-031.jpg" alt="treehouse. Dinner Parties event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-dinner-parties'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (6 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (6 more)</button>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-dinner-parties" data-count="6" style="font-size:0.65rem;">Show More Photos (6 more)</button>
+  </div>
 </section>
 <!-- PARTY 5: KNOX DAY -->
-<section class="lt ev-section ev-section" id="knox-day">
+<section class="lt ev-section" id="knox-day">
   <div class="ev-header">
-    <span class="lbl">// Party 5</span>
+    <span class="lbl">// Summer 2024 · treehouse. NYC</span>
     <h2 class="ev-title">KNOX DAY</h2>
     <p class="ev-desc">A day-into-night that proved treehouse. doesn't need darkness to set the mood. Sunlit, effortless, and completely sold out.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
+      <span class="ev-date">Brooklyn, New York City</span>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-knox-day">
@@ -850,13 +860,13 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 <!-- PARTY 6: WEST VILLAGE -->
-<section class="dk ev-section grain ev-section" id="west-village">
+<section class="dk ev-section grain" id="west-village">
   <div class="ev-header">
-    <span class="lbl">// Party 6</span>
+    <span class="lbl">// Spring 2024 · treehouse. NYC</span>
     <h2 class="ev-title">WEST VILLAGE</h2>
     <p class="ev-desc">The West Village showed up the way it always does — effortlessly stylish, undeniably alive, and exactly the crowd you want to be in.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City</span>
+      <span class="ev-date">West Village, New York City</span>
     </div>
   </div>
   <div class="gallery-visible" id="gallery-visible-west-village">
@@ -913,7 +923,9 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-049.jpg" alt="treehouse. West Village event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-050.jpg" alt="treehouse. West Village event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-west-village'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-west-village" data-count="25" style="font-size:0.65rem;">Show More Photos (25 more)</button>
+  </div>
 </section>
 <!-- WHY SPONSOR -->
 <section class="dk grain" id="why-sponsor">
@@ -1353,6 +1365,20 @@ document.querySelectorAll('img').forEach(function(img){
         openLightbox(galleryItems, i);
       });
       item.style.cursor="zoom-in";
+    });
+  });
+
+  /* Gallery collapse/expand toggles */
+  document.querySelectorAll(".gallery-toggle").forEach(function(btn){
+    var colId=btn.dataset.target;
+    var col=document.getElementById(colId);
+    if(!col){ btn.style.display="none"; return; }
+    var n=parseInt(btn.dataset.count)||col.querySelectorAll(".gallery-item").length;
+    btn.textContent="Show More Photos ("+n+" more)";
+    btn.addEventListener("click",function(){
+      var open=col.style.display==="none";
+      col.style.display=open?"grid":"none";
+      btn.textContent=open?"Show Less \u2191":"Show More Photos ("+n+" more)";
     });
   });
 })();
