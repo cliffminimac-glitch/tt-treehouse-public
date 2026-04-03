@@ -47,7 +47,7 @@
   --ff-e: 'Playfair Display', serif;
   --ff-b: 'Inter', sans-serif;
 
-  --pad: clamp(4rem,8vw,9rem) clamp(1.5rem,5vw,5rem);
+  --pad: 5rem clamp(1.5rem,5vw,5rem);
   --nav: 72px;
   --wrap: 1280px;
   --r: 6px;
@@ -194,7 +194,7 @@ body.ci .cur-r { border-color:var(--g); }
 
 /* ── EVENT SECTIONS (3 photographer galleries) ── */
 .ev-section { padding:0; }
-.ev-header { padding:clamp(4rem,7vw,7rem) clamp(1.5rem,5vw,5rem) clamp(2rem,4vw,3rem); max-width:var(--wrap); margin:0 auto; }
+.ev-header { padding:5rem clamp(1.5rem,5vw,5rem) 2rem; max-width:var(--wrap); margin:0 auto; }
 .ev-header .lbl { margin-bottom:1rem; }
 .ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:1rem; }
 .ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:2rem; }
@@ -204,7 +204,55 @@ body.ci .cur-r { border-color:var(--g); }
 
 /* MASONRY GRID */
 .photo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:0 6px 6px; }
-.photo-item { overflow:hidden; cursor:pointer; position:relative; border-radius:4px; }
+
+/* Tight editorial gallery grids */
+.gallery-visible, .gallery-collapsed {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  margin:0;
+  padding:0;
+}
+.gallery-collapsed { display:none; }
+.gallery-item {
+  overflow:hidden;
+  margin:0;
+  padding:0;
+  aspect-ratio:4/3;
+  background:var(--g);
+}
+.gallery-item img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform 0.3s ease;
+}
+.gallery-item:hover img { transform:scale(1.03); cursor:zoom-in; }
+.gallery-toggle-btn {
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:1rem;
+  font-family:var(--ff-b);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:lowercase;
+  color:currentColor;
+  opacity:0.55;
+  cursor:pointer;
+  border:none;
+  background:none;
+  transition:opacity 0.2s;
+}
+.gallery-toggle-btn:hover { opacity:1; }
+@media(max-width:768px){
+  .gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); gap:2px; }
+  .photo-grid { grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px 4px; }
+}
+.photo-item { overflow:hidden; cursor:default; position:relative; border-radius:4px; }
 .photo-item.tall { grid-row:span 2; }
 .photo-item.wide { grid-column:span 2; }
 .photo-item img { width:100%; height:auto; object-fit:contain; object-position:center top; display:block; transition:transform 0.5s var(--ease),filter 0.3s ease; filter:brightness(0.92); }
@@ -322,7 +370,7 @@ body.ci .cur-r { border-color:var(--g); }
 }
 
 @media(max-width:768px) {
-  :root { --nav:60px; }
+  :root { --nav:60px; --pad: 3rem 1.5rem; }
   .nav-links { display:none; }
   .ham { display:flex; }
   .about-grid,.event-grid,.why-layout { grid-template-columns:1fr; }
@@ -501,115 +549,209 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-<!-- ═══════════════ 6 PARTY SECTIONS — v6 FINAL ═══════════════ -->
+<!-- ═══════════════ 6 PARTY SECTIONS — v6 FINAL + Design Audit ═══════════════ -->
 
 <!-- PARTY 1: TRIBECA ROOFTOP -->
-<section class="lt ev-section" id="tribeca-rooftop">
+<section class="lt ev-section ev-section" id="tribeca-rooftop">
   <div class="ev-header">
     <span class="lbl">// Party 1</span>
     <h2 class="ev-title">TRIBECA ROOFTOP</h2>
     <p class="ev-desc">The rooftop that started it all — golden light, a crowd dressed for the moment, and a view of the city that made everyone stay late.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">Tribeca, New York City</span>
+      <span class="ev-date">New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/tribeca-rooftop/tribeca-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/tribeca-rooftop/tribeca-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/tribeca-rooftop/tribeca-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/tribeca-rooftop/tribeca-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/tribeca-rooftop/tribeca-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/tribeca-rooftop/tribeca-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/tribeca-rooftop/tribeca-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-tribeca-rooftop">
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-001.jpg" alt="treehouse. Tribeca Rooftop event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-002.jpg" alt="treehouse. Tribeca Rooftop event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-003.jpg" alt="treehouse. Tribeca Rooftop event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-004.jpg" alt="treehouse. Tribeca Rooftop event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-005.jpg" alt="treehouse. Tribeca Rooftop event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-006.jpg" alt="treehouse. Tribeca Rooftop event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-007.jpg" alt="treehouse. Tribeca Rooftop event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-008.jpg" alt="treehouse. Tribeca Rooftop event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-009.jpg" alt="treehouse. Tribeca Rooftop event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-010.jpg" alt="treehouse. Tribeca Rooftop event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="treehouse. Tribeca Rooftop event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-012.jpg" alt="treehouse. Tribeca Rooftop event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="treehouse. Tribeca Rooftop event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-014.jpg" alt="treehouse. Tribeca Rooftop event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="treehouse. Tribeca Rooftop event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-016.jpg" alt="treehouse. Tribeca Rooftop event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="treehouse. Tribeca Rooftop event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-018.jpg" alt="treehouse. Tribeca Rooftop event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-019.jpg" alt="treehouse. Tribeca Rooftop event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-020.jpg" alt="treehouse. Tribeca Rooftop event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-021.jpg" alt="treehouse. Tribeca Rooftop event photo 21" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-022.jpg" alt="treehouse. Tribeca Rooftop event photo 22" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-023.jpg" alt="treehouse. Tribeca Rooftop event photo 23" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-024.jpg" alt="treehouse. Tribeca Rooftop event photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-025.jpg" alt="treehouse. Tribeca Rooftop event photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-tribeca-rooftop">
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-026.jpg" alt="treehouse. Tribeca Rooftop event photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-027.jpg" alt="treehouse. Tribeca Rooftop event photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-028.jpg" alt="treehouse. Tribeca Rooftop event photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-029.jpg" alt="treehouse. Tribeca Rooftop event photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-030.jpg" alt="treehouse. Tribeca Rooftop event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-031.jpg" alt="treehouse. Tribeca Rooftop event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-032.jpg" alt="treehouse. Tribeca Rooftop event photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-033.jpg" alt="treehouse. Tribeca Rooftop event photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-034.jpg" alt="treehouse. Tribeca Rooftop event photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-035.jpg" alt="treehouse. Tribeca Rooftop event photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-036.jpg" alt="treehouse. Tribeca Rooftop event photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-037.jpg" alt="treehouse. Tribeca Rooftop event photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-038.jpg" alt="treehouse. Tribeca Rooftop event photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-039.jpg" alt="treehouse. Tribeca Rooftop event photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-040.jpg" alt="treehouse. Tribeca Rooftop event photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-041.jpg" alt="treehouse. Tribeca Rooftop event photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-042.jpg" alt="treehouse. Tribeca Rooftop event photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-043.jpg" alt="treehouse. Tribeca Rooftop event photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-044.jpg" alt="treehouse. Tribeca Rooftop event photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-045.jpg" alt="treehouse. Tribeca Rooftop event photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. Tribeca Rooftop event photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-047.jpg" alt="treehouse. Tribeca Rooftop event photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-048.jpg" alt="treehouse. Tribeca Rooftop event photo 48" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-049.jpg" alt="treehouse. Tribeca Rooftop event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-050.jpg" alt="treehouse. Tribeca Rooftop event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-tribeca-rooftop'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
 </section>
-
 <!-- PARTY 2: SOHO SOIREE -->
-<section class="dk ev-section grain" id="soho-soiree">
+<section class="dk ev-section grain ev-section" id="soho-soiree">
   <div class="ev-header">
     <span class="lbl">// Party 2</span>
     <h2 class="ev-title">SOHO SOIREE</h2>
     <p class="ev-desc">SoHo after dark. The crowd turned up, the bar stayed open, and nobody wanted to be the first one to leave.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">SoHo, New York City</span>
-      <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;" style="background:#f0ede8;color:#1a3a1a;">See Full Gallery &rarr;</a>
+      <span class="ev-date">New York City</span>
+      <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/soho-soiree/soho-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/soho-soiree/soho-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/soho-soiree/soho-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/soho-soiree/soho-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/soho-soiree/soho-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/soho-soiree/soho-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/soho-soiree/soho-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/soho-soiree/soho-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-soho-soiree">
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-001.jpg" alt="treehouse. SoHo Soiree event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-002.jpg" alt="treehouse. SoHo Soiree event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-003.jpg" alt="treehouse. SoHo Soiree event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-004.jpg" alt="treehouse. SoHo Soiree event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. SoHo Soiree event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-006.jpg" alt="treehouse. SoHo Soiree event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-007.jpg" alt="treehouse. SoHo Soiree event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-008.jpg" alt="treehouse. SoHo Soiree event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-009.jpg" alt="treehouse. SoHo Soiree event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-010.jpg" alt="treehouse. SoHo Soiree event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-011.jpg" alt="treehouse. SoHo Soiree event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-012.jpg" alt="treehouse. SoHo Soiree event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-013.jpg" alt="treehouse. SoHo Soiree event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. SoHo Soiree event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-015.jpg" alt="treehouse. SoHo Soiree event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. SoHo Soiree event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-017.jpg" alt="treehouse. SoHo Soiree event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-018.jpg" alt="treehouse. SoHo Soiree event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-019.jpg" alt="treehouse. SoHo Soiree event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-020.jpg" alt="treehouse. SoHo Soiree event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-021.jpg" alt="treehouse. SoHo Soiree event photo 21" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-022.jpg" alt="treehouse. SoHo Soiree event photo 22" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="treehouse. SoHo Soiree event photo 23" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-024.jpg" alt="treehouse. SoHo Soiree event photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-025.jpg" alt="treehouse. SoHo Soiree event photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-soho-soiree">
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-026.jpg" alt="treehouse. SoHo Soiree event photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-027.jpg" alt="treehouse. SoHo Soiree event photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-028.jpg" alt="treehouse. SoHo Soiree event photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-029.jpg" alt="treehouse. SoHo Soiree event photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-030.jpg" alt="treehouse. SoHo Soiree event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-031.jpg" alt="treehouse. SoHo Soiree event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-032.jpg" alt="treehouse. SoHo Soiree event photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-033.jpg" alt="treehouse. SoHo Soiree event photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-034.jpg" alt="treehouse. SoHo Soiree event photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-035.jpg" alt="treehouse. SoHo Soiree event photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-036.jpg" alt="treehouse. SoHo Soiree event photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-037.jpg" alt="treehouse. SoHo Soiree event photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-038.jpg" alt="treehouse. SoHo Soiree event photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-039.jpg" alt="treehouse. SoHo Soiree event photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-040.jpg" alt="treehouse. SoHo Soiree event photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-041.jpg" alt="treehouse. SoHo Soiree event photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-042.jpg" alt="treehouse. SoHo Soiree event photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-043.jpg" alt="treehouse. SoHo Soiree event photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-044.jpg" alt="treehouse. SoHo Soiree event photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-045.jpg" alt="treehouse. SoHo Soiree event photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-046.jpg" alt="treehouse. SoHo Soiree event photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-047.jpg" alt="treehouse. SoHo Soiree event photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-048.jpg" alt="treehouse. SoHo Soiree event photo 48" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-049.jpg" alt="treehouse. SoHo Soiree event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-050.jpg" alt="treehouse. SoHo Soiree event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-soho-soiree'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
 </section>
-
 <!-- PARTY 3: CHRISTMAS IN NYC -->
-<section class="lt ev-section" id="christmas-nyc">
+<section class="lt ev-section ev-section" id="christmas-nyc">
   <div class="ev-header">
     <span class="lbl">// Party 3</span>
     <h2 class="ev-title">CHRISTMAS IN NYC</h2>
     <p class="ev-desc">December in New York, treehouse. style. Cocktails, costumes, and a room that didn't need a dress code to look this good.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">New York City &mdash; Holiday Edition</span>
+      <span class="ev-date">New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1a3a1a;color:#f0ede8;padding:12px 28px;border-radius:4px;font-family:var(--ff-b);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:lowercase;text-decoration:none;margin-top:1.5rem;">See Full Gallery &rarr;</a>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/christmas-nyc/xmas-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/christmas-nyc/xmas-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/christmas-nyc/xmas-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/christmas-nyc/xmas-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/christmas-nyc/xmas-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/christmas-nyc/xmas-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/christmas-nyc/xmas-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/christmas-nyc/xmas-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-christmas-nyc">
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-001.jpg" alt="treehouse. Christmas in NYC event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-002.jpg" alt="treehouse. Christmas in NYC event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-003.jpg" alt="treehouse. Christmas in NYC event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-004.jpg" alt="treehouse. Christmas in NYC event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-005.jpg" alt="treehouse. Christmas in NYC event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-006.jpg" alt="treehouse. Christmas in NYC event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-007.jpg" alt="treehouse. Christmas in NYC event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-008.jpg" alt="treehouse. Christmas in NYC event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="treehouse. Christmas in NYC event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-010.jpg" alt="treehouse. Christmas in NYC event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-011.jpg" alt="treehouse. Christmas in NYC event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-012.jpg" alt="treehouse. Christmas in NYC event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-013.jpg" alt="treehouse. Christmas in NYC event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-014.jpg" alt="treehouse. Christmas in NYC event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-015.jpg" alt="treehouse. Christmas in NYC event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-016.jpg" alt="treehouse. Christmas in NYC event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-017.jpg" alt="treehouse. Christmas in NYC event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-018.jpg" alt="treehouse. Christmas in NYC event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="treehouse. Christmas in NYC event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-020.jpg" alt="treehouse. Christmas in NYC event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-021.jpg" alt="treehouse. Christmas in NYC event photo 21" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-022.jpg" alt="treehouse. Christmas in NYC event photo 22" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-023.jpg" alt="treehouse. Christmas in NYC event photo 23" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-024.jpg" alt="treehouse. Christmas in NYC event photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-025.jpg" alt="treehouse. Christmas in NYC event photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-christmas-nyc">
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-026.jpg" alt="treehouse. Christmas in NYC event photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-027.jpg" alt="treehouse. Christmas in NYC event photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-028.jpg" alt="treehouse. Christmas in NYC event photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-029.jpg" alt="treehouse. Christmas in NYC event photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-030.jpg" alt="treehouse. Christmas in NYC event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-031.jpg" alt="treehouse. Christmas in NYC event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-032.jpg" alt="treehouse. Christmas in NYC event photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-033.jpg" alt="treehouse. Christmas in NYC event photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-034.jpg" alt="treehouse. Christmas in NYC event photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-035.jpg" alt="treehouse. Christmas in NYC event photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-036.jpg" alt="treehouse. Christmas in NYC event photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-037.jpg" alt="treehouse. Christmas in NYC event photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-038.jpg" alt="treehouse. Christmas in NYC event photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-039.jpg" alt="treehouse. Christmas in NYC event photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-040.jpg" alt="treehouse. Christmas in NYC event photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-041.jpg" alt="treehouse. Christmas in NYC event photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-042.jpg" alt="treehouse. Christmas in NYC event photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-043.jpg" alt="treehouse. Christmas in NYC event photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-044.jpg" alt="treehouse. Christmas in NYC event photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-045.jpg" alt="treehouse. Christmas in NYC event photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-046.jpg" alt="treehouse. Christmas in NYC event photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-047.jpg" alt="treehouse. Christmas in NYC event photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-048.jpg" alt="treehouse. Christmas in NYC event photo 48" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-christmas-nyc'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (23 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (23 more)</button>
 </section>
-
 <!-- PARTY 4: DINNER PARTIES -->
-<section class="dk ev-section grain" id="dinner-parties">
+<section class="dk ev-section grain ev-section" id="dinner-parties">
   <div class="ev-header">
     <span class="lbl">// Party 4</span>
     <h2 class="ev-title">DINNER PARTIES</h2>
@@ -618,32 +760,45 @@ body.ci .cur-r { border-color:var(--g); }
       <span class="ev-date">New York City</span>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/dinner-parties/dinner-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/dinner-parties/dinner-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/dinner-parties/dinner-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/dinner-parties/dinner-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/dinner-parties/dinner-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/dinner-parties/dinner-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/dinner-parties/dinner-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/dinner-parties/dinner-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/dinner-parties/dinner-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-dinner-parties">
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-001.jpg" alt="treehouse. Dinner Parties event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-002.jpg" alt="treehouse. Dinner Parties event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-003.jpg" alt="treehouse. Dinner Parties event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-004.jpg" alt="treehouse. Dinner Parties event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-005.jpg" alt="treehouse. Dinner Parties event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-006.jpg" alt="treehouse. Dinner Parties event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-007.jpg" alt="treehouse. Dinner Parties event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-008.jpg" alt="treehouse. Dinner Parties event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-009.jpg" alt="treehouse. Dinner Parties event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-010.jpg" alt="treehouse. Dinner Parties event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-011.jpg" alt="treehouse. Dinner Parties event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-012.jpg" alt="treehouse. Dinner Parties event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-013.jpg" alt="treehouse. Dinner Parties event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-014.jpg" alt="treehouse. Dinner Parties event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-015.jpg" alt="treehouse. Dinner Parties event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-016.jpg" alt="treehouse. Dinner Parties event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-017.jpg" alt="treehouse. Dinner Parties event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-018.jpg" alt="treehouse. Dinner Parties event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-019.jpg" alt="treehouse. Dinner Parties event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-020.jpg" alt="treehouse. Dinner Parties event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-021.jpg" alt="treehouse. Dinner Parties event photo 21" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-022.jpg" alt="treehouse. Dinner Parties event photo 22" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-023.jpg" alt="treehouse. Dinner Parties event photo 23" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-024.jpg" alt="treehouse. Dinner Parties event photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-025.jpg" alt="treehouse. Dinner Parties event photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-dinner-parties">
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-026.jpg" alt="treehouse. Dinner Parties event photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-027.jpg" alt="treehouse. Dinner Parties event photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-028.jpg" alt="treehouse. Dinner Parties event photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-029.jpg" alt="treehouse. Dinner Parties event photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-030.jpg" alt="treehouse. Dinner Parties event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/dinner-parties/dinner-031.jpg" alt="treehouse. Dinner Parties event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-dinner-parties'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (6 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (6 more)</button>
 </section>
-
 <!-- PARTY 5: KNOX DAY -->
-<section class="lt ev-section" id="knox-day">
+<section class="lt ev-section ev-section" id="knox-day">
   <div class="ev-header">
     <span class="lbl">// Party 5</span>
     <h2 class="ev-title">KNOX DAY</h2>
@@ -652,64 +807,95 @@ body.ci .cur-r { border-color:var(--g); }
       <span class="ev-date">New York City</span>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/knox-day/knox-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/knox-day/knox-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/knox-day/knox-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/knox-day/knox-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/knox-day/knox-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/knox-day/knox-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/knox-day/knox-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/knox-day/knox-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/knox-day/knox-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-knox-day">
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-001.jpg" alt="treehouse. Knox Day event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-002.jpg" alt="treehouse. Knox Day event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-003.jpg" alt="treehouse. Knox Day event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-004.jpg" alt="treehouse. Knox Day event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-005.jpg" alt="treehouse. Knox Day event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-006.jpg" alt="treehouse. Knox Day event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-007.jpg" alt="treehouse. Knox Day event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-008.jpg" alt="treehouse. Knox Day event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-009.jpg" alt="treehouse. Knox Day event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-010.jpg" alt="treehouse. Knox Day event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-011.jpg" alt="treehouse. Knox Day event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-012.jpg" alt="treehouse. Knox Day event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-013.jpg" alt="treehouse. Knox Day event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-014.jpg" alt="treehouse. Knox Day event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-015.jpg" alt="treehouse. Knox Day event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-016.jpg" alt="treehouse. Knox Day event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-017.jpg" alt="treehouse. Knox Day event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-018.jpg" alt="treehouse. Knox Day event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-019.jpg" alt="treehouse. Knox Day event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/knox-day/knox-020.jpg" alt="treehouse. Knox Day event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
 </section>
-
 <!-- PARTY 6: WEST VILLAGE -->
-<section class="dk ev-section grain" id="west-village">
+<section class="dk ev-section grain ev-section" id="west-village">
   <div class="ev-header">
     <span class="lbl">// Party 6</span>
     <h2 class="ev-title">WEST VILLAGE</h2>
-    <p class="ev-desc">The West Village showed up the way it always does &mdash; effortlessly stylish, undeniably alive, and exactly the crowd you want to be in.</p>
+    <p class="ev-desc">The West Village showed up the way it always does — effortlessly stylish, undeniably alive, and exactly the crowd you want to be in.</p>
     <div class="ev-meta-row">
-      <span class="ev-date">West Village, New York City</span>
+      <span class="ev-date">New York City</span>
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-001.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/west-village/westvillage-002.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-003.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-004.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/west-village/westvillage-005.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-006.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/west-village/westvillage-007.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-008.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-009.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/west-village/westvillage-010.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-011.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-012.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/west-village/westvillage-013.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/west-village/westvillage-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item"><img src="/img/gallery/west-village/westvillage-018.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item tall"><img src="/img/gallery/west-village/westvillage-019.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
-    <div class="photo-item wide"><img src="/img/gallery/west-village/westvillage-020.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')"><div class="if">treehouse.</div></div>
+  <div class="gallery-visible" id="gallery-visible-west-village">
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-001.jpg" alt="treehouse. West Village event photo 1" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-002.jpg" alt="treehouse. West Village event photo 2" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-003.jpg" alt="treehouse. West Village event photo 3" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-004.jpg" alt="treehouse. West Village event photo 4" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-005.jpg" alt="treehouse. West Village event photo 5" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-006.jpg" alt="treehouse. West Village event photo 6" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-007.jpg" alt="treehouse. West Village event photo 7" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-008.jpg" alt="treehouse. West Village event photo 8" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-009.jpg" alt="treehouse. West Village event photo 9" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-010.jpg" alt="treehouse. West Village event photo 10" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-011.jpg" alt="treehouse. West Village event photo 11" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-012.jpg" alt="treehouse. West Village event photo 12" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-013.jpg" alt="treehouse. West Village event photo 13" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-014.jpg" alt="treehouse. West Village event photo 14" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-015.jpg" alt="treehouse. West Village event photo 15" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-016.jpg" alt="treehouse. West Village event photo 16" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-017.jpg" alt="treehouse. West Village event photo 17" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-018.jpg" alt="treehouse. West Village event photo 18" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-019.jpg" alt="treehouse. West Village event photo 19" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-020.jpg" alt="treehouse. West Village event photo 20" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-021.jpg" alt="treehouse. West Village event photo 21" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-022.jpg" alt="treehouse. West Village event photo 22" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-023.jpg" alt="treehouse. West Village event photo 23" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-024.jpg" alt="treehouse. West Village event photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-025.jpg" alt="treehouse. West Village event photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-west-village">
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-026.jpg" alt="treehouse. West Village event photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-027.jpg" alt="treehouse. West Village event photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-028.jpg" alt="treehouse. West Village event photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-029.jpg" alt="treehouse. West Village event photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-030.jpg" alt="treehouse. West Village event photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-031.jpg" alt="treehouse. West Village event photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-032.jpg" alt="treehouse. West Village event photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-033.jpg" alt="treehouse. West Village event photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-034.jpg" alt="treehouse. West Village event photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-035.jpg" alt="treehouse. West Village event photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-036.jpg" alt="treehouse. West Village event photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-037.jpg" alt="treehouse. West Village event photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-038.jpg" alt="treehouse. West Village event photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-039.jpg" alt="treehouse. West Village event photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-040.jpg" alt="treehouse. West Village event photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-041.jpg" alt="treehouse. West Village event photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-042.jpg" alt="treehouse. West Village event photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-043.jpg" alt="treehouse. West Village event photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-044.jpg" alt="treehouse. West Village event photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-045.jpg" alt="treehouse. West Village event photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-046.jpg" alt="treehouse. West Village event photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-047.jpg" alt="treehouse. West Village event photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-048.jpg" alt="treehouse. West Village event photo 48" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-049.jpg" alt="treehouse. West Village event photo 49" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/west-village/westvillage-050.jpg" alt="treehouse. West Village event photo 50" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <button class="gallery-toggle-btn" onclick="(function(){var c=document.getElementById('gallery-collapsed-west-village'),b=this;if(c.style.display==='grid'){c.style.display='none';b.textContent='Show More Photos (25 more)';}else{c.style.display='grid';b.textContent='Show Less';};}).call(this)">Show More Photos (25 more)</button>
 </section>
-
 <!-- WHY SPONSOR -->
 <section class="dk grain" id="why-sponsor">
   <div class="w why-layout">
@@ -948,8 +1134,8 @@ body.ci .cur-r { border-color:var(--g); }
     <p class="foot-tag">Events · New York City</p>
   </div>
   <nav class="foot-links" aria-label="Footer links">
-    <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer">@treehouseevents.nyc</a>
-    <a href="mailto:events@tigertracks.ai">events@tigertracks.ai</a>
+    <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram @treehouseevents.nyc">@treehouseevents.nyc</a>
+    <a href="mailto:events@tigertracks.ai" target="_blank" rel="noopener">events@tigertracks.ai</a>
     <a href="tel:+13016467758">(301) 646-7758</a>
   </nav>
   <div class="foot-btm">
