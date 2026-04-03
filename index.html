@@ -402,6 +402,20 @@ body.ci .cur-r { border-color:var(--g); }
 }
 
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+.lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.94); align-items:center; justify-content:center; flex-direction:column; }
+.lightbox.is-open { display:flex; }
+.lightbox-media { display:flex; align-items:center; justify-content:center; max-width:90vw; max-height:82vh; }
+.lightbox-media img { max-width:90vw; max-height:82vh; object-fit:contain; border-radius:4px; display:block; }
+.lightbox-media video { max-width:90vw; max-height:82vh; border-radius:4px; }
+.lightbox-close { position:fixed; top:18px; right:22px; color:#f0ede8; font-size:38px; background:none; border:none; cursor:pointer; padding:8px; z-index:10000; line-height:1; }
+.lightbox-prev, .lightbox-next { position:fixed; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; border:1px solid rgba(240,237,232,0.3); background:rgba(240,237,232,0.12); color:#f0ede8; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10000; }
+.lightbox-prev { left:16px; }
+.lightbox-next { right:16px; }
+.lightbox-counter { color:rgba(240,237,232,0.6); font-size:13px; margin-top:14px; }
+.brand-logo { height:56px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(100%);opacity:0.75;transition:filter 0.2s,opacity 0.2s; }
+.brand-logo:hover { filter:grayscale(0%);opacity:1; }
+@media(max-width:768px){ .brand-logo { height:40px; } }
   </style>
 <script src="/photos.js"></script>
 </head>
@@ -1021,55 +1035,28 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk grain" id="partners">
   <div class="w">
     <span class="lbl" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
-    <h2 data-a="l" style="margin-bottom:0.75rem">Brands that have<br>been in the room.</h2>
+    <h2 data-a="l" style="margin-bottom:0.75rem">Brands That Have Been in the Room</h2>
     <p style="font-size:1.1rem;font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">Over 1,500 guests served across 5 events.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:3rem;">
-
-      <!-- MUMM -->
-      <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:6px;padding:2rem;" data-a="u">
-        <div class="pn pn-xl pn-mumm" style="margin-bottom:0.5rem;">Mumm</div>
-        <p style="font-size:0.75rem;opacity:0.5;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem;">Champagne</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:1.25rem;border-radius:4px;overflow:hidden;">
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-grazing.jpg" alt="Mumm champagne product placement treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-goldenhour.jpg" alt="Mumm bottles golden hour treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-discoball.jpg" alt="Mumm activation disco treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-goldentrio.jpg" alt="Mumm golden trio treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-goldenduo.jpg" alt="Mumm champagne duo treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="Mumm rooftop group treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-        </div>
-        <p style="font-size:0.82rem;font-style:italic;color:var(--gold);font-family:var(--ff-e);">300 bottles poured. Sold out by midnight.</p>
-      </div>
-
-      <!-- APEROL -->
-      <div style="background:rgba(224,91,26,0.07);border:1px solid rgba(224,91,26,0.2);border-radius:6px;padding:2rem;" data-a="u" data-d="1">
-        <div class="pn pn-xl pn-aperol" style="margin-bottom:0.5rem;">Aperol</div>
-        <p style="font-size:0.75rem;opacity:0.5;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem;">Spritz</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:1.25rem;border-radius:4px;overflow:hidden;">
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="Aperol Spritz hero activation treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-spritz-sign.jpg" alt="Aperol spritz sign treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-couple-drinks.jpg" alt="Couple with Aperol drinks treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-crowddisco.jpg" alt="Aperol crowd disco treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-warmtrio.jpg" alt="Warm trio with drinks treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-          <div style="aspect-ratio:1;overflow:hidden;"><img src="/img/sp-may-disconight.jpg" alt="Aperol disco night treehouse." loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"></div>
-        </div>
-        <p style="font-size:0.82rem;font-style:italic;color:var(--aperol);font-family:var(--ff-e);">Featured at 3 consecutive events.</p>
-      </div>
-
-      <!-- YOUR BRAND HERE 1 -->
-      <div style="background:rgba(240,237,232,0.04);border:1px dashed rgba(240,237,232,0.15);border-radius:6px;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center;" data-a="u" data-d="2">
-        <p style="font-size:1.8rem;font-family:var(--ff-d);opacity:0.2;letter-spacing:0.08em;margin-bottom:0.75rem;">YOUR BRAND</p>
-        <p style="font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.28;margin-bottom:1.5rem;">2026 slot available</p>
-        <a href="#tiers" class="btn btn-s" style="font-size:0.62rem;">see packages</a>
-      </div>
-
-      <!-- YOUR BRAND HERE 2 -->
-      <div style="background:rgba(240,237,232,0.04);border:1px dashed rgba(240,237,232,0.15);border-radius:6px;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center;" data-a="u" data-d="3">
-        <p style="font-size:1.8rem;font-family:var(--ff-d);opacity:0.2;letter-spacing:0.08em;margin-bottom:0.75rem;">YOUR BRAND</p>
-        <p style="font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.28;margin-bottom:1.5rem;">2026 slot available</p>
-        <a href="#tiers" class="btn btn-s" style="font-size:0.62rem;">see packages</a>
-      </div>
-
+    <div class="brands-grid" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;padding:40px 0;">
+      <img src="/img/logos/zakuska.png" alt="Zakuska Vodka" class="brand-logo" loading="lazy">
+      <img src="/img/logos/friday-beers.png" alt="Friday Beers" class="brand-logo" loading="lazy">
+      <img src="/img/logos/surf.png" alt="Surf" class="brand-logo" loading="lazy">
+      <img src="/img/logos/celsius.png" alt="Celsius" class="brand-logo" loading="lazy">
+      <img src="/img/logos/clr.png" alt="CLR" class="brand-logo" loading="lazy">
+      <img src="/img/logos/solento.png" alt="Solento Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/teremana.png" alt="Teremana Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/7th-street-burger.png" alt="7th Street Burger" class="brand-logo" loading="lazy">
+      <img src="/img/logos/nightowl.png" alt="Nightowl" class="brand-logo" loading="lazy">
+      <img src="/img/logos/bashi.png" alt="Bashi" class="brand-logo" loading="lazy">
+      <img src="/img/logos/lemon-perfect.png" alt="Lemon Perfect" class="brand-logo" loading="lazy">
+      <img src="/img/logos/holiday.png" alt="Holiday" class="brand-logo" loading="lazy">
+      <img src="/img/logos/cabal.png" alt="Cabal Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/potro.png" alt="Potro Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/mezcalua.png" alt="Mezcalua" class="brand-logo" loading="lazy">
+      <img src="/img/logos/mission.png" alt="Mission Craft Cocktails" class="brand-logo" loading="lazy">
+      <img src="/img/logos/hampton-water.png" alt="Hampton Water" class="brand-logo" loading="lazy">
+      <img src="/img/logos/lucie.png" alt="Lucie" class="brand-logo" loading="lazy">
     </div>
 
     <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
@@ -1271,6 +1258,102 @@ document.querySelectorAll('img').forEach(function(img){
   if(!img||window.innerWidth<768) return;
   window.addEventListener('scroll',function(){ img.style.transform='translateY('+Math.min(window.scrollY*0.28,90)+'px)'; },{passive:true});
 })();
+
+/* LIGHTBOX */
+(function(){
+  var lb=document.getElementById("lightbox");
+  var lbMedia=document.getElementById("lbMedia");
+  var lbClose=document.getElementById("lbClose");
+  var lbPrev=document.getElementById("lbPrev");
+  var lbNext=document.getElementById("lbNext");
+  var lbCount=document.getElementById("lbCount");
+  if(!lb) return;
+
+  var items=[], idx=0;
+
+  function openLightbox(arr, i){
+    items=arr; idx=i;
+    showItem();
+    lb.classList.add("is-open");
+    document.body.style.overflow="hidden";
+  }
+
+  function closeLightbox(){
+    lb.classList.remove("is-open");
+    document.body.style.overflow="";
+    var vid=lbMedia.querySelector("video");
+    if(vid) vid.pause();
+    lbMedia.innerHTML="";
+  }
+
+  function showItem(){
+    var vid=lbMedia.querySelector("video");
+    if(vid) vid.pause();
+    lbMedia.innerHTML="";
+    var item=items[idx];
+    if(item.type==="video"){
+      var v=document.createElement("video");
+      v.controls=true; v.autoplay=true;
+      var s=document.createElement("source");
+      s.src=item.src; s.type="video/mp4";
+      v.appendChild(s);
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement("img");
+      img.src=item.src; img.alt=item.alt||"";
+      lbMedia.appendChild(img);
+    }
+    lbCount.textContent=(idx+1)+" / "+items.length;
+    lbPrev.style.display=items.length<2?"none":"flex";
+    lbNext.style.display=items.length<2?"none":"flex";
+  }
+
+  function nav(dir){
+    idx=(idx+dir+items.length)%items.length;
+    showItem();
+  }
+
+  lbClose.addEventListener("click", closeLightbox);
+  lbPrev.addEventListener("click", function(){ nav(-1); });
+  lbNext.addEventListener("click", function(){ nav(1); });
+
+  lb.addEventListener("click", function(e){
+    if(e.target===lb) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(!lb.classList.contains("is-open")) return;
+    if(e.key==="Escape") closeLightbox();
+    if(e.key==="ArrowLeft") nav(-1);
+    if(e.key==="ArrowRight") nav(1);
+  });
+
+  /* Attach to all gallery items */
+  document.querySelectorAll(".gallery-visible, .gallery-collapsed").forEach(function(grid){
+    var galleryItems=[];
+    grid.querySelectorAll(".gallery-item").forEach(function(item){
+      var img=item.querySelector("img");
+      var vid=item.querySelector("video source");
+      if(img) galleryItems.push({type:"image", src:img.src, alt:img.alt});
+      else if(vid) galleryItems.push({type:"video", src:vid.src});
+    });
+    grid.querySelectorAll(".gallery-item").forEach(function(item, i){
+      item.addEventListener("click", function(){
+        openLightbox(galleryItems, i);
+      });
+      item.style.cursor="zoom-in";
+    });
+  });
+})();
 </script>
+
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-prev" id="lbPrev">&#8592;</button>
+  <div class="lightbox-media" id="lbMedia"></div>
+  <button class="lightbox-next" id="lbNext">&#8594;</button>
+  <div class="lightbox-counter" id="lbCount"></div>
+</div>
+
 </body>
 </html>
