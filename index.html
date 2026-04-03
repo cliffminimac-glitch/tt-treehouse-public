@@ -138,7 +138,7 @@ body.ci .cur-r { border-color:var(--g); }
 /* ── HERO ── */
 .hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; }
 .hero-bg { position:absolute; inset:0; z-index:0; }
-.hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.52; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 35%; opacity:0.52; }
 .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(26,58,26,0.15) 0%, transparent 30%, rgba(26,58,26,0.55) 75%, rgba(26,58,26,0.88) 100%), linear-gradient(to right, rgba(26,58,26,0.25) 0%, transparent 60%); z-index:1; }
 .hero-inner { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.5rem; padding:calc(var(--nav) + 2rem) clamp(1.5rem,5vw,4rem) 3rem; max-width:980px; }
 .hero-eye { display:inline-flex; align-items:center; gap:0.75rem; font-size:0.58rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--linen); opacity:0.55; }
@@ -186,11 +186,7 @@ body.ci .cur-r { border-color:var(--g); }
 /* ── VIDEO REEL ── */
 .vr-inner { max-width:900px; margin:0 auto; padding:var(--pad); text-align:center; }
 .vr-inner .lbl { margin-bottom:1.5rem; }
-.vr-box { aspect-ratio:16/9; background:rgba(255,255,255,0.03); border:1px solid var(--ln10); border-radius:var(--r); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.25rem; cursor:pointer; transition:background var(--ts),border-color var(--ts); }
-.vr-box:hover { background:rgba(255,255,255,0.06); border-color:var(--ln20); }
-.vr-play { width:60px; height:60px; border-radius:50%; background:rgba(126,184,50,0.12); border:1.5px solid rgba(126,184,50,0.3); display:flex; align-items:center; justify-content:center; transition:background var(--ts),border-color var(--ts),transform var(--tf); }
-.vr-play svg { fill:var(--accent); width:20px; height:20px; margin-left:3px; }
-.vr-box:hover .vr-play { background:rgba(126,184,50,0.22); border-color:var(--accent); transform:scale(1.1); }
+.vibe-video-slot { margin:0 auto; }
 
 /* ── EVENT SECTIONS (3 photographer galleries) ── */
 .ev-section { padding:0; }
@@ -453,7 +449,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="dk hero grain" id="hero">
   <div class="hero-bg" role="img" aria-label="Packed crowd at treehouse. NYC event">
-    <img src="/img/hero-new.jpg" alt="Packed rooftop crowd at treehouse. NYC — One WTC skyline golden hour" fetchpriority="high" style="object-position:center 30%;" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+    <img src="/img/hero-new.jpg" alt="Packed rooftop crowd at treehouse. NYC — One WTC skyline golden hour" fetchpriority="high" style="object-position:center 35%;" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
     <div class="if">treehouse.</div>
   </div>
   <div class="hero-inner">
@@ -515,6 +511,16 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
+<section class="lt">
+  <div class="w" style="padding-top:0;padding-bottom:4rem;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-radius:6px;overflow:hidden;">
+      <div style="aspect-ratio:3/2;overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div style="aspect-ratio:3/2;overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div style="aspect-ratio:3/2;overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    </div>
+  </div>
+</section>
+
 <!-- NEXT EVENT -->
 <section class="dk grain" id="events">
   <div class="w event-grid">
@@ -540,10 +546,9 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk">
   <div class="vr-inner">
     <span class="lbl" data-a="u">// The Vibe</span>
-    <div class="vr-box" data-a="f" data-d="1" style="padding:0;overflow:hidden;background:#0f2410;">
-      <video autoplay controls muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="vibe-video-slot" data-a="f" data-d="1">
+      <video autoplay muted loop playsinline controls style="width:100%;border-radius:6px;max-height:500px;object-fit:cover;">
         <source src="/img/hero-video.mp4" type="video/mp4">
-        Your browser does not support video.
       </video>
     </div>
   </div>
