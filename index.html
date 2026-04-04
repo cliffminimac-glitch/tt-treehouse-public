@@ -545,7 +545,9 @@ body.ci .cur-r { border-color:var(--g); }
 .curate-section { position:relative; width:100%; overflow:hidden; padding:60px 0; }
 /* REMOVED R13: Round 12 FIX #5 curate contain/45vh replaced by full-bleed cover */
 /* ROUND 13 FIX #2 — curate photo full-bleed cinematic strip: cover, 55vh, no side gutters */
-.curate-section .dj-photo { width:100%; height:55vh; object-fit:cover; object-position:center; display:block; max-height:none; }
+/* REMOVED R15: object-position:center was cropping the crowd at the bottom */
+/* ROUND 15 FIX #1 — shift curate photo down to show crowd at bottom while keeping sky at top */
+.curate-section .dj-photo { width:100%; height:55vh; object-fit:cover; object-position:center 70%; display:block; max-height:none; }
 /* Dark gradient so text is legible over the photo */
 /* Gradient darkens the sky at top for text legibility */
 /* ROUND 8 FIX #2 — gradient overlay on curate section removed (show full clean photo) */
@@ -983,6 +985,8 @@ body.ci .cur-r { border-color:var(--g); }
         </div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #2 — tribeca-new-08 -->
+    <div class="gallery-item"><img src="/img/tribeca-new-08.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
         <!-- ROUND 12 FIX #2 — tribeca-new-04.jpg added to Tribeca gallery at position 4 -->
         <div class="gallery-item">
           <img src="/img/tribeca-new-04.jpg" alt="Tribeca Rooftop treehouse. NYC" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
@@ -999,6 +1003,8 @@ body.ci .cur-r { border-color:var(--g); }
         </div> -->
     <!-- ROUND 8 FIX #6 — 2 new Tribeca photos added -->
     <div class="gallery-item"><img src="/img/tribeca-new-01.jpg" alt="treehouse. NYC — Tribeca Rooftop" loading="lazy"></div>
+    <!-- ROUND 15 FIX #2 — tribeca-new-09 -->
+    <div class="gallery-item"><img src="/img/tribeca-new-09.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/tribeca-new-02.jpg" alt="treehouse. NYC — Tribeca Rooftop" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
         <!-- ROUND 12 FIX #2 — tribeca-new-06.jpg added to Tribeca gallery at position 10 -->
@@ -1036,20 +1042,26 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="gallery-visible" id="gallery-visible-soho-soiree">
 <!-- REMOVED R6: old gallery photos for gallery-visible-soho-soiree -->
     <!-- REMOVED R14: duplicate soho first photo (soho-001.jpg) — keeping second instance -->
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <!-- ROUND 8 FIX #6 — soho-new-01 -->
+    <!-- ROUND 15 FIX #3a — swapped: was photo 2, now photo 1 -->
     <div class="gallery-item"><img src="/img/soho-new-01.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-01 -->
+    <!-- ROUND 15 FIX #3a — swapped: was photo 1, now photo 2 -->
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
 
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-010.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-012.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — soho-new-02 -->
     <div class="gallery-item"><img src="/img/soho-new-02.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
+    <!-- ROUND 15 FIX #3b — soho-new-08 -->
+    <div class="gallery-item"><img src="/img/soho-new-08.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — soho-new-03 -->
     <div class="gallery-item"><img src="/img/soho-new-03.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-025.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #3b — soho-new-09 -->
+    <div class="gallery-item"><img src="/img/soho-new-09.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — soho-new-04 -->
     <div class="gallery-item"><img src="/img/soho-new-04.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-030.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
@@ -1057,6 +1069,8 @@ body.ci .cur-r { border-color:var(--g); }
     <!-- ROUND 8 FIX #6 — soho-new-05 -->
     <div class="gallery-item"><img src="/img/soho-new-05.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-042.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #3b — soho-new-10 -->
+    <div class="gallery-item"><img src="/img/soho-new-10.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-048.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — soho-new-06 -->
     <div class="gallery-item"><img src="/img/soho-new-06.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
@@ -1084,6 +1098,8 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="gallery-visible" id="gallery-visible-christmas-nyc">
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-010.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #4 — xmas-new-02 near top for visual impact -->
+    <div class="gallery-item"><img src="/img/xmas-new-02.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — xmas-new-01 added at position 2 -->
     <div class="gallery-item"><img src="/img/xmas-new-01.jpg" alt="treehouse. NYC — Christmas in NYC" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-016.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
@@ -1091,11 +1107,15 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-021.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-022.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #4 — xmas-new-03 mid gallery -->
+    <div class="gallery-item"><img src="/img/xmas-new-03.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-024.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-025.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-027.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-028.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-033.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 15 FIX #4 — xmas-new-04 near end -->
+    <div class="gallery-item"><img src="/img/xmas-new-04.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-038.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-040.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-048.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
