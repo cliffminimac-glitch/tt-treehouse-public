@@ -501,7 +501,7 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a { position:relative; }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
-.curate-section { position:relative; width:100%; height:70vh; min-height:500px; overflow:hidden; }
+.curate-section { position:relative; width:100%; height:85vh; min-height:560px; /* FIX: full-size curate section */ overflow:hidden; }
 .curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center 55%; display:block; } /* ROUND 2 FIX #3 */
 .curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,36,16,0.92) 0%,rgba(15,36,16,0.55) 45%,rgba(15,36,16,0.15) 100%); }
 .curate-section .curate-copy { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; }
@@ -847,8 +847,11 @@ body.ci .cur-r { border-color:var(--g); }
     <span class="lbl reveal-child" style="color:var(--g);">// The Energy</span>
     <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.4rem;">INSIDE THE ROOM</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(240px,32vw,460px);">
-    <div style="overflow:hidden;"><img src="/img/inside-the-room.jpg" alt="Packed rooftop crowd, treehouse. NYC" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;"></div>
+  <!-- FIX: inside-the-room.jpg full width, then 2 photos below -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:clamp(200px,28vw,420px) clamp(140px,18vw,260px);gap:0;">
+    <div style="grid-column:1/-1;overflow:hidden;">
+      <img src="/img/inside-the-room.jpg" alt="Packed rooftop crowd, treehouse. NYC" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+    </div>
     <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event atmosphere" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
     <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event energy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
   </div>
@@ -916,25 +919,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 
 
-<!-- ABOUT -->
-<!-- ROUND 3 FIX #1 — Duplicate curate section removed. Only the first instance (above galleries) is kept.
-<section class="curate-section" id="about">
-  <!-- ROUND 2 FIX #3 — Background swapped from dj.jpg to curate-room.jpg (golden-hour rooftop crowd) -->
-  <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
-  <div class="curate-overlay"></div>
-  <div class="curate-copy reveal">
-    <span class="lbl reveal-child" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
-    <h2>We curate<br>the room.</h2>
-    <p>Themed parties. Open bar. Good music. The kind of night you text about the next day. Five events in, still selling out.</p>
-    <div class="tags" style="justify-content:center;margin-top:1.5rem;">
-      <span class="tag">Rooftop Parties</span>
-      <span class="tag">Holiday Events</span>
-      <span class="tag">Dinner Nights</span>
-      <span class="tag">Brand Nights</span>
-    </div>
-  </div>
-</section>
--->
+<!-- ABOUT: duplicate removed (nested comment caused rendering bug) -->
 
 <!-- VIDEO REEL -->
 <!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
