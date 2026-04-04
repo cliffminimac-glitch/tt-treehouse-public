@@ -503,14 +503,13 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a { position:relative; }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
-/* ROUND 5 FIX #2B — removed height:85vh, min-height, overflow:hidden so image shows at full natural size */
-.curate-section { position:relative; width:100%; }
-/* ROUND 5 FIX #2C — image at full natural size, no cropping, no position offset */
-.curate-section .dj-photo { width:100%; height:auto; display:block; } /* ROUND 2 FIX #3 */
-/* ROUND 5 FIX #2D — REMOVED dark gradient overlay so photo colors are fully visible */
-/* REMOVED R5: .curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(...) } */
-/* ROUND 5 FIX #2E — curate-copy now flows below the image (not absolute positioned over it) */
-.curate-section .curate-copy { position:relative; text-align:center; color:#f0ede8; max-width:640px; padding:2rem 24px; width:100%; margin:0 auto; }
+/* ROUND 7 FIX — restore text overlay on curate section big picture */
+.curate-section { position:relative; width:100%; overflow:hidden; }
+.curate-section .dj-photo { width:100%; height:auto; display:block; }
+/* Dark gradient so text is legible over the photo */
+.curate-section::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,28,10,0.82) 0%, rgba(10,28,10,0.45) 50%, rgba(10,28,10,0.15) 100%); pointer-events:none; }
+/* Text positioned absolutely over the image, bottom-anchored */
+.curate-section .curate-copy { position:absolute; bottom:clamp(2rem,5vw,4rem); left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
 .curate-copy p { font-size:1rem; line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; }
 .curate-copy .tag { background:rgba(26,58,26,0.4); border-color:rgba(240,237,232,0.2); color:#f0ede8; }
