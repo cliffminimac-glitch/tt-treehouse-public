@@ -314,7 +314,10 @@ body.ci .cur-r { border-color:var(--g); }
 .why-h { margin-bottom:2.5rem; }
 .why-h .lbl { margin-bottom:1rem; }
 .why-rows { display:flex; flex-direction:column; }
-.why-row { display:grid; grid-template-columns:2.5rem 1fr; gap:1.5rem; align-items:start; padding:1.75rem 0; border-bottom:1px solid var(--ln10); }
+/* REMOVED R14: why-row grid had 2.5rem number column — no number element exists since Round 11, causing text to wrap word-by-word */
+/* .why-row { display:grid; grid-template-columns:2.5rem 1fr; gap:1.5rem; align-items:start; padding:1.75rem 0; border-bottom:1px solid var(--ln10); } */
+/* ROUND 14 FIX #1 — why-row display:block so single paragraph flows naturally */
+.why-row { display:block; padding:1.75rem 0; border-bottom:1px solid var(--ln10); }
 .why-row:last-of-type { border-bottom:none; }
 .why-n { font-family:var(--ff-d); font-size:1.1rem; color:var(--accent); padding-top:0.1rem; line-height:1.5; }
 .why-t { font-size:0.95rem; font-weight:300; line-height:1.75; opacity:0.8; }
@@ -623,8 +626,12 @@ body.ci .cur-r { border-color:var(--g); }
   
 /* ROUND 2 FIX #5 — Sponsor video styles */
 .sponsor-video { width:100%; height:100%; object-fit:cover; display:block; border-radius:4px; }
-.why-photos { position:relative; overflow:hidden; border-radius:4px; min-height:400px; max-height:580px; }
-@media(max-width:768px){ .why-photos { min-height:280px; max-height:420px; width:100%; } }
+/* REMOVED R14: why-photos max-height:580px cap replaced by 60vh for taller video */
+/* ROUND 14 FIX #2 — sponsor video taller: 60vh min, no max cap */
+.why-photos { position:relative; overflow:hidden; border-radius:4px; min-height:60vh; max-height:none; }
+/* REMOVED R14: why-photos mobile max-height:420px replaced by 40vh */
+/* ROUND 14 FIX #2 mobile — sponsor video 40vh on mobile */
+@media(max-width:768px){ .why-photos { min-height:40vh; max-height:none; width:100%; } }
 
 /* ROUND 2 FIX #4 — Also update logo sheet display */
 .logos-sheet { width:100%; display:block; }
@@ -1028,7 +1035,7 @@ body.ci .cur-r { border-color:var(--g); }
   <!-- AUDIT FIX #7 — First 8 SoHo images eager-loaded -->
   <div class="gallery-visible" id="gallery-visible-soho-soiree">
 <!-- REMOVED R6: old gallery photos for gallery-visible-soho-soiree -->
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-001.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- REMOVED R14: duplicate soho first photo (soho-001.jpg) — keeping second instance -->
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <!-- ROUND 8 FIX #6 — soho-new-01 -->
     <div class="gallery-item"><img src="/img/soho-new-01.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
