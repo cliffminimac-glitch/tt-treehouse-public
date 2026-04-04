@@ -771,6 +771,24 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="marquee-track">
     <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
     <span class="marquee-item">SoHo Soiree<span class="marquee-dot"></span></span>
+<!-- ABOUT: duplicate removed (nested comment caused rendering bug) -->
+
+<!-- VIDEO REEL -->
+<!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
+<section class="dk grain" id="vibe" style="padding:4rem 0;">
+  <div style="width:100%;max-width:100%;padding:0;text-align:center;">
+    <span class="lbl reveal-child" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
+    <div style="width:100%;overflow:hidden;border-radius:0;">
+      <video autoplay muted loop playsinline controls
+        poster="/img/hero-new.jpg"
+        preload="metadata"
+        style="width:100%;max-height:80vh;object-fit:cover;display:block;border-radius:0;">
+        <source src="/img/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
     <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
     <span class="marquee-item">Dinner Parties<span class="marquee-dot"></span></span>
     <span class="marquee-item">Knox Day<span class="marquee-dot"></span></span>
@@ -925,24 +943,6 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-
-<!-- ABOUT: duplicate removed (nested comment caused rendering bug) -->
-
-<!-- VIDEO REEL -->
-<!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
-<section class="dk grain" id="vibe" style="padding:4rem 0;">
-  <div style="width:100%;max-width:100%;padding:0;text-align:center;">
-    <span class="lbl reveal-child" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
-    <div style="width:100%;overflow:hidden;border-radius:0;">
-      <video autoplay muted loop playsinline controls
-        poster="/img/hero-new.jpg"
-        preload="metadata"
-        style="width:100%;max-height:80vh;object-fit:cover;display:block;border-radius:0;">
-        <source src="/img/hero-video.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════ 6 PARTY SECTIONS — v6 FINAL + Design Audit ═══════════════ -->
 
