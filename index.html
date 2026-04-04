@@ -207,17 +207,13 @@ body.ci .cur-r { border-color:var(--g); }
 /* REMOVED R6: Uniform 4-column rectangle gallery grids (replaced by CSS columns masonry) */
 /* REMOVED R6: .gallery-visible { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin:0; padding:0; } */
 /* REMOVED R6: .gallery-collapsed { overflow:hidden; max-height:0; opacity:0; transition:...; display:grid !important; grid-template-columns:repeat(3,1fr); gap:2px; } */
-/* ROUND 6 FIX — CSS columns masonry layout (desktop 3 col) */
+/* ROUND 7 FIX #2 — Restore display:grid square tiles (3-col desktop) */
 .photo-grid,.gallery-visible,.gallery-collapsed {
-  column-count:3;
-  column-gap:4px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
   margin:0;
   padding:0;
-}
-.photo-grid .gallery-item,.gallery-visible .gallery-item,.gallery-collapsed .gallery-item {
-  break-inside:avoid;
-  margin-bottom:4px;
-  display:block;
 }
 .gallery-collapsed { overflow:hidden; max-height:0; opacity:0; transition:max-height 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s ease; }
 .gallery-collapsed.is-open { max-height:9999px; opacity:1; }
@@ -258,7 +254,7 @@ body.ci .cur-r { border-color:var(--g); }
 @media(max-width:768px){
   /* REMOVED R6: .gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); gap:2px; } */
   /* ROUND 6 FIX — 2 col mobile masonry */
-  .photo-grid,.gallery-visible,.gallery-collapsed { column-count:2; column-gap:4px; }
+  .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); }
   .photo-grid .gallery-item,.gallery-visible .gallery-item,.gallery-collapsed .gallery-item { margin-bottom:4px; }
   /* REMOVED R6: /* REMOVED R6: .photo-grid { grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px 4px; } */ */
   .ev-section { padding:48px 0 0; }
@@ -431,8 +427,8 @@ body.ci .cur-r { border-color:var(--g); }
   .stat { padding:1.5rem 0; }
   .stat-div { width:3rem; height:1px; align-self:auto; }
   /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
-/* ROUND 5 FIX #2 — REMOVED: .curate-section { min-height:85vh; } duplicate rule */
-@media(max-width:768px){ .curate-section { min-height:70vh; } }
+/* ROUND 7 FIX #4b — mobile curate height */
+@media(max-width:768px){ .curate-section { max-height:70vh; min-height:unset; } }
   .curate-copy { top:2rem; bottom:auto; }
   .curate-copy h2 { font-size:1.8rem; }
 }
@@ -440,7 +436,7 @@ body.ci .cur-r { border-color:var(--g); }
 @media(max-width:480px) {
   /* REMOVED R6: .photo-grid { grid-template-columns:1fr 1fr; } */
   /* ROUND 6 FIX — 1 col small mobile */
-  .photo-grid,.gallery-visible,.gallery-collapsed { column-count:1; }
+  .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:1fr; }
   .photo-item.tall { grid-row:span 1; }
   .partners-grid { gap:1rem 2.5rem; }
   .pn-xl { font-size:1.8rem; }
@@ -504,8 +500,9 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
 /* ROUND 7 FIX — restore text overlay on curate section big picture */
-.curate-section { position:relative; width:100%; overflow:hidden; }
-.curate-section .dj-photo { width:100%; height:auto; display:block; }
+/* ROUND 7 FIX #4 — cap height so image doesn't expand to 1580px */
+.curate-section { position:relative; width:100%; overflow:hidden; max-height:85vh; }
+.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; display:block; }
 /* Dark gradient so text is legible over the photo */
 /* Gradient darkens the sky at top for text legibility */
 .curate-section::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,28,10,0.65) 0%, rgba(10,28,10,0.3) 45%, rgba(10,28,10,0.05) 100%); pointer-events:none; }
@@ -546,12 +543,10 @@ body.ci .cur-r { border-color:var(--g); }
 .vibe-video-slot video { width:100%; display:block; border-radius:12px; max-height:480px; object-fit:cover; }
 
 /* ── GALLERY EXPANDED FIX (Task 5) ── */
-.gallery-collapsed.is-open { max-height:75vh; overflow-y:auto; scroll-behavior:smooth; }
-.gallery-collapsed.is-open::-webkit-scrollbar { width:4px; }
-.gallery-collapsed.is-open::-webkit-scrollbar-track { background:transparent; }
-.gallery-collapsed.is-open::-webkit-scrollbar-thumb { background:var(--ln20); border-radius:2px; }
-.gallery-item { aspect-ratio:unset; min-height:0; }
-.gallery-item img { width:100%; height:auto; object-fit:contain; object-position:center; aspect-ratio:unset; display:block; }
+/* ROUND 7 FIX #6 — removed 75vh cap; max-height:9999px from base rule applies */
+/* ROUND 7 FIX #3 — square tiles, cover crop */
+.gallery-item { aspect-ratio:1/1; overflow:hidden; }
+.gallery-item img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 .gallery-collapse-btn { display:block; width:100%; text-align:center; padding:0.5rem 1rem; font-family:var(--ff-b); font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:lowercase; color:currentColor; opacity:0.55; cursor:pointer; border:none; background:none; transition:opacity 0.2s; margin-top:0; } /* ROUND 3 FIX #4 — removed margin-top */
 .gallery-collapse-btn:hover { opacity:1; }
 
@@ -624,7 +619,11 @@ body.ci .cur-r { border-color:var(--g); }
 .ev-header .reveal-child:nth-child(4) { transition-delay: 240ms; }
 
 
-/* ROUND 4 FIX #8 — Vibe video: edge-to-edge, 65vh max, label overlay */
+/* ROUND 7 FIX #1 — Vibe video: clean rules, no height conflicts */
+.vibe-reel { padding:0 !important; overflow:hidden; }
+.vr-inner { padding:0; max-width:100%; }
+.vr-inner video { width:100%; display:block; max-height:75vh; min-height:300px; object-fit:cover; }
+
 .vibe-reel { padding:0 !important; overflow:hidden; max-height:65vh; position:relative; }
 .vr-inner { padding:0; max-width:100%; position:relative; }
 .vr-inner video { width:100%; display:block; max-height:65vh; object-fit:cover; }
@@ -911,10 +910,10 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-024.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-022.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-022.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
   <!-- REMOVED R6: gallery-collapsed-tribeca-rooftop — all photos now in gallery-visible -->
   <div style="text-align:center;padding:1.5rem 0;">
@@ -943,14 +942,14 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-010.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-012.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-025.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-030.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-039.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-042.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-048.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-025.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-030.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-039.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-042.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-048.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-049.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
   <!-- REMOVED R6: gallery-collapsed-soho-soiree — all photos now in gallery-visible -->
@@ -959,7 +958,7 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 <!-- PARTY 3: CHRISTMAS IN NYC -->
-<section class="lt ev-section" id="christmas-nyc">
+<section class="dk ev-section grain" id="christmas-nyc">
   <div class="ev-header reveal">
     <span class="lbl reveal-child">//  · treehouse. NYC</span>
     <h2 class="ev-title reveal-child">CHRISTMAS IN NYC</h2>
@@ -1041,7 +1040,7 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 -->
 <!-- PARTY 5: KNOX DAY -->
-<section class="lt ev-section" id="knox-day">
+<section class="dk ev-section grain" id="knox-day">
   <div class="ev-header reveal">
     <span class="lbl reveal-child">// treehouse. NYC</span>
     <h2 class="ev-title reveal-child">KNOX DAY</h2>
