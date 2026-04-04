@@ -192,8 +192,8 @@ body.ci .cur-r { border-color:var(--g); }
 
 /* ── EVENT SECTIONS (3 photographer galleries) ── */
 /* AUDIT FIX #5 — Reduced gallery header dead space */
-.ev-section { padding:40px 0 0; }
-.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 1.25rem; max-width:var(--wrap); margin:0 auto; }
+.ev-section { padding:32px 0 0; } /* ROUND 2 FIX #4 — tighter section top padding */
+.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 1rem; max-width:var(--wrap); margin:0 auto; } /* ROUND 2 FIX #4 */
 .ev-header .lbl { margin-bottom:1rem; }
 .ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:0.5rem; }
 .ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:1.25rem; }
@@ -502,7 +502,7 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
 .curate-section { position:relative; width:100%; height:70vh; min-height:500px; overflow:hidden; }
-.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center 55%; display:block; } /* ROUND 2 FIX #3 */
 .curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,36,16,0.92) 0%,rgba(15,36,16,0.55) 45%,rgba(15,36,16,0.15) 100%); }
 .curate-section .curate-copy { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; }
 .curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
@@ -575,7 +575,16 @@ body.ci .cur-r { border-color:var(--g); }
 .mob { background:linear-gradient(180deg,var(--g) 0%,#0a1c0a 100%); gap:2.5rem; }
 .mob a { font-size:2.2rem; }
 .mob::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.025; pointer-events:none; }
-  </style>
+  
+/* ROUND 2 FIX #5 — Sponsor video styles */
+.sponsor-video { width:100%; height:100%; object-fit:cover; display:block; border-radius:4px; }
+.why-photos { position:relative; overflow:hidden; border-radius:4px; min-height:400px; max-height:580px; }
+@media(max-width:768px){ .why-photos { min-height:280px; max-height:420px; width:100%; } }
+
+/* ROUND 2 FIX #4 — Also update logo sheet display */
+.logos-sheet { width:100%; display:block; }
+
+</style>
 <script src="/photos.js"></script>
 </head>
 <body>
@@ -678,14 +687,80 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </div>
 
+<!-- ABOUT -->
+<!-- ROUND 2 FIX #2 — Curate section moved above galleries -->
+<section class="curate-section" id="about">
+  <!-- ROUND 2 FIX #3 — Background swapped from dj.jpg to curate-room.jpg (golden-hour rooftop crowd) -->
+  <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
+  <div class="curate-overlay"></div>
+  <div class="curate-copy reveal">
+    <span class="lbl" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
+    <h2>We curate<br>the room.</h2>
+    <p>Themed parties. Open bar. Good music. The kind of night you text about the next day. Five events in, still selling out.</p>
+    <div class="tags" style="justify-content:center;margin-top:1.5rem;">
+      <span class="tag">Rooftop Parties</span>
+      <span class="tag">Holiday Events</span>
+      <span class="tag">Dinner Nights</span>
+      <span class="tag">Brand Nights</span>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT EVENT -->
+<!-- ROUND 2 FIX #2 — Next event moved above galleries -->
+<section class="dk grain" id="events">
+  <div class="w event-grid">
+    <div data-a="l">
+      <span class="lbl" style="margin-bottom:1.25rem">// Next Event</span>
+      <h2 class="event-date">April 25th</h2>
+      <p class="event-time">Doors 10:30pm — 3:30am ET</p>
+      <div class="venue">
+        <p class="venue-n">75 Varick Rooftop</p>
+        <p class="venue-l">SoHo, New York City</p>
+      </div>
+      <p class="event-meta">300–400 guests · Invite Only · Open Bar</p>
+      <a href="#join" class="btn btn-p">request your invite</a>
+    </div>
+    <div class="event-img" data-a="f" data-d="2" style="aspect-ratio:16/9;overflow:hidden;border-radius:var(--r);">
+      <div class="venue-carousel" id="venueCarousel">
+        <div class="vc-slide active"><img src="/img/varick-1.jpg" alt="75 Varick Rooftop — NYC skyline at dusk" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-2.jpg" alt="75 Varick Rooftop — venue interior" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-3.jpg" alt="75 Varick Rooftop — event space" loading="lazy"></div>
+        <div class="vc-slide"><img src="/img/varick-4.jpg" alt="75 Varick Rooftop — rooftop view" loading="lazy"></div>
+        <button class="vc-btn vc-prev" aria-label="Previous photo">&#8592;</button>
+        <button class="vc-btn vc-next" aria-label="Next photo">&#8594;</button>
+        <div class="vc-dots">
+          <button class="vc-dot active" aria-label="Photo 1"></button>
+          <button class="vc-dot" aria-label="Photo 2"></button>
+          <button class="vc-dot" aria-label="Photo 3"></button>
+          <button class="vc-dot" aria-label="Photo 4"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- AUDIT FIX #3 — Editorial triptych: added section identity label "THE ENERGY" -->
+<section class="lt" style="padding:0;" id="the-energy">
+  <div style="padding:2.5rem clamp(1.5rem,5vw,5rem) 1.5rem;">
+    <span class="lbl" style="color:var(--g);">// The Energy</span>
+    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.5rem;">INSIDE THE ROOM</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(220px,30vw,420px);">
+    <div style="overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event crowd" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event atmosphere" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event energy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+  </div>
+</section>
+
+<!-- ROUND 2 FIX #2 — Tribeca gallery now appears after curate+next-event -->
 <!-- AUDIT FIX #1 — Gallery moved up: appears within first 2 scroll-depths -->
 <!-- PARTY 1: TRIBECA ROOFTOP -->
 <!-- AUDIT FIX #11 — Gallery unified to dark theme -->
 <section class="dk ev-section" id="tribeca-rooftop">
   <div class="ev-header reveal">
-    <span class="lbl">// October 2024 · treehouse. NYC</span>
+    <span class="lbl">//  · treehouse. NYC</span>
     <!-- AUDIT FIX #12 — Dates added to all event titles -->
-    <h2 class="ev-title">TRIBECA ROOFTOP · OCT 2024</h2>
+    <h2 class="ev-title">TRIBECA ROOFTOP</h2>
     <p class="ev-desc">Pumpkins, disco balls, and the Tribeca skyline. The bar opens at six and nobody leaves before midnight.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Tribeca, New York City</span>
@@ -741,7 +816,8 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- ABOUT -->
 <section class="curate-section" id="about">
-  <img src="/img/dj.jpg" alt="DJ performing at treehouse. NYC — We Curate the Room" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
+  <!-- ROUND 2 FIX #3 — Background swapped from dj.jpg to curate-room.jpg (golden-hour rooftop crowd) -->
+  <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
   <div class="curate-overlay"></div>
   <div class="curate-copy reveal">
     <span class="lbl" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
@@ -756,51 +832,6 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-<!-- AUDIT FIX #3 — Editorial triptych: added section identity label "THE ENERGY" -->
-<section class="lt" style="padding:0;" id="the-energy">
-  <div style="padding:2.5rem clamp(1.5rem,5vw,5rem) 1.5rem;">
-    <span class="lbl" style="color:var(--g);">// The Energy</span>
-    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.5rem;">INSIDE THE ROOM</h2>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(220px,30vw,420px);">
-    <div style="overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event crowd" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event atmosphere" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event energy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-  </div>
-</section>
-
-<!-- NEXT EVENT -->
-<section class="dk grain" id="events">
-  <div class="w event-grid">
-    <div data-a="l">
-      <span class="lbl" style="margin-bottom:1.25rem">// Next Event</span>
-      <h2 class="event-date">April 25th</h2>
-      <p class="event-time">Doors 10:30pm — 3:30am ET</p>
-      <div class="venue">
-        <p class="venue-n">75 Varick Rooftop</p>
-        <p class="venue-l">SoHo, New York City</p>
-      </div>
-      <p class="event-meta">300–400 guests · Invite Only · Open Bar</p>
-      <a href="#join" class="btn btn-p">request your invite</a>
-    </div>
-    <div class="event-img" data-a="f" data-d="2" style="aspect-ratio:16/9;overflow:hidden;border-radius:var(--r);">
-      <div class="venue-carousel" id="venueCarousel">
-        <div class="vc-slide active"><img src="/img/varick-1.jpg" alt="75 Varick Rooftop — NYC skyline at dusk" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-2.jpg" alt="75 Varick Rooftop — venue interior" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-3.jpg" alt="75 Varick Rooftop — event space" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-4.jpg" alt="75 Varick Rooftop — rooftop view" loading="lazy"></div>
-        <button class="vc-btn vc-prev" aria-label="Previous photo">&#8592;</button>
-        <button class="vc-btn vc-next" aria-label="Next photo">&#8594;</button>
-        <div class="vc-dots">
-          <button class="vc-dot active" aria-label="Photo 1"></button>
-          <button class="vc-dot" aria-label="Photo 2"></button>
-          <button class="vc-dot" aria-label="Photo 3"></button>
-          <button class="vc-dot" aria-label="Photo 4"></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- VIDEO REEL -->
 <!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
 <section class="dk grain" id="vibe" style="padding:4rem 0;">
@@ -822,8 +853,8 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 2: SOHO SOIREE -->
 <section class="dk ev-section grain" id="soho-soiree">
   <div class="ev-header reveal">
-    <span class="lbl">// May 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">SOHO SOIREE · MAY 2024</h2>
+    <span class="lbl">// treehouse. NYC</span>
+    <h2 class="ev-title">SOHO SOIREE</h2>
     <p class="ev-desc">SoHo rooftop, late spring, birthday cake. The kind of party that makes people cancel their other plans.</p>
     <div class="ev-meta-row">
       <span class="ev-date">SoHo, New York City</span>
@@ -878,8 +909,8 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 3: CHRISTMAS IN NYC -->
 <section class="lt ev-section" id="christmas-nyc">
   <div class="ev-header reveal">
-    <span class="lbl">// December 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">CHRISTMAS IN NYC · DEC 2024</h2>
+    <span class="lbl">//  · treehouse. NYC</span>
+    <h2 class="ev-title">CHRISTMAS IN NYC</h2>
     <p class="ev-desc">December in New York. Everyone dressed up and nobody left early.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Midtown, New York City</span>
@@ -979,8 +1010,8 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 5: KNOX DAY -->
 <section class="lt ev-section" id="knox-day">
   <div class="ev-header reveal">
-    <span class="lbl">// Summer 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">KNOX DAY · JUL 2024</h2>
+    <span class="lbl">// treehouse. NYC</span>
+    <h2 class="ev-title">KNOX DAY</h2>
     <p class="ev-desc">Open sky, open bar, DJ set that runs until the sun goes down. Brooklyn does it right.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Brooklyn, New York City</span>
@@ -1017,7 +1048,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 6: WEST VILLAGE -->
 <section class="dk ev-section grain" id="west-village">
   <div class="ev-header reveal">
-    <span class="lbl">// Spring 2024 · treehouse. NYC</span>
+    <span class="lbl">// treehouse. NYC</span>
     <h2 class="ev-title">WEST VILLAGE · 2024</h2>
     <p class="ev-desc">The West Village at night. Cocktails, good lighting, the crowd that always shows up dressed.</p>
     <div class="ev-meta-row">
@@ -1101,20 +1132,27 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
     <!-- AUDIT FIX #8 — Sponsor photos enlarged: 55% width desktop, full-width mobile -->
     <div class="why-vis" data-a="f" data-d="1" aria-hidden="true">
-      <div class="why-vis-main" style="aspect-ratio:3/2;">
-        <img src="/img/sp-xmas-martini.jpg" alt="Sponsor product at treehouse. NYC event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
-        <div class="if">treehouse.</div>
-      </div>
-      <div class="why-vis-sub" style="margin-top:6px;">
-        <div class="why-vs-item" style="aspect-ratio:3/2;">
-          <img src="/img/sp-may-sunglasses.jpg" alt="Golden hour couple with drinks at treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
-          <div class="if">treehouse.</div>
-        </div>
-        <div class="why-vs-item" style="aspect-ratio:3/2;">
-          <img src="/img/sp-xmas-crowddrinks.jpg" alt="Crowd drinks raised at treehouse. holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
-          <div class="if">treehouse.</div>
-        </div>
-      </div>
+      <!-- ROUND 2 FIX #5 — Sponsor photos replaced with sponsor-video.mp4 -->
+<div class="why-photos" data-a="f" data-d="2">
+  <!-- REMOVED: sp-xmas-martini.jpg, sp-may-sunglasses.jpg, sp-xmas-crowddrinks.jpg
+  <img src="/img/sp-xmas-martini.jpg" ...>
+  <img src="/img/sp-may-sunglasses.jpg" ...>
+  <img src="/img/sp-xmas-crowddrinks.jpg" ...>
+  -->
+  <video
+    src="/img/sponsor-video.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/img/hero-new.jpg"
+    class="sponsor-video"
+    style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px;"
+  ></video>
+</div>
+      <!-- ROUND 2 FIX #5 — why-vis-sub photos commented out; sponsor video is the only visual -->
+      <- Curate section: swapped DJ photo for sunset crowd rooftop REMOVED: why-vis-sub with sp-may-sunglasses.jpg and sp-xmas-crowddrinks.jpg -->
     </div>
   </div>
 </section>
@@ -1192,26 +1230,11 @@ body.ci .cur-r { border-color:var(--g); }
     <h2 data-a="l" style="margin-bottom:0.75rem">Brands that showed up.</h2>
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. 1,500+ people in the room.</p>
 
-    <div class="brands-grid-wrap">
-      <img src="/img/logos/zakuska.png" alt="Zakuska Vodka" class="brand-logo" loading="lazy">
-      <img src="/img/logos/friday-beers.png" alt="Friday Beers" class="brand-logo" loading="lazy">
-      <img src="/img/logos/surf.png" alt="Surf" class="brand-logo" loading="lazy">
-      <img src="/img/logos/celsius.png" alt="Celsius" class="brand-logo" loading="lazy">
-      <img src="/img/logos/clr.png" alt="CLR" class="brand-logo" loading="lazy">
-      <img src="/img/logos/solento.png" alt="Solento Tequila" class="brand-logo" loading="lazy">
-      <img src="/img/logos/teremana.png" alt="Teremana Tequila" class="brand-logo" loading="lazy">
-      <img src="/img/logos/7th-street-burger.png" alt="7th Street Burger" class="brand-logo" loading="lazy">
-      <img src="/img/logos/nightowl.png" alt="Nightowl" class="brand-logo" loading="lazy">
-      <img src="/img/logos/bashi.png" alt="Bashi" class="brand-logo" loading="lazy">
-      <img src="/img/logos/lemon-perfect.png" alt="Lemon Perfect" class="brand-logo" loading="lazy">
-      <img src="/img/logos/holiday.png" alt="Holiday" class="brand-logo" loading="lazy">
-      <img src="/img/logos/cabal.png" alt="Cabal Tequila" class="brand-logo" loading="lazy">
-      <img src="/img/logos/potro.png" alt="Potro Tequila" class="brand-logo" loading="lazy">
-      <img src="/img/logos/mezcalua.png" alt="Mezcalua" class="brand-logo" loading="lazy">
-      <img src="/img/logos/mission.png" alt="Mission Craft Cocktails" class="brand-logo" loading="lazy">
-      <img src="/img/logos/hampton-water.png" alt="Hampton Water" class="brand-logo" loading="lazy">
-      <img src="/img/logos/lucie.png" alt="Lucie" class="brand-logo" loading="lazy">
-    </div>
+    <!-- ROUND 2 FIX — Logo sheets updated to cleaner versions from Drive (7.png, 8.png) -->
+<div class="brands-grid-wrap" style="display:flex;flex-direction:column;gap:2rem;align-items:center;padding:2rem 0;">
+  <img src="/img/curate-7.png" alt="treehouse. brand partners — Zakuska, Friday Beers, Surf, Celsius, CLR, Solento, Teremana, 7th Street Burger, NightOwl, Bashi, Lemon Perfect, Holiday" style="max-width:860px;width:100%;filter:invert(1) brightness(0.8);opacity:0.7;">
+  <img src="/img/curate-8.png" alt="treehouse. brand partners — Cabal Tequila, Potro Tequila, Mezcalum, Mission Craft Cocktails, Hampton Water, Lucie" style="max-width:860px;width:100%;filter:invert(1) brightness(0.8);opacity:0.7;">
+</div>
 
     <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
       <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Limited spots left for 2026. Once they're gone, they're gone.</p>
