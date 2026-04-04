@@ -447,6 +447,24 @@ body.ci .cur-r { border-color:var(--g); }
 .gallery-toggle { transition:background 0.25s ease,color 0.25s ease,transform 0.15s ease,border-color 0.25s ease; }
 .gallery-toggle:hover { transform:scale(1.02); }
 .gallery-toggle:active { transform:scale(0.98); }
+
+/* Fix D: Video tiles in gallery grid */
+.gallery-item.is-video::after { display:none; } /* remove any play icon overlay */
+.gallery-item.is-video::before {
+  content:"";
+  position:absolute;
+  bottom:8px; right:8px;
+  width:6px; height:6px;
+  border-radius:50%;
+  background:rgba(240,237,232,0.7);
+  z-index:2;
+  pointer-events:none;
+}
+.gallery-item.is-video video {
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
 .lightbox { opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
 .lightbox.is-open { opacity:1; pointer-events:all; }
 .lightbox-media img, .lightbox-media video { opacity:0; transform:scale(0.96); transition:opacity 0.3s ease,transform 0.3s ease; }
@@ -1497,6 +1515,8 @@ document.querySelectorAll('img').forEach(function(img){
 
   function openLightbox(arr, i){
     items=arr; idx=i;
+    // Pause all gallery videos when lightbox opens
+    document.querySelectorAll(".gallery-video").forEach(function(v){ v.pause(); });
     showItem();
     lb.classList.add("is-open");
     document.body.style.overflow="hidden";
@@ -1592,6 +1612,26 @@ document.querySelectorAll('img').forEach(function(img){
         }
       }
     });
+  });
+})();
+
+/* Fix D: Scroll-triggered video autoplay in gallery tiles */
+(function(){
+  var videoObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var video = entry.target;
+      if(entry.isIntersecting){
+        if(video.readyState === 0) video.load();
+        video.play().catch(function(){});
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }, { threshold: 0.4, rootMargin: "0px" });
+
+  document.querySelectorAll(".gallery-video").forEach(function(video){
+    videoObs.observe(video);
   });
 })();
 </script>
