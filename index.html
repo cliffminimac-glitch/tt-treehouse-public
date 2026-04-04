@@ -431,7 +431,7 @@ body.ci .cur-r { border-color:var(--g); }
   .stat { padding:1.5rem 0; }
   .stat-div { width:3rem; height:1px; align-self:auto; }
   /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
-.curate-section { min-height:85vh; }
+/* ROUND 5 FIX #2 — REMOVED: .curate-section { min-height:85vh; } duplicate rule */
 @media(max-width:768px){ .curate-section { min-height:70vh; } }
   .curate-copy { bottom:32px; }
   .curate-copy h2 { font-size:1.8rem; }
@@ -501,10 +501,14 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a { position:relative; }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
-.curate-section { position:relative; width:100%; height:85vh; min-height:560px; /* FIX: full-size curate section */ overflow:hidden; }
-.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center 55%; display:block; } /* ROUND 2 FIX #3 */
-.curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,36,16,0.92) 0%,rgba(15,36,16,0.55) 45%,rgba(15,36,16,0.15) 100%); }
-.curate-section .curate-copy { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; }
+/* ROUND 5 FIX #2B — removed height:85vh, min-height, overflow:hidden so image shows at full natural size */
+.curate-section { position:relative; width:100%; }
+/* ROUND 5 FIX #2C — image at full natural size, no cropping, no position offset */
+.curate-section .dj-photo { width:100%; height:auto; display:block; } /* ROUND 2 FIX #3 */
+/* ROUND 5 FIX #2D — REMOVED dark gradient overlay so photo colors are fully visible */
+/* REMOVED R5: .curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(...) } */
+/* ROUND 5 FIX #2E — curate-copy now flows below the image (not absolute positioned over it) */
+.curate-section .curate-copy { position:relative; text-align:center; color:#f0ede8; max-width:640px; padding:2rem 24px; width:100%; margin:0 auto; }
 .curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
 .curate-copy p { font-size:1rem; line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; }
 .curate-copy .tag { background:rgba(26,58,26,0.4); border-color:rgba(240,237,232,0.2); color:#f0ede8; }
@@ -811,7 +815,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="curate-section" id="about">
   <!-- ROUND 2 FIX #3 — Background swapped from dj.jpg to curate-room.jpg (golden-hour rooftop crowd) -->
   <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
-  <div class="curate-overlay"></div>
+  <!-- REMOVED R5: curate-overlay div removed, gradient overlay eliminated -->
   <div class="curate-copy reveal">
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
     <h2>We curate<br>the room.</h2>
@@ -1013,48 +1017,27 @@ body.ci .cur-r { border-color:var(--g); }
       <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
     </div>
   </div>
+  <!-- ROUND 5 FIX #3 — Christmas gallery replaced with 15 specific photos in exact order -->
   <div class="gallery-visible" id="gallery-visible-christmas-nyc">
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-003.jpg" alt="Christmas party, festive crowd" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-001.jpg" alt="Holiday costumes, treehouse. Christmas" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-005.jpg" alt="Cocktails and costumes" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-007.jpg" alt="Christmas crowd, NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="Holiday party energy" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-011.jpg" alt="Friends at Christmas treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-013.jpg" alt="Festive drinks, holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-015.jpg" alt="Christmas night out, NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-017.jpg" alt="Holiday crowd, open bar" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="Christmas party group shot" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-021.jpg" alt="Festive rooftop, December NYC" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-023.jpg" alt="Holiday vibes, treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-010.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-016.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-018.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-021.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-022.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-024.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-025.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-027.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-028.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-033.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-038.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-040.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-048.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
-  <div class="gallery-collapsed" id="gallery-collapsed-christmas-nyc">
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-024.jpg" alt="treehouse. Christmas NYC photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-025.jpg" alt="treehouse. Christmas NYC photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-026.jpg" alt="treehouse. Christmas NYC photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-027.jpg" alt="treehouse. Christmas NYC photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-028.jpg" alt="treehouse. Christmas NYC photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-029.jpg" alt="treehouse. Christmas NYC photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-030.jpg" alt="treehouse. Christmas NYC photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-031.jpg" alt="treehouse. Christmas NYC photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-032.jpg" alt="treehouse. Christmas NYC photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-033.jpg" alt="treehouse. Christmas NYC photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-034.jpg" alt="treehouse. Christmas NYC photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-035.jpg" alt="treehouse. Christmas NYC photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-036.jpg" alt="treehouse. Christmas NYC photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-037.jpg" alt="treehouse. Christmas NYC photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-038.jpg" alt="treehouse. Christmas NYC photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-039.jpg" alt="treehouse. Christmas NYC photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-040.jpg" alt="treehouse. Christmas NYC photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-041.jpg" alt="treehouse. Christmas NYC photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-042.jpg" alt="treehouse. Christmas NYC photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-043.jpg" alt="treehouse. Christmas NYC photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-044.jpg" alt="treehouse. Christmas NYC photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-045.jpg" alt="treehouse. Christmas NYC photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-046.jpg" alt="treehouse. Christmas NYC photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-047.jpg" alt="treehouse. Christmas NYC photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-  </div>
+  <!-- REMOVED R5: Christmas gallery-collapsed commented out — all 15 photos now in gallery-visible -->
   <div style="text-align:center;padding:1.5rem 0;">
-    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-christmas-nyc" data-count="24" style="font-size:0.65rem;">view all 36 photos</button>
+    <!-- REMOVED R5: gallery toggle removed — Christmas gallery now shows all 15 photos in one grid -->
   </div>
 </section>
 <!-- PARTY 4: DINNER PARTIES -->
@@ -1760,20 +1743,18 @@ document.querySelectorAll('img').forEach(function(img){
 })();
 
 // ROUND 4 FIX #3 — Live countdown to April 25, 2025 8PM ET
+// ROUND 5 FIX #1 — Corrected year to 2026
 function updateCountdown() {
-  var eventDate = new Date('2025-04-25T20:00:00-04:00');
+  var eventDate = new Date('2026-04-25T20:00:00-04:00');
   var now = new Date();
   var diff = eventDate - now;
   var dEl = document.getElementById('countdown-days');
   var hEl = document.getElementById('countdown-hours');
   if (!dEl || !hEl) return;
   if (diff <= 0) {
-    dEl.textContent = 'TONIGHT';
-    hEl.textContent = '';
-    var colon = document.querySelector('.countdown-colon');
-    var sep2 = document.querySelectorAll('.countdown-sep');
-    if (colon) colon.style.display = 'none';
-    sep2.forEach(function(s){ s.style.display = 'none'; });
+    /* ROUND 5 FIX #1B — Hide countdown entirely when date passes, no fallback text */
+    var cdEl = document.querySelector('.hero-countdown');
+    if (cdEl) cdEl.style.display = 'none';
     return;
   }
   var days = Math.floor(diff / (1000 * 60 * 60 * 24));
