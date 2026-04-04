@@ -202,25 +202,25 @@ body.ci .cur-r { border-color:var(--g); }
 .ev-credit { font-size:0.62rem; opacity:0.35; font-style:italic; }
 
 /* MASONRY GRID */
-.photo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:0 6px 6px; }
+.photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; padding:0 6px 6px; } /* ROUND 4 FIX #1 — corrected from 4 to 3 columns */
 
 /* Uniform 4-column rectangle gallery grids */
 .gallery-visible {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:2px;
   margin:0;
   padding:0;
-} /* ROUND 3 FIX #4 — tighter gap */
+} /* ROUND 4 FIX #1 — corrected from 4 to 3 columns */
 .gallery-collapsed {
   overflow:hidden;
   max-height:0;
   opacity:0;
   transition:max-height 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s ease;
   display:grid !important;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:2px;
-} /* ROUND 3 FIX #4 */
+} /* ROUND 4 FIX #1 — corrected from 4 to 3 columns */
 .gallery-collapsed.is-open { max-height:9999px; opacity:1; }
 .gallery-item {
   aspect-ratio:4/3;
@@ -584,6 +584,101 @@ body.ci .cur-r { border-color:var(--g); }
 /* ROUND 2 FIX #4 — Also update logo sheet display */
 .logos-sheet { width:100%; display:block; }
 
+
+/* ROUND 4 FIX #3 — Hero countdown */
+.hero-countdown { display:flex; flex-direction:column; align-items:center; gap:0.35rem; margin-top:0.5rem; }
+.countdown-label { font-family:var(--ff-b); font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); opacity:0.9; }
+.countdown-display { display:flex; align-items:baseline; gap:0.15rem; }
+.countdown-num { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,6rem); line-height:1; color:var(--linen); letter-spacing:-0.02em; min-width:2ch; text-align:center; }
+.countdown-sep { font-family:var(--ff-d); font-size:clamp(1.2rem,3vw,2rem); color:var(--accent); letter-spacing:0.05em; margin:0 0.1rem; }
+.countdown-colon { font-family:var(--ff-d); font-size:clamp(2rem,5vw,4rem); color:var(--linen); opacity:0.5; margin:0 0.25rem; line-height:1; }
+@media(max-width:480px){ .countdown-num { font-size:clamp(2.8rem,12vw,4rem); } }
+
+/* ROUND 4 FIX #6 — Compact gallery headers */
+.ev-section { padding:24px 0 0; }
+.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 12px; }
+.ev-header .lbl { display:block; margin-bottom:0.25rem; }
+.ev-header .ev-title { margin:0 0 0.35rem; line-height:0.9; }
+.ev-header .ev-desc { margin:0 0 0.5rem; font-size:0.88rem; line-height:1.5; }
+.ev-header .ev-meta { margin:0; }
+
+
+/* ROUND 4 FIX #7 — Staggered reveal animations */
+.reveal-child {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-visible .reveal-child,
+.reveal.revealed .reveal-child { opacity: 1; transform: translateY(0); }
+.ev-header .reveal-child:nth-child(1) { transition-delay: 0ms; }
+.ev-header .reveal-child:nth-child(2) { transition-delay: 80ms; }
+.ev-header .reveal-child:nth-child(3) { transition-delay: 160ms; }
+.ev-header .reveal-child:nth-child(4) { transition-delay: 240ms; }
+
+
+/* ROUND 4 FIX #8 — Vibe video: edge-to-edge, 65vh max, label overlay */
+.vibe-reel { padding:0 !important; overflow:hidden; max-height:65vh; position:relative; }
+.vr-inner { padding:0; max-width:100%; position:relative; }
+.vr-inner video { width:100%; display:block; max-height:65vh; object-fit:cover; }
+.vr-label { position:absolute; top:1.25rem; left:1.5rem; z-index:2; font-family:var(--ff-b); font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(240,237,232,0.75); text-shadow:0 1px 4px rgba(0,0,0,0.6); }
+@media(max-width:768px){ .vibe-reel { max-height:65vw; } .vr-inner video { max-height:65vw; } }
+
+
+/* ROUND 4 FIX #9 — Slim mobile nav dropdown (replaces full-screen overlay) */
+@media(max-width:768px){
+  .nav-mobile {
+    position:fixed;
+    top:var(--nav);
+    left:0;
+    right:0;
+    z-index:998;
+    background:var(--g);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.28s ease, opacity 0.22s ease;
+    opacity:0;
+    box-shadow:0 8px 32px rgba(0,0,0,0.35);
+    backdrop-filter:blur(8px);
+  }
+  .nav-mobile.is-open {
+    max-height:50vh;
+    opacity:1;
+  }
+  .nav-mobile ul {
+    display:flex;
+    flex-direction:column;
+    padding:1.25rem 2rem 1.75rem;
+    gap:0;
+    list-style:none;
+    margin:0;
+  }
+  .nav-mobile ul li a {
+    display:block;
+    font-family:var(--ff-d);
+    font-size:1.6rem;
+    letter-spacing:0.04em;
+    color:var(--linen);
+    padding:0.6rem 0;
+    border-bottom:1px solid rgba(240,237,232,0.08);
+    text-decoration:none;
+    transition:color 0.2s;
+  }
+  .nav-mobile ul li:last-child a { border-bottom:none; }
+  .nav-mobile ul li a:hover { color:var(--accent); }
+  /* Dim overlay behind dropdown */
+  .nav-mobile-backdrop {
+    display:none;
+    position:fixed;
+    inset:0;
+    top:var(--nav);
+    background:rgba(0,0,0,0.45);
+    z-index:997;
+    backdrop-filter:blur(2px);
+  }
+  .nav-mobile-backdrop.is-open { display:block; }
+}
+
 </style>
 <script src="/photos.js"></script>
 </head>
@@ -607,6 +702,8 @@ body.ci .cur-r { border-color:var(--g); }
     <span></span><span></span><span></span>
   </button>
 </nav>
+<!-- ROUND 4 FIX #9 — Mobile nav backdrop -->
+<div class="nav-mobile-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
 <div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
   <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
@@ -635,14 +732,18 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
     <div class="hero-rule" data-a="f" data-d="2" aria-hidden="true"></div>
     <p class="hero-sub" data-a="u" data-d="3">you already know someone who's been.</p>
-    <div class="hero-badge" data-a="u" data-d="4">
-      <span>Next Event</span>
-      <span aria-hidden="true">·</span>
-      <span>April 25th — 75 Varick Rooftop</span>
+    <!-- ROUND 4 FIX #3 — Countdown replaces static hero badge -->
+    <div class="hero-countdown" data-a="u" data-d="4" aria-live="polite">
+      <span class="countdown-label">next event · april 25th · 75 varick rooftop</span>
+      <div class="countdown-display">
+        <span class="countdown-num" id="countdown-days">--</span><span class="countdown-sep">D</span>
+        <span class="countdown-colon">:</span>
+        <span class="countdown-num" id="countdown-hours">--</span><span class="countdown-sep">H</span>
+      </div>
     </div>
     <div class="hero-ctas" data-a="u" data-d="5">
       <a href="#join" class="btn btn-p">request invite</a>
-      <a href="#tiers" class="btn btn-g">become a sponsor</a>
+      <!-- REMOVED R4: become a sponsor hero button — sponsor link exists in nav -->
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true">
@@ -694,7 +795,7 @@ body.ci .cur-r { border-color:var(--g); }
   <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
   <div class="curate-overlay"></div>
   <div class="curate-copy reveal">
-    <span class="lbl" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
+    <span class="lbl reveal-child" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
     <h2>We curate<br>the room.</h2>
     <p>Themed parties. Open bar. Good music. The kind of night you text about the next day. Five events in, still selling out.</p>
     <div class="tags" style="justify-content:center;margin-top:1.5rem;">
@@ -711,7 +812,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk grain" id="events">
   <div class="w event-grid">
     <div data-a="l">
-      <span class="lbl" style="margin-bottom:1.25rem">// Next Event</span>
+      <span class="lbl reveal-child" style="margin-bottom:1.25rem">// Next Event</span>
       <h2 class="event-date">April 25th</h2>
       <p class="event-time">Doors 10:30pm — 3:30am ET</p>
       <div class="venue">
@@ -741,12 +842,13 @@ body.ci .cur-r { border-color:var(--g); }
 </section>
 <!-- AUDIT FIX #3 — Editorial triptych: added section identity label "THE ENERGY" -->
 <section class="lt" style="padding:0;" id="the-energy">
-  <div style="padding:2.5rem clamp(1.5rem,5vw,5rem) 1.5rem;">
-    <span class="lbl" style="color:var(--g);">// The Energy</span>
-    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.5rem;">INSIDE THE ROOM</h2>
+  <!-- ROUND 4 FIX #4 — Reduced header padding, swapped main-photo-1 with inside-the-room.jpg -->
+  <div style="padding:1.25rem clamp(1.5rem,5vw,5rem) 0.75rem;">
+    <span class="lbl reveal-child" style="color:var(--g);">// The Energy</span>
+    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.4rem;">INSIDE THE ROOM</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(220px,30vw,420px);">
-    <div style="overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event crowd" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(240px,32vw,460px);">
+    <div style="overflow:hidden;"><img src="/img/inside-the-room.jpg" alt="Packed rooftop crowd, treehouse. NYC" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;"></div>
     <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event atmosphere" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
     <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event energy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
   </div>
@@ -758,10 +860,10 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- AUDIT FIX #11 — Gallery unified to dark theme -->
 <section class="dk ev-section" id="tribeca-rooftop">
   <div class="ev-header reveal">
-    <span class="lbl">//  · treehouse. NYC</span>
+    <span class="lbl reveal-child">//  · treehouse. NYC</span>
     <!-- AUDIT FIX #12 — Dates added to all event titles -->
-    <h2 class="ev-title">TRIBECA ROOFTOP</h2>
-    <p class="ev-desc">Pumpkins, disco balls, and the Tribeca skyline. The bar opens at six and nobody leaves before midnight.</p>
+    <h2 class="ev-title reveal-child">TRIBECA ROOFTOP</h2>
+    <p class="ev-desc reveal-child">Pumpkins, disco balls, and the Tribeca skyline. The bar opens at six and nobody leaves before midnight.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Tribeca, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -821,7 +923,7 @@ body.ci .cur-r { border-color:var(--g); }
   <img src="/img/curate-room.jpg" alt="treehouse. NYC — packed rooftop crowd at golden hour" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
   <div class="curate-overlay"></div>
   <div class="curate-copy reveal">
-    <span class="lbl" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
+    <span class="lbl reveal-child" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
     <h2>We curate<br>the room.</h2>
     <p>Themed parties. Open bar. Good music. The kind of night you text about the next day. Five events in, still selling out.</p>
     <div class="tags" style="justify-content:center;margin-top:1.5rem;">
@@ -838,7 +940,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
 <section class="dk grain" id="vibe" style="padding:4rem 0;">
   <div style="width:100%;max-width:100%;padding:0;text-align:center;">
-    <span class="lbl" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
+    <span class="lbl reveal-child" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
     <div style="width:100%;overflow:hidden;border-radius:0;">
       <video autoplay muted loop playsinline controls
         poster="/img/hero-new.jpg"
@@ -855,9 +957,9 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 2: SOHO SOIREE -->
 <section class="dk ev-section grain" id="soho-soiree">
   <div class="ev-header reveal">
-    <span class="lbl">// treehouse. NYC</span>
-    <h2 class="ev-title">SOHO SOIREE</h2>
-    <p class="ev-desc">SoHo rooftop, late spring, birthday cake. The kind of party that makes people cancel their other plans.</p>
+    <span class="lbl reveal-child">// treehouse. NYC</span>
+    <h2 class="ev-title reveal-child">SOHO SOIREE</h2>
+    <p class="ev-desc reveal-child">SoHo rooftop, late spring, birthday cake. The kind of party that makes people cancel their other plans.</p>
     <div class="ev-meta-row">
       <span class="ev-date">SoHo, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -911,9 +1013,9 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 3: CHRISTMAS IN NYC -->
 <section class="lt ev-section" id="christmas-nyc">
   <div class="ev-header reveal">
-    <span class="lbl">//  · treehouse. NYC</span>
-    <h2 class="ev-title">CHRISTMAS IN NYC</h2>
-    <p class="ev-desc">December in New York. Everyone dressed up and nobody left early.</p>
+    <span class="lbl reveal-child">//  · treehouse. NYC</span>
+    <h2 class="ev-title reveal-child">CHRISTMAS IN NYC</h2>
+    <p class="ev-desc reveal-child">December in New York. Everyone dressed up and nobody left early.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Midtown, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse1212/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
@@ -966,9 +1068,9 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 4: DINNER PARTIES -->
 <section class="dk ev-section grain" id="dinner-parties">
   <div class="ev-header reveal">
-    <span class="lbl">// 2024 Series · treehouse. NYC</span>
-    <h2 class="ev-title">DINNER PARTIES</h2><!-- ROUND 3 FIX #7 — date removed -->
-    <p class="ev-desc">Small tables, long nights. The kind of dinner where the conversation outlasts the food.</p>
+    <span class="lbl reveal-child">// 2024 Series · treehouse. NYC</span>
+    <h2 class="ev-title reveal-child">DINNER PARTIES</h2><!-- ROUND 3 FIX #7 — date removed -->
+    <p class="ev-desc reveal-child">Small tables, long nights. The kind of dinner where the conversation outlasts the food.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Various Venues, New York City</span>
     </div>
@@ -1012,9 +1114,9 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 5: KNOX DAY -->
 <section class="lt ev-section" id="knox-day">
   <div class="ev-header reveal">
-    <span class="lbl">// treehouse. NYC</span>
-    <h2 class="ev-title">KNOX DAY</h2>
-    <p class="ev-desc">Open sky, open bar, DJ set that runs until the sun goes down. Brooklyn does it right.</p>
+    <span class="lbl reveal-child">// treehouse. NYC</span>
+    <h2 class="ev-title reveal-child">KNOX DAY</h2>
+    <p class="ev-desc reveal-child">Open sky, open bar, DJ set that runs until the sun goes down. Brooklyn does it right.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Brooklyn, New York City</span>
     </div>
@@ -1050,9 +1152,9 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PARTY 6: WEST VILLAGE -->
 <section class="dk ev-section grain" id="west-village">
   <div class="ev-header reveal">
-    <span class="lbl">// treehouse. NYC</span>
-    <h2 class="ev-title">WEST VILLAGE</h2><!-- ROUND 3 FIX #7 — date removed -->
-    <p class="ev-desc">The West Village at night. Cocktails, good lighting, the crowd that always shows up dressed.</p>
+    <span class="lbl reveal-child">// treehouse. NYC</span>
+    <h2 class="ev-title reveal-child">WEST VILLAGE</h2><!-- ROUND 3 FIX #7 — date removed -->
+    <p class="ev-desc reveal-child">The West Village at night. Cocktails, good lighting, the crowd that always shows up dressed.</p>
     <div class="ev-meta-row">
       <span class="ev-date">West Village, New York City</span>
     </div>
@@ -1106,7 +1208,7 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="w why-layout">
     <div class="why-left">
       <div class="why-h">
-        <span class="lbl" style="margin-bottom:1rem">// Why Sponsor</span>
+        <span class="lbl reveal-child" style="margin-bottom:1rem">// Why Sponsor</span>
         <h2>Your brand<br>in the<br>right room.</h2>
       </div>
       <div class="why-rows">
@@ -1153,8 +1255,15 @@ body.ci .cur-r { border-color:var(--g); }
     style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px;"
   ></video>
 </div>
-      <!-- ROUND 2 FIX #5 — why-vis-sub photos commented out; sponsor video is the only visual -->
-      <!-- ROUND 3 FIX #3B — Curate section: swapped DJ photo for sunset crowd rooftop. why-vis-sub with sp-may-sunglasses.jpg and sp-xmas-crowddrinks.jpg removed. -->
+      <!-- ROUND 4 FIX #5 — Restored why-vis-sub with 2 curated gallery photos -->
+      <div class="why-vis-sub">
+        <div style="overflow:hidden;border-radius:4px;aspect-ratio:4/3;">
+          <img src="/img/gallery/soho-soiree/soho-004.jpg" alt="Crowd energy at treehouse. SoHo Soiree" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="overflow:hidden;border-radius:4px;aspect-ratio:4/3;">
+          <img src="/img/gallery/tribeca-rooftop/tribeca-007.jpg" alt="Crowd dancing at golden hour, Tribeca Rooftop" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1162,7 +1271,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- TIERS -->
 <section class="lt" id="tiers">
   <div class="w tiers-inner">
-    <span class="lbl" data-a="u" style="margin-bottom:1rem">// Sponsorship Packages</span>
+    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Sponsorship Packages</span>
     <h2 data-a="l">Get your brand in the room.</h2>
     <p class="tiers-sub" data-a="u" data-d="1">Three tiers. Pick one. We'll handle the rest.</p>
     <div class="tiers-grid" data-a="u" data-d="2">
@@ -1228,7 +1337,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- PAST ACTIVATIONS -->
 <section class="dk grain" id="partners">
   <div class="w">
-    <span class="lbl" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
+    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
     <h2 data-a="l" style="margin-bottom:0.75rem">Brands that showed up.</h2>
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. 1,500+ people in the room.</p>
 
@@ -1265,7 +1374,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- REMOVED: How It Works
 <section class="lt" id="how-it-works">
   <div class="w hiw-inner">
-    <span class="lbl" data-a="u" style="margin-bottom:1rem">// How It Works</span>
+    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// How It Works</span>
     <h2 data-a="l">How to<br>get in.</h2>
     <div class="hiw-steps" data-a="u" data-d="1">
       <div class="hiw-step"><span class="hiw-n">01</span><h3 class="hiw-t">Apply</h3><p class="hiw-d">Drop your email below. We'll reach out before the next event.</p></div>
@@ -1280,7 +1389,7 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- JOIN -->
 <section class="dk grain join" id="join">
   <div class="join-inner">
-    <span class="lbl" data-a="u">// Get Access</span>
+    <span class="lbl reveal-child" data-a="u">// Get Access</span>
     <h2 data-a="l">Get on the list.</h2>
     <p class="join-body" data-a="u" data-d="1">Invite only. Drop your email and we'll reach out before April 25th. No spam, just the invite.</p>
     <!-- AUDIT FIX #9 — Scarcity line above email form -->
@@ -1657,6 +1766,70 @@ document.querySelectorAll('img').forEach(function(img){
     videoObs.observe(video);
   });
 })();
+
+// ROUND 4 FIX #3 — Live countdown to April 25, 2025 8PM ET
+function updateCountdown() {
+  var eventDate = new Date('2025-04-25T20:00:00-04:00');
+  var now = new Date();
+  var diff = eventDate - now;
+  var dEl = document.getElementById('countdown-days');
+  var hEl = document.getElementById('countdown-hours');
+  if (!dEl || !hEl) return;
+  if (diff <= 0) {
+    dEl.textContent = 'TONIGHT';
+    hEl.textContent = '';
+    var colon = document.querySelector('.countdown-colon');
+    var sep2 = document.querySelectorAll('.countdown-sep');
+    if (colon) colon.style.display = 'none';
+    sep2.forEach(function(s){ s.style.display = 'none'; });
+    return;
+  }
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  dEl.textContent = String(days).padStart(2, '0');
+  hEl.textContent = String(hours).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ROUND 4 FIX #9 — Mobile nav backdrop click to close
+var backdrop = document.getElementById('nav-backdrop');
+if (backdrop) {
+  backdrop.addEventListener('click', function() {
+    var navMobile = document.querySelector('.nav-mobile');
+    var hamburger = document.querySelector('.hamburger, .nav-toggle, [aria-controls="nav-mobile"]');
+    if (navMobile) navMobile.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// ROUND 4 FIX #9 — Sync backdrop with nav open/close
+(function() {
+  var hamburger = document.querySelector('.hamburger, .nav-toggle, [aria-controls="nav-mobile"]');
+  var navMobile = document.querySelector('.nav-mobile');
+  var backdrop = document.getElementById('nav-backdrop');
+  if (!hamburger || !navMobile || !backdrop) return;
+  var orig = hamburger.onclick;
+  hamburger.addEventListener('click', function() {
+    setTimeout(function() {
+      if (navMobile.classList.contains('is-open')) {
+        backdrop.classList.add('is-open');
+      } else {
+        backdrop.classList.remove('is-open');
+      }
+    }, 10);
+  });
+  // Also close on nav link click
+  navMobile.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navMobile.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
 </script>
 
 </body>
