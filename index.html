@@ -427,8 +427,8 @@ body.ci .cur-r { border-color:var(--g); }
   .stat { padding:1.5rem 0; }
   .stat-div { width:3rem; height:1px; align-self:auto; }
   /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
-/* ROUND 7 FIX #4b — mobile curate height */
-@media(max-width:768px){ .curate-section { max-height:70vh; min-height:unset; } }
+/* ROUND 8 FIX #2c — mobile curate: natural height, full photo */
+@media(max-width:768px){ .curate-section { max-height:none; min-height:unset; overflow:visible; } }
   .curate-copy { top:2rem; bottom:auto; }
   .curate-copy h2 { font-size:1.8rem; }
 }
@@ -500,12 +500,12 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
 /* ROUND 7 FIX — restore text overlay on curate section big picture */
-/* ROUND 7 FIX #4 — cap height so image doesn't expand to 1580px */
-.curate-section { position:relative; width:100%; overflow:hidden; max-height:85vh; }
-.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; display:block; }
+/* ROUND 8 FIX #2 — show full photo, no cropping, no max-height cap */
+.curate-section { position:relative; width:100%; overflow:visible; }
+.curate-section .dj-photo { width:100%; height:auto; object-fit:contain; display:block; max-height:none; }
 /* Dark gradient so text is legible over the photo */
 /* Gradient darkens the sky at top for text legibility */
-.curate-section::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,28,10,0.65) 0%, rgba(10,28,10,0.3) 45%, rgba(10,28,10,0.05) 100%); pointer-events:none; }
+/* ROUND 8 FIX #2 — gradient overlay on curate section removed (show full clean photo) */
 /* Text positioned absolutely over the image, bottom-anchored */
 /* ROUND 7 FIX #2 — text positioned in upper sky area of the image */
 .curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; z-index:2; }
@@ -687,6 +687,29 @@ body.ci .cur-r { border-color:var(--g); }
 
 </style>
 <script src="/photos.js"></script>
+<!-- ROUND 8 FIX #4 — Sync secondary countdown IDs in April 25 section -->
+<script>
+(function(){
+  function syncCountdown2(){
+    var d=document.getElementById('countdown-days');
+    var h=document.getElementById('countdown-hours');
+    var d2=document.getElementById('countdown-days-2');
+    var h2=document.getElementById('countdown-hours-2');
+    var m2=document.getElementById('countdown-mins-2');
+    if(d&&d2) d2.textContent=d.textContent;
+    if(h&&h2) h2.textContent=h.textContent;
+    if(m2){
+      var now=new Date();
+      var event=new Date('2026-04-25T22:30:00-04:00');
+      var diff=Math.max(0,Math.floor((event-now)/1000));
+      var mins=Math.floor((diff%3600)/60);
+      m2.textContent=String(mins).padStart(2,'0');
+    }
+  }
+  setInterval(syncCountdown2, 1000);
+  setTimeout(syncCountdown2, 500);
+})();
+</script>
 </head>
 <body>
 
@@ -781,19 +804,7 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- VIDEO REEL -->
 <!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
-<section class="dk grain" id="vibe" style="padding:4rem 0;">
-  <div style="width:100%;max-width:100%;padding:0;text-align:center;">
-    <span class="lbl reveal-child" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
-    <div style="width:100%;overflow:hidden;border-radius:0;">
-      <video autoplay muted loop playsinline controls
-        poster="/img/hero-new.jpg"
-        preload="metadata"
-        style="width:100%;max-height:80vh;object-fit:cover;display:block;border-radius:0;">
-        <source src="/img/hero-video.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
+<!-- ROUND 8 FIX #5 — vibe section moved below April 25 -->
 
     <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
     <!-- REMOVED R6: <span class="marquee-item">Dinner Parties<span class="marquee-dot"></span></span> -->
@@ -820,8 +831,10 @@ body.ci .cur-r { border-color:var(--g); }
   <!-- REMOVED R5: curate-overlay div removed, gradient overlay eliminated -->
   <div class="curate-copy reveal">
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.55);margin-bottom:1rem;display:block;">// Who We Are</span>
-    <h2>We curate<br>the room.</h2>
-    <p>Themed parties. Open bar. Good music. The kind of night you text about the next day. Five events in, still selling out.</p>
+    <!-- ROUND 8 FIX #3 — Heading reworded: guest-first, no brand ego (Option B) -->
+    <h2>Some nights<br>stay with you.</h2>
+    <!-- ROUND 8 FIX #3 — Body copy rewritten: guest experience, not brand pitch -->
+    <p>Open bar. Good music. The kind of crowd that makes the night. Five events in, still selling out.</p>
     <div class="tags" style="justify-content:center;margin-top:1.5rem;">
       <span class="tag">Rooftop Parties</span>
       <span class="tag">Holiday Events</span>
@@ -833,37 +846,63 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- NEXT EVENT -->
 <!-- ROUND 2 FIX #2 — Next event moved above galleries -->
-<section class="dk grain" id="events">
-  <div class="w event-grid">
-    <div data-a="l">
-      <span class="lbl reveal-child" style="margin-bottom:1.25rem">// Next Event</span>
-      <h2 class="event-date">April 25th</h2>
-      <p class="event-time">Doors 10:30pm — 3:30am ET</p>
-      <div class="venue">
-        <p class="venue-n">75 Varick Rooftop</p>
-        <p class="venue-l">SoHo, New York City</p>
-      </div>
-      <p class="event-meta">300–400 guests · Invite Only · Open Bar</p>
-      <a href="#join" class="btn btn-p">request your invite</a>
+<!-- ROUND 8 FIX #4 — April 25 section expanded to 80vh, full-bleed image -->
+<section class="dk grain" id="events" style="padding:0;min-height:80vh;position:relative;overflow:hidden;display:flex;align-items:stretch;">
+  <!-- ROUND 8 FIX #4 — Full-bleed carousel background with overlay text -->
+  <!-- Background carousel (absolute, fills section) -->
+  <div class="event-bg-carousel" id="venueCarousel" style="position:absolute;inset:0;z-index:0;">
+    <div class="vc-slide active" style="position:absolute;inset:0;"><img src="/img/varick-1.jpg" alt="75 Varick Rooftop — NYC skyline at dusk" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div class="vc-slide" style="position:absolute;inset:0;"><img src="/img/varick-2.jpg" alt="75 Varick Rooftop — venue interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div class="vc-slide" style="position:absolute;inset:0;"><img src="/img/varick-3.jpg" alt="75 Varick Rooftop — event space" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div class="vc-slide" style="position:absolute;inset:0;"><img src="/img/varick-4.jpg" alt="75 Varick Rooftop — rooftop view" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(10,28,10,0.85) 0%, rgba(10,28,10,0.55) 55%, rgba(10,28,10,0.1) 100%);z-index:1;pointer-events:none;"></div>
+    <button class="vc-btn vc-prev" aria-label="Previous photo" style="z-index:3;">&#8592;</button>
+    <button class="vc-btn vc-next" aria-label="Next photo" style="z-index:3;">&#8594;</button>
+    <div class="vc-dots" style="z-index:3;">
+      <button class="vc-dot active" aria-label="Photo 1"></button>
+      <button class="vc-dot" aria-label="Photo 2"></button>
+      <button class="vc-dot" aria-label="Photo 3"></button>
+      <button class="vc-dot" aria-label="Photo 4"></button>
     </div>
-    <div class="event-img" data-a="f" data-d="2" style="aspect-ratio:16/9;overflow:hidden;border-radius:var(--r);">
-      <div class="venue-carousel" id="venueCarousel">
-        <div class="vc-slide active"><img src="/img/varick-1.jpg" alt="75 Varick Rooftop — NYC skyline at dusk" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-2.jpg" alt="75 Varick Rooftop — venue interior" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-3.jpg" alt="75 Varick Rooftop — event space" loading="lazy"></div>
-        <div class="vc-slide"><img src="/img/varick-4.jpg" alt="75 Varick Rooftop — rooftop view" loading="lazy"></div>
-        <button class="vc-btn vc-prev" aria-label="Previous photo">&#8592;</button>
-        <button class="vc-btn vc-next" aria-label="Next photo">&#8594;</button>
-        <div class="vc-dots">
-          <button class="vc-dot active" aria-label="Photo 1"></button>
-          <button class="vc-dot" aria-label="Photo 2"></button>
-          <button class="vc-dot" aria-label="Photo 3"></button>
-          <button class="vc-dot" aria-label="Photo 4"></button>
-        </div>
+  </div>
+  <!-- Event details overlay -->
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);min-height:80vh;max-width:580px;">
+    <span class="lbl reveal-child" style="margin-bottom:1.5rem;color:rgba(240,237,232,0.65);">// Next Event</span>
+    <h2 class="event-date reveal-child" style="font-size:clamp(3.5rem,8vw,7rem);line-height:0.9;margin-bottom:1.25rem;">April 25th</h2>
+    <!-- ROUND 8 FIX #4 — Prominent countdown in this section -->
+    <div style="margin-bottom:1.75rem;">
+      <span style="font-family:var(--ff-b);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,232,0.5);display:block;margin-bottom:0.5rem;">until doors open</span>
+      <div style="display:flex;align-items:baseline;gap:0.1rem;">
+        <span class="countdown-num" id="countdown-days-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">D</span>
+        <span class="countdown-num" id="countdown-hours-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">H</span>
+        <span class="countdown-num" id="countdown-mins-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);align-self:flex-end;padding-bottom:0.3rem;">M</span>
       </div>
+    </div>
+    <p class="event-time reveal-child" style="margin-bottom:0.5rem;">Doors 10:30pm — 3:30am ET</p>
+    <div class="venue" style="margin-bottom:1rem;">
+      <p class="venue-n">75 Varick Rooftop</p>
+      <p class="venue-l">SoHo, New York City</p>
+    </div>
+    <p class="event-meta" style="margin-bottom:2rem;">300–400 guests · Invite Only · Open Bar</p>
+    <a href="#join" class="btn btn-p" style="align-self:flex-start;">request your invite</a>
+  </div>
+</section>
+<!-- ROUND 8 FIX #5 — Main video restored directly below April 25 section -->
+<section class="dk grain" id="vibe" style="padding:4rem 0;">
+  <div style="width:100%;max-width:100%;padding:0;text-align:center;">
+    <span class="lbl reveal-child" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
+    <div style="width:100%;overflow:hidden;border-radius:0;">
+      <video autoplay muted loop playsinline controls
+        poster="/img/hero-new.jpg"
+        preload="metadata"
+        style="width:100%;max-height:80vh;object-fit:cover;display:block;border-radius:0;">
+        <source src="/img/hero-video.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
+
+<!-- REMOVED R8: Inside the Room section — deleted entirely per Round 8 spec
 <!-- INSIDE THE ROOM — full-bleed photo grid, no gaps, no padding -->
 <section class="lt" style="padding:0;" id="the-energy">
   <div style="padding:1.25rem clamp(1.5rem,5vw,5rem) 0.75rem;">
@@ -887,6 +926,7 @@ body.ci .cur-r { border-color:var(--g); }
     </div>
   </div>
 </section>
+/REMOVED R8 -->
 
 <!-- ROUND 2 FIX #2 — Tribeca gallery now appears after curate+next-event -->
 <!-- AUDIT FIX #1 — Gallery moved up: appears within first 2 scroll-depths -->
@@ -912,7 +952,11 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-022.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- REMOVED R8: tribeca-022 replaced by tribeca-new-01 and tribeca-new-02 -->
+    <!-- <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-022.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div> -->
+    <!-- ROUND 8 FIX #6 — 2 new Tribeca photos added -->
+    <div class="gallery-item"><img src="/img/tribeca-new-01.jpg" alt="treehouse. NYC — Tribeca Rooftop" loading="lazy"></div>
+    <div class="gallery-item"><img src="/img/tribeca-new-02.jpg" alt="treehouse. NYC — Tribeca Rooftop" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
   </div>
   <!-- REMOVED R6: gallery-collapsed-tribeca-rooftop — all photos now in gallery-visible -->
@@ -940,18 +984,32 @@ body.ci .cur-r { border-color:var(--g); }
 <!-- REMOVED R6: old gallery photos for gallery-visible-soho-soiree -->
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-001.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-005.jpg" alt="treehouse. event photo" fetchpriority="high" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-01 -->
+    <div class="gallery-item"><img src="/img/soho-new-01.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-010.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-012.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-02 -->
+    <div class="gallery-item"><img src="/img/soho-new-02.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-014.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-016.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-03 -->
+    <div class="gallery-item"><img src="/img/soho-new-03.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-025.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-04 -->
+    <div class="gallery-item"><img src="/img/soho-new-04.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-030.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-039.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-05 -->
+    <div class="gallery-item"><img src="/img/soho-new-05.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-042.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-048.jpg" alt="treehouse. event photo" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — soho-new-06 -->
+    <div class="gallery-item"><img src="/img/soho-new-06.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-049.jpg" alt="treehouse. event photo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-  </div>
+    <!-- ROUND 8 FIX #6 — soho-new-07 -->
+    <div class="gallery-item"><img src="/img/soho-new-07.jpg" alt="treehouse. NYC — SoHo Soiree" loading="lazy"></div>
+
   <!-- REMOVED R6: gallery-collapsed-soho-soiree — all photos now in gallery-visible -->
   <div style="text-align:center;padding:1.5rem 0;">
     <!-- REMOVED R6: toggle button for soho-soiree -->
@@ -972,6 +1030,8 @@ body.ci .cur-r { border-color:var(--g); }
   <div class="gallery-visible" id="gallery-visible-christmas-nyc">
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-009.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-010.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <!-- ROUND 8 FIX #6 — xmas-new-01 added at position 2 -->
+    <div class="gallery-item"><img src="/img/xmas-new-01.jpg" alt="treehouse. NYC — Christmas in NYC" loading="lazy"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-016.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-018.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-019.jpg" alt="Christmas in NYC, treehouse. event" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
@@ -985,7 +1045,7 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-038.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-040.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/christmas-nyc/xmas-048.jpg" alt="Christmas in NYC, treehouse. event" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-  </div>
+
   <!-- REMOVED R5: Christmas gallery-collapsed commented out — all 15 photos now in gallery-visible -->
   <div style="text-align:center;padding:1.5rem 0;">
     <!-- REMOVED R5: gallery toggle removed — Christmas gallery now shows all 15 photos in one grid -->
