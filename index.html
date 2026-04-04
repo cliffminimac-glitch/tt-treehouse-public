@@ -207,13 +207,43 @@ body.ci .cur-r { border-color:var(--g); }
 /* REMOVED R6: Uniform 4-column rectangle gallery grids (replaced by CSS columns masonry) */
 /* REMOVED R6: .gallery-visible { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin:0; padding:0; } */
 /* REMOVED R6: .gallery-collapsed { overflow:hidden; max-height:0; opacity:0; transition:...; display:grid !important; grid-template-columns:repeat(3,1fr); gap:2px; } */
+/* REMOVED R13: Round 7 display:grid rule replaced by CSS columns masonry (see ROUND 13 FIX #1 below) */
 /* ROUND 7 FIX #2 — Restore display:grid square tiles (3-col desktop) */
-.photo-grid,.gallery-visible,.gallery-collapsed {
+/* .photo-grid,.gallery-visible,.gallery-collapsed {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:2px;
   margin:0;
   padding:0;
+} */
+/* ROUND 13 FIX #1 — consolidated gallery CSS: CSS columns masonry, natural aspect ratios, tight 6px gaps */
+.photo-grid,
+.gallery-visible,
+.gallery-collapsed {
+  display: block;
+  column-count: 3;
+  column-gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+.photo-grid .gallery-item,
+.gallery-visible .gallery-item,
+.gallery-collapsed .gallery-item {
+  break-inside: avoid;
+  margin-bottom: 6px;
+  overflow: hidden;
+  background: #1a3a1a;
+  cursor: zoom-in;
+  position: relative;
+  display: block;
+}
+.photo-grid .gallery-item img,
+.gallery-visible .gallery-item img,
+.gallery-collapsed .gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
 }
 .gallery-collapsed { overflow:hidden; max-height:0; opacity:0; transition:max-height 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s ease; }
 .gallery-collapsed.is-open { max-height:9999px; opacity:1; }
@@ -253,8 +283,11 @@ body.ci .cur-r { border-color:var(--g); }
 .gallery-toggle-btn:hover { opacity:1; }
 @media(max-width:768px){
   /* REMOVED R6: .gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); gap:2px; } */
+  /* REMOVED R13: grid-template-columns tablet rule replaced by column-count */
   /* ROUND 6 FIX — 2 col mobile masonry */
-  .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); }
+  /* .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:repeat(2,1fr); } */
+  /* ROUND 13 FIX #1 tablet — 2 columns */
+  .photo-grid,.gallery-visible,.gallery-collapsed { column-count:2; }
   .photo-grid .gallery-item,.gallery-visible .gallery-item,.gallery-collapsed .gallery-item { margin-bottom:4px; }
   /* REMOVED R6: /* REMOVED R6: .photo-grid { grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px 4px; } */ */
   .ev-section { padding:48px 0 0; }
@@ -428,16 +461,19 @@ body.ci .cur-r { border-color:var(--g); }
   .stat-div { width:3rem; height:1px; align-self:auto; }
   /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
 /* ROUND 8 FIX #2c — mobile curate: natural height, full photo */
-/* ROUND 12 FIX #5 mobile — curate photo max-height on mobile */
-@media(max-width:768px){ .curate-section { max-height:none; min-height:unset; overflow:visible; } .curate-section .dj-photo { max-height:55vw; } }
+/* REMOVED R13: Round 12 mobile curate max-height replaced by cover approach */
+/* ROUND 13 FIX #3 mobile — curate photo 45vh on mobile, full-bleed cover */
+@media(max-width:768px){ .curate-section { padding:40px 0; } .curate-section .dj-photo { height:45vh; } }
   .curate-copy { top:2rem; bottom:auto; }
   .curate-copy h2 { font-size:1.8rem; }
 }
 
 @media(max-width:480px) {
   /* REMOVED R6: .photo-grid { grid-template-columns:1fr 1fr; } */
-  /* ROUND 6 FIX — 1 col small mobile */
-  .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:1fr; }
+  /* REMOVED R13: grid-template-columns mobile rule replaced by column-count */
+  /* .photo-grid,.gallery-visible,.gallery-collapsed { grid-template-columns:1fr; } */
+  /* ROUND 13 FIX #1 mobile — 1 column */
+  .photo-grid,.gallery-visible,.gallery-collapsed { column-count:1; }
   .photo-item.tall { grid-row:span 1; }
   .partners-grid { gap:1rem 2.5rem; }
   .pn-xl { font-size:1.8rem; }
@@ -502,9 +538,11 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a:hover::after { width:100%; }
 /* ROUND 7 FIX — restore text overlay on curate section big picture */
 /* ROUND 8 FIX #2 — show full photo, no cropping, no max-height cap */
-.curate-section { position:relative; width:100%; overflow:visible; }
-/* ROUND 12 FIX #5 — curate photo reduced to 45vh desktop (was max-height:none), full image still visible via object-fit:contain */
-.curate-section .dj-photo { width:100%; height:auto; object-fit:contain; display:block; max-height:45vh; }
+/* ROUND 13 FIX #3 — curate section: 60px padding above/below for breathing room, overflow:hidden for full-bleed */
+.curate-section { position:relative; width:100%; overflow:hidden; padding:60px 0; }
+/* REMOVED R13: Round 12 FIX #5 curate contain/45vh replaced by full-bleed cover */
+/* ROUND 13 FIX #2 — curate photo full-bleed cinematic strip: cover, 55vh, no side gutters */
+.curate-section .dj-photo { width:100%; height:55vh; object-fit:cover; object-position:center; display:block; max-height:none; }
 /* Dark gradient so text is legible over the photo */
 /* Gradient darkens the sky at top for text legibility */
 /* ROUND 8 FIX #2 — gradient overlay on curate section removed (show full clean photo) */
@@ -547,10 +585,11 @@ body.ci .cur-r { border-color:var(--g); }
 /* ── GALLERY EXPANDED FIX (Task 5) ── */
 /* ROUND 7 FIX #6 — removed 75vh cap; max-height:9999px from base rule applies */
 /* ROUND 7 FIX #3 — square tiles, cover crop */
+/* REMOVED R13: Round 12 FIX #3 standalone gallery-item rules replaced by ROUND 13 FIX #1 consolidated block */
 /* ROUND 12 FIX #3 — removed aspect-ratio:1/1 so photos show at natural height, no cropping */
-.gallery-item { overflow:hidden; }
+/* .gallery-item { overflow:hidden; } */
 /* ROUND 12 FIX #3 — height:auto + object-fit:unset so full photo always visible */
-.gallery-item img { width:100%; height:auto; object-fit:unset; display:block; }
+/* .gallery-item img { width:100%; height:auto; object-fit:unset; display:block; } */
 .gallery-collapse-btn { display:block; width:100%; text-align:center; padding:0.5rem 1rem; font-family:var(--ff-b); font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:lowercase; color:currentColor; opacity:0.55; cursor:pointer; border:none; background:none; transition:opacity 0.2s; margin-top:0; } /* ROUND 3 FIX #4 — removed margin-top */
 .gallery-collapse-btn:hover { opacity:1; }
 
