@@ -433,7 +433,7 @@ body.ci .cur-r { border-color:var(--g); }
   /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
 /* ROUND 5 FIX #2 — REMOVED: .curate-section { min-height:85vh; } duplicate rule */
 @media(max-width:768px){ .curate-section { min-height:70vh; } }
-  .curate-copy { bottom:32px; }
+  .curate-copy { top:2rem; bottom:auto; }
   .curate-copy h2 { font-size:1.8rem; }
 }
 
@@ -507,9 +507,11 @@ body.ci .cur-r { border-color:var(--g); }
 .curate-section { position:relative; width:100%; overflow:hidden; }
 .curate-section .dj-photo { width:100%; height:auto; display:block; }
 /* Dark gradient so text is legible over the photo */
-.curate-section::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,28,10,0.82) 0%, rgba(10,28,10,0.45) 50%, rgba(10,28,10,0.15) 100%); pointer-events:none; }
+/* Gradient darkens the sky at top for text legibility */
+.curate-section::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,28,10,0.65) 0%, rgba(10,28,10,0.3) 45%, rgba(10,28,10,0.05) 100%); pointer-events:none; }
 /* Text positioned absolutely over the image, bottom-anchored */
-.curate-section .curate-copy { position:absolute; bottom:clamp(2rem,5vw,4rem); left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; z-index:2; }
+/* ROUND 7 FIX #2 — text positioned in upper sky area of the image */
+.curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
 .curate-copy p { font-size:1rem; line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; }
 .curate-copy .tag { background:rgba(26,58,26,0.4); border-color:rgba(240,237,232,0.2); color:#f0ede8; }
