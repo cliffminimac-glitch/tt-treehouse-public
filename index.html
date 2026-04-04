@@ -16,6 +16,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- AUDIT FIX #15 — font-display:swap confirmed via Google Fonts URL -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -190,11 +191,12 @@ body.ci .cur-r { border-color:var(--g); }
 .vibe-video-slot { margin:0 auto; }
 
 /* ── EVENT SECTIONS (3 photographer galleries) ── */
-.ev-section { padding:80px 0 0; }
-.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 2rem; max-width:var(--wrap); margin:0 auto; }
+/* AUDIT FIX #5 — Reduced gallery header dead space */
+.ev-section { padding:40px 0 0; }
+.ev-header { padding:0 clamp(1.5rem,5vw,5rem) 1.25rem; max-width:var(--wrap); margin:0 auto; }
 .ev-header .lbl { margin-bottom:1rem; }
-.ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:1rem; }
-.ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:2rem; }
+.ev-title { font-family:var(--ff-d); font-size:clamp(3.5rem,8vw,7rem); letter-spacing:-0.02em; line-height:0.88; margin-bottom:0.5rem; }
+.ev-desc { font-size:0.92rem; opacity:0.65; max-width:520px; font-style:italic; font-family:var(--ff-e); font-weight:400; line-height:1.6; margin-bottom:1.25rem; }
 .ev-meta-row { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
 .ev-date { font-size:0.68rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; opacity:0.45; }
 .ev-credit { font-size:0.62rem; opacity:0.35; font-style:italic; }
@@ -278,7 +280,8 @@ body.ci .cur-r { border-color:var(--g); }
 .photo-item.tall { min-height:0; }
 
 /* ── WHY SPONSOR ── */
-.why-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+/* AUDIT FIX #8 — Sponsor section: visual column gets more width */
+.why-layout { display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start; }
 .why-h { margin-bottom:2.5rem; }
 .why-h .lbl { margin-bottom:1rem; }
 .why-rows { display:flex; flex-direction:column; }
@@ -353,6 +356,20 @@ body.ci .cur-r { border-color:var(--g); }
 .hiw-t { font-family:var(--ff-e); font-size:1.05rem; font-weight:700; }
 .hiw-d { font-size:0.83rem; font-weight:300; opacity:0.62; line-height:1.75; }
 
+
+/* AUDIT FIX #9 — Scarcity line */
+.scarcity-line {
+  font-family: var(--ff-b);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.58;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+}
+
 /* ── JOIN ── */
 .join { text-align:center; }
 .join-inner { max-width:640px; margin:0 auto; padding:var(--pad); display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
@@ -413,7 +430,9 @@ body.ci .cur-r { border-color:var(--g); }
   .stats-band { flex-direction:column; gap:0; padding:2rem 1.5rem; }
   .stat { padding:1.5rem 0; }
   .stat-div { width:3rem; height:1px; align-self:auto; }
-  .curate-section { height:60vh; min-height:400px; }
+  /* AUDIT FIX #14 — DJ section height: 85vh desktop, 70vh mobile */
+.curate-section { min-height:85vh; }
+@media(max-width:768px){ .curate-section { min-height:70vh; } }
   .curate-copy { bottom:32px; }
   .curate-copy h2 { font-size:1.8rem; }
 }
@@ -483,7 +502,7 @@ body.ci .cur-r { border-color:var(--g); }
 .nav-links a::after { content:""; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:currentColor; transition:width 0.25s ease; }
 .nav-links a:hover::after { width:100%; }
 .curate-section { position:relative; width:100%; height:70vh; min-height:500px; overflow:hidden; }
-.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center bottom; display:block; }
+.curate-section .dj-photo { width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
 .curate-section .curate-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,36,16,0.92) 0%,rgba(15,36,16,0.55) 45%,rgba(15,36,16,0.15) 100%); }
 .curate-section .curate-copy { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); text-align:center; color:#f0ede8; max-width:640px; padding:0 24px; width:100%; }
 .curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:#f0ede8; font-family:'Playfair Display',serif; }
@@ -569,13 +588,9 @@ body.ci .cur-r { border-color:var(--g); }
   <a href="/" class="nav-logo" aria-label="treehouse. — home">
     <img src="/img/logo.png" alt="treehouse. Events" height="40" style="filter:brightness(0) invert(1);">
   </a>
+  <!-- AUDIT FIX #10 — Nav simplified to 3 links: Past Events | Sponsor | Get Tickets -->
   <div class="nav-links">
-    <a href="#tribeca-rooftop">tribeca</a>
-    <a href="#soho-soiree">soho</a>
-    <a href="#christmas-nyc">christmas</a>
-    <a href="#dinner-parties">dinner</a>
-    <a href="#knox-day">knox</a>
-    <a href="#west-village">west village</a>
+    <a href="#tribeca-rooftop">past events</a>
     <a href="#tiers" class="hi">sponsor</a>
     <a href="#join">get tickets</a>
   </div>
@@ -586,13 +601,9 @@ body.ci .cur-r { border-color:var(--g); }
 
 <div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
   <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
+  <!-- AUDIT FIX #10 — Mobile nav simplified -->
   <nav>
-    <a href="#tribeca-rooftop">tribeca</a>
-    <a href="#soho-soiree">soho</a>
-    <a href="#christmas-nyc">christmas</a>
-    <a href="#dinner-parties">dinner</a>
-    <a href="#knox-day">knox</a>
-    <a href="#west-village">west village</a>
+    <a href="#tribeca-rooftop">past events</a>
     <a href="#tiers">sponsor</a>
     <a href="#join">get tickets</a>
   </nav>
@@ -630,7 +641,8 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-<!-- STATS -->
+<!-- AUDIT FIX #6 — Stats section commented out (update numbers before restoring) -->
+<!-- REMOVED: Stats section
 <section class="dk">
   <div class="stats-band reveal">
     <div class="stat" data-a="u"><span class="stat-v" data-count="1500">0</span><span class="stat-l">people in the room</span></div>
@@ -642,6 +654,7 @@ body.ci .cur-r { border-color:var(--g); }
     <div class="stat" data-a="u" data-d="3"><span class="stat-v">Apr 25</span><span class="stat-l">next event</span></div>
   </div>
 </section>
+-->
 
 <!-- MARQUEE -->
 <div class="marquee-wrap" aria-hidden="true">
@@ -665,6 +678,67 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </div>
 
+<!-- AUDIT FIX #1 — Gallery moved up: appears within first 2 scroll-depths -->
+<!-- PARTY 1: TRIBECA ROOFTOP -->
+<!-- AUDIT FIX #11 — Gallery unified to dark theme -->
+<section class="dk ev-section" id="tribeca-rooftop">
+  <div class="ev-header reveal">
+    <span class="lbl">// October 2024 · treehouse. NYC</span>
+    <!-- AUDIT FIX #12 — Dates added to all event titles -->
+    <h2 class="ev-title">TRIBECA ROOFTOP · OCT 2024</h2>
+    <p class="ev-desc">Pumpkins, disco balls, and the Tribeca skyline. The bar opens at six and nobody leaves before midnight.</p>
+    <div class="ev-meta-row">
+      <span class="ev-date">Tribeca, New York City</span>
+      <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
+    </div>
+  </div>
+  <!-- AUDIT FIX #7 — First 8 Tribeca images eager-loaded, first 4 fetchpriority=high -->
+  <div class="gallery-visible" id="gallery-visible-tribeca-rooftop">
+    <div class="gallery-item"><img fetchpriority="high" src="/img/gallery/tribeca-rooftop/tribeca-005.jpg" alt="DJ set, Manhattan skyline at golden hour" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img fetchpriority="high" src="/img/gallery/tribeca-rooftop/tribeca-001.jpg" alt="Pumpkins and disco balls, Tribeca rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img fetchpriority="high" src="/img/gallery/tribeca-rooftop/tribeca-007.jpg" alt="Crowd dancing at sunset" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img fetchpriority="high" src="/img/gallery/tribeca-rooftop/tribeca-003.jpg" alt="Group of friends on the rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-009.jpg" alt="Candy bar with NYC skyline" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="Rooftop crowd at dusk" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="Friends with drinks, skyline behind" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="Crowd shot, Tribeca rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="Group photo at treehouse. Tribeca" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-019.jpg" alt="Rooftop view, city lights" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-021.jpg" alt="DJ booth, crowd hands up" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-023.jpg" alt="Golden hour, rooftop crowd" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <div class="gallery-collapsed" id="gallery-collapsed-tribeca-rooftop">
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-024.jpg" alt="treehouse. Tribeca Rooftop photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-025.jpg" alt="treehouse. Tribeca Rooftop photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-026.jpg" alt="treehouse. Tribeca Rooftop photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-027.jpg" alt="treehouse. Tribeca Rooftop photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-028.jpg" alt="treehouse. Tribeca Rooftop photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-029.jpg" alt="treehouse. Tribeca Rooftop photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-030.jpg" alt="treehouse. Tribeca Rooftop photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-031.jpg" alt="treehouse. Tribeca Rooftop photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-032.jpg" alt="treehouse. Tribeca Rooftop photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-033.jpg" alt="treehouse. Tribeca Rooftop photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-034.jpg" alt="treehouse. Tribeca Rooftop photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-035.jpg" alt="treehouse. Tribeca Rooftop photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-036.jpg" alt="treehouse. Tribeca Rooftop photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-037.jpg" alt="treehouse. Tribeca Rooftop photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-038.jpg" alt="treehouse. Tribeca Rooftop photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-039.jpg" alt="treehouse. Tribeca Rooftop photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-040.jpg" alt="treehouse. Tribeca Rooftop photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-041.jpg" alt="treehouse. Tribeca Rooftop photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-042.jpg" alt="treehouse. Tribeca Rooftop photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-043.jpg" alt="treehouse. Tribeca Rooftop photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-044.jpg" alt="treehouse. Tribeca Rooftop photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-045.jpg" alt="treehouse. Tribeca Rooftop photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. Tribeca Rooftop photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-047.jpg" alt="treehouse. Tribeca Rooftop photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+  </div>
+  <div style="text-align:center;padding:1.5rem 0;">
+    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-tribeca-rooftop" data-count="24" style="font-size:0.65rem;">view all 36 photos</button>
+  </div>
+</section>
+
+
 <!-- ABOUT -->
 <section class="curate-section" id="about">
   <img src="/img/dj.jpg" alt="DJ performing at treehouse. NYC — We Curate the Room" class="dj-photo" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
@@ -682,11 +756,16 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-<section class="lt" style="padding:0;">
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:320px;">
-    <div style="overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+<!-- AUDIT FIX #3 — Editorial triptych: added section identity label "THE ENERGY" -->
+<section class="lt" style="padding:0;" id="the-energy">
+  <div style="padding:2.5rem clamp(1.5rem,5vw,5rem) 1.5rem;">
+    <span class="lbl" style="color:var(--g);">// The Energy</span>
+    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-0.01em;line-height:0.9;color:var(--g);margin-top:0.5rem;">INSIDE THE ROOM</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;height:clamp(220px,30vw,420px);">
+    <div style="overflow:hidden;"><img src="/img/main-photo-1.jpg" alt="treehouse. NYC event crowd" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div style="overflow:hidden;"><img src="/img/main-photo-2.jpg" alt="treehouse. NYC event atmosphere" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div style="overflow:hidden;"><img src="/img/main-photo-3.jpg" alt="treehouse. NYC event energy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
   </div>
 </section>
 
@@ -723,10 +802,15 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 <!-- VIDEO REEL -->
+<!-- AUDIT FIX #2 — Video: poster frame, preload metadata, full-bleed, proper height -->
 <section class="dk grain" id="vibe" style="padding:4rem 0;">
-  <div class="vr-inner">
-    <span class="lbl">// The Vibe</span> <div class="vibe-video-slot" data-a="f" data-d="1">
-      <video autoplay muted loop playsinline controls style="width:100%;border-radius:6px;display:block;">
+  <div style="width:100%;max-width:100%;padding:0;text-align:center;">
+    <span class="lbl" style="display:block;margin-bottom:1.5rem;padding:0 clamp(1.5rem,5vw,5rem);">// The Vibe</span>
+    <div style="width:100%;overflow:hidden;border-radius:0;">
+      <video autoplay muted loop playsinline controls
+        poster="/img/hero-new.jpg"
+        preload="metadata"
+        style="width:100%;max-height:80vh;object-fit:cover;display:block;border-radius:0;">
         <source src="/img/hero-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -735,81 +819,27 @@ body.ci .cur-r { border-color:var(--g); }
 
 <!-- ═══════════════ 6 PARTY SECTIONS — v6 FINAL + Design Audit ═══════════════ -->
 
-<!-- PARTY 1: TRIBECA ROOFTOP -->
-<section class="lt ev-section" id="tribeca-rooftop">
-  <div class="ev-header reveal">
-    <span class="lbl">// October 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">TRIBECA ROOFTOP</h2>
-    <p class="ev-desc">Pumpkins, disco balls, and the Tribeca skyline. The bar opens at six and nobody leaves before midnight.</p>
-    <div class="ev-meta-row">
-      <span class="ev-date">Tribeca, New York City</span>
-      <a href="https://curtispan.pic-time.com/-treehouse_1018/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
-    </div>
-  </div>
-  <div class="gallery-visible" id="gallery-visible-tribeca-rooftop">
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-005.jpg" alt="DJ set, Manhattan skyline at golden hour" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-001.jpg" alt="Pumpkins and disco balls, Tribeca rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-007.jpg" alt="Crowd dancing at sunset" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-003.jpg" alt="Group of friends on the rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-009.jpg" alt="Candy bar with NYC skyline" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-011.jpg" alt="Rooftop crowd at dusk" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-013.jpg" alt="Friends with drinks, skyline behind" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-015.jpg" alt="Crowd shot, Tribeca rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-017.jpg" alt="Group photo at treehouse. Tribeca" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-019.jpg" alt="Rooftop view, city lights" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-021.jpg" alt="DJ booth, crowd hands up" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-023.jpg" alt="Golden hour, rooftop crowd" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-  </div>
-  <div class="gallery-collapsed" id="gallery-collapsed-tribeca-rooftop">
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-024.jpg" alt="treehouse. Tribeca Rooftop photo 24" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-025.jpg" alt="treehouse. Tribeca Rooftop photo 25" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-026.jpg" alt="treehouse. Tribeca Rooftop photo 26" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-027.jpg" alt="treehouse. Tribeca Rooftop photo 27" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-028.jpg" alt="treehouse. Tribeca Rooftop photo 28" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-029.jpg" alt="treehouse. Tribeca Rooftop photo 29" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-030.jpg" alt="treehouse. Tribeca Rooftop photo 30" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-031.jpg" alt="treehouse. Tribeca Rooftop photo 31" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-032.jpg" alt="treehouse. Tribeca Rooftop photo 32" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-033.jpg" alt="treehouse. Tribeca Rooftop photo 33" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-034.jpg" alt="treehouse. Tribeca Rooftop photo 34" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-035.jpg" alt="treehouse. Tribeca Rooftop photo 35" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-036.jpg" alt="treehouse. Tribeca Rooftop photo 36" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-037.jpg" alt="treehouse. Tribeca Rooftop photo 37" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-038.jpg" alt="treehouse. Tribeca Rooftop photo 38" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-039.jpg" alt="treehouse. Tribeca Rooftop photo 39" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-040.jpg" alt="treehouse. Tribeca Rooftop photo 40" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-041.jpg" alt="treehouse. Tribeca Rooftop photo 41" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-042.jpg" alt="treehouse. Tribeca Rooftop photo 42" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-043.jpg" alt="treehouse. Tribeca Rooftop photo 43" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-044.jpg" alt="treehouse. Tribeca Rooftop photo 44" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-045.jpg" alt="treehouse. Tribeca Rooftop photo 45" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-046.jpg" alt="treehouse. Tribeca Rooftop photo 46" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/tribeca-rooftop/tribeca-047.jpg" alt="treehouse. Tribeca Rooftop photo 47" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-  </div>
-  <div style="text-align:center;padding:1.5rem 0;">
-    <button class="gallery-toggle btn btn-s" data-target="gallery-collapsed-tribeca-rooftop" data-count="24" style="font-size:0.65rem;">view all 36 photos</button>
-  </div>
-</section>
 <!-- PARTY 2: SOHO SOIREE -->
 <section class="dk ev-section grain" id="soho-soiree">
   <div class="ev-header reveal">
     <span class="lbl">// May 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">SOHO SOIREE</h2>
+    <h2 class="ev-title">SOHO SOIREE · MAY 2024</h2>
     <p class="ev-desc">SoHo rooftop, late spring, birthday cake. The kind of party that makes people cancel their other plans.</p>
     <div class="ev-meta-row">
       <span class="ev-date">SoHo, New York City</span>
       <a href="https://curtispan.pic-time.com/-treehouse0531/gallery" target="_blank" rel="noopener" class="btn btn-s" style="font-size:0.65rem;padding:0.6rem 1.4rem;">See Full Gallery →</a>
     </div>
   </div>
+  <!-- AUDIT FIX #7 — First 8 SoHo images eager-loaded -->
   <div class="gallery-visible" id="gallery-visible-soho-soiree">
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-006.jpg" alt="Friends on SoHo rooftop, late spring" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-002.jpg" alt="Three guys, NYC skyline and One WTC" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-004.jpg" alt="Knicks jersey energy on the rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-009.jpg" alt="Champagne on ice, SoHo Soiree" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-011.jpg" alt="Women laughing on rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-013.jpg" alt="Crowd at the bar" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-015.jpg" alt="Group photo, SoHo rooftop" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
-    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-017.jpg" alt="Skyline view at dusk" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-006.jpg" alt="Friends on SoHo rooftop, late spring" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-002.jpg" alt="Three guys, NYC skyline and One WTC" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-004.jpg" alt="Knicks jersey energy on the rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-009.jpg" alt="Champagne on ice, SoHo Soiree" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-011.jpg" alt="Women laughing on rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-013.jpg" alt="Crowd at the bar" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-015.jpg" alt="Group photo, SoHo rooftop" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
+    <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-017.jpg" alt="Skyline view at dusk" loading="eager" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-019.jpg" alt="Rooftop crowd, SoHo" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-021.jpg" alt="Friends with drinks" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
     <div class="gallery-item"><img src="/img/gallery/soho-soiree/soho-023.jpg" alt="DJ set, SoHo Soiree" loading="lazy" onerror="this.onerror=null;this.parentNode.style.display='none'"></div>
@@ -849,7 +879,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="lt ev-section" id="christmas-nyc">
   <div class="ev-header reveal">
     <span class="lbl">// December 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">CHRISTMAS IN NYC</h2>
+    <h2 class="ev-title">CHRISTMAS IN NYC · DEC 2024</h2>
     <p class="ev-desc">December in New York. Everyone dressed up and nobody left early.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Midtown, New York City</span>
@@ -904,7 +934,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk ev-section grain" id="dinner-parties">
   <div class="ev-header reveal">
     <span class="lbl">// 2024 Series · treehouse. NYC</span>
-    <h2 class="ev-title">DINNER PARTIES</h2>
+    <h2 class="ev-title">DINNER PARTIES · 2024</h2>
     <p class="ev-desc">Small tables, long nights. The kind of dinner where the conversation outlasts the food.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Various Venues, New York City</span>
@@ -950,7 +980,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="lt ev-section" id="knox-day">
   <div class="ev-header reveal">
     <span class="lbl">// Summer 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">KNOX DAY</h2>
+    <h2 class="ev-title">KNOX DAY · JUL 2024</h2>
     <p class="ev-desc">Open sky, open bar, DJ set that runs until the sun goes down. Brooklyn does it right.</p>
     <div class="ev-meta-row">
       <span class="ev-date">Brooklyn, New York City</span>
@@ -988,7 +1018,7 @@ body.ci .cur-r { border-color:var(--g); }
 <section class="dk ev-section grain" id="west-village">
   <div class="ev-header reveal">
     <span class="lbl">// Spring 2024 · treehouse. NYC</span>
-    <h2 class="ev-title">WEST VILLAGE</h2>
+    <h2 class="ev-title">WEST VILLAGE · 2024</h2>
     <p class="ev-desc">The West Village at night. Cocktails, good lighting, the crowd that always shows up dressed.</p>
     <div class="ev-meta-row">
       <span class="ev-date">West Village, New York City</span>
@@ -1069,17 +1099,18 @@ body.ci .cur-r { border-color:var(--g); }
         <cite>— Brand Partner, 2024</cite>
       </div>
     </div>
+    <!-- AUDIT FIX #8 — Sponsor photos enlarged: 55% width desktop, full-width mobile -->
     <div class="why-vis" data-a="f" data-d="1" aria-hidden="true">
-      <div class="why-vis-main">
-        <img src="/img/dj.jpg" alt="DJ set at treehouse. NYC event — premium brand experience" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
+      <div class="why-vis-main" style="aspect-ratio:3/2;">
+        <img src="/img/sp-xmas-martini.jpg" alt="Sponsor product at treehouse. NYC event" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
         <div class="if">treehouse.</div>
       </div>
-      <div class="why-vis-sub">
-        <div class="why-vs-item">
+      <div class="why-vis-sub" style="margin-top:6px;">
+        <div class="why-vs-item" style="aspect-ratio:3/2;">
           <img src="/img/sp-may-sunglasses.jpg" alt="Golden hour couple with drinks at treehouse." loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
           <div class="if">treehouse.</div>
         </div>
-        <div class="why-vs-item">
+        <div class="why-vs-item" style="aspect-ratio:3/2;">
           <img src="/img/sp-xmas-crowddrinks.jpg" alt="Crowd drinks raised at treehouse. holiday party" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('fail')">
           <div class="if">treehouse.</div>
         </div>
@@ -1189,35 +1220,21 @@ body.ci .cur-r { border-color:var(--g); }
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- AUDIT FIX #4 — How It Works section commented out (filler) -->
+<!-- REMOVED: How It Works
 <section class="lt" id="how-it-works">
   <div class="w hiw-inner">
     <span class="lbl" data-a="u" style="margin-bottom:1rem">// How It Works</span>
     <h2 data-a="l">How to<br>get in.</h2>
     <div class="hiw-steps" data-a="u" data-d="1">
-      <div class="hiw-step">
-        <span class="hiw-n">01</span>
-        <h3 class="hiw-t">Apply</h3>
-        <p class="hiw-d">Drop your email below. We'll reach out before the next event.</p>
-      </div>
-      <div class="hiw-step">
-        <span class="hiw-n">02</span>
-        <h3 class="hiw-t">Get Approved</h3>
-        <p class="hiw-d">We keep the list tight. Not everyone gets in, and that's the point.</p>
-      </div>
-      <div class="hiw-step">
-        <span class="hiw-n">03</span>
-        <h3 class="hiw-t">Show Up</h3>
-        <p class="hiw-d">Show up at 75 Varick. Open bar from the jump. You'll know people.</p>
-      </div>
-      <div class="hiw-step">
-        <span class="hiw-n">04</span>
-        <h3 class="hiw-t">Come Back</h3>
-        <p class="hiw-d">We run events all year. Once you're in, you're in.</p>
-      </div>
+      <div class="hiw-step"><span class="hiw-n">01</span><h3 class="hiw-t">Apply</h3><p class="hiw-d">Drop your email below. We'll reach out before the next event.</p></div>
+      <div class="hiw-step"><span class="hiw-n">02</span><h3 class="hiw-t">Get Approved</h3><p class="hiw-d">We keep the list tight. Not everyone gets in, and that's the point.</p></div>
+      <div class="hiw-step"><span class="hiw-n">03</span><h3 class="hiw-t">Show Up</h3><p class="hiw-d">Show up at 75 Varick. Open bar from the jump. You'll know people.</p></div>
+      <div class="hiw-step"><span class="hiw-n">04</span><h3 class="hiw-t">Come Back</h3><p class="hiw-d">We run events all year. Once you're in, you're in.</p></div>
     </div>
   </div>
 </section>
+-->
 
 <!-- JOIN -->
 <section class="dk grain join" id="join">
@@ -1225,6 +1242,8 @@ body.ci .cur-r { border-color:var(--g); }
     <span class="lbl" data-a="u">// Get Access</span>
     <h2 data-a="l">Get on the list.</h2>
     <p class="join-body" data-a="u" data-d="1">Invite only. Drop your email and we'll reach out before April 25th. No spam, just the invite.</p>
+    <!-- AUDIT FIX #9 — Scarcity line above email form -->
+    <p class="scarcity-line">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p>
     <form class="join-form" action="https://formspree.io/f/xwpbkqod" method="POST" novalidate data-a="u" data-d="2">
       <div class="join-row">
         <input type="email" id="join-email" name="email" placeholder="your@email.com" aria-label="Email address" required autocomplete="email">
@@ -1240,16 +1259,30 @@ body.ci .cur-r { border-color:var(--g); }
 
 </main>
 
+<!-- AUDIT FIX #13 — Footer beefed up: larger logo, thumbnail photos, scarcity line, Instagram icon -->
 <!-- FOOTER -->
 <footer class="dk" role="contentinfo">
-  <div class="foot-top">
+  <!-- Thumbnail photo strip -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;height:clamp(120px,15vw,200px);overflow:hidden;">
+    <div style="overflow:hidden;"><img src="/img/gallery/tribeca-rooftop/tribeca-005.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;"></div>
+    <div style="overflow:hidden;"><img src="/img/gallery/soho-soiree/soho-006.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;"></div>
+    <div style="overflow:hidden;"><img src="/img/gallery/christmas-nyc/xmas-003.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;"></div>
+    <div style="overflow:hidden;"><img src="/img/gallery/knox-day/knox-001.jpg" alt="treehouse. NYC event" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;"></div>
+  </div>
+  <div class="foot-top" style="padding-top:3rem;">
     <a href="#hero" class="foot-logo" aria-label="treehouse. — back to top" title="Back to top">
-      <img src="/img/logo.png" alt="treehouse. Events | New York City" height="80" style="filter:brightness(0) invert(1);">
+      <img src="/img/logo.png" alt="treehouse. Events | New York City" height="120" style="filter:brightness(0) invert(1);">
     </a>
     <p class="foot-tag">Events · New York City</p>
+    <!-- Next event scarcity line -->
+    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p>
   </div>
   <nav class="foot-links" aria-label="Footer links">
-    <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram @treehouseevents.nyc">@treehouseevents.nyc</a>
+    <!-- Instagram icon link -->
+    <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram @treehouseevents.nyc" style="display:inline-flex;align-items:center;gap:0.4rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @treehouseevents.nyc
+    </a>
     <a href="mailto:events@tigertracks.ai" target="_blank" rel="noopener">events@tigertracks.ai</a>
     <a href="tel:+13016467758">(301) 646-7758</a>
   </nav>
