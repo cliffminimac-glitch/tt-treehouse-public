@@ -1,0 +1,40 @@
+TRIBECA ROOFTOP GALLERY CURATION NOTES:
+tribeca-001: pumpkins + disco balls + NYC skyline - GREAT opener, warm/colorful
+tribeca-003: Solento tequila bottle + garnishes - sponsor product shot, warm
+tribeca-005: DJ at Pioneer decks with Manhattan skyline golden hour - HERO shot
+tribeca-007: crowd dancing at sunset - people/energy shot, warm orange
+tribeca-009: candy bar + Solento bottles + skyline - colorful, fun detail shot
+tribeca-lanyards: treehouse. branded lanyards in heart bowl with pumpkins - branding shot
+
+BEST 4 VISIBLE: tribeca-001 (skyline+disco), tribeca-005 (DJ+skyline), tribeca-007 (crowd), tribeca-009 (candy bar)
+NEW PHOTO: tribeca-lanyards.webp - add to grid
+
+SOHO SOIREE:
+soho-001 through soho-012 - need to view
+NEW PHOTO: soho-new-1.webp (Solento tequila bottle at table with flowers)
+
+PLAN FOR GALLERY GRIDS:
+- Use CSS grid collage layout with mixed sizes (some 2x1 wide, some 1x2 tall, some 1x1)
+- Visible section: 4 photos in a 2x2 or collage layout (no empty space)
+- Expanded section: all remaining photos in 3-col grid
+- New tribeca photo goes in visible section
+- New soho photo goes in soho visible section
+
+SOHO SOIREE BEST PICKS:
+soho-002: 3 guys sunglasses NYC skyline - great people + venue
+soho-004: Knicks jersey guy + friend - fun NYC energy, vibrant
+soho-006: 3 guys smiling rooftop crowd behind - social/crowd energy
+soho-009: Mumm champagne bottles on ice - drinks/luxury detail
+soho-011: Gathyr branded fries + rose wine - sponsor detail shot
+soho-new-1: Solento tequila bottle + flowers - sponsor product
+
+BEST 4 VISIBLE FOR SOHO: soho-006 (crowd), soho-002 (skyline), soho-004 (Knicks/energy), soho-009 (champagne)
+soho-new-1 (Solento) goes in expanded section
+
+FINAL GALLERY VISIBLE SELECTIONS:
+TRIBECA: tribeca-001 (pumpkins+skyline), tribeca-005 (DJ+skyline), tribeca-007 (crowd dancing), tribeca-lanyards (branding)
+SOHO: soho-006 (crowd smiling), soho-002 (skyline guys), soho-004 (Knicks guy), soho-009 (champagne)
+CHRISTMAS: keep existing best 4 from prior sequencing
+DINNER: keep existing best 4
+KNOX: keep existing best 4
+WEST VILLAGE: keep existing best 4

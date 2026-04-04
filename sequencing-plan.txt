@@ -1,0 +1,45 @@
+GALLERY SEQUENCING PLAN (Fix C)
+Based on color temperature analysis of first 9 photos per gallery.
+
+RULES:
+- No two DARK photos adjacent
+- No two BRIGHT photos adjacent
+- Avoid WARM next to COOL without a NEUTRAL transition
+- Grid fills left-to-right, top-to-bottom (3 cols)
+- 8 visible tiles in gallery-visible
+
+=== TRIBECA ROOFTOP ===
+Original: 01(WARM/MID), 02(COOL/MID), 03(WARM/MID), 04(WARM/MID), 05(NEUTRAL/MID), 06(WARM/MID), 07(WARM/MID), 08(WARM/MID)
+Issue: 01(WARM) next to 02(COOL) is a jarring jump
+Optimal sequence: 01(WARM), 03(WARM), 05(NEUTRAL), 02(COOL), 06(WARM), 04(WARM), 07(WARM), 08(WARM)
+= WARM, WARM, NEUTRAL, COOL, WARM, WARM, WARM, WARM — gradual transition through neutral
+
+=== SOHO SOIREE ===
+Original: 01(WARM/MID), 02(NEUTRAL/MID), 03(NEUTRAL/BRIGHT), 04(NEUTRAL/BRIGHT), 05(NEUTRAL/MID), 06(NEUTRAL/BRIGHT), 07(NEUTRAL/BRIGHT), 08(COOL/MID)
+Issue: 03+04 both BRIGHT adjacent; 06+07 both BRIGHT adjacent; 07(BRIGHT) next to 08(COOL/MID) is jarring
+Optimal: 01(WARM/MID), 02(NEUTRAL/MID), 04(NEUTRAL/BRIGHT), 05(NEUTRAL/MID), 03(NEUTRAL/BRIGHT), 08(COOL/MID), 06(NEUTRAL/BRIGHT), 07(NEUTRAL/BRIGHT)
+= alternates BRIGHT with MID, ends with two BRIGHT which is fine as a pair at the end
+
+=== CHRISTMAS NYC ===
+Original: 01(DARK), 02(DARK), 03(WARM/MID), 04(NEUTRAL/MID), 05(NEUTRAL/MID), 06(NEUTRAL/MID), 07(NEUTRAL/MID), 08(NEUTRAL/MID)
+Issue: 01+02 both DARK adjacent — the grid goes black in top-left corner
+Optimal: 03(WARM/MID), 01(DARK), 04(NEUTRAL/MID), 02(DARK), 05(NEUTRAL/MID), 06(NEUTRAL/MID), 07(NEUTRAL/MID), 08(NEUTRAL/MID)
+= breaks up the two darks with warm/neutral shots between them
+
+=== DINNER PARTIES ===
+Original: 01(NEUTRAL/MID), 02(WARM/MID), 03(WARM/MID), 04(WARM/MID), 05(WARM/MID), 06(NEUTRAL/MID), 07(WARM/MID), 08(WARM/MID)
+Issue: 02-05 are all WARM in a row — monotonous; 03+04 very similar warm tones
+Optimal: 01(NEUTRAL/MID), 02(WARM/MID), 06(NEUTRAL/MID), 03(WARM/MID), 04(WARM/MID), 07(WARM/MID), 05(WARM/MID), 08(WARM/MID)
+= neutral shots break up the warm run
+
+=== KNOX DAY ===
+Original: 01(NEUTRAL/BRIGHT), 02(WARM/MID), 03(WARM/MID), 04(NEUTRAL/MID), 05(NEUTRAL/MID), 06(NEUTRAL/MID), 07(NEUTRAL/BRIGHT), 08(WARM/MID)
+Issue: 01(BRIGHT) is fine as opener; 07(BRIGHT) next to 08(MID) is OK; overall decent
+Minor fix: 01(BRIGHT), 02(WARM/MID), 04(NEUTRAL/MID), 03(WARM/MID), 05(NEUTRAL/MID), 07(NEUTRAL/BRIGHT), 06(NEUTRAL/MID), 08(WARM/MID)
+= alternates bright/mid more intentionally
+
+=== WEST VILLAGE ===
+Original: 01(DARK), 02(WARM/MID), 03(NEUTRAL/MID), 04(WARM/MID), 05(NEUTRAL/MID), 06(WARM/MID), 07(NEUTRAL/BRIGHT), 08(WARM/MID)
+Issue: 01(DARK) as opener is fine for moody WV vibe; but 01(DARK) next to 02(WARM/MID) is a bit jarring
+Optimal: 02(WARM/MID), 03(NEUTRAL/MID), 04(WARM/MID), 01(DARK), 05(NEUTRAL/MID), 06(WARM/MID), 07(NEUTRAL/BRIGHT), 08(WARM/MID)
+= dark photo moved to position 4 (middle of grid) where it's flanked by neutrals
