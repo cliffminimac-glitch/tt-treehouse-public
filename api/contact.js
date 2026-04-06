@@ -7,7 +7,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const TO_EMAIL = 'events@tigertracks.ai';
-const FROM_EMAIL = 'Treehouse Events <onboarding@resend.dev>'; // Update to verified domain sender once domain is set up in Resend
+const FROM_EMAIL = 'Treehouse Events <events@tigertracks.ai>'; // tigertracks.ai is verified in Resend
 
 export default async function handler(req, res) {
   // CORS headers
