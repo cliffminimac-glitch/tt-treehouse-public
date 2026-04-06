@@ -62,6 +62,14 @@
      All brand colors use existing CSS variables from styles.css
   ============================================================ */
 
+  /* ROUND 41 FIX — Reserve scrollbar gutter so content centers against full viewport width.
+     Without this, the 15px browser scrollbar eats into the right side of the viewport,
+     making margin:0 auto appear left-shifted by exactly 15px. scrollbar-gutter:stable
+     reserves that space permanently, giving equal left/right margins at all viewport sizes. */
+  html {
+    scrollbar-gutter: stable !important;
+  }
+
   /* ── SPONSOR HERO ── */
   .sp-hero {
     position: relative;
