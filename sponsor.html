@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- EXPANSION FIX #2 — SEO: sponsor page title and meta -->
+  <!-- PHASE 2 FIX #1 — Canonical URL -->
+  <link rel="canonical" href="https://treehouseevents.cliffeliz.ai/sponsor.html">
+
   <title>Sponsor Treehouse Events | NYC's Premier Nightlife Series</title>
-  <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
-  <!-- ROUND 26 FIX #2 — Fixed malformed meta tag (comment was inside tag attribute) -->
   <meta name="description" content="Partner with Treehouse Events to reach 300+ tastemakers at NYC's most sought-after nightlife experiences. Bronze, Gold, and Platinum sponsorship packages available.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Sponsor Treehouse Events | NYC Nightlife Partnerships">
-  <!-- ROUND 26 FIX #2 — Fixed malformed og:description meta tag -->
   <meta property="og:description" content="Put your brand in front of 300 tastemakers at NYC's most exclusive events. Sponsorship packages from $5K.">
   <meta property="og:image" content="/img/hero-new.jpg">
   <meta property="og:type" content="website">
@@ -24,13 +23,13 @@
   <meta name="twitter:description" content="NYC's premier invite-only event series. Brand partnerships available.">
   <meta name="twitter:image" content="/img/hero-new.jpg">
 
-  <!-- JSON-LD Event structured data -->
+  <!-- PHASE 2 FIX #2 — JSON-LD: removed malformed HTML comment from inside JSON string -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Treehouse Events: 75 Varick Rooftop",
-    "startDate": "2026-04-25T22:30:00-04:00",
+    "startDate": "2026-04-25T15:00:00-04:00",
     "endDate": "2026-04-26T03:30:00-04:00",
     "location": {
       "@type": "Place",
@@ -41,7 +40,7 @@
         "addressRegion": "NY"
       }
     },
-    "description": "Invite-only rooftop event. Open bar. 300 guests." <!-- ROUND 24 FIX #4 — 500→300 -->,
+    "description": "Invite-only rooftop event. Open bar. 300 guests.",
     "organizer": {
       "@type": "Organization",
       "name": "Treehouse Events"
@@ -53,983 +52,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- EXPANSION FIX #1 — shared stylesheet with index.html -->
+  <!-- PHASE 2 FIX #3 — Inline <style> block removed; all styles now in shared /styles.css -->
   <link rel="stylesheet" href="/styles.css">
-
-  <style>
-  /* ============================================================
-     SPONSOR PAGE — additional styles not in shared styles.css
-     All brand colors use existing CSS variables from styles.css
-  ============================================================ */
-
-  /* ROUND 41 FIX — True viewport-centered content using 100vw-based margins.
-     The browser scrollbar (15px) reduces document.clientWidth vs window.innerWidth,
-     making margin:0 auto appear left-shifted by exactly 15px. Using 100vw (which
-     includes the scrollbar gutter) in the margin calc produces equal left/right
-     gaps at every viewport width. The max(24px,...) floor ensures mobile padding. */
-  .sp-stats-inner,
-  .sp-packages-inner,
-  .sp-contact-inner,
-  #sp-brands .w {
-    margin-left: max(24px, calc((100vw - 1100px) / 2)) !important;
-    margin-right: max(24px, calc((100vw - 1100px) / 2)) !important;
-    max-width: 1100px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* ── SPONSOR HERO ── */
-  .sp-hero {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--g);
-  }
-  /* ROUND 18 FIX #2 — sp-hero-bg is now a video element */
-.sp-hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  /* ROUND 18 FIX #2 — img rule removed, video handles sizing */
-  .sp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(10,28,10,0.72) 0%, rgba(10,28,10,0.55) 50%, rgba(10,28,10,0.78) 100%);
-    z-index: 1;
-  }
-  .sp-hero-inner {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: var(--linen);
-    max-width: 800px;
-    padding: 0 clamp(1.5rem, 5vw, 4rem);
-  }
-  .sp-hero-inner .lbl {
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-  .sp-hero-h1 {
-    font-family: var(--ff-d);
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--linen);
-    margin-bottom: 1.75rem;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-  }
-  .sp-hero-sub {
-    font-family: var(--ff-b);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.7;
-    color: rgba(240,237,232,0.85);
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-  }
-  .sp-hero-scroll {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--ff-b);
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(240,237,232,0.55);
-    text-decoration: none;
-    transition: color var(--ts);
-  }
-  .sp-hero-scroll:hover { color: var(--linen); }
-  .sp-hero-scroll svg { animation: bounce 2s ease-in-out infinite; }
-  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
-
-  /* ── STATS SECTION ── */
-  /* ROUND 38 FIX — Production gradient on stats section */
-  /* ROUND 39 FIX #1 — Remove horizontal padding from section; handled by inner wrapper */
-  .sp-stats {
-    background: linear-gradient(
-      155deg,
-      #E8E6DF 0%,
-      #e2e8d8 20%,
-      #E8E6DF 40%,
-      #dde4d4 60%,
-      #E8E6DF 80%,
-      #e0e6d6 100%
-    ) !important;
-    color: var(--g);
-    padding: 6rem 0;
-    position: relative;
-  }
-  /* ROUND 36 FIX #2 — Film grain on stats section (Treatment C) */
-  .sp-stats::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    opacity: 0.3;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-  .sp-stats > * { position: relative; z-index: 1; }
-  /* ROUND 39 FIX #1 — Unified content alignment: all sections share same inner wrapper */
-  .sp-stats-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-  /* ROUND 24 FIX #3 — Full-width stats layout (removed two-column, video moved below) */
-  /* REMOVED R24: sp-stats-layout two-column grid — stats now full-width */
-  .sp-stats-layout {
-    display: block;
-  }
-  .sp-stats-left {
-    width: 100%;
-  }
-  /* ROUND 24 FIX #1 — Video below stats, full-width strip */
-  /* ROUND 25 FIX #1 — Doubled height: 70vh desktop, 50vh mobile; full-bleed, no radius */
-  .sp-stats-right {
-    width: 100%;
-    margin-top: 4rem;
-    overflow: hidden;
-    line-height: 0;
-    /* REMOVED R25: border-radius — full-bleed edge-to-edge */
-  }
-  .why-sponsor-video {
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
-    display: block;
-    /* REMOVED R25: border-radius — full-bleed */
-  }
-  @media (max-width: 768px) {
-    .why-sponsor-video {
-      height: 50vh;
-    }
-  }
-  /* ROUND 30 POLISH — stats label standardized */
-  /* ROUND 39 FIX #3 — Section label minimum 0.9rem */
-  .sp-stats-label {
-    display: block;
-    font-family: var(--ff-b);
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--g2);
-    opacity: 0.6;
-    margin-bottom: 16px;
-  }
-  /* ROUND 24 FIX #3 — 4-column stats grid for full-width layout */
-  .sp-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem 3rem;
-    margin-bottom: 4rem;
-  }
-  @media (max-width: 900px) {
-    .sp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-  }
-  @media (max-width: 480px) {
-    .sp-stats-grid { grid-template-columns: 1fr; gap: 2rem; }
-  }
-  /* ROUND 23 FIX #3 — Enhanced stat numbers */
-  /* ROUND 39 FIX #3 — Stat numbers min 6rem; stat labels min 1rem */
-  .sp-stat-num {
-    font-family: var(--ff-d);
-    font-size: clamp(6rem, 11vw, 9rem);
-    line-height: 0.85;
-    color: var(--g);
-    letter-spacing: 0.01em;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .sp-stat-label {
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--g);
-    opacity: 0.72;
-    max-width: 280px;
-  }
-  /* ROUND 23 FIX #3 — Stronger divider above venues text */
-  .sp-stats-venues {
-    border-top: 1px solid rgba(45,74,30,0.2);
-    padding-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-  /* ROUND 25 FIX #2 — Removed max-width: 640px, text now spans full content width */
-  /* ROUND 39 FIX #3 — Body text min 1.15rem */
-  .sp-stats-venues p {
-    font-family: var(--ff-e);
-    /* ROUND 26 FIX #3 — Removed italics from past events text */
-    font-style: normal;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--g);
-    opacity: 0.75;
-    /* REMOVED R25: max-width: 640px — full-width text */
-  }
-  /* ROUND 23 FIX #3 — Bolder quote accent */
-  /* ROUND 25 FIX #2 — Removed max-width: 580px, quote now spans full content width */
-  .sp-stats-quote {
-    border-left: 4px solid #2D4A1E;
-    /* REMOVED R25: max-width: 580px — full-width quote */
-    background: rgba(45,74,30,0.04);
-    padding: 1.5rem 1.5rem 1.5rem 2rem;
-    border-radius: 0 4px 4px 0;
-  }
-  /* ROUND 39 FIX #3 — Quote text min 1.2rem */
-  .sp-stats-quote blockquote {
-    font-family: var(--ff-e);
-    font-style: italic;
-    font-size: 1.2rem;
-    line-height: 1.65;
-    color: var(--g);
-    margin-bottom: 0.75rem;
-  }
-  .sp-stats-quote cite {
-    font-family: var(--ff-b);
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--g);
-    opacity: 0.5;
-    font-style: normal;
-  }
-
-  /* ROUND 26 FIX #6 — Enlarged explore partnerships button */
-  /* ROUND 39 FIX #2 — Full-width dominant CTA button */
-  .btn-explore-r26 {
-    display: block !important;
-    width: 100% !important;
-    max-width: 600px !important;
-    padding: 24px 48px !important;
-    font-size: 1.3rem !important;
-    letter-spacing: 0.08em !important;
-    text-align: center !important;
-    margin: 40px 0 !important;
-    justify-content: center;
-  }
-  @media (max-width: 640px) {
-    .btn-explore-r26 {
-      max-width: 100% !important;
-    }
-  }
-  /* ROUND 39 FIX #1 — Responsive inner wrapper padding for tablet/mobile */
-  @media (max-width: 768px) {
-    .sp-stats-inner,
-    .sp-packages-inner,
-    .sp-contact-inner {
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-  }
-  @media (max-width: 480px) {
-    .sp-stats-inner,
-    .sp-packages-inner,
-    .sp-contact-inner {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-  }
-
-  /* ── PACKAGES SECTION ── */
-  /* ROUND 33 FIX #1 — Reduced top padding to eliminate dead space before tiers */
-  /* ROUND 34 FIX — Cream gradient background on tiers section */
-  /* ROUND 36 FIX #2 — Strong visible gradient on tiers section */
-  /* ROUND 38 FIX — Production gradient on tiers section */
-  /* ROUND 39 FIX #1 — Remove horizontal padding; handled by inner wrapper */
-  .sp-packages {
-    background: linear-gradient(
-      155deg,
-      #E8E6DF 0%,
-      #e2e8d8 20%,
-      #E8E6DF 40%,
-      #dde4d4 60%,
-      #E8E6DF 80%,
-      #e0e6d6 100%
-    ) !important;
-    color: var(--g);
-    padding: 48px 0 6rem;
-    position: relative;
-  }
-  /* ROUND 36 FIX #2 — Film grain on packages/tiers section (Treatment C) */
-  .sp-packages::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    opacity: 0.3;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-  .sp-packages > * { position: relative; z-index: 1; }
-  /* ROUND 39 FIX #1 — Unified content alignment */
-  .sp-packages-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-  .sp-packages-header {
-    margin-bottom: 4rem;
-  }
-  /* ROUND 38 FIX — Tiers heading enlarged */
-  /* ROUND 39 FIX #3 — Section headings min 4.5rem */
-  .sp-packages-header h2 {
-    font-family: var(--ff-d);
-    font-size: clamp(4.5rem, 6vw, 6rem);
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--g);
-    margin-bottom: 1rem;
-  }
-  /* ROUND 39 FIX #3 — Packages header subtitle min 1.15rem */
-  .sp-packages-header p {
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    color: rgba(26,58,26,0.65);
-    max-width: 480px;
-  }
-  .sp-tiers {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  /* ROUND 37 FIX #2 — Green tier cards with cream text */
-  /* ROUND 38 FIX — Tier card padding 40px → 48px */
-  .sp-tier {
-    background: #2D4A1E;
-    border: 1px solid rgba(232,230,223,0.15);
-    border-radius: 8px;
-    padding: 48px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    position: relative;
-    color: #E8E6DF;
-  }
-  .sp-tier:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-    background: #3a5e28;
-  }
-  /* ROUND 37 FIX #2 — Gold tier: lighter green + warm gold border */
-  .sp-tier.gold {
-    background: #3A5E28;
-    border: 2px solid rgba(212,175,55,0.6);
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(212,175,55,0.2);
-    color: #E8E6DF;
-  }
-  .sp-tier.gold:hover {
-    background: #446b30;
-    box-shadow: 0 8px 32px rgba(212,175,55,0.3);
-    transform: translateY(-2px);
-  }
-  .sp-tier-badge {
-    display: inline-block;
-    font-family: var(--ff-b);
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    background: var(--gold);
-    color: var(--g);
-    padding: 0.3rem 0.75rem;
-    border-radius: 2px;
-    margin-bottom: 1.25rem;
-    font-weight: 600;
-  }
-  /* ROUND 37 FIX #2 — Tier name: cream on green */
-  .sp-tier-name {
-    font-family: var(--ff-d);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #E8E6DF;
-    line-height: 1;
-    margin-bottom: 0.35rem;
-  }
-  /* ROUND 37 FIX #2 — Price: cream on green */
-  .sp-tier-price {
-    font-family: var(--ff-b);
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: rgba(232,230,223,0.75);
-    margin-bottom: 0.5rem;
-  }
-  /* ROUND 37 FIX #2 — Subtitle: cream on green */
-  /* ROUND 39 FIX #3 — Tier desc min 1.05rem */
-  .sp-tier-desc {
-    font-family: var(--ff-e);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: rgba(232,230,223,0.6);
-    margin-bottom: 2rem;
-  }
-  /* ROUND 37 FIX #2 — Divider: cream at low opacity on green */
-  .sp-tier-div {
-    height: 1px;
-    background: rgba(232,230,223,0.15);
-    margin-bottom: 2rem;
-  }
-  .sp-tier.gold .sp-tier-div {
-    background: rgba(212,175,55,0.4);
-  }
-  /* ROUND 33 FIX #4 — 2 columns (was auto-fill ~3-4), 16px gap, more readable */
-  .sp-tier-feats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 2rem;
-    margin-bottom: 2.5rem;
-  }
-  /* ROUND 37 FIX #2 — Line items: cream on green */
-  /* ROUND 39 FIX #3 — Tier line items min 1.05rem, line-height 1.7 */
-  .sp-tier-feats li {
-    font-family: var(--ff-b);
-    font-size: 1.05rem;
-    color: rgba(232,230,223,0.85);
-    line-height: 1.7;
-    padding-left: 1rem;
-    position: relative;
-  }
-  .sp-tier-feats li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .sp-tier.gold .sp-tier-feats li::before {
-    background: var(--gold);
-  }
-  /* ROUND 37 FIX #2 — CTA buttons: INVERTED (cream bg, green text) on green cards */
-  .sp-tier-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-    color: #2D4A1E;
-    background: #E8E6DF;
-    border: 1.5px solid #E8E6DF;
-    padding: 16px 40px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .sp-tier-cta:hover {
-    background: #F5F2EA;
-    border-color: #F5F2EA;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-  .sp-tier.gold .sp-tier-cta {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #1a1a1a;
-  }
-  .sp-tier.gold .sp-tier-cta:hover {
-    background: #c9a227;
-    border-color: #c9a227;
-  }
-  /* ROUND 37 FIX #2 — Note: cream on green */
-  /* ROUND 39 FIX #3 — Disclaimer text min 0.95rem */
-  .sp-tiers-note {
-    margin-top: 2.5rem;
-    font-family: var(--ff-b);
-    font-size: 0.95rem;
-    color: rgba(232,230,223,0.5);
-    text-align: center;
-    border-top: 1px solid rgba(232,230,223,0.12);
-    padding-top: 2rem;
-  }
-  /* ROUND 33 FIX #4 — Mobile: 24px padding, single column feats */
-  @media (max-width: 768px) {
-    .sp-tier { padding: 24px; }
-    .sp-tier.gold { padding: 24px; }
-    .sp-tier-feats { grid-template-columns: 1fr; }
-  }
-
-  /* ── NEXT EVENT SPOTLIGHT ── */
-  .sp-next-event {
-    background: var(--linen);
-    color: var(--g);
-    padding: 5rem clamp(1.5rem, 5vw, 5rem);
-    border-top: 1px solid rgba(26,58,26,0.08);
-  }
-  .sp-next-inner {
-    max-width: var(--wrap);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    /* ROUND 30 POLISH — vertical centering */
-  }
-  @media (max-width: 768px) {
-    .sp-next-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-  /* ROUND 30 POLISH — next event label standardized */
-  .sp-next-label {
-    display: block;
-    font-family: var(--ff-b);
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--g2);
-    opacity: 0.6;
-    margin-bottom: 16px;
-  }
-  .sp-next-date {
-    font-family: var(--ff-d);
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--g);
-    margin-bottom: 1.5rem;
-  }
-  .sp-next-details p {
-    font-family: var(--ff-b);
-    font-size: 0.95rem;
-    color: var(--g);
-    opacity: 0.72;
-    line-height: 1.7;
-    margin-bottom: 0.35rem;
-  }
-  .sp-next-details p strong {
-    opacity: 1;
-    font-weight: 600;
-  }
-  .sp-next-avail {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-family: var(--ff-b);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--g2);
-    background: rgba(26,58,26,0.07);
-    padding: 0.4rem 0.9rem;
-    border-radius: 2px;
-  }
-  .sp-next-countdown-block {
-    text-align: center;
-  }
-  .sp-next-countdown-label {
-    font-family: var(--ff-b);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--g);
-    opacity: 0.45;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .sp-countdown-display {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.1rem;
-    margin-bottom: 2rem;
-  }
-  .sp-countdown-num {
-    font-family: var(--ff-d);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1;
-    color: var(--g);
-  }
-  .sp-countdown-sep {
-    font-family: var(--ff-b);
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    color: var(--g);
-    opacity: 0.4;
-    margin-right: 0.75rem;
-    align-self: flex-end;
-    padding-bottom: 0.3rem;
-  }
-  /* ROUND 30 POLISH — sp-next-cta matches primary button spec */
-  .sp-next-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-    color: #E8E6DF;
-    background: #2D4A1E;
-    border: 1.5px solid #2D4A1E;
-    padding: 16px 40px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .sp-next-cta:hover {
-    filter: brightness(1.15);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
-  }
-
-  /* ── CONTACT SECTION ── */
-  /* ROUND 39 FIX #1 — Remove horizontal padding; handled by inner wrapper */
-  .sp-contact {
-    background: var(--g);
-    color: var(--linen);
-    padding: 6rem 0;
-  }
-  /* ROUND 39 FIX #1 — Unified content alignment */
-  .sp-contact-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-  /* ROUND 30 POLISH — contact heading normalized */
-  /* ROUND 39 FIX #3 — Contact heading min 4rem; body text min 1.15rem */
-  .sp-contact-inner h2 {
-    font-family: var(--ff-d);
-    font-size: clamp(4rem, 5vw, 5.5rem);
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--linen);
-    margin-bottom: 1rem;
-  }
-  .sp-contact-body {
-    font-family: var(--ff-b);
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: rgba(240,237,232,0.72);
-    margin-bottom: 0.75rem;
-  }
-  .sp-contact-email {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--ff-b);
-    font-size: 0.9rem;
-    color: var(--accent);
-    text-decoration: none;
-    margin-bottom: 2.5rem;
-    transition: color var(--ts);
-  }
-  .sp-contact-email:hover { color: var(--linen); }
-  .sp-contact-deck {
-    margin-bottom: 3rem;
-  }
-  /* ROUND 30 POLISH — btn-secondary matches secondary button spec */
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-    color: rgba(240,237,232,0.8);
-    background: transparent;
-    border: 1px solid rgba(240,237,232,0.3);
-    padding: 16px 40px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn-secondary:hover {
-    color: var(--linen);
-    border-color: rgba(240,237,232,0.6);
-    background: rgba(240,237,232,0.06);
-    transform: translateY(-1px);
-  }
-  .sp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .sp-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-  @media (max-width: 600px) {
-    .sp-form-row { grid-template-columns: 1fr; }
-  }
-  /* ROUND 39 FIX #3 — Form labels min 0.85rem; inputs min 1rem (prevents iOS zoom) */
-  .sp-form label {
-    display: block;
-    font-family: var(--ff-b);
-    font-size: 0.85rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(240,237,232,0.5);
-    margin-bottom: 0.4rem;
-  }
-  .sp-form input,
-  .sp-form select,
-  .sp-form textarea {
-    width: 100%;
-    background: rgba(240,237,232,0.05);
-    border: 1px solid rgba(240,237,232,0.15);
-    border-radius: var(--r);
-    color: var(--linen);
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    padding: 12px 16px;
-    outline: none;
-    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    -webkit-appearance: none;
-  }
-  .sp-form input::placeholder,
-  .sp-form textarea::placeholder {
-    color: rgba(240,237,232,0.25);
-  }
-  /* ROUND 30 POLISH — stronger focus state */
-  .sp-form input:focus,
-  .sp-form select:focus,
-  .sp-form textarea:focus {
-    border-color: rgba(240,237,232,0.7);
-    background: rgba(240,237,232,0.08);
-    box-shadow: 0 0 0 2px rgba(240,237,232,0.08);
-  }
-  .sp-form select option {
-    background: var(--g);
-    color: var(--linen);
-  }
-  .sp-form textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  /* ROUND 30 POLISH — sp-form-submit matches primary button spec */
-  .sp-form-submit {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--ff-b);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-    color: #E8E6DF;
-    background: #2D4A1E;
-    border: 1.5px solid #2D4A1E;
-    padding: 16px 40px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    align-self: flex-start;
-  }
-  .sp-form-submit:hover {
-    filter: brightness(1.15);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
-  }
-
-  /* ── ACTIVE NAV STATE ── */
-  .nav-links a.nav-active,
-  .mob nav a.nav-active {
-    color: var(--accent);
-  }
-  
-/* ROUND 18 FIX #3 — Sponsor page bottom video */
-/* ROUND 23 FIX #2 — Full-screen closing video */
-.sponsor-bottom-video-section {
-  width: 100%;
-  line-height: 0;
-  overflow: hidden;
-}
-.sponsor-bottom-video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  display: block;
-}
-/* ROUND 18 FIX #1 — In Good Company grid responsive */
-@media (max-width: 768px) {
-  .sp-igc-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-  /* ROUND 23 FIX #2 — 70vh on mobile */
-  .sponsor-bottom-video {
-    height: 70vh;
-  }
-}
-
-  /* ROUND 19 FIX #3 — Why Sponsor? heading */
-  .sp-why-heading {
-    font-family: var(--ff-d);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--g);
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.02em;
-    line-height: 1;
-  }
-
-  /* ROUND 19 FIX #4 — Updated brand logo grid with consistent sizing */
-  .brands-grid-r19 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem 3rem;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 0;
-  }
-  .brands-grid-r19 .brand-logo {
-    height: 48px;
-    width: auto;
-    max-width: 140px;
-    object-fit: contain;
-    opacity: 0.75;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.2s;
-  }
-  .brands-grid-r19 .brand-logo:hover {
-    opacity: 1;
-  }
-  @media (max-width: 768px) {
-    .brands-grid-r19 {
-      gap: 1.5rem 2rem;
-    }
-    .brands-grid-r19 .brand-logo {
-      height: 36px;
-      max-width: 100px;
-    }
-  }
-  @media (max-width: 480px) {
-    .brands-grid-r19 {
-      gap: 1.25rem 1.5rem;
-    }
-    .brands-grid-r19 .brand-logo {
-      height: 30px;
-      max-width: 80px;
-    }
-  }
-  /* ROUND 23 FIX #4 — New brand logo grid: 6 per row desktop, 3 tablet, 2 mobile */
-  /* ROUND 38 FIX — Larger grid gap */
-  .brands-grid-r23 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 40px 48px;
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 0;
-  }
-  /* ROUND 38 FIX — Larger brand logos */
-  .brands-grid-r23 .brand-logo {
-    height: 90px;
-    width: auto;
-    max-width: 180px;
-    object-fit: contain;
-    opacity: 0.72;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .brands-grid-r23 .brand-logo:hover {
-    opacity: 1;
-    transform: scale(1.06);
-  }
-  @media (max-width: 1024px) {
-    .brands-grid-r23 {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem 2rem;
-    }
-    .brands-grid-r23 .brand-logo {
-      height: 60px;
-      max-width: 140px;
-    }
-  }
-  @media (max-width: 480px) {
-    .brands-grid-r23 {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .brands-grid-r23 .brand-logo {
-      height: 44px;
-      max-width: 110px;
-    }
-  }
-</style>
 </head>
 <body>
+
+<!-- PHASE 2 FIX #4 — Skip-to-content link for keyboard/screen reader users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <div class="cur" id="cur" aria-hidden="true"></div>
 <div class="cur-r" id="cur-r" aria-hidden="true"></div>
 
-<!-- NAV — EXPANSION FIX #3: sponsor link active, other links point back to index.html -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="treehouse. — home">
     <img src="/img/logo.png" alt="treehouse. Events" height="40" style="filter:brightness(0) invert(1);">
   </a>
   <div class="nav-links">
-    <!-- ROUND 25 FIX #4 — Home added as first nav item -->
     <a href="/index.html#about">home</a>
     <a href="/index.html#tribeca-rooftop">past events</a>
-    <a href="/sponsor.html" class="hi nav-active">sponsor</a>
-    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
+    <a href="/sponsor.html" class="hi nav-active" aria-current="page">sponsor</a>
+    <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </div>
-  <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob">
+  <!-- PHASE 2 FIX #5 — aria-label on hamburger button -->
+  <button class="ham" id="ham" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
-<div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
-  <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
-  <nav>
-    <!-- ROUND 25 FIX #4 — Home added as first mobile nav item -->
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+  <button class="mob-x" id="mob-x" aria-label="Close navigation menu">&times;</button>
+  <nav aria-label="Mobile navigation">
     <a href="/index.html#about">home</a>
     <a href="/index.html#tribeca-rooftop">past events</a>
-    <a href="/sponsor.html" class="nav-active">sponsor</a>
-    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
+    <a href="/sponsor.html" class="nav-active" aria-current="page">sponsor</a>
+    <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </nav>
 </div>
 
-<main>
-
-<!-- REMOVED R29: Scrolling event ticker not needed on sponsor page. Wrapped in template tag to suppress rendering. -->
-<!-- ROUND 29 FIX -->
-<template id="r29-ticker-removed">
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
-    <span class="marquee-item">SoHo Soiree<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Party on Perry St<span class="marquee-dot"></span></span>
-    <span class="marquee-item">West Village<span class="marquee-dot"></span></span>
-    <span class="marquee-item">75 Varick Rooftop<span class="marquee-dot"></span></span>
-    <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
-    <span class="marquee-item">SoHo Soiree<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Christmas in NYC<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Party on Perry St<span class="marquee-dot"></span></span>
-    <span class="marquee-item">West Village<span class="marquee-dot"></span></span>
-    <span class="marquee-item">75 Varick Rooftop<span class="marquee-dot"></span></span>
-    <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
-  </div>
-</div>
-</template>
+<main id="main-content">
 
 <!-- ═══════════════════════════════ SECTION A: HERO ═══════════════════════════════ -->
-<!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
-<!-- ROUND 30 POLISH — no-pad on full-bleed sections -->
-<section class="sp-hero no-pad" id="sp-hero">
-    <!-- ROUND 18 FIX #2 — Video background for sponsor hero -->
-  <!-- ROUND 20 FIX #3 — hero video fixed: clean tag, correct src, no poster -->
-  <!-- ROUND 21 FIX #2 — Hero background video updated to sponsor-hero-bg.mp4 -->
+<section class="sp-hero no-pad" id="sp-hero" aria-label="Sponsor hero">
   <video
     class="sponsor-hero-bg"
     src="/img/sponsor-hero-bg.mp4"
@@ -1038,8 +102,9 @@
     loop
     playsinline
     preload="auto"
+    aria-hidden="true"
   ></video>
-  <div class="sp-hero-overlay"></div>
+  <div class="sp-hero-overlay" aria-hidden="true"></div>
   <div class="sp-hero-inner">
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.6);">// Partnerships</span>
     <h1 class="sp-hero-h1">your brand<br>belongs in<br>this room.</h1>
@@ -1052,24 +117,16 @@
 </section>
 
 <!-- ═══════════════════════════════ SECTION B: STATS ═══════════════════════════════ -->
-<!-- EXPANSION FIX #5 — editorial stats section -->
-<!-- ROUND 30 POLISH — sp-stats has its own padding via .sp-stats CSS -->
-<section class="sp-stats no-pad" id="sp-stats">
-  <!-- ROUND 24 FIX #1/#3 — Full-width stats, video below -->
-  <!-- REMOVED R24: two-column sp-stats-layout — stats now span full width -->
+<section class="sp-stats no-pad" id="sp-stats" aria-label="Why Treehouse — brand partnership stats">
   <div class="sp-stats-inner">
-    <!-- ROUND 39 FIX #3 — Section label size handled by .sp-stats-label CSS update -->
     <span class="sp-stats-label">// Why Treehouse</span>
     <div class="sp-stats-layout">
-      <!-- FULL WIDTH: stats grid -->
       <div class="sp-stats-left">
-        <!-- ROUND 24 FIX #3 — 4-column stats grid, full page width -->
         <div class="sp-stats-grid">
           <div class="sp-stat reveal" style="transition-delay:0ms;">
             <span class="sp-stat-num" data-count-up="18" data-suffix="">18</span>
             <p class="sp-stat-label">brand partners across 5 events. Spirits, fashion, wellness, and tech.</p>
           </div>
-          <!-- ROUND 24 FIX #4 — 500→300, "guests per event"→"attendees on average" -->
           <div class="sp-stat reveal" style="transition-delay:80ms;">
             <span class="sp-stat-num" data-count-up="300" data-suffix="">300</span>
             <p class="sp-stat-label">attendees on average. Invite-only. The kind of crowd that actually tries new things.</p>
@@ -1083,7 +140,6 @@
             <p class="sp-stat-label">organic influencer content generated at every event. Real crowd, real reach, no bots.</p>
           </div>
         </div>
-        <!-- ROUND 24 FIX #5 — Removed specific venue names from italic text -->
         <div class="sp-stats-venues reveal">
           <p>Past events have consistently sold out. Your brand is part of the night, not a banner in the corner. People remember what they experienced.</p>
         </div>
@@ -1092,13 +148,10 @@
           <cite>— Salud from Tequila Cabal</cite>
         </div>
       </div>
-      <!-- ROUND 24 FIX #1 — Video below stats as full-width strip -->
-      <!-- ROUND 26 FIX #6 — Explore partnerships CTA added to Why Treehouse section -->
       <div style="margin-top:2.5rem;">
-        <a href="#sp-contact" class="btn btn-p btn-explore-r26">explore partnerships &rarr;</a>
+        <a href="#sp-contact" class="btn btn-p btn-full">explore partnerships &rarr;</a>
       </div>
       <div class="sp-stats-right">
-        <!-- ROUND 24 FIX #1 — why-sponsor-video.mp4 now committed to git, plays below stats -->
         <video
           src="/img/why-sponsor-video.mp4"
           autoplay
@@ -1108,26 +161,16 @@
           preload="auto"
           poster="/img/hero-new.jpg"
           class="why-sponsor-video"
+          aria-hidden="true"
         ></video>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REMOVED R26: Duplicate Why Sponsor section — content already exists in Why Treehouse stats section above -->
-<!-- ROUND 26 FIX #4 — Removed duplicate heading/text/quote/button; kept IGC video as standalone section -->
-<!-- ROUND 18 FIX #1 — In Good Company section moved from index.html -->
-<!-- ROUND 30 POLISH — no-pad on video-only section -->
-<section class="dk grain no-pad" id="sp-in-good-company" style="padding:0;line-height:0;overflow:hidden;">
-  <!-- ROUND 26 FIX #4 — Duplicate text/heading/quote/button removed; video kept as visual break -->
-  <!-- REMOVED R26: Why Sponsor? heading — duplicate of stats section -->
-  <!-- REMOVED R26: // Past Partners label — duplicate -->
-  <!-- REMOVED R26: In Good Company. h2 — duplicate -->
-  <!-- REMOVED R26: 18 brands paragraph — duplicate -->
-  <!-- REMOVED R26: Tequila Cabal quote — duplicate -->
-  <!-- REMOVED R26: explore partnerships button — moved to contact section -->
+<!-- ═══════════════════════════════ IGC VIDEO BREAK ═══════════════════════════════ -->
+<section class="dk grain no-pad" id="sp-in-good-company" style="padding:0;line-height:0;overflow:hidden;" aria-hidden="true">
   <video
-    <!-- ROUND 21 FIX #3 — IGC video updated to sponsor-igc-video.mp4 -->
     src="/img/sponsor-igc-video.mp4"
     class="igc-video"
     autoplay muted loop playsinline
@@ -1135,27 +178,13 @@
     style="width:100%;height:60vh;min-height:360px;object-fit:cover;display:block;"
   ></video>
 </section>
-<!-- /REMOVED R26 -->
 
-<!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
-<!-- ROUND 23 FIX #4 — Restored all 18 named brand logos from /img/logos/ -->
-<!-- ROUND 30 POLISH — sp-brands uses .dk padding -->
-<!-- ROUND 31 FIX #1 — no-pad so .dk 80px doesn't stack with inner wrapper padding -->
-<section class="dk grain no-pad" id="sp-brands">
-  <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
-  <!-- ROUND 33 FIX #2 — Aligned max-width to var(--wrap)=1280px and padding to match other sections -->
-  <!-- ROUND 39 FIX #1 — Unified content alignment: same max-width and padding as all other sections -->
+<!-- ═══════════════════════════════ SECTION D: PAST PARTNERS ═══════════════════════════════ -->
+<section class="dk grain no-pad" id="sp-brands" aria-label="Past brand partners">
   <div class="w" style="max-width:1100px;margin:0 auto;padding:48px 48px;">
-    <!-- ROUND 26 FIX #5 — Changed label and heading to PAST PARTNERS -->
-    <!-- ROUND 29 FIX: removed data-a animation attrs so heading renders immediately without waiting for observer -->
-    <!-- ROUND 39 FIX #3 — Section label min 0.9rem; heading min 4.5rem; subtitle min 1.1rem -->
     <span class="lbl" style="margin-bottom:1rem;display:block;font-size:0.9rem;">// Past Partners</span>
-    <!-- ROUND 31 FIX #1 — tightened gap between heading and subtitle -->
     <h2 style="font-family:var(--ff-d);font-size:clamp(4.5rem,6vw,6rem);letter-spacing:0.02em;margin-bottom:12px;color:#E8E6DF;">Past Partners.</h2>
-    <!-- ROUND 31 FIX #1 — reduced gap between subtitle and logos: 3rem→32px -->
-    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:32px;font-size:1.1rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
-    <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
-    <!-- ROUND 23 FIX #4 — All 18 named brand logos restored with correct alt text -->
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:32px;font-size:1.1rem;">18 brands. 5 events. All hand-selected.</p>
     <div class="brands-grid-wrap brands-grid-r23">
       <img src="/img/logos/10_Celsius.png" alt="Celsius" class="brand-logo" loading="lazy">
       <img src="/img/logos/06_Lucie.png" alt="Lucie" class="brand-logo" loading="lazy">
@@ -1176,22 +205,18 @@
       <img src="/img/logos/08_Friday_Beers.png" alt="Friday Beers" class="brand-logo" loading="lazy">
       <img src="/img/logos/03_Mezcalum.png" alt="Mezcalum" class="brand-logo" loading="lazy">
     </div>
-    <!-- ROUND 31 FIX #1 — tightened bottom CTA spacing -->
-    <div style="text-align:center;padding:0.75rem 0 0;border-top:1px solid var(--ln10);margin-top:1.5rem;" data-a="u">
+    <div style="text-align:center;padding:0.75rem 0 0;border-top:1px solid var(--ln10);margin-top:1.5rem;">
       <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1rem;">Limited spots left for 2026. Once they're gone, they're gone.</p>
       <a href="#sp-packages" class="btn btn-p">see sponsorship packages</a>
     </div>
   </div>
 </section>
 
-
 <!-- ═══════════════════════════════ SECTION C: PACKAGES ═══════════════════════════════ -->
-<!-- EXPANSION FIX #6 — editorial tier cards, Gold emphasized -->
-<section class="sp-packages" id="sp-packages">
+<section class="sp-packages" id="sp-packages" aria-label="Sponsorship packages">
   <div class="sp-packages-inner">
     <div class="sp-packages-header reveal">
-      <!-- ROUND 39 FIX #3 — Section label min 0.9rem -->
-    <span class="lbl reveal-child" style="color:rgba(240,237,232,0.5);font-size:0.9rem;">// Sponsorship Packages</span>
+      <span class="lbl reveal-child" style="color:rgba(240,237,232,0.5);font-size:0.9rem;">// Sponsorship Packages</span>
       <h2>Three tiers.<br>Pick one.</h2>
       <p>We'll handle the rest. One sponsor per category per event.</p>
     </div>
@@ -1203,7 +228,7 @@
         <div class="sp-tier-name">Bronze</div>
         <div class="sp-tier-price">$5,000 / event</div>
         <div class="sp-tier-desc">Essential brand visibility and integration.</div>
-        <div class="sp-tier-div"></div>
+        <div class="sp-tier-div" aria-hidden="true"></div>
         <ul class="sp-tier-feats">
           <li>Logo on all event marketing materials</li>
           <li>2 VIP tickets</li>
@@ -1223,7 +248,7 @@
         <div class="sp-tier-name">Gold</div>
         <div class="sp-tier-price">$10,000 / event</div>
         <div class="sp-tier-desc">Enhanced visibility, interactive elements, and broader reach.</div>
-        <div class="sp-tier-div"></div>
+        <div class="sp-tier-div" aria-hidden="true"></div>
         <ul class="sp-tier-feats">
           <li>Everything in Bronze, plus:</li>
           <li>3 VIP tickets (total)</li>
@@ -1244,7 +269,7 @@
         <div class="sp-tier-name">Platinum</div>
         <div class="sp-tier-price">$15,000 / event</div>
         <div class="sp-tier-desc">Maximum exposure, exclusivity, and a custom brand experience.</div>
-        <div class="sp-tier-div"></div>
+        <div class="sp-tier-div" aria-hidden="true"></div>
         <ul class="sp-tier-feats">
           <li>Everything in Gold, plus:</li>
           <li>5 VIP tickets (total)</li>
@@ -1266,67 +291,35 @@
   </div>
 </section>
 
-<!-- REMOVED R31: Duplicate April 25 event section — info already on homepage; Partiful link moved to contact section -->
-<!--
-<section class="sp-next-event no-pad" id="sp-next-event">
-  <div class="sp-next-inner">
-    <div class="sp-next-left reveal">
-      <span class="sp-next-label">// Next Event</span>
-      <div class="sp-next-date">April 25,<br>2026</div>
-      <div class="sp-next-details">
-        <p><strong>75 Varick Rooftop</strong></p>
-        <p>SoHo, New York City</p>
-        <p>3:00 PM to 8:00 PM ET</p>
-        <p>Invite-only. Open bar. 300 guests.</p>
-      </div>
-      <span class="sp-next-avail">Limited sponsorship spots remaining</span>
-      <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" class="sp-next-cta" target="_blank" rel="noopener">request your invite &rarr;</a>
-    </div>
-    <div class="sp-next-countdown-block reveal">
-      <span class="sp-next-countdown-label">until doors open</span>
-      <div class="sp-countdown-display">
-        <span class="sp-countdown-num" id="sp-countdown-days">--</span><span class="sp-countdown-sep">D</span>
-        <span class="sp-countdown-num" id="sp-countdown-hours">--</span><span class="sp-countdown-sep">H</span>
-        <span class="sp-countdown-num" id="sp-countdown-mins">--</span><span class="sp-countdown-sep">M</span>
-      </div>
-      <a href="#sp-contact" class="sp-next-cta">lock in your spot &rarr;</a>
-    </div>
-  </div>
-</section>
--->
-
 <!-- ═══════════════════════════════ SECTION E: CONTACT ═══════════════════════════════ -->
-<!-- EXPANSION FIX #9 — contact form and deck download -->
-<!-- ROUND 30 POLISH — sp-contact has its own padding -->
-<section class="sp-contact no-pad" id="sp-contact">
+<section class="sp-contact no-pad" id="sp-contact" aria-label="Contact and sponsorship inquiry form">
   <div class="sp-contact-inner">
-    <!-- ROUND 39 FIX #3 — Section label min 0.9rem -->
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.5);margin-bottom:1rem;display:block;font-size:0.9rem;">// Get in Touch</span>
     <h2 class="reveal">let's build something<br>together.</h2>
     <p class="sp-contact-body reveal">Reach out to discuss custom activations, multi-event partnerships, or to lock in your preferred tier before spots close.</p>
     <a href="mailto:events@tigertracks.ai" class="sp-contact-email reveal">events@tigertracks.ai &rarr;</a>
-    <!-- REMOVED R36: Partiful invite link — doesn't belong in sponsor contact section; this section is for brand inquiries only -->
 
     <div class="sp-contact-deck reveal">
       <!-- TODO: Replace with actual Canva deck URL -->
       <a href="#" class="btn-secondary" target="_blank" rel="noopener">view the full deck &rarr;</a>
     </div>
 
-    <!-- TODO: Connect form to backend (Formspree, Netlify Forms, etc.) -->
-    <form class="sp-form reveal" action="mailto:events@tigertracks.ai" method="POST" enctype="text/plain">
+    <!-- PHASE 2 FIX #6 — Form: action updated to Formspree endpoint placeholder; success message added -->
+    <!-- TODO: Replace YOUR_FORM_ID with actual Formspree form ID from https://formspree.io -->
+    <form class="sp-form reveal" id="sp-inquiry-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <div class="sp-form-row">
         <div>
           <label for="sp-name">Name</label>
-          <input type="text" id="sp-name" name="name" placeholder="Your name" required>
+          <input type="text" id="sp-name" name="name" placeholder="Your name" required autocomplete="name">
         </div>
         <div>
           <label for="sp-brand">Brand / Company</label>
-          <input type="text" id="sp-brand" name="brand" placeholder="Your brand or company" required>
+          <input type="text" id="sp-brand" name="brand" placeholder="Your brand or company" required autocomplete="organization">
         </div>
       </div>
       <div>
         <label for="sp-email">Email</label>
-        <input type="email" id="sp-email" name="email" placeholder="your@email.com" required>
+        <input type="email" id="sp-email" name="email" placeholder="your@email.com" required autocomplete="email">
       </div>
       <div>
         <label for="sp-tier">Which tier are you interested in?</label>
@@ -1345,19 +338,16 @@
       </div>
       <button type="submit" class="sp-form-submit">send inquiry &rarr;</button>
     </form>
+    <div class="sp-form-success" id="sp-form-success" role="status" aria-live="polite">
+      Thank you! We'll be in touch within 24 hours.
+    </div>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER — same as index.html with sponsorship inquiries link added -->
-
-<!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
-<!-- ROUND 23 FIX #2 — Full-screen closing video replaces sponsor-bottom-video.mp4 -->
-<!-- ROUND 24 FIX #2 — File committed to git; preload="auto" for reliable playback -->
-<!-- ROUND 30 POLISH — no-pad on bottom video -->
-<section class="dk no-pad sponsor-bottom-video-section">
-  <!-- REMOVED R23: sponsor-bottom-video.mp4 replaced with sponsor-closing-video.mp4 -->
+<!-- BOTTOM VIDEO -->
+<section class="dk no-pad sponsor-bottom-video-section" aria-hidden="true">
   <video
     src="/img/sponsor-closing-video.mp4"
     autoplay
@@ -1370,21 +360,20 @@
   ></video>
 </section>
 
-<!-- EXPANSION FIX #10 — footer with sponsorship inquiries link -->
-<footer class="foot dk grain" style="padding-top:3rem;">
-  <div>
+<footer class="foot dk grain" style="padding-top:3rem;" role="contentinfo">
+  <div class="foot-top">
     <a href="/" class="foot-logo" aria-label="treehouse. — home" title="Back to home">
       <img src="/img/logo.png" alt="treehouse. Events | New York City" height="120" style="filter:brightness(0) invert(1);">
     </a>
-    <p class="foot-tag">Events · New York City</p>
-    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p> <!-- ROUND 24 FIX #4 — 500→300 -->
+    <p class="foot-tag">Events &middot; New York City</p>
+    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 &middot; 75 Varick Rooftop &middot; 300 guests &middot; Waitlist open</p>
   </div>
-  <nav class="foot-links" aria-label="Footer links">
+  <nav class="foot-links" aria-label="Footer navigation">
     <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram @treehouseevents.nyc" style="display:inline-flex;align-items:center;gap:0.4rem;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       @treehouseevents.nyc
     </a>
-    <a href="mailto:events@tigertracks.ai" target="_blank" rel="noopener">events@tigertracks.ai</a>
+    <a href="mailto:events@tigertracks.ai">events@tigertracks.ai</a>
     <a href="/sponsor.html#sp-contact">sponsorship inquiries</a>
     <a href="tel:+13016467758">(301) 646-7758</a>
   </nav>
@@ -1395,13 +384,15 @@
 
 <script src="/photos.js"></script>
 
-<!-- EXPANSION FIX #11 — sponsor page countdown (separate IDs, no conflict with index.html) -->
+<!-- PHASE 2 FIX #7 — Countdown: canonical event date constant (3:00 PM ET) -->
 <script>
 (function(){
+  // PHASE 2: Single source of truth for event date across all countdowns
+  var EVENT_DATE = new Date('2026-04-25T15:00:00-04:00');
+
   function spCountdown(){
     var now = new Date();
-    var event = new Date('2026-04-25T22:30:00-04:00');
-    var diff = Math.max(0, Math.floor((event - now) / 1000));
+    var diff = Math.max(0, Math.floor((EVENT_DATE - now) / 1000));
     if(diff <= 0) return;
     var days = Math.floor(diff / 86400);
     var hours = Math.floor((diff % 86400) / 3600);
@@ -1415,12 +406,8 @@
   }
   spCountdown();
   setInterval(spCountdown, 1000);
-})();
-</script>
 
-<!-- EXPANSION FIX #12 — mobile nav toggle (same logic as index.html) -->
-<script>
-(function(){
+  // Mobile nav toggle
   var ham = document.getElementById('ham');
   var mob = document.getElementById('mob');
   var mobX = document.getElementById('mob-x');
@@ -1441,15 +428,16 @@
   if(mobX) mobX.addEventListener('click', closeMenu);
   if(backdrop) backdrop.addEventListener('click', closeMenu);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-  // Close on nav link click
   if(mob) mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
   // Nav scroll effect
   var nav = document.getElementById('nav');
   if(nav){
     window.addEventListener('scroll', function(){
-      nav.classList.toggle('scrolled', window.scrollY > 40);
+      nav.classList.toggle('sc', window.scrollY > 40);
     }, {passive:true});
   }
+
   // Reveal animations
   var reveals = document.querySelectorAll('.reveal');
   if(reveals.length && 'IntersectionObserver' in window){
@@ -1460,7 +448,8 @@
     }, {threshold:0.12});
     reveals.forEach(function(el){ io.observe(el); });
   }
-  // ROUND 23 FIX #3 — Count-up animation for stat numbers
+
+  // Count-up animation for stat numbers
   (function(){
     var els = document.querySelectorAll('[data-count-up]');
     if(!els.length || !('IntersectionObserver' in window)) return;
@@ -1485,6 +474,33 @@
     }, {threshold: 0.5});
     els.forEach(function(el){ countObs.observe(el); });
   })();
+
+  // PHASE 2 FIX #8 — Formspree AJAX form submission with success message
+  var form = document.getElementById('sp-inquiry-form');
+  var successMsg = document.getElementById('sp-form-success');
+  if(form && successMsg){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('.sp-form-submit');
+      if(btn){ btn.textContent = 'sending...'; btn.disabled = true; }
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if(res.ok){
+          form.style.display = 'none';
+          successMsg.classList.add('show');
+        } else {
+          if(btn){ btn.textContent = 'send inquiry \u2192'; btn.disabled = false; }
+          alert('Something went wrong. Please email us directly at events@tigertracks.ai');
+        }
+      }).catch(function(){
+        if(btn){ btn.textContent = 'send inquiry \u2192'; btn.disabled = false; }
+        alert('Something went wrong. Please email us directly at events@tigertracks.ai');
+      });
+    });
+  }
 })();
 </script>
 

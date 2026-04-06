@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PHASE 2 FIX #1 — Canonical URL -->
+  <link rel="canonical" href="https://treehouseevents.cliffeliz.ai/">
   <title>treehouse. events | new york city</title>
   <meta name="description" content="treehouse. throws the best parties in New York. Invite only. Open bar. Next event: April 25th at 75 Varick Rooftop.">
   <meta property="og:title" content="treehouse. events | new york city">
@@ -13,6 +15,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="treehouse. events | new york city">
   <meta name="twitter:image" content="/img/sp-xmas-herogroup.jpg">
+  <!-- PHASE 2 FIX #2 — Additional SEO meta tags -->
+  <meta name="twitter:description" content="NYC's most sought-after invite-only event series. Open bar. Next event: April 25th at 75 Varick Rooftop.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +39,7 @@
     if(h&&h2) h2.textContent=h.textContent;
     if(m2){
       var now=new Date();
-      var event=new Date('2026-04-25T22:30:00-04:00');
+      var event=new Date('2026-04-25T15:00:00-04:00'); /* PHASE 2 FIX #3 — canonical event time */
       var diff=Math.max(0,Math.floor((event-now)/1000));
       var mins=Math.floor((diff%3600)/60);
       m2.textContent=String(mins).padStart(2,'0');
@@ -48,11 +52,14 @@
 </head>
 <body>
 
+<!-- PHASE 2 FIX #4 — Skip-to-content link (must be first focusable element) -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <div class="cur" id="cur" aria-hidden="true"></div>
 <div class="cur-r" id="cur-r" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="treehouse. — home">
     <img src="/img/logo.png" alt="treehouse. Events" height="40" style="filter:brightness(0) invert(1);">
   </a>
@@ -64,17 +71,17 @@
     <!-- EXPANSION FIX #3 — sponsor nav link now points to sponsor.html --><a href="/sponsor.html" class="hi">sponsor</a>
     <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </div>
-  <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob">
+  <button class="ham" id="ham" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <!-- ROUND 4 FIX #9 — Mobile nav backdrop -->
 <div class="nav-mobile-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
-<div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
-  <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+  <button class="mob-x" id="mob-x" aria-label="Close navigation menu">&times;</button>
   <!-- AUDIT FIX #10 — Mobile nav simplified -->
-  <nav>
+  <nav aria-label="Mobile navigation">
     <!-- ROUND 25 FIX #4 — Home added as first mobile nav item -->
     <a href="#about">home</a>
     <a href="#tribeca-rooftop">past events</a>
@@ -83,7 +90,7 @@
   </nav>
 </div>
 
-<main>
+<main id="main-content">
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="dk hero grain" id="hero">
@@ -927,7 +934,7 @@ document.querySelectorAll('img').forEach(function(img){
 // ROUND 4 FIX #3 — Live countdown to April 25, 2025 8PM ET
 // ROUND 5 FIX #1 — Corrected year to 2026
 function updateCountdown() {
-  var eventDate = new Date('2026-04-25T20:00:00-04:00');
+  var eventDate = new Date('2026-04-25T15:00:00-04:00'); /* PHASE 2 FIX #3 — canonical event time */
   var now = new Date();
   var diff = eventDate - now;
   var dEl = document.getElementById('countdown-days');
