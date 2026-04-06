@@ -135,10 +135,53 @@
     background: var(--linen);
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
+    /* ROUND 23 FIX #3 — subtle dot texture */
+    background-image: radial-gradient(circle, rgba(45,74,30,0.045) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
   .sp-stats-inner {
     max-width: var(--wrap);
     margin: 0 auto;
+  }
+  /* ROUND 23 FIX #1 — two-column layout: stats left, video right */
+  .sp-stats-layout {
+    display: grid;
+    grid-template-columns: 1fr 42%;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .sp-stats-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  .sp-stats-left {
+    min-width: 0;
+  }
+  .sp-stats-right {
+    position: sticky;
+    top: 6rem;
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 480px;
+  }
+  .why-sponsor-video {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+  }
+  @media (max-width: 900px) {
+    .sp-stats-right {
+      position: static;
+      min-height: 300px;
+    }
+    .why-sponsor-video {
+      min-height: 300px;
+    }
   }
   .sp-stats-label {
     display: block;
@@ -153,16 +196,17 @@
   .sp-stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4rem 5rem;
-    margin-bottom: 5rem;
+    gap: 3rem 4rem;
+    margin-bottom: 4rem;
   }
   @media (max-width: 768px) {
     .sp-stats-grid { grid-template-columns: 1fr; gap: 3rem; }
   }
+  /* ROUND 23 FIX #3 — Enhanced stat numbers */
   .sp-stat-num {
     font-family: var(--ff-d);
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: 0.88;
+    font-size: clamp(4.5rem, 11vw, 9rem);
+    line-height: 0.85;
     color: var(--g);
     letter-spacing: 0.01em;
     display: block;
@@ -176,10 +220,11 @@
     opacity: 0.72;
     max-width: 280px;
   }
+  /* ROUND 23 FIX #3 — Stronger divider above venues text */
   .sp-stats-venues {
-    border-top: 1px solid rgba(26,58,26,0.12);
-    padding-top: 3rem;
-    margin-bottom: 3rem;
+    border-top: 1px solid rgba(45,74,30,0.2);
+    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
   .sp-stats-venues p {
     font-family: var(--ff-e);
@@ -190,10 +235,14 @@
     opacity: 0.75;
     max-width: 640px;
   }
+  /* ROUND 23 FIX #3 — Bolder quote accent */
   .sp-stats-quote {
-    border-left: 3px solid var(--g2);
+    border-left: 4px solid #2D4A1E;
     padding-left: 2rem;
     max-width: 580px;
+    background: rgba(45,74,30,0.04);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    border-radius: 0 4px 4px 0;
   }
   .sp-stats-quote blockquote {
     font-family: var(--ff-e);
@@ -654,6 +703,7 @@
   }
   
 /* ROUND 18 FIX #3 — Sponsor page bottom video */
+/* ROUND 23 FIX #2 — Full-screen closing video */
 .sponsor-bottom-video-section {
   width: 100%;
   line-height: 0;
@@ -661,7 +711,7 @@
 }
 .sponsor-bottom-video {
   width: 100%;
-  max-height: 70vh;
+  height: 100vh;
   object-fit: cover;
   display: block;
 }
@@ -671,8 +721,9 @@
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
+  /* ROUND 23 FIX #2 — 70vh on mobile */
   .sponsor-bottom-video {
-    max-height: 50vh;
+    height: 70vh;
   }
 }
 
@@ -723,6 +774,48 @@
     .brands-grid-r19 .brand-logo {
       height: 30px;
       max-width: 80px;
+    }
+  }
+  /* ROUND 23 FIX #4 — New brand logo grid: 6 per row desktop, 3 tablet, 2 mobile */
+  .brands-grid-r23 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem 3rem;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 0;
+  }
+  .brands-grid-r23 .brand-logo {
+    height: 60px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    opacity: 0.72;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .brands-grid-r23 .brand-logo:hover {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+  @media (max-width: 1024px) {
+    .brands-grid-r23 {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem 2rem;
+    }
+    .brands-grid-r23 .brand-logo {
+      height: 48px;
+      max-width: 120px;
+    }
+  }
+  @media (max-width: 480px) {
+    .brands-grid-r23 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .brands-grid-r23 .brand-logo {
+      height: 36px;
+      max-width: 90px;
     }
   }
 </style>
@@ -809,34 +902,53 @@
 <!-- ═══════════════════════════════ SECTION B: STATS ═══════════════════════════════ -->
 <!-- EXPANSION FIX #5 — editorial stats section -->
 <section class="sp-stats" id="sp-stats">
+  <!-- ROUND 23 FIX #1 — Two-column layout: stats+quote left, video right -->
   <div class="sp-stats-inner">
     <span class="sp-stats-label">// Why Treehouse</span>
     <!-- ROUND 19 FIX #3 — Why Sponsor? heading -->
     <!-- REMOVED R20: standalone Why Sponsor? heading moved inline -->
-    <div class="sp-stats-grid">
-      <div class="sp-stat reveal">
-        <span class="sp-stat-num">18</span>
-        <p class="sp-stat-label">brand partners across 5 events. Spirits, fashion, wellness, and tech.</p>
+    <div class="sp-stats-layout">
+      <!-- LEFT: stats grid + quote -->
+      <div class="sp-stats-left">
+        <div class="sp-stats-grid">
+          <div class="sp-stat reveal" style="transition-delay:0ms;">
+            <span class="sp-stat-num" data-count-up="18" data-suffix="">18</span>
+            <p class="sp-stat-label">brand partners across 5 events. Spirits, fashion, wellness, and tech.</p>
+          </div>
+          <div class="sp-stat reveal" style="transition-delay:80ms;">
+            <span class="sp-stat-num" data-count-up="500" data-suffix="+">500+</span>
+            <p class="sp-stat-label">guests per event. Invite-only. The kind of crowd that actually tries new things.</p>
+          </div>
+          <div class="sp-stat reveal" style="transition-delay:160ms;">
+            <span class="sp-stat-num" data-count-up="5" data-suffix="">5</span>
+            <p class="sp-stat-label">sold-out events. Tribeca Rooftop, Perry St in Brooklyn, SoHo Soiree, West Village, and Christmas in NYC.</p>
+          </div>
+          <div class="sp-stat reveal" style="transition-delay:240ms;">
+            <span class="sp-stat-num" data-count-up="100" data-suffix="%">100%</span>
+            <p class="sp-stat-label">organic influencer content generated at every event. Real crowd, real reach, no bots.</p>
+          </div>
+        </div>
+        <div class="sp-stats-venues reveal">
+          <p>Past events at Tribeca Rooftop, Perry St in Brooklyn, and SoHo Soiree have consistently sold out. Your brand is part of the night, not a banner in the corner. People remember what they experienced.</p>
+        </div>
+        <div class="sp-stats-quote reveal">
+          <blockquote>"Fantastic exposure for the brand. Excited to see what we can cook up next, always up to get creative in the treehouse."</blockquote>
+          <cite>— Salud from Tequila Cabal</cite>
+        </div>
       </div>
-      <div class="sp-stat reveal">
-        <span class="sp-stat-num">500+</span>
-        <p class="sp-stat-label">guests per event. Invite-only. The kind of crowd that actually tries new things.</p>
+      <!-- RIGHT: inline video -->
+      <div class="sp-stats-right reveal">
+        <!-- ROUND 23 FIX #1 — Video next to Why Sponsor stats -->
+        <video
+          src="/img/why-sponsor-video.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          class="why-sponsor-video"
+        ></video>
       </div>
-      <div class="sp-stat reveal">
-        <span class="sp-stat-num">5</span>
-        <p class="sp-stat-label">sold-out events. Tribeca Rooftop, Perry St in Brooklyn, SoHo Soiree, West Village, and Christmas in NYC.</p>
-      </div>
-      <div class="sp-stat reveal">
-        <span class="sp-stat-num">100%</span>
-        <p class="sp-stat-label">organic influencer content generated at every event. Real crowd, real reach, no bots.</p>
-      </div>
-    </div>
-    <div class="sp-stats-venues reveal">
-      <p>Past events at Tribeca Rooftop, Perry St in Brooklyn, and SoHo Soiree have consistently sold out. Your brand is part of the night, not a banner in the corner. People remember what they experienced.</p>
-    </div>
-    <div class="sp-stats-quote reveal">
-      <blockquote>"Fantastic exposure for the brand. Excited to see what we can cook up next, always up to get creative in the treehouse."</blockquote>
-      <cite>— Salud from Tequila Cabal</cite>
     </div>
   </div>
 </section>
@@ -874,39 +986,38 @@
 </section>
 
 <!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
+<!-- ROUND 23 FIX #4 — Restored all 18 named brand logos from /img/logos/ -->
 <section class="dk grain" id="sp-brands">
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
   <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
     <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
     <h2 data-a="l" style="margin-bottom:0.75rem;color:#E8E6DF;">Brands that showed up.</h2>
-    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1"><!-- ROUND 21 FIX #5 — Updated guest count -->18 brands. 5 events. 2,500+ people in the room.</p>
-    <!-- REMOVED R19: Old brand logos (keeping Celsius and Lucie) -->
-    <!-- ROUND 19 FIX #4 — Updated brand logos: Celsius + Lucie kept, 16 new logos added -->
-    <div class="brands-grid-wrap brands-grid-r19">
-      <!-- KEPT: Celsius and Lucie -->
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
+    <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
+    <!-- ROUND 23 FIX #4 — All 18 named brand logos restored with correct alt text -->
+    <div class="brands-grid-wrap brands-grid-r23">
       <img src="/img/logos/10_Celsius.png" alt="Celsius" class="brand-logo" loading="lazy">
       <img src="/img/logos/06_Lucie.png" alt="Lucie" class="brand-logo" loading="lazy">
-      <!-- 16 new brand logos -->
-      <img src="/img/brand-logo-01.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-02.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-03.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-04.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-05.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-06.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-07.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-08.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-09.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-10.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-11.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-12.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-13.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-14.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-15.png" alt="Brand partner" class="brand-logo" loading="lazy">
-      <img src="/img/brand-logo-16.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/logos/13_Teremana.png" alt="Teremana" class="brand-logo" loading="lazy">
+      <img src="/img/logos/11_CLR.png" alt="Chelsea Living Room" class="brand-logo" loading="lazy">
+      <img src="/img/logos/09_SURF.png" alt="SURF" class="brand-logo" loading="lazy">
+      <img src="/img/logos/18_Holiday.png" alt="Holiday" class="brand-logo" loading="lazy">
+      <img src="/img/logos/14_7th_Street_Burger.png" alt="7th Street Burger" class="brand-logo" loading="lazy">
+      <img src="/img/logos/15_NightOwl.png" alt="NightOwl" class="brand-logo" loading="lazy">
+      <img src="/img/logos/16_Bashi.png" alt="Bashi" class="brand-logo" loading="lazy">
+      <img src="/img/logos/17_Lemon_Perfect.png" alt="Lemon Perfect" class="brand-logo" loading="lazy">
+      <img src="/img/logos/12_Solento_Organic_Tequila.png" alt="Solento Organic Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/01_Tequila_Cabal_Organic.png" alt="Tequila Cabal Organic" class="brand-logo" loading="lazy">
+      <img src="/img/logos/02_Potro_Tequila.png" alt="Potro Tequila" class="brand-logo" loading="lazy">
+      <img src="/img/logos/04_Mission_Craft_Cocktails.png" alt="Mission Craft Cocktails" class="brand-logo" loading="lazy">
+      <img src="/img/logos/05_Hampton_Water.png" alt="Hampton Water" class="brand-logo" loading="lazy">
+      <img src="/img/logos/07_Zakuska_Vodka.png" alt="Zakuska Vodka" class="brand-logo" loading="lazy">
+      <img src="/img/logos/08_Friday_Beers.png" alt="Friday Beers" class="brand-logo" loading="lazy">
+      <img src="/img/logos/03_Mezcalum.png" alt="Mezcalum" class="brand-logo" loading="lazy">
     </div>
     <!-- ROUND 19 FIX #5 — Reduced bottom CTA padding -->
     <div style="text-align:center;padding:1rem 0 0;border-top:1px solid var(--ln10);margin-top:2rem;" data-a="u">
-      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1rem;">Limited spots available for 2026 events.</p>
+      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1rem;">Limited spots left for 2026. Once they're gone, they're gone.</p>
       <a href="#sp-packages" class="btn btn-p">see sponsorship packages</a>
     </div>
   </div>
@@ -1078,15 +1189,17 @@
 <!-- FOOTER — same as index.html with sponsorship inquiries link added -->
 
 <!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
+<!-- ROUND 23 FIX #2 — Full-screen closing video replaces sponsor-bottom-video.mp4 -->
 <section class="dk sponsor-bottom-video-section">
-  <!-- ROUND 20 FIX #4 — bottom video fixed: clean tag, correct src, no poster -->
+  <!-- REMOVED R23: sponsor-bottom-video.mp4 replaced with sponsor-closing-video.mp4 -->
   <video
-    src="/img/sponsor-bottom-video.mp4"
+    src="/img/sponsor-closing-video.mp4"
     autoplay
     muted
     loop
     playsinline
     preload="metadata"
+    poster="/img/hero-new.jpg"
     class="sponsor-bottom-video"
   ></video>
 </section>
@@ -1181,6 +1294,31 @@
     }, {threshold:0.12});
     reveals.forEach(function(el){ io.observe(el); });
   }
+  // ROUND 23 FIX #3 — Count-up animation for stat numbers
+  (function(){
+    var els = document.querySelectorAll('[data-count-up]');
+    if(!els.length || !('IntersectionObserver' in window)) return;
+    var countObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var el = e.target;
+        var target = parseInt(el.getAttribute('data-count-up'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var dur = 1400;
+        var start = null;
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * target) + (p >= 1 ? suffix : '');
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        countObs.unobserve(el);
+      });
+    }, {threshold: 0.5});
+    els.forEach(function(el){ countObs.observe(el); });
+  })();
 })();
 </script>
 
