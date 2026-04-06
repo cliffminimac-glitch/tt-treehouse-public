@@ -869,7 +869,8 @@
 
 <main>
 
-<!-- MARQUEE TICKER — same as index.html -->
+<!-- REMOVED R29: Scrolling event ticker — not needed on sponsor page -->
+<!-- ROUND 29 FIX: marquee-wrap commented out below
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
@@ -888,6 +889,7 @@
     <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
   </div>
 </div>
+-->
 
 <!-- ═══════════════════════════════ SECTION A: HERO ═══════════════════════════════ -->
 <!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
@@ -1005,8 +1007,9 @@
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
   <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
     <!-- ROUND 26 FIX #5 — Changed label and heading to PAST PARTNERS -->
-    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Partners</span>
-    <h2 data-a="l" style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:0.75rem;color:#E8E6DF;">PAST PARTNERS</h2>
+    <!-- ROUND 29 FIX: removed data-a animation attrs so heading renders immediately without waiting for observer -->
+    <span class="lbl" style="margin-bottom:1rem;display:block;">// Past Partners</span>
+    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:0.75rem;color:#E8E6DF;">Past Partners.</h2>
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
     <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
     <!-- ROUND 23 FIX #4 — All 18 named brand logos restored with correct alt text -->
