@@ -6,13 +6,14 @@
 
   <!-- EXPANSION FIX #2 — SEO: sponsor page title and meta -->
   <title>Sponsor Treehouse Events | NYC's Premier Nightlife Series</title>
-  <meta name="description" <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
-  content="Partner with Treehouse Events to reach 300+ tastemakers at NYC's most sought-after nightlife experiences. Bronze, Gold, and Platinum sponsorship packages available.">
+  <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
+  <!-- ROUND 26 FIX #2 — Fixed malformed meta tag (comment was inside tag attribute) -->
+  <meta name="description" content="Partner with Treehouse Events to reach 300+ tastemakers at NYC's most sought-after nightlife experiences. Bronze, Gold, and Platinum sponsorship packages available.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Sponsor Treehouse Events | NYC Nightlife Partnerships">
-  <meta property="og:description" <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
-  content="Put your brand in front of 300 tastemakers at NYC's most exclusive events. Sponsorship packages from $5K.">
+  <!-- ROUND 26 FIX #2 — Fixed malformed og:description meta tag -->
+  <meta property="og:description" content="Put your brand in front of 300 tastemakers at NYC's most exclusive events. Sponsorship packages from $5K.">
   <meta property="og:image" content="/img/hero-new.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://treehouseevents.cliffeliz.ai/sponsor.html">
@@ -224,7 +225,8 @@
   /* ROUND 25 FIX #2 — Removed max-width: 640px, text now spans full content width */
   .sp-stats-venues p {
     font-family: var(--ff-e);
-    font-style: italic;
+    /* ROUND 26 FIX #3 — Removed italics from past events text */
+    font-style: normal;
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--g);
@@ -256,6 +258,21 @@
     color: var(--g);
     opacity: 0.5;
     font-style: normal;
+  }
+
+  /* ROUND 26 FIX #6 — Enlarged explore partnerships button */
+  .btn-explore-r26 {
+    padding: 1rem 3.5rem !important;
+    font-size: 1.1rem !important;
+    min-width: 300px;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 640px) {
+    .btn-explore-r26 {
+      width: 100%;
+      min-width: unset;
+      justify-content: center;
+    }
   }
 
   /* ── PACKAGES SECTION ── */
@@ -939,6 +956,10 @@
         </div>
       </div>
       <!-- ROUND 24 FIX #1 — Video below stats as full-width strip -->
+      <!-- ROUND 26 FIX #6 — Explore partnerships CTA added to Why Treehouse section -->
+      <div style="margin-top:2.5rem;">
+        <a href="#sp-contact" class="btn btn-p btn-explore-r26">explore partnerships &rarr;</a>
+      </div>
       <div class="sp-stats-right">
         <!-- ROUND 24 FIX #1 — why-sponsor-video.mp4 now committed to git, plays below stats -->
         <video
@@ -956,46 +977,36 @@
   </div>
 </section>
 
+<!-- REMOVED R26: Duplicate Why Sponsor section — content already exists in Why Treehouse stats section above -->
+<!-- ROUND 26 FIX #4 — Removed duplicate heading/text/quote/button; kept IGC video as standalone section -->
 <!-- ROUND 18 FIX #1 — In Good Company section moved from index.html -->
-<section class="dk grain" id="sp-in-good-company">
-  <div class="w" style="max-width:1200px;margin:0 auto;padding:5rem 2rem;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="sp-igc-grid">
-      <!-- Left: copy -->
-      <div>
-        <!-- ROUND 20 FIX #5 — Why Sponsor? heading added inline -->
-        <h2 class="sp-inline-why" style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);color:#E8E6DF;letter-spacing:0.02em;margin:0 0 0.5rem;line-height:1;">Why Sponsor?</h2>
-        <span class="lbl reveal-child" style="margin-bottom:1rem">// Past Partners</span>
-        <h2 data-a="l" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1.5rem;color:#E8E6DF;">In Good Company.</h2>
-        <div style="margin-bottom:2rem;">
-          <p style="font-family:var(--ff-e);font-size:1.05rem;opacity:0.82;line-height:1.7;margin-bottom:1.5rem;">18 brands across 5 events. Spirits, fashion, wellness, tech. The kind of crowd that actually remembers who sponsored the night.</p>
-          <blockquote style="border-left:2px solid rgba(232,230,223,0.3);padding-left:1.25rem;font-family:var(--ff-e);font-style:italic;opacity:0.75;line-height:1.6;">"Fantastic exposure for the brand. Excited to see what we can cook up next, always up to get creative in the treehouse."</blockquote>
-          <cite style="display:block;margin-top:0.75rem;font-family:var(--ff-b);font-size:0.75rem;letter-spacing:0.08em;opacity:0.55;text-transform:uppercase;">— Salud from Tequila Cabal</cite>
-        </div>
-        <a href="#sp-contact" class="btn btn-p" style="display:inline-block;"><!-- ROUND 21 FIX #4 — IGC CTA updated -->explore partnerships &rarr;</a>
-      </div>
-      <!-- Right: video -->
-      <div style="position:relative;border-radius:4px;overflow:hidden;min-height:400px;">
-        <video
-          <!-- ROUND 21 FIX #3 — IGC video updated to sponsor-igc-video.mp4 -->
-          src="/img/sponsor-igc-video.mp4"
-          class="igc-video"
-          autoplay muted loop playsinline
-          preload="metadata"
-          style="width:100%;height:100%;min-height:400px;object-fit:cover;display:block;"
-        ></video>
-      </div>
-    </div>
-  </div>
+<section class="dk grain" id="sp-in-good-company" style="padding:0;line-height:0;overflow:hidden;">
+  <!-- ROUND 26 FIX #4 — Duplicate text/heading/quote/button removed; video kept as visual break -->
+  <!-- REMOVED R26: Why Sponsor? heading — duplicate of stats section -->
+  <!-- REMOVED R26: // Past Partners label — duplicate -->
+  <!-- REMOVED R26: In Good Company. h2 — duplicate -->
+  <!-- REMOVED R26: 18 brands paragraph — duplicate -->
+  <!-- REMOVED R26: Tequila Cabal quote — duplicate -->
+  <!-- REMOVED R26: explore partnerships button — moved to contact section -->
+  <video
+    <!-- ROUND 21 FIX #3 — IGC video updated to sponsor-igc-video.mp4 -->
+    src="/img/sponsor-igc-video.mp4"
+    class="igc-video"
+    autoplay muted loop playsinline
+    preload="metadata"
+    style="width:100%;height:60vh;min-height:360px;object-fit:cover;display:block;"
+  ></video>
 </section>
+<!-- /REMOVED R26 -->
 
 <!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
 <!-- ROUND 23 FIX #4 — Restored all 18 named brand logos from /img/logos/ -->
 <section class="dk grain" id="sp-brands">
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
   <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
-    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
-    <!-- ROUND 24 FIX #6 — Changed heading to "In Good Company." per spec -->
-    <h2 data-a="l" style="margin-bottom:0.75rem;color:#E8E6DF;">In Good Company.</h2>
+    <!-- ROUND 26 FIX #5 — Changed label and heading to PAST PARTNERS -->
+    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Partners</span>
+    <h2 data-a="l" style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:0.75rem;color:#E8E6DF;">PAST PARTNERS</h2>
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
     <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
     <!-- ROUND 23 FIX #4 — All 18 named brand logos restored with correct alt text -->

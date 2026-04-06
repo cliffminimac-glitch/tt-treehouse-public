@@ -221,28 +221,35 @@
     </div>
   </div>
   <!-- Event details overlay -->
-  <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);min-height:80vh;max-width:580px;">
-    <!-- ROUND 25 FIX #6 — Event title above countdown -->
-<h1 style="font-family:var(--ff-d);font-size:clamp(3rem,8vw,7rem);line-height:0.9;color:#E8E6DF;margin-bottom:1rem;letter-spacing:0.02em;">NEXT EVENT: SPRINGTIME OPENER</h1>
-<span class="lbl reveal-child" style="margin-bottom:1.5rem;color:rgba(240,237,232,0.65);">// Next Event</span>
-    <h2 class="event-date reveal-child" style="font-size:clamp(3.5rem,8vw,7rem);line-height:0.9;margin-bottom:1.25rem;">April 25th</h2>
-    <!-- ROUND 8 FIX #4 — Prominent countdown in this section -->
-    <div style="margin-bottom:1.75rem;">
-      <span style="font-family:var(--ff-b);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,232,0.5);display:block;margin-bottom:0.5rem;">until doors open</span>
-      <div style="display:flex;align-items:baseline;gap:0.1rem;">
-        <span class="countdown-num" id="countdown-days-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">D</span>
-        <span class="countdown-num" id="countdown-hours-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">H</span>
-        <span class="countdown-num" id="countdown-mins-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);align-self:flex-end;padding-bottom:0.3rem;">M</span>
+  <!-- ROUND 26 FIX #1 — Editorial layout: title top-left, details bottom-right -->
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);min-height:80vh;width:100%;box-sizing:border-box;">
+    <!-- Top-left: event title -->
+    <div style="align-self:flex-start;max-width:700px;">
+      <!-- ROUND 25 FIX #6 — Event title above countdown -->
+      <h1 style="font-family:var(--ff-d);font-size:clamp(3rem,8vw,7rem);line-height:0.9;color:#E8E6DF;margin-bottom:0;letter-spacing:0.02em;text-align:left;">NEXT EVENT: SPRINGTIME OPENER</h1>
+    </div>
+    <!-- Bottom-right: countdown + details + CTA -->
+    <div style="align-self:flex-end;text-align:right;max-width:520px;">
+      <span class="lbl reveal-child" style="margin-bottom:1rem;color:rgba(240,237,232,0.65);display:block;">// Next Event</span>
+      <h2 class="event-date reveal-child" style="font-size:clamp(2.5rem,6vw,5rem);line-height:0.9;margin-bottom:1rem;">April 25th</h2>
+      <!-- ROUND 8 FIX #4 — Prominent countdown in this section -->
+      <div style="margin-bottom:1.5rem;">
+        <span style="font-family:var(--ff-b);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,232,0.5);display:block;margin-bottom:0.5rem;">until doors open</span>
+        <div style="display:flex;align-items:baseline;gap:0.1rem;justify-content:flex-end;">
+          <span class="countdown-num" id="countdown-days-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">D</span>
+          <span class="countdown-num" id="countdown-hours-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);margin-right:0.75rem;align-self:flex-end;padding-bottom:0.3rem;">H</span>
+          <span class="countdown-num" id="countdown-mins-2" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1;">--</span><span style="font-family:var(--ff-b);font-size:0.9rem;letter-spacing:0.1em;color:rgba(240,237,232,0.5);align-self:flex-end;padding-bottom:0.3rem;">M</span>
+        </div>
       </div>
+      <p class="event-time reveal-child" style="margin-bottom:0.5rem;">Doors 10:30pm — 3:30am ET</p>
+      <div class="venue" style="margin-bottom:1rem;">
+        <p class="venue-n">75 Varick Rooftop</p>
+        <p class="venue-l">SoHo, New York City</p>
+      </div>
+      <!-- ROUND 24 FIX #4 — 500→300 -->
+      <p class="event-meta" style="margin-bottom:2rem;">300 guests · Invite Only · Open Bar</p>
+      <!-- EXPANSION FIX #5 — Partiful invite link for April 25 --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" class="btn btn-p" style="align-self:flex-end;" target="_blank" rel="noopener">request your invite &rarr;</a>
     </div>
-    <p class="event-time reveal-child" style="margin-bottom:0.5rem;">Doors 10:30pm — 3:30am ET</p>
-    <div class="venue" style="margin-bottom:1rem;">
-      <p class="venue-n">75 Varick Rooftop</p>
-      <p class="venue-l">SoHo, New York City</p>
-    </div>
-    <!-- ROUND 24 FIX #4 — 500→300 -->
-    <p class="event-meta" style="margin-bottom:2rem;">300 guests · Invite Only · Open Bar</p>
-    <!-- EXPANSION FIX #5 — Partiful invite link for April 25 --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" class="btn btn-p" style="align-self:flex-start;" target="_blank" rel="noopener">request your invite &rarr;</a>
   </div>
 </section>
 <!-- ROUND 8 FIX #5 — Main video restored directly below April 25 section -->
