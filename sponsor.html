@@ -136,9 +136,10 @@
   /* ── STATS SECTION ── */
   /* ROUND 36 FIX #2 — Strong visible gradient on stats section */
   .sp-stats {
+    /* ROUND 37 FIX #1 — Brighter, more saturated green blobs, larger ellipses, closer to center */
     background:
-      radial-gradient(ellipse at 15% 10%, rgba(45,74,30,0.22) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 90%, rgba(45,74,30,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 15%, rgba(100,160,60,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 85%, rgba(60,100,40,0.14) 0%, transparent 60%),
       linear-gradient(155deg, #F5F2EA 0%, #E8E6DF 30%, #EDE9E0 60%, #D8D4C8 100%);
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
@@ -294,9 +295,10 @@
   /* ROUND 34 FIX — Cream gradient background on tiers section */
   /* ROUND 36 FIX #2 — Strong visible gradient on tiers section */
   .sp-packages {
+    /* ROUND 37 FIX #1 — Brighter, more saturated green blobs */
     background:
-      radial-gradient(ellipse at 85% 10%, rgba(45,74,30,0.22) 0%, transparent 50%),
-      radial-gradient(ellipse at 15% 90%, rgba(45,74,30,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 15%, rgba(100,160,60,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 85%, rgba(60,100,40,0.14) 0%, transparent 60%),
       linear-gradient(155deg, #D8D4C8 0%, #E8E6DF 30%, #EDE9E0 60%, #F5F2EA 100%);
     color: var(--g);
     padding: 48px clamp(1.5rem, 5vw, 5rem) 6rem;
@@ -341,34 +343,32 @@
     flex-direction: column;
     gap: 2rem;
   }
-  /* ROUND 33 FIX #4 — Increased card padding to 40px desktop */
-  /* ROUND 34 FIX — Updated card colors for cream background */
+  /* ROUND 37 FIX #2 — Green tier cards with cream text */
   .sp-tier {
-    background: rgba(255,255,255,0.55);
-    border: 1px solid rgba(26,58,26,0.12);
+    background: #2D4A1E;
+    border: 1px solid rgba(232,230,223,0.15);
     border-radius: 8px;
     padding: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
+    color: #E8E6DF;
   }
   .sp-tier:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(26,58,26,0.12);
-    background: rgba(255,255,255,0.75);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    background: #3a5e28;
   }
-  /* ROUND 30 POLISH — gold tier same padding, elevated visually */
-  /* ROUND 34 FIX — Gold tier on cream background */
+  /* ROUND 37 FIX #2 — Gold tier: lighter green + warm gold border */
   .sp-tier.gold {
-    background: rgba(212,175,55,0.12);
-    border-color: rgba(212,175,55,0.5);
-    border-width: 2px;
+    background: #3A5E28;
+    border: 2px solid rgba(212,175,55,0.6);
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(212,175,55,0.15);
+    box-shadow: 0 4px 20px rgba(212,175,55,0.2);
+    color: #E8E6DF;
   }
-  /* ROUND 30 POLISH — gold tier hover */
   .sp-tier.gold:hover {
-    background: rgba(212,175,55,0.2);
-    box-shadow: 0 8px 32px rgba(212,175,55,0.25);
+    background: #446b30;
+    box-shadow: 0 8px 32px rgba(212,175,55,0.3);
     transform: translateY(-2px);
   }
   .sp-tier-badge {
@@ -384,42 +384,40 @@
     margin-bottom: 1.25rem;
     font-weight: 600;
   }
-  /* ROUND 34 FIX — Tier name color for cream background */
+  /* ROUND 37 FIX #2 — Tier name: cream on green */
   .sp-tier-name {
     font-family: var(--ff-d);
     font-size: clamp(2rem, 4vw, 3.5rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--g);
+    color: #E8E6DF;
     line-height: 1;
     margin-bottom: 0.35rem;
   }
-  /* ROUND 33 FIX #4 — Increased price size to 1.75rem (28px) */
-  /* ROUND 34 FIX — Price color for cream background */
+  /* ROUND 37 FIX #2 — Price: cream on green */
   .sp-tier-price {
     font-family: var(--ff-b);
     font-size: 1.75rem;
     font-weight: 400;
-    color: rgba(26,58,26,0.7);
+    color: rgba(232,230,223,0.75);
     margin-bottom: 0.5rem;
   }
-  /* ROUND 33 FIX #4 — Increased subtitle size to 1rem (16px) */
-  /* ROUND 34 FIX — Subtitle color for cream background */
+  /* ROUND 37 FIX #2 — Subtitle: cream on green */
   .sp-tier-desc {
     font-family: var(--ff-e);
     font-style: italic;
     font-size: 1rem;
-    color: rgba(26,58,26,0.55);
+    color: rgba(232,230,223,0.6);
     margin-bottom: 2rem;
   }
-  /* ROUND 34 FIX — Divider color for cream background */
+  /* ROUND 37 FIX #2 — Divider: cream at low opacity on green */
   .sp-tier-div {
     height: 1px;
-    background: rgba(26,58,26,0.1);
+    background: rgba(232,230,223,0.15);
     margin-bottom: 2rem;
   }
   .sp-tier.gold .sp-tier-div {
-    background: rgba(212,175,55,0.35);
+    background: rgba(212,175,55,0.4);
   }
   /* ROUND 33 FIX #4 — 2 columns (was auto-fill ~3-4), 16px gap, more readable */
   .sp-tier-feats {
@@ -428,12 +426,11 @@
     gap: 16px 2rem;
     margin-bottom: 2.5rem;
   }
-  /* ROUND 33 FIX #4 — Increased line item size to 1rem (16px), line-height 1.7 */
-  /* ROUND 34 FIX — Line item color for cream background */
+  /* ROUND 37 FIX #2 — Line items: cream on green */
   .sp-tier-feats li {
     font-family: var(--ff-b);
     font-size: 1rem;
-    color: rgba(26,58,26,0.8);
+    color: rgba(232,230,223,0.85);
     line-height: 1.7;
     padding-left: 1rem;
     position: relative;
@@ -451,7 +448,7 @@
   .sp-tier.gold .sp-tier-feats li::before {
     background: var(--gold);
   }
-  /* ROUND 30 POLISH — sp-tier-cta matches primary button spec */
+  /* ROUND 37 FIX #2 — CTA buttons: INVERTED (cream bg, green text) on green cards */
   .sp-tier-cta {
     display: inline-flex;
     align-items: center;
@@ -461,36 +458,37 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: lowercase;
-    color: #E8E6DF;
-    background: #2D4A1E;
-    border: 1.5px solid #2D4A1E;
+    color: #2D4A1E;
+    background: #E8E6DF;
+    border: 1.5px solid #E8E6DF;
     padding: 16px 40px;
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.3s ease;
   }
   .sp-tier-cta:hover {
-    filter: brightness(1.15);
+    background: #F5F2EA;
+    border-color: #F5F2EA;
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   }
   .sp-tier.gold .sp-tier-cta {
     background: var(--gold);
     border-color: var(--gold);
-    color: var(--g);
+    color: #1a1a1a;
   }
   .sp-tier.gold .sp-tier-cta:hover {
     background: #c9a227;
     border-color: #c9a227;
   }
-  /* ROUND 34 FIX — Note color for cream background */
+  /* ROUND 37 FIX #2 — Note: cream on green */
   .sp-tiers-note {
     margin-top: 2.5rem;
     font-family: var(--ff-b);
     font-size: 0.82rem;
-    color: rgba(26,58,26,0.45);
+    color: rgba(232,230,223,0.5);
     text-align: center;
-    border-top: 1px solid rgba(26,58,26,0.08);
+    border-top: 1px solid rgba(232,230,223,0.12);
     padding-top: 2rem;
   }
   /* ROUND 33 FIX #4 — Mobile: 24px padding, single column feats */
