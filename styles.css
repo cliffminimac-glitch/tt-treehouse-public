@@ -50,7 +50,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 /* SECTIONS */
 /* ROUND 30 POLISH — consistent section padding */
 .dk { background:var(--g); color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
-.lt { background:var(--linen); color:var(--g); position:relative; overflow:hidden; padding:80px 0; }
+/* ROUND 33 FIX #3 — Subtle diagonal gradient on all cream/light sections */
+.lt { background:linear-gradient(165deg,#E8E6DF 0%,#F0EDE6 30%,#E8E6DF 60%,#E3E0D8 100%); color:var(--g); position:relative; overflow:hidden; padding:80px 0; }
 .dk2 { background:#0f2410; color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
 /* Full-bleed sections override padding */
 .dk.no-pad, .lt.no-pad, .dk2.no-pad { padding:0; }

@@ -134,13 +134,20 @@
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
 
   /* ── STATS SECTION ── */
+  /* ROUND 33 FIX #3 — Subtle diagonal gradient on cream stats section */
   .sp-stats {
-    background: var(--linen);
+    background: linear-gradient(
+      165deg,
+      #E8E6DF 0%,
+      #F0EDE6 30%,
+      #E8E6DF 60%,
+      #E3E0D8 100%
+    );
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
-    /* ROUND 23 FIX #3 — subtle dot texture */
-    background-image: radial-gradient(circle, rgba(45,74,30,0.045) 1px, transparent 1px);
-    background-size: 28px 28px;
+    /* ROUND 23 FIX #3 — subtle dot texture layered on gradient */
+    background-image: radial-gradient(circle, rgba(45,74,30,0.045) 1px, transparent 1px), linear-gradient(165deg, #E8E6DF 0%, #F0EDE6 30%, #E8E6DF 60%, #E3E0D8 100%);
+    background-size: 28px 28px, 100% 100%;
   }
   .sp-stats-inner {
     max-width: var(--wrap);
@@ -277,10 +284,11 @@
   }
 
   /* ── PACKAGES SECTION ── */
+  /* ROUND 33 FIX #1 — Reduced top padding to eliminate dead space before tiers */
   .sp-packages {
     background: var(--g);
     color: var(--linen);
-    padding: 6rem clamp(1.5rem, 5vw, 5rem);
+    padding: 48px clamp(1.5rem, 5vw, 5rem) 6rem;
   }
   .sp-packages-inner {
     max-width: var(--wrap);
@@ -310,11 +318,12 @@
     flex-direction: column;
     gap: 2rem;
   }
+  /* ROUND 33 FIX #4 — Increased card padding to 40px desktop */
   .sp-tier {
     background: rgba(240,237,232,0.04);
     border: 1px solid rgba(240,237,232,0.1);
     border-radius: 8px;
-    padding: 32px;
+    padding: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
   }
@@ -359,18 +368,20 @@
     line-height: 1;
     margin-bottom: 0.35rem;
   }
+  /* ROUND 33 FIX #4 — Increased price size to 1.75rem (28px) */
   .sp-tier-price {
     font-family: var(--ff-b);
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: rgba(240,237,232,0.65);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: rgba(240,237,232,0.75);
     margin-bottom: 0.5rem;
   }
+  /* ROUND 33 FIX #4 — Increased subtitle size to 1rem (16px) */
   .sp-tier-desc {
     font-family: var(--ff-e);
     font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(240,237,232,0.55);
+    font-size: 1rem;
+    color: rgba(240,237,232,0.65);
     margin-bottom: 2rem;
   }
   .sp-tier-div {
@@ -381,17 +392,19 @@
   .sp-tier.gold .sp-tier-div {
     background: rgba(212,175,55,0.2);
   }
+  /* ROUND 33 FIX #4 — 2 columns (was auto-fill ~3-4), 16px gap, more readable */
   .sp-tier-feats {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 0.6rem 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 2rem;
     margin-bottom: 2.5rem;
   }
+  /* ROUND 33 FIX #4 — Increased line item size to 1rem (16px), line-height 1.7 */
   .sp-tier-feats li {
     font-family: var(--ff-b);
-    font-size: 0.88rem;
-    color: rgba(240,237,232,0.78);
-    line-height: 1.5;
+    font-size: 1rem;
+    color: rgba(240,237,232,0.85);
+    line-height: 1.7;
     padding-left: 1rem;
     position: relative;
   }
@@ -449,9 +462,10 @@
     border-top: 1px solid rgba(240,237,232,0.08);
     padding-top: 2rem;
   }
+  /* ROUND 33 FIX #4 — Mobile: 24px padding, single column feats */
   @media (max-width: 768px) {
-    .sp-tier { padding: 2rem; }
-    .sp-tier.gold { padding: 2.5rem; }
+    .sp-tier { padding: 24px; }
+    .sp-tier.gold { padding: 24px; }
     .sp-tier-feats { grid-template-columns: 1fr; }
   }
 
@@ -1028,8 +1042,8 @@
 <!-- ROUND 31 FIX #1 — no-pad so .dk 80px doesn't stack with inner wrapper padding -->
 <section class="dk grain no-pad" id="sp-brands">
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
-  <!-- ROUND 31 FIX #1 — tightened inner wrapper: 48px top/bottom -->
-  <div class="w" style="max-width:1200px;margin:0 auto;padding:48px 2rem;">
+  <!-- ROUND 33 FIX #2 — Aligned max-width to var(--wrap)=1280px and padding to match other sections -->
+  <div class="w" style="max-width:var(--wrap);margin:0 auto;padding:48px clamp(1.5rem,5vw,5rem);">
     <!-- ROUND 26 FIX #5 — Changed label and heading to PAST PARTNERS -->
     <!-- ROUND 29 FIX: removed data-a animation attrs so heading renders immediately without waiting for observer -->
     <span class="lbl" style="margin-bottom:1rem;display:block;">// Past Partners</span>
