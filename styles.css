@@ -342,7 +342,7 @@ body.ci .cur-r { border-color:var(--g); }
 .curate-section .dj-photo { width:100%; height:72vh; object-fit:cover; object-position:center center; display:block; max-height:none; }
 .curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:var(--color-cream-light); max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy::before { content:""; position:absolute; inset:-50px -80px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 70%); border-radius:50%; z-index:-1; pointer-events:none; }
-.curate-copy h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:16px; color:var(--color-cream-light); font-family:'Playfair Display',serif; text-shadow:0 2px 10px rgba(0,0,0,0.65); }
+.curate-copy h2 { font-size:clamp(3.5rem,8vw,7rem); font-family:var(--ff-d); line-height:0.88; letter-spacing:-0.02em; font-weight:700; margin-bottom:16px; color:var(--color-cream-light); text-shadow:0 2px 10px rgba(0,0,0,0.65); } /* FIX #2: matched to .ev-title */
 .curate-copy p { font-size:var(--text-base); line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; text-shadow:0 1px 6px rgba(0,0,0,0.55); }
 .curate-copy .tag { background:rgba(0,0,0,0.35); border-color:rgba(240,237,232,0.3); color:var(--color-cream-light); }
 .curate-copy .tag:hover { background:rgba(240,237,232,0.15); color:var(--color-cream-light); }
@@ -1169,7 +1169,7 @@ body .sp-packages {
   .curate-section { padding: 40px 0; }
   .curate-section .dj-photo { height: 55vh; }
   .curate-copy { top: 2rem; bottom: auto; }
-  .curate-copy h2 { font-size: 1.8rem; }
+  /* FIX #2: removed 1.8rem mobile override -- .curate-copy h2 now uses same clamp as .ev-title */
   .brand-logo { height: 44px; max-width: 120px; }
   .why-photos { min-height: 40vh; max-height: none; width: 100%; }
   /* Sponsor page */
