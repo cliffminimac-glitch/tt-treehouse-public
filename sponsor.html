@@ -134,13 +134,15 @@
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
 
   /* ── STATS SECTION ── */
-  /* ROUND 36 FIX #2 — Strong visible gradient on stats section */
+  /* ROUND 38 — NUCLEAR TEST — make this OBVIOUSLY visible */
   .sp-stats {
-    /* ROUND 37 FIX #1 — Brighter, more saturated green blobs, larger ellipses, closer to center */
-    background:
-      radial-gradient(ellipse at 20% 15%, rgba(100,160,60,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 85%, rgba(60,100,40,0.14) 0%, transparent 60%),
-      linear-gradient(155deg, #F5F2EA 0%, #E8E6DF 30%, #EDE9E0 60%, #D8D4C8 100%);
+    background: linear-gradient(
+      135deg,
+      #E8E6DF 0%,
+      #d4e8c4 30%,
+      #E8E6DF 60%,
+      #c8d8b8 100%
+    ) !important;
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
     position: relative;
