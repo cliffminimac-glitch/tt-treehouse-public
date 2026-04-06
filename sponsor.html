@@ -70,18 +70,13 @@
     overflow: hidden;
     background: var(--g);
   }
-  .sp-hero-bg {
+  /* ROUND 18 FIX #2 — sp-hero-bg is now a video element */
+.sp-hero-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
-  .sp-hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    display: block;
-  }
+  /* ROUND 18 FIX #2 — img rule removed, video handles sizing */
   .sp-hero-overlay {
     position: absolute;
     inset: 0;
@@ -657,7 +652,30 @@
   .mob nav a.nav-active {
     color: var(--accent);
   }
-  </style>
+  
+/* ROUND 18 FIX #3 — Sponsor page bottom video */
+.sponsor-bottom-video-section {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+.sponsor-bottom-video {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  display: block;
+}
+/* ROUND 18 FIX #1 — In Good Company grid responsive */
+@media (max-width: 768px) {
+  .sp-igc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .sponsor-bottom-video {
+    max-height: 50vh;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -714,9 +732,17 @@
 <!-- ═══════════════════════════════ SECTION A: HERO ═══════════════════════════════ -->
 <!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
 <section class="sp-hero" id="sp-hero">
-  <div class="sp-hero-bg">
-    <img src="/img/curate-room.jpg" alt="Packed rooftop crowd at golden hour — treehouse. NYC" fetchpriority="high" onerror="this.onerror=null;this.parentNode.style.background='#1a3a1a'">
-  </div>
+    <!-- ROUND 18 FIX #2 — Video background for sponsor hero -->
+  <video
+    class="sp-hero-bg"
+    src="/img/sponsor-hero-video.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="/img/hero-new.jpg"
+  ></video>
   <div class="sp-hero-overlay"></div>
   <div class="sp-hero-inner">
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.6);">// Partnerships</span>
@@ -756,11 +782,73 @@
       <p>Past events at Tribeca Rooftop, Perry St in Brooklyn, and SoHo Soiree have consistently sold out. Your brand is part of the night, not a banner in the corner. People remember what they experienced.</p>
     </div>
     <div class="sp-stats-quote reveal">
-      <blockquote>"The best activation we've done in New York. The crowd actually tried the product."</blockquote>
-      <cite>— Past Brand Partner</cite>
+      <blockquote>"Fantastic exposure for the brand. Excited to see what we can cook up next, always up to get creative in the treehouse."</blockquote>
+      <cite>— Salud from Tequila Cabal</cite>
     </div>
   </div>
 </section>
+
+<!-- ROUND 18 FIX #1 — In Good Company section moved from index.html -->
+<section class="dk grain" id="sp-in-good-company">
+  <div class="w" style="max-width:1200px;margin:0 auto;padding:5rem 2rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="sp-igc-grid">
+      <!-- Left: copy -->
+      <div>
+        <span class="lbl reveal-child" style="margin-bottom:1rem">// Past Partners</span>
+        <h2 data-a="l" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1.5rem;color:#E8E6DF;">In Good Company.</h2>
+        <div style="margin-bottom:2rem;">
+          <p style="font-family:var(--ff-e);font-size:1.05rem;opacity:0.82;line-height:1.7;margin-bottom:1.5rem;">18 brands across 5 events. Spirits, fashion, wellness, tech. The kind of crowd that actually remembers who sponsored the night.</p>
+          <blockquote style="border-left:2px solid rgba(232,230,223,0.3);padding-left:1.25rem;font-family:var(--ff-e);font-style:italic;opacity:0.75;line-height:1.6;">"Fantastic exposure for the brand. Excited to see what we can cook up next, always up to get creative in the treehouse."</blockquote>
+          <cite style="display:block;margin-top:0.75rem;font-family:var(--ff-b);font-size:0.75rem;letter-spacing:0.08em;opacity:0.55;text-transform:uppercase;">— Salud from Tequila Cabal</cite>
+        </div>
+        <a href="#sp-contact" class="btn btn-p" style="display:inline-block;">lock in your spot &rarr;</a>
+      </div>
+      <!-- Right: video -->
+      <div style="position:relative;border-radius:4px;overflow:hidden;min-height:400px;">
+        <video
+          src="/img/sponsor-video.mp4"
+          autoplay muted loop playsinline
+          preload="metadata"
+          style="width:100%;height:100%;min-height:400px;object-fit:cover;display:block;"
+        ></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
+<section class="dk grain" id="sp-brands">
+  <div class="w" style="max-width:1200px;margin:0 auto;padding:5rem 2rem;">
+    <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
+    <h2 data-a="l" style="margin-bottom:0.75rem;color:#E8E6DF;">Brands that showed up.</h2>
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
+    <div class="brands-grid-wrap">
+      <img src="/img/logos/07_Zakuska_Vodka.png" alt="Zakuska Vodka" class="brand-logo">
+      <img src="/img/logos/08_Friday_Beers.png" alt="Friday Beers" class="brand-logo">
+      <img src="/img/logos/09_SURF.png" alt="SURF" class="brand-logo">
+      <img src="/img/logos/10_Celsius.png" alt="Celsius" class="brand-logo">
+      <img src="/img/logos/11_CLR.png" alt="CLR" class="brand-logo">
+      <img src="/img/logos/12_Solento_Organic_Tequila.png" alt="Solento Organic Tequila" class="brand-logo">
+      <img src="/img/logos/13_Teremana.png" alt="Teremana" class="brand-logo">
+      <img src="/img/logos/14_7th_Street_Burger.png" alt="7th Street Burger" class="brand-logo">
+      <img src="/img/logos/15_NightOwl.png" alt="NightOwl" class="brand-logo">
+      <img src="/img/logos/16_Bashi.png" alt="Bashi" class="brand-logo">
+      <img src="/img/logos/17_Lemon_Perfect.png" alt="Lemon Perfect" class="brand-logo">
+      <img src="/img/logos/18_Holiday.png" alt="Holiday" class="brand-logo">
+      <img src="/img/logos/01_Tequila_Cabal_Organic.png" alt="Tequila Cabal Organic" class="brand-logo">
+      <img src="/img/logos/02_Potro_Tequila.png" alt="Potro Tequila" class="brand-logo">
+      <img src="/img/logos/03_Mezcalum.png" alt="Mezcalum" class="brand-logo">
+      <img src="/img/logos/04_Mission_Craft_Cocktails.png" alt="Mission Craft Cocktails" class="brand-logo">
+      <img src="/img/logos/05_Hampton_Water.png" alt="Hampton Water" class="brand-logo">
+      <img src="/img/logos/06_Lucie.png" alt="Lucie" class="brand-logo">
+    </div>
+    <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
+      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Limited spots available for 2026 events.</p>
+      <a href="#sp-packages" class="btn btn-p">see sponsorship packages</a>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═══════════════════════════════ SECTION C: PACKAGES ═══════════════════════════════ -->
 <!-- EXPANSION FIX #6 — editorial tier cards, Gold emphasized -->
@@ -925,6 +1013,21 @@
 </main>
 
 <!-- FOOTER — same as index.html with sponsorship inquiries link added -->
+
+<!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
+<section class="dk sponsor-bottom-video-section">
+  <video
+    src="/img/sponsor-bottom-video.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/img/hero-new.jpg"
+    class="sponsor-bottom-video"
+  ></video>
+</section>
+
 <!-- EXPANSION FIX #10 — footer with sponsorship inquiries link -->
 <footer class="foot dk grain" style="padding-top:3rem;">
   <div>

@@ -727,20 +727,16 @@ body.ci .cur-r { border-color:var(--g); }
 
 
 /* ROUND 17 FIX #1 — Curate video section between curate and April 25 */
+/* ROUND 18 FIX #6 — Changed to contain so full frame is visible, no crop */
 .curate-video-section {
   width: 100%;
-  overflow: hidden;
+  background: #2D4A1E;
   line-height: 0;
   display: block;
 }
 .curate-video {
   width: 100%;
-  max-height: 75vh;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
-}
-@media (max-width: 768px) {
-  .curate-video {
-    max-height: 50vh;
-  }
 }
