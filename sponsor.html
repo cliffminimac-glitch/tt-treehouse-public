@@ -1025,14 +1025,18 @@
 <!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
 <!-- ROUND 23 FIX #4 — Restored all 18 named brand logos from /img/logos/ -->
 <!-- ROUND 30 POLISH — sp-brands uses .dk padding -->
-<section class="dk grain" id="sp-brands">
+<!-- ROUND 31 FIX #1 — no-pad so .dk 80px doesn't stack with inner wrapper padding -->
+<section class="dk grain no-pad" id="sp-brands">
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
-  <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
+  <!-- ROUND 31 FIX #1 — tightened inner wrapper: 48px top/bottom -->
+  <div class="w" style="max-width:1200px;margin:0 auto;padding:48px 2rem;">
     <!-- ROUND 26 FIX #5 — Changed label and heading to PAST PARTNERS -->
     <!-- ROUND 29 FIX: removed data-a animation attrs so heading renders immediately without waiting for observer -->
     <span class="lbl" style="margin-bottom:1rem;display:block;">// Past Partners</span>
-    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:0.75rem;color:#E8E6DF;">Past Partners.</h2>
-    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
+    <!-- ROUND 31 FIX #1 — tightened gap between heading and subtitle -->
+    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:12px;color:#E8E6DF;">Past Partners.</h2>
+    <!-- ROUND 31 FIX #1 — reduced gap between subtitle and logos: 3rem→32px -->
+    <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:32px;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
     <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
     <!-- ROUND 23 FIX #4 — All 18 named brand logos restored with correct alt text -->
     <div class="brands-grid-wrap brands-grid-r23">
@@ -1055,8 +1059,8 @@
       <img src="/img/logos/08_Friday_Beers.png" alt="Friday Beers" class="brand-logo" loading="lazy">
       <img src="/img/logos/03_Mezcalum.png" alt="Mezcalum" class="brand-logo" loading="lazy">
     </div>
-    <!-- ROUND 19 FIX #5 — Reduced bottom CTA padding -->
-    <div style="text-align:center;padding:1rem 0 0;border-top:1px solid var(--ln10);margin-top:2rem;" data-a="u">
+    <!-- ROUND 31 FIX #1 — tightened bottom CTA spacing -->
+    <div style="text-align:center;padding:0.75rem 0 0;border-top:1px solid var(--ln10);margin-top:1.5rem;" data-a="u">
       <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1rem;">Limited spots left for 2026. Once they're gone, they're gone.</p>
       <a href="#sp-packages" class="btn btn-p">see sponsorship packages</a>
     </div>
@@ -1144,9 +1148,8 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ SECTION D: NEXT EVENT ═══════════════════════════════ -->
-<!-- EXPANSION FIX #7 — next event spotlight with countdown -->
-<!-- ROUND 30 POLISH — sp-next-event has its own padding -->
+<!-- REMOVED R31: Duplicate April 25 event section — info already on homepage; Partiful link moved to contact section -->
+<!--
 <section class="sp-next-event no-pad" id="sp-next-event">
   <div class="sp-next-inner">
     <div class="sp-next-left reveal">
@@ -1155,14 +1158,10 @@
       <div class="sp-next-details">
         <p><strong>75 Varick Rooftop</strong></p>
         <p>SoHo, New York City</p>
-        <!-- ROUND 30 POLISH — corrected event time -->
         <p>3:00 PM to 8:00 PM ET</p>
-        <!-- ROUND 24 FIX #4 — 500→300 -->
         <p>Invite-only. Open bar. 300 guests.</p>
       </div>
       <span class="sp-next-avail">Limited sponsorship spots remaining</span>
-      <br><br>
-      <!-- EXPANSION FIX #8 — Partiful invite link -->
       <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" class="sp-next-cta" target="_blank" rel="noopener">request your invite &rarr;</a>
     </div>
     <div class="sp-next-countdown-block reveal">
@@ -1176,6 +1175,7 @@
     </div>
   </div>
 </section>
+-->
 
 <!-- ═══════════════════════════════ SECTION E: CONTACT ═══════════════════════════════ -->
 <!-- EXPANSION FIX #9 — contact form and deck download -->
@@ -1186,6 +1186,8 @@
     <h2 class="reveal">let's build something<br>together.</h2>
     <p class="sp-contact-body reveal">Reach out to discuss custom activations, multi-event partnerships, or to lock in your preferred tier before spots close.</p>
     <a href="mailto:events@tigertracks.ai" class="sp-contact-email reveal">events@tigertracks.ai &rarr;</a>
+    <!-- ROUND 31 FIX #2 — Partiful link preserved after removing sp-next-event section -->
+    <p class="reveal" style="font-size:0.88rem;opacity:0.55;margin-top:0.25rem;margin-bottom:2rem;">Or <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">request your invite on Partiful &rarr;</a></p>
 
     <div class="sp-contact-deck reveal">
       <!-- TODO: Replace with actual Canva deck URL -->
