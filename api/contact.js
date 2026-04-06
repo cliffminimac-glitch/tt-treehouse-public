@@ -2,14 +2,12 @@
 // Powered by Resend (https://resend.com)
 // Requires RESEND_API_KEY environment variable set in Vercel project settings
 
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+const { Resend } = require('resend');
 
 const TO_EMAIL = 'events@tigertracks.ai';
 const FROM_EMAIL = 'Treehouse Events <events@tigertracks.ai>'; // tigertracks.ai is verified in Resend
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'https://treehouseevents.cliffeliz.ai');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -25,17 +23,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Parse body — Vercel provides req.body as object when Content-Type is application/json
-  // The form sends FormData, so we need to handle both
+  // Parse body
   let name, brand, email, tier, message;
-
   try {
-    const body = req.body;
-    name    = (body.name    || '').toString().trim().slice(0, 200);
-    brand   = (body.brand   || '').toString().trim().slice(0, 200);
-    email   = (body.email   || '').toString().trim().slice(0, 200);
-    tier    = (body.tier    || '').toString().trim().slice(0, 100);
-    message = (body.message || '').toString().trim().slice(0, 2000);
+    const body = req.body || {};
+    name    = String(body.name    || '').trim().slice(0, 200);
+    brand   = String(body.brand   || '').trim().slice(0, 200);
+    email   = String(body.email   || '').trim().slice(0, 200);
+    tier    = String(body.tier    || '').trim().slice(0, 100);
+    message = String(body.message || '').trim().slice(0, 2000);
   } catch (err) {
     return res.status(400).json({ error: 'Invalid request body' });
   }
@@ -57,6 +53,15 @@ export default async function handler(req, res) {
     unsure:   'Not sure yet',
   };
   const tierLabel = tierLabels[tier] || tier || 'Not specified';
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   // Build email HTML
   const html = `
@@ -90,10 +95,11 @@ export default async function handler(req, res) {
   `;
 
   // Send via Resend
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { data, error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to:   [TO_EMAIL],
+      from:    FROM_EMAIL,
+      to:      [TO_EMAIL],
       replyTo: email,
       subject: `Sponsorship Inquiry: ${name} — ${brand} (${tierLabel})`,
       html,
@@ -109,13 +115,4 @@ export default async function handler(req, res) {
     console.error('Unexpected error:', err);
     return res.status(500).json({ error: 'Server error. Please email us directly at events@tigertracks.ai' });
   }
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+};
