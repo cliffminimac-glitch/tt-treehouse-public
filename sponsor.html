@@ -175,15 +175,16 @@
       height: 50vh;
     }
   }
+  /* ROUND 30 POLISH — stats label standardized */
   .sp-stats-label {
     display: block;
     font-family: var(--ff-b);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--g2);
     opacity: 0.6;
-    margin-bottom: 3rem;
+    margin-bottom: 16px;
   }
   /* ROUND 24 FIX #3 — 4-column stats grid for full-width layout */
   .sp-stats-grid {
@@ -288,10 +289,11 @@
   .sp-packages-header {
     margin-bottom: 4rem;
   }
+  /* ROUND 30 POLISH — packages heading normalized */
   .sp-packages-header h2 {
     font-family: var(--ff-d);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 0.92;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 0.95;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--linen);
@@ -311,9 +313,9 @@
   .sp-tier {
     background: rgba(240,237,232,0.04);
     border: 1px solid rgba(240,237,232,0.1);
-    border-radius: var(--r);
-    padding: 3rem;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+    border-radius: 8px;
+    padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
   }
   .sp-tier:hover {
@@ -321,14 +323,19 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.25);
     background: rgba(240,237,232,0.07);
   }
+  /* ROUND 30 POLISH — gold tier same padding, elevated visually */
   .sp-tier.gold {
     background: rgba(212,175,55,0.07);
-    border-color: rgba(212,175,55,0.25);
-    padding: 3.5rem;
+    border-color: rgba(212,175,55,0.35);
+    border-width: 2px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
+  /* ROUND 30 POLISH — gold tier hover */
   .sp-tier.gold:hover {
     background: rgba(212,175,55,0.12);
-    box-shadow: 0 12px 40px rgba(212,175,55,0.15);
+    box-shadow: 0 8px 32px rgba(212,175,55,0.2);
+    transform: translateY(-2px);
   }
   .sp-tier-badge {
     display: inline-block;
@@ -401,27 +408,28 @@
   .sp-tier.gold .sp-tier-feats li::before {
     background: var(--gold);
   }
+  /* ROUND 30 POLISH — sp-tier-cta matches primary button spec */
   .sp-tier-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--ff-b);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--linen);
-    background: var(--g2);
-    border: 1px solid var(--g2);
-    padding: 0.85rem 2rem;
-    border-radius: var(--r);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: #E8E6DF;
+    background: #2D4A1E;
+    border: 1.5px solid #2D4A1E;
+    padding: 16px 40px;
+    border-radius: 4px;
     text-decoration: none;
-    transition: background var(--ts), border-color var(--ts), transform var(--ts);
+    transition: all 0.3s ease;
   }
   .sp-tier-cta:hover {
-    background: var(--accent);
-    border-color: var(--accent);
+    filter: brightness(1.15);
     transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
   }
   .sp-tier.gold .sp-tier-cta {
     background: var(--gold);
@@ -461,19 +469,21 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    /* ROUND 30 POLISH — vertical centering */
   }
   @media (max-width: 768px) {
     .sp-next-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   }
+  /* ROUND 30 POLISH — next event label standardized */
   .sp-next-label {
     display: block;
     font-family: var(--ff-b);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--g2);
     opacity: 0.6;
-    margin-bottom: 1.25rem;
+    margin-bottom: 16px;
   }
   .sp-next-date {
     font-family: var(--ff-d);
@@ -544,27 +554,28 @@
     align-self: flex-end;
     padding-bottom: 0.3rem;
   }
+  /* ROUND 30 POLISH — sp-next-cta matches primary button spec */
   .sp-next-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--ff-b);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--linen);
-    background: var(--g);
-    border: 1px solid var(--g);
-    padding: 0.85rem 2rem;
-    border-radius: var(--r);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: #E8E6DF;
+    background: #2D4A1E;
+    border: 1.5px solid #2D4A1E;
+    padding: 16px 40px;
+    border-radius: 4px;
     text-decoration: none;
-    transition: background var(--ts), transform var(--ts);
+    transition: all 0.3s ease;
   }
   .sp-next-cta:hover {
-    background: var(--g2);
-    border-color: var(--g2);
+    filter: brightness(1.15);
     transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
   }
 
   /* ── CONTACT SECTION ── */
@@ -577,10 +588,11 @@
     max-width: 760px;
     margin: 0 auto;
   }
+  /* ROUND 30 POLISH — contact heading normalized */
   .sp-contact-inner h2 {
     font-family: var(--ff-d);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 0.92;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 0.95;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--linen);
@@ -608,26 +620,28 @@
   .sp-contact-deck {
     margin-bottom: 3rem;
   }
+  /* ROUND 30 POLISH — btn-secondary matches secondary button spec */
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--ff-b);
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(240,237,232,0.7);
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: rgba(240,237,232,0.8);
     background: transparent;
-    border: 1px solid rgba(240,237,232,0.2);
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--r);
+    border: 1px solid rgba(240,237,232,0.3);
+    padding: 16px 40px;
+    border-radius: 4px;
     text-decoration: none;
-    transition: color var(--ts), border-color var(--ts), transform var(--ts);
+    transition: all 0.3s ease;
   }
   .btn-secondary:hover {
     color: var(--linen);
-    border-color: rgba(240,237,232,0.5);
+    border-color: rgba(240,237,232,0.6);
+    background: rgba(240,237,232,0.06);
     transform: translateY(-1px);
   }
   .sp-form {
@@ -662,20 +676,22 @@
     color: var(--linen);
     font-family: var(--ff-b);
     font-size: 0.95rem;
-    padding: 0.85rem 1rem;
+    padding: 12px 16px;
     outline: none;
-    transition: border-color var(--ts), background var(--ts);
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     -webkit-appearance: none;
   }
   .sp-form input::placeholder,
   .sp-form textarea::placeholder {
     color: rgba(240,237,232,0.25);
   }
+  /* ROUND 30 POLISH — stronger focus state */
   .sp-form input:focus,
   .sp-form select:focus,
   .sp-form textarea:focus {
-    border-color: rgba(240,237,232,0.4);
+    border-color: rgba(240,237,232,0.7);
     background: rgba(240,237,232,0.08);
+    box-shadow: 0 0 0 2px rgba(240,237,232,0.08);
   }
   .sp-form select option {
     background: var(--g);
@@ -685,28 +701,29 @@
     resize: vertical;
     min-height: 120px;
   }
+  /* ROUND 30 POLISH — sp-form-submit matches primary button spec */
   .sp-form-submit {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--ff-b);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--linen);
-    background: var(--g2);
-    border: 1px solid var(--g2);
-    padding: 1rem 2.5rem;
-    border-radius: var(--r);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: #E8E6DF;
+    background: #2D4A1E;
+    border: 1.5px solid #2D4A1E;
+    padding: 16px 40px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background var(--ts), transform var(--ts);
+    transition: all 0.3s ease;
     align-self: flex-start;
   }
   .sp-form-submit:hover {
-    background: var(--accent);
-    border-color: var(--accent);
+    filter: brightness(1.15);
     transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(45,74,30,0.25);
   }
 
   /* ── ACTIVE NAV STATE ── */
@@ -894,7 +911,8 @@
 
 <!-- ═══════════════════════════════ SECTION A: HERO ═══════════════════════════════ -->
 <!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
-<section class="sp-hero" id="sp-hero">
+<!-- ROUND 30 POLISH — no-pad on full-bleed sections -->
+<section class="sp-hero no-pad" id="sp-hero">
     <!-- ROUND 18 FIX #2 — Video background for sponsor hero -->
   <!-- ROUND 20 FIX #3 — hero video fixed: clean tag, correct src, no poster -->
   <!-- ROUND 21 FIX #2 — Hero background video updated to sponsor-hero-bg.mp4 -->
@@ -921,7 +939,8 @@
 
 <!-- ═══════════════════════════════ SECTION B: STATS ═══════════════════════════════ -->
 <!-- EXPANSION FIX #5 — editorial stats section -->
-<section class="sp-stats" id="sp-stats">
+<!-- ROUND 30 POLISH — sp-stats has its own padding via .sp-stats CSS -->
+<section class="sp-stats no-pad" id="sp-stats">
   <!-- ROUND 24 FIX #1/#3 — Full-width stats, video below -->
   <!-- REMOVED R24: two-column sp-stats-layout — stats now span full width -->
   <div class="sp-stats-inner">
@@ -983,7 +1002,8 @@
 <!-- REMOVED R26: Duplicate Why Sponsor section — content already exists in Why Treehouse stats section above -->
 <!-- ROUND 26 FIX #4 — Removed duplicate heading/text/quote/button; kept IGC video as standalone section -->
 <!-- ROUND 18 FIX #1 — In Good Company section moved from index.html -->
-<section class="dk grain" id="sp-in-good-company" style="padding:0;line-height:0;overflow:hidden;">
+<!-- ROUND 30 POLISH — no-pad on video-only section -->
+<section class="dk grain no-pad" id="sp-in-good-company" style="padding:0;line-height:0;overflow:hidden;">
   <!-- ROUND 26 FIX #4 — Duplicate text/heading/quote/button removed; video kept as visual break -->
   <!-- REMOVED R26: Why Sponsor? heading — duplicate of stats section -->
   <!-- REMOVED R26: // Past Partners label — duplicate -->
@@ -1004,6 +1024,7 @@
 
 <!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
 <!-- ROUND 23 FIX #4 — Restored all 18 named brand logos from /img/logos/ -->
+<!-- ROUND 30 POLISH — sp-brands uses .dk padding -->
 <section class="dk grain" id="sp-brands">
   <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
   <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
@@ -1125,7 +1146,8 @@
 
 <!-- ═══════════════════════════════ SECTION D: NEXT EVENT ═══════════════════════════════ -->
 <!-- EXPANSION FIX #7 — next event spotlight with countdown -->
-<section class="sp-next-event" id="sp-next-event">
+<!-- ROUND 30 POLISH — sp-next-event has its own padding -->
+<section class="sp-next-event no-pad" id="sp-next-event">
   <div class="sp-next-inner">
     <div class="sp-next-left reveal">
       <span class="sp-next-label">// Next Event</span>
@@ -1133,7 +1155,8 @@
       <div class="sp-next-details">
         <p><strong>75 Varick Rooftop</strong></p>
         <p>SoHo, New York City</p>
-        <p>10:30 PM to 3:30 AM ET</p>
+        <!-- ROUND 30 POLISH — corrected event time -->
+        <p>3:00 PM to 8:00 PM ET</p>
         <!-- ROUND 24 FIX #4 — 500→300 -->
         <p>Invite-only. Open bar. 300 guests.</p>
       </div>
@@ -1156,7 +1179,8 @@
 
 <!-- ═══════════════════════════════ SECTION E: CONTACT ═══════════════════════════════ -->
 <!-- EXPANSION FIX #9 — contact form and deck download -->
-<section class="sp-contact" id="sp-contact">
+<!-- ROUND 30 POLISH — sp-contact has its own padding -->
+<section class="sp-contact no-pad" id="sp-contact">
   <div class="sp-contact-inner">
     <span class="lbl reveal-child" style="color:rgba(240,237,232,0.5);margin-bottom:1rem;display:block;">// Get in Touch</span>
     <h2 class="reveal">let's build something<br>together.</h2>
@@ -1211,7 +1235,8 @@
 <!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
 <!-- ROUND 23 FIX #2 — Full-screen closing video replaces sponsor-bottom-video.mp4 -->
 <!-- ROUND 24 FIX #2 — File committed to git; preload="auto" for reliable playback -->
-<section class="dk sponsor-bottom-video-section">
+<!-- ROUND 30 POLISH — no-pad on bottom video -->
+<section class="dk no-pad sponsor-bottom-video-section">
   <!-- REMOVED R23: sponsor-bottom-video.mp4 replaced with sponsor-closing-video.mp4 -->
   <video
     src="/img/sponsor-closing-video.mp4"
