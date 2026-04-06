@@ -58,9 +58,11 @@
   </a>
   <!-- AUDIT FIX #10 — Nav simplified to 3 links: Past Events | Sponsor | Get Tickets -->
   <div class="nav-links">
+    <!-- ROUND 25 FIX #4 — Home added as first nav item -->
+    <a href="#about">home</a>
     <a href="#tribeca-rooftop">past events</a>
     <!-- EXPANSION FIX #3 — sponsor nav link now points to sponsor.html --><a href="/sponsor.html" class="hi">sponsor</a>
-    <a href="#join">get tickets</a>
+    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </div>
   <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob">
     <span></span><span></span><span></span>
@@ -73,9 +75,11 @@
   <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
   <!-- AUDIT FIX #10 — Mobile nav simplified -->
   <nav>
+    <!-- ROUND 25 FIX #4 — Home added as first mobile nav item -->
+    <a href="#about">home</a>
     <a href="#tribeca-rooftop">past events</a>
     <!-- EXPANSION FIX #3 — mobile sponsor nav link --><a href="/sponsor.html">sponsor</a>
-    <a href="#join">get tickets</a>
+    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </nav>
 </div>
 
@@ -106,7 +110,7 @@
       </div>
     </div>
     <div class="hero-ctas" data-a="u" data-d="5">
-      <a href="#join" class="btn btn-p">request invite</a>
+      <!-- ROUND 25 FIX #3 — Request invite now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener" class="btn btn-p">request invite</a>
       <!-- REMOVED R4: become a sponsor hero button — sponsor link exists in nav -->
     </div>
   </div>
@@ -170,11 +174,13 @@
     <h2>Some nights<br>stay with you.</h2>
     <!-- ROUND 8 FIX #3 — Body copy rewritten: guest experience, not brand pitch -->
     <p>Open bar. Good music. The kind of crowd that makes the night. Five events in, still selling out.</p>
+    <!-- ROUND 25 FIX #5 — Tags converted to anchor links; dinner nights→house parties; brand nights removed -->
     <div class="tags" style="justify-content:center;margin-top:1.5rem;">
-      <span class="tag">Rooftop Parties</span>
-      <span class="tag">Holiday Events</span>
-      <span class="tag">Dinner Nights</span>
-      <span class="tag">Brand Nights</span>
+      <a class="tag" href="#tribeca-rooftop">rooftop parties</a>
+      <a class="tag" href="#christmas-nyc">holiday events</a>
+      <!-- ROUND 25 FIX #5C — Renamed: dinner nights → house parties -->
+      <a class="tag" href="#west-village">house parties</a>
+      <!-- REMOVED R25: brand nights button — deleted, now only 3 buttons -->
     </div>
   </div>
 </section>
@@ -216,7 +222,9 @@
   </div>
   <!-- Event details overlay -->
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);min-height:80vh;max-width:580px;">
-    <span class="lbl reveal-child" style="margin-bottom:1.5rem;color:rgba(240,237,232,0.65);">// Next Event</span>
+    <!-- ROUND 25 FIX #6 — Event title above countdown -->
+<h1 style="font-family:var(--ff-d);font-size:clamp(3rem,8vw,7rem);line-height:0.9;color:#E8E6DF;margin-bottom:1rem;letter-spacing:0.02em;">NEXT EVENT: SPRINGTIME OPENER</h1>
+<span class="lbl reveal-child" style="margin-bottom:1.5rem;color:rgba(240,237,232,0.65);">// Next Event</span>
     <h2 class="event-date reveal-child" style="font-size:clamp(3.5rem,8vw,7rem);line-height:0.9;margin-bottom:1.25rem;">April 25th</h2>
     <!-- ROUND 8 FIX #4 — Prominent countdown in this section -->
     <div style="margin-bottom:1.75rem;">
@@ -233,7 +241,7 @@
       <p class="venue-l">SoHo, New York City</p>
     </div>
     <!-- ROUND 24 FIX #4 — 500→300 -->
-    <p class="event-meta" style="margin-bottom:2rem;">500 guests · Invite Only · Open Bar</p>
+    <p class="event-meta" style="margin-bottom:2rem;">300 guests · Invite Only · Open Bar</p>
     <!-- EXPANSION FIX #5 — Partiful invite link for April 25 --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" class="btn btn-p" style="align-self:flex-start;" target="_blank" rel="noopener">request your invite &rarr;</a>
   </div>
 </section>
@@ -525,7 +533,7 @@
     <p class="join-body" data-a="u" data-d="1">Invite only. Drop your email and we'll reach out before April 25th. No spam, just the invite.</p>
     <!-- AUDIT FIX #9 — Scarcity line above email form -->
     <!-- ROUND 24 FIX #4 — 500→300 -->
-    <p class="scarcity-line">April 25 · 75 Varick Rooftop · 500 guests · Waitlist open</p>
+    <p class="scarcity-line">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p>
     <form class="join-form" action="https://formspree.io/f/xwpbkqod" method="POST" novalidate data-a="u" data-d="2">
       <div class="join-row">
         <input type="email" id="join-email" name="email" placeholder="your@email.com" aria-label="Email address" required autocomplete="email">
@@ -559,7 +567,7 @@
     </a>
     <p class="foot-tag">Events · New York City</p>
     <!-- Next event scarcity line -->
-    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 500 guests · Waitlist open</p> <!-- ROUND 24 FIX #4 — 500→300 -->
+    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p> <!-- ROUND 24 FIX #4 — 500→300 -->
   </div>
   <nav class="foot-links" aria-label="Footer links">
     <!-- Instagram icon link -->

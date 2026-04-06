@@ -7,12 +7,12 @@
   <!-- EXPANSION FIX #2 — SEO: sponsor page title and meta -->
   <title>Sponsor Treehouse Events | NYC's Premier Nightlife Series</title>
   <meta name="description" <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
-  content="Partner with Treehouse Events to reach 500+ tastemakers at NYC's most sought-after nightlife experiences. Bronze, Gold, and Platinum sponsorship packages available.">
+  content="Partner with Treehouse Events to reach 300+ tastemakers at NYC's most sought-after nightlife experiences. Bronze, Gold, and Platinum sponsorship packages available.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Sponsor Treehouse Events | NYC Nightlife Partnerships">
   <meta property="og:description" <!-- ROUND 24 FIX #4 — Updated attendee count 500→300 -->
-  content="Put your brand in front of 500 tastemakers at NYC's most exclusive events. Sponsorship packages from $5K.">
+  content="Put your brand in front of 300 tastemakers at NYC's most exclusive events. Sponsorship packages from $5K.">
   <meta property="og:image" content="/img/hero-new.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://treehouseevents.cliffeliz.ai/sponsor.html">
@@ -40,7 +40,7 @@
         "addressRegion": "NY"
       }
     },
-    "description": "Invite-only rooftop event. Open bar. 500 guests." <!-- ROUND 24 FIX #4 — 500→300 -->,
+    "description": "Invite-only rooftop event. Open bar. 300 guests." <!-- ROUND 24 FIX #4 — 500→300 -->,
     "organizer": {
       "@type": "Organization",
       "name": "Treehouse Events"
@@ -154,23 +154,24 @@
     width: 100%;
   }
   /* ROUND 24 FIX #1 — Video below stats, full-width strip */
+  /* ROUND 25 FIX #1 — Doubled height: 70vh desktop, 50vh mobile; full-bleed, no radius */
   .sp-stats-right {
     width: 100%;
     margin-top: 4rem;
-    border-radius: 4px;
     overflow: hidden;
     line-height: 0;
+    /* REMOVED R25: border-radius — full-bleed edge-to-edge */
   }
   .why-sponsor-video {
     width: 100%;
-    height: 400px;
+    height: 70vh;
     object-fit: cover;
     display: block;
-    border-radius: 4px;
+    /* REMOVED R25: border-radius — full-bleed */
   }
   @media (max-width: 768px) {
     .why-sponsor-video {
-      height: 260px;
+      height: 50vh;
     }
   }
   .sp-stats-label {
@@ -220,6 +221,7 @@
     padding-top: 2.5rem;
     margin-bottom: 2.5rem;
   }
+  /* ROUND 25 FIX #2 — Removed max-width: 640px, text now spans full content width */
   .sp-stats-venues p {
     font-family: var(--ff-e);
     font-style: italic;
@@ -227,13 +229,13 @@
     line-height: 1.7;
     color: var(--g);
     opacity: 0.75;
-    max-width: 640px;
+    /* REMOVED R25: max-width: 640px — full-width text */
   }
   /* ROUND 23 FIX #3 — Bolder quote accent */
+  /* ROUND 25 FIX #2 — Removed max-width: 580px, quote now spans full content width */
   .sp-stats-quote {
     border-left: 4px solid #2D4A1E;
-    padding-left: 2rem;
-    max-width: 580px;
+    /* REMOVED R25: max-width: 580px — full-width quote */
     background: rgba(45,74,30,0.04);
     padding: 1.5rem 1.5rem 1.5rem 2rem;
     border-radius: 0 4px 4px 0;
@@ -825,9 +827,11 @@
     <img src="/img/logo.png" alt="treehouse. Events" height="40" style="filter:brightness(0) invert(1);">
   </a>
   <div class="nav-links">
+    <!-- ROUND 25 FIX #4 — Home added as first nav item -->
+    <a href="/index.html#about">home</a>
     <a href="/index.html#tribeca-rooftop">past events</a>
     <a href="/sponsor.html" class="hi nav-active">sponsor</a>
-    <a href="/index.html#join">get tickets</a>
+    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </div>
   <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob">
     <span></span><span></span><span></span>
@@ -838,9 +842,11 @@
 <div class="mob" id="mob" role="dialog" aria-modal="true" hidden>
   <button class="mob-x" id="mob-x" aria-label="Close menu">&times;</button>
   <nav>
+    <!-- ROUND 25 FIX #4 — Home added as first mobile nav item -->
+    <a href="/index.html#about">home</a>
     <a href="/index.html#tribeca-rooftop">past events</a>
     <a href="/sponsor.html" class="nav-active">sponsor</a>
-    <a href="/index.html#join">get tickets</a>
+    <!-- ROUND 25 FIX #3 — Get Tickets now links to Partiful --><a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?" target="_blank" rel="noopener">get tickets</a>
   </nav>
 </div>
 
@@ -911,8 +917,8 @@
           </div>
           <!-- ROUND 24 FIX #4 — 500→300, "guests per event"→"attendees on average" -->
           <div class="sp-stat reveal" style="transition-delay:80ms;">
-            <span class="sp-stat-num" data-count-up="500" data-suffix="+">500+</span>
-            <p class="sp-stat-label">guests per event. Invite-only. The kind of crowd that actually tries new things.</p>
+            <span class="sp-stat-num" data-count-up="300" data-suffix="">300</span>
+            <p class="sp-stat-label">attendees on average. Invite-only. The kind of crowd that actually tries new things.</p>
           </div>
           <div class="sp-stat reveal" style="transition-delay:160ms;">
             <span class="sp-stat-num" data-count-up="5" data-suffix="">5</span>
@@ -1114,7 +1120,7 @@
         <p>SoHo, New York City</p>
         <p>10:30 PM to 3:30 AM ET</p>
         <!-- ROUND 24 FIX #4 — 500→300 -->
-        <p>Invite-only. Open bar. 500 guests.</p>
+        <p>Invite-only. Open bar. 300 guests.</p>
       </div>
       <span class="sp-next-avail">Limited sponsorship spots remaining</span>
       <br><br>
@@ -1211,7 +1217,7 @@
       <img src="/img/logo.png" alt="treehouse. Events | New York City" height="120" style="filter:brightness(0) invert(1);">
     </a>
     <p class="foot-tag">Events · New York City</p>
-    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 500 guests · Waitlist open</p> <!-- ROUND 24 FIX #4 — 500→300 -->
+    <p style="font-family:var(--ff-b);font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);opacity:0.85;margin-top:0.5rem;">April 25 · 75 Varick Rooftop · 300 guests · Waitlist open</p> <!-- ROUND 24 FIX #4 — 500→300 -->
   </div>
   <nav class="foot-links" aria-label="Footer links">
     <a href="https://www.instagram.com/treehouseevents.nyc" target="_blank" rel="noopener noreferrer" aria-label="Instagram @treehouseevents.nyc" style="display:inline-flex;align-items:center;gap:0.4rem;">
