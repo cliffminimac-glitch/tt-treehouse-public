@@ -51,11 +51,17 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 /* ROUND 30 POLISH — consistent section padding */
 .dk { background:var(--g); color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
 /* ROUND 36 FIX #2 — Strong visible cream gradient with radial corner depth */
+/* ROUND 38 FIX — Production gradient on .lt sections */
 .lt {
-  background:
-    radial-gradient(ellipse at 15% 10%, rgba(45,74,30,0.22) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 90%, rgba(45,74,30,0.18) 0%, transparent 50%),
-    linear-gradient(155deg, #F5F2EA 0%, #E8E6DF 30%, #EDE9E0 60%, #D8D4C8 100%);
+  background: linear-gradient(
+    155deg,
+    #E8E6DF 0%,
+    #e2e8d8 20%,
+    #E8E6DF 40%,
+    #dde4d4 60%,
+    #E8E6DF 80%,
+    #e0e6d6 100%
+  ) !important;
   color:var(--g); position:relative; overflow:hidden; padding:80px 0;
 }
 /* ROUND 36 FIX #2 — Film grain texture on cream sections (Treatment C) */

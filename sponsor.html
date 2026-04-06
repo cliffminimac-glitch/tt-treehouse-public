@@ -134,14 +134,16 @@
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
 
   /* ── STATS SECTION ── */
-  /* ROUND 38 — NUCLEAR TEST — make this OBVIOUSLY visible */
+  /* ROUND 38 FIX — Production gradient on stats section */
   .sp-stats {
     background: linear-gradient(
-      135deg,
+      155deg,
       #E8E6DF 0%,
-      #d4e8c4 30%,
-      #E8E6DF 60%,
-      #c8d8b8 100%
+      #e2e8d8 20%,
+      #E8E6DF 40%,
+      #dde4d4 60%,
+      #E8E6DF 80%,
+      #e0e6d6 100%
     ) !important;
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
@@ -296,12 +298,17 @@
   /* ROUND 33 FIX #1 — Reduced top padding to eliminate dead space before tiers */
   /* ROUND 34 FIX — Cream gradient background on tiers section */
   /* ROUND 36 FIX #2 — Strong visible gradient on tiers section */
+  /* ROUND 38 FIX — Production gradient on tiers section */
   .sp-packages {
-    /* ROUND 37 FIX #1 — Brighter, more saturated green blobs */
-    background:
-      radial-gradient(ellipse at 80% 15%, rgba(100,160,60,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 85%, rgba(60,100,40,0.14) 0%, transparent 60%),
-      linear-gradient(155deg, #D8D4C8 0%, #E8E6DF 30%, #EDE9E0 60%, #F5F2EA 100%);
+    background: linear-gradient(
+      155deg,
+      #E8E6DF 0%,
+      #e2e8d8 20%,
+      #E8E6DF 40%,
+      #dde4d4 60%,
+      #E8E6DF 80%,
+      #e0e6d6 100%
+    ) !important;
     color: var(--g);
     padding: 48px clamp(1.5rem, 5vw, 5rem) 6rem;
     position: relative;
@@ -324,10 +331,10 @@
   .sp-packages-header {
     margin-bottom: 4rem;
   }
-  /* ROUND 30 POLISH — packages heading normalized */
+  /* ROUND 38 FIX — Tiers heading enlarged */
   .sp-packages-header h2 {
     font-family: var(--ff-d);
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
     line-height: 0.95;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -346,11 +353,12 @@
     gap: 2rem;
   }
   /* ROUND 37 FIX #2 — Green tier cards with cream text */
+  /* ROUND 38 FIX — Tier card padding 40px → 48px */
   .sp-tier {
     background: #2D4A1E;
     border: 1px solid rgba(232,230,223,0.15);
     border-radius: 8px;
-    padding: 40px;
+    padding: 48px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
     color: #E8E6DF;
@@ -852,18 +860,20 @@
     }
   }
   /* ROUND 23 FIX #4 — New brand logo grid: 6 per row desktop, 3 tablet, 2 mobile */
+  /* ROUND 38 FIX — Larger grid gap */
   .brands-grid-r23 {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 2rem 3rem;
+    gap: 40px 48px;
     align-items: center;
     justify-items: center;
     margin-bottom: 0;
   }
+  /* ROUND 38 FIX — Larger brand logos */
   .brands-grid-r23 .brand-logo {
-    height: 60px;
+    height: 90px;
     width: auto;
-    max-width: 150px;
+    max-width: 180px;
     object-fit: contain;
     opacity: 0.72;
     filter: brightness(0) invert(1);
@@ -879,8 +889,8 @@
       gap: 1.75rem 2rem;
     }
     .brands-grid-r23 .brand-logo {
-      height: 48px;
-      max-width: 120px;
+      height: 60px;
+      max-width: 140px;
     }
   }
   @media (max-width: 480px) {
@@ -889,8 +899,8 @@
       gap: 1.5rem;
     }
     .brands-grid-r23 .brand-logo {
-      height: 36px;
-      max-width: 90px;
+      height: 44px;
+      max-width: 110px;
     }
   }
 </style>
@@ -1079,7 +1089,7 @@
     <!-- ROUND 29 FIX: removed data-a animation attrs so heading renders immediately without waiting for observer -->
     <span class="lbl" style="margin-bottom:1rem;display:block;">// Past Partners</span>
     <!-- ROUND 31 FIX #1 — tightened gap between heading and subtitle -->
-    <h2 style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:12px;color:#E8E6DF;">Past Partners.</h2>
+    <h2 style="font-family:var(--ff-d);font-size:clamp(3.5rem,6vw,5.5rem);letter-spacing:0.02em;margin-bottom:12px;color:#E8E6DF;">Past Partners.</h2>
     <!-- ROUND 31 FIX #1 — reduced gap between subtitle and logos: 3rem→32px -->
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:32px;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
     <!-- REMOVED R23: generic brand-logo-01..16.png replaced with named logos from /img/logos/ -->
