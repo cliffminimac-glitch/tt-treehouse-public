@@ -725,3 +725,22 @@ body.ci .cur-r { border-color:var(--g); }
   .nav-mobile-backdrop.is-open { display:block; }
 }
 
+
+/* ROUND 17 FIX #1 — Curate video section between curate and April 25 */
+.curate-video-section {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  display: block;
+}
+.curate-video {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 768px) {
+  .curate-video {
+    max-height: 50vh;
+  }
+}
