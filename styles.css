@@ -50,8 +50,25 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 /* SECTIONS */
 /* ROUND 30 POLISH — consistent section padding */
 .dk { background:var(--g); color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
-/* ROUND 33 FIX #3 — Subtle diagonal gradient on all cream/light sections */
-.lt { background:linear-gradient(165deg,#E8E6DF 0%,#F0EDE6 30%,#E8E6DF 60%,#E3E0D8 100%); color:var(--g); position:relative; overflow:hidden; padding:80px 0; }
+/* ROUND 36 FIX #2 — Enhanced cream gradient with radial corner depth (Treatment A) */
+.lt {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(45,74,30,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(45,74,30,0.04) 0%, transparent 50%),
+    linear-gradient(170deg, #EBE9E2 0%, #E8E6DF 25%, #F0EDE6 50%, #E5E2DA 75%, #E8E6DF 100%);
+  color:var(--g); position:relative; overflow:hidden; padding:80px 0;
+}
+/* ROUND 36 FIX #2 — Film grain texture on cream sections (Treatment C) */
+.lt::after {
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  opacity:0.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+}
+.lt > * { position:relative; z-index:1; }
 .dk2 { background:#0f2410; color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
 /* Full-bleed sections override padding */
 .dk.no-pad, .lt.no-pad, .dk2.no-pad { padding:0; }

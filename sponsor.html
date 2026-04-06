@@ -134,21 +134,34 @@
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
 
   /* ── STATS SECTION ── */
-  /* ROUND 33 FIX #3 — Subtle diagonal gradient on cream stats section */
+  /* ROUND 36 FIX #2 — Enhanced gradient with radial corner depth + dot texture (Treatment A) */
   .sp-stats {
-    background: linear-gradient(
-      165deg,
-      #E8E6DF 0%,
-      #F0EDE6 30%,
-      #E8E6DF 60%,
-      #E3E0D8 100%
-    );
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(45,74,30,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(45,74,30,0.04) 0%, transparent 50%),
+      linear-gradient(170deg, #EBE9E2 0%, #E8E6DF 25%, #F0EDE6 50%, #E5E2DA 75%, #E8E6DF 100%);
     color: var(--g);
     padding: 6rem clamp(1.5rem, 5vw, 5rem);
-    /* ROUND 23 FIX #3 — subtle dot texture layered on gradient */
-    background-image: radial-gradient(circle, rgba(45,74,30,0.045) 1px, transparent 1px), linear-gradient(165deg, #E8E6DF 0%, #F0EDE6 30%, #E8E6DF 60%, #E3E0D8 100%);
-    background-size: 28px 28px, 100% 100%;
+    /* ROUND 23 FIX #3 — dot texture layered on top */
+    background-image:
+      radial-gradient(circle, rgba(45,74,30,0.035) 1px, transparent 1px),
+      radial-gradient(ellipse at 20% 0%, rgba(45,74,30,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(45,74,30,0.04) 0%, transparent 50%),
+      linear-gradient(170deg, #EBE9E2 0%, #E8E6DF 25%, #F0EDE6 50%, #E5E2DA 75%, #E8E6DF 100%);
+    background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+    position: relative;
   }
+  /* ROUND 36 FIX #2 — Film grain on stats section (Treatment C) */
+  .sp-stats::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sp-stats > * { position: relative; z-index: 1; }
   .sp-stats-inner {
     max-width: var(--wrap);
     margin: 0 auto;
@@ -286,11 +299,27 @@
   /* ── PACKAGES SECTION ── */
   /* ROUND 33 FIX #1 — Reduced top padding to eliminate dead space before tiers */
   /* ROUND 34 FIX — Cream gradient background on tiers section */
+  /* ROUND 36 FIX #2 — Enhanced gradient with radial corner depth (Treatment A) */
   .sp-packages {
-    background: linear-gradient(165deg, #E8E6DF 0%, #F0EDE6 30%, #E8E6DF 60%, #E3E0D8 100%);
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(45,74,30,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(45,74,30,0.04) 0%, transparent 50%),
+      linear-gradient(170deg, #EBE9E2 0%, #E8E6DF 25%, #F0EDE6 50%, #E5E2DA 75%, #E8E6DF 100%);
     color: var(--g);
     padding: 48px clamp(1.5rem, 5vw, 5rem) 6rem;
+    position: relative;
   }
+  /* ROUND 36 FIX #2 — Film grain on packages/tiers section (Treatment C) */
+  .sp-packages::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sp-packages > * { position: relative; z-index: 1; }
   .sp-packages-inner {
     max-width: var(--wrap);
     margin: 0 auto;
@@ -1209,8 +1238,7 @@
     <h2 class="reveal">let's build something<br>together.</h2>
     <p class="sp-contact-body reveal">Reach out to discuss custom activations, multi-event partnerships, or to lock in your preferred tier before spots close.</p>
     <a href="mailto:events@tigertracks.ai" class="sp-contact-email reveal">events@tigertracks.ai &rarr;</a>
-    <!-- ROUND 31 FIX #2 — Partiful link preserved after removing sp-next-event section -->
-    <p class="reveal" style="font-size:0.88rem;opacity:0.55;margin-top:0.25rem;margin-bottom:2rem;">Or <a href="https://partiful.com/e/Ga4IVh3ZhEdpJwVNTgdw?c=9SCC5_Y5" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">request your invite on Partiful &rarr;</a></p>
+    <!-- REMOVED R36: Partiful invite link — doesn't belong in sponsor contact section; this section is for brand inquiries only -->
 
     <div class="sp-contact-deck reveal">
       <!-- TODO: Replace with actual Canva deck URL -->
