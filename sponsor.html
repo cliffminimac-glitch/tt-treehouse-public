@@ -869,8 +869,9 @@
 
 <main>
 
-<!-- REMOVED R29: Scrolling event ticker — not needed on sponsor page -->
-<!-- ROUND 29 FIX: marquee-wrap commented out below
+<!-- REMOVED R29: Scrolling event ticker not needed on sponsor page. Wrapped in template tag to suppress rendering. -->
+<!-- ROUND 29 FIX -->
+<template id="r29-ticker-removed">
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Tribeca Rooftop<span class="marquee-dot"></span></span>
@@ -889,7 +890,7 @@
     <span class="marquee-item">April 25th<span class="marquee-dot"></span></span>
   </div>
 </div>
--->
+</template>
 
 <!-- ═══════════════════════════════ SECTION A: HERO ═══════════════════════════════ -->
 <!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
