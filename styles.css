@@ -99,8 +99,9 @@ body.ci .cur-r { border-color:var(--g); }
 .nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:var(--nav); display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1.5rem,5vw,4rem); transition:background var(--ts),box-shadow var(--ts); }
 .nav.sc { backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:var(--g90); box-shadow:0 1px 0 var(--ln08); }
 .nav-logo img { height:36px; width:auto; }
-.nav-links { display:flex; align-items:center; gap:2.5rem; }
-.nav-links a { font-size:0.68rem; font-weight:500; letter-spacing:0.1em; text-transform:lowercase; color:var(--linen); opacity:0.6; transition:opacity var(--tf); }
+/* ROUND 28 FIX #3 — Increased nav font size; reduced gap so 4 links still fit at 1024px */
+.nav-links { display:flex; align-items:center; gap:1.5rem; }
+.nav-links a { font-size:1.1rem; font-weight:500; letter-spacing:0.06em; text-transform:lowercase; color:var(--linen); opacity:0.6; transition:opacity var(--tf); }
 .nav-links a:hover, .nav-links a.hi { opacity:1; }
 .ham { display:none; flex-direction:column; gap:5px; padding:4px; }
 .ham span { display:block; width:22px; height:1.5px; background:var(--linen); transition:all var(--ts); }
