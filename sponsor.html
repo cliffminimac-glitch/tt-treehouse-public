@@ -675,6 +675,56 @@
     max-height: 50vh;
   }
 }
+
+  /* ROUND 19 FIX #3 — Why Sponsor? heading */
+  .sp-why-heading {
+    font-family: var(--ff-d);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--g);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* ROUND 19 FIX #4 — Updated brand logo grid with consistent sizing */
+  .brands-grid-r19 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+  .brands-grid-r19 .brand-logo {
+    height: 48px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    opacity: 0.75;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.2s;
+  }
+  .brands-grid-r19 .brand-logo:hover {
+    opacity: 1;
+  }
+  @media (max-width: 768px) {
+    .brands-grid-r19 {
+      gap: 1.5rem 2rem;
+    }
+    .brands-grid-r19 .brand-logo {
+      height: 36px;
+      max-width: 100px;
+    }
+  }
+  @media (max-width: 480px) {
+    .brands-grid-r19 {
+      gap: 1.25rem 1.5rem;
+    }
+    .brands-grid-r19 .brand-logo {
+      height: 30px;
+      max-width: 80px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -735,7 +785,8 @@
     <!-- ROUND 18 FIX #2 — Video background for sponsor hero -->
   <video
     class="sp-hero-bg"
-    src="/img/sponsor-hero-video.mp4"
+    <!-- ROUND 19 FIX #1 — Swapped to v2 -->
+    src="/img/sponsor-hero-video-v2.mp4"
     autoplay
     muted
     loop
@@ -760,6 +811,8 @@
 <section class="sp-stats" id="sp-stats">
   <div class="sp-stats-inner">
     <span class="sp-stats-label">// Why Treehouse</span>
+    <!-- ROUND 19 FIX #3 — Why Sponsor? heading -->
+    <h2 class="sp-why-heading">Why Sponsor?</h2>
     <div class="sp-stats-grid">
       <div class="sp-stat reveal">
         <span class="sp-stat-num">18</span>
@@ -818,32 +871,38 @@
 
 <!-- ROUND 18 FIX #1 — Brands That Showed Up section moved from index.html -->
 <section class="dk grain" id="sp-brands">
-  <div class="w" style="max-width:1200px;margin:0 auto;padding:5rem 2rem;">
+  <!-- ROUND 19 FIX #5 — Reduced padding to remove dead space -->
+  <div class="w" style="max-width:1200px;margin:0 auto;padding:3rem 2rem 1.5rem;">
     <span class="lbl reveal-child" data-a="u" style="margin-bottom:1rem">// Past Activations</span>
     <h2 data-a="l" style="margin-bottom:0.75rem;color:#E8E6DF;">Brands that showed up.</h2>
     <p style="font-family:var(--ff-e);font-style:italic;opacity:0.7;margin-bottom:3rem;" data-a="u" data-d="1">18 brands. 5 events. All hand-selected.</p>
-    <div class="brands-grid-wrap">
-      <img src="/img/logos/07_Zakuska_Vodka.png" alt="Zakuska Vodka" class="brand-logo">
-      <img src="/img/logos/08_Friday_Beers.png" alt="Friday Beers" class="brand-logo">
-      <img src="/img/logos/09_SURF.png" alt="SURF" class="brand-logo">
-      <img src="/img/logos/10_Celsius.png" alt="Celsius" class="brand-logo">
-      <img src="/img/logos/11_CLR.png" alt="CLR" class="brand-logo">
-      <img src="/img/logos/12_Solento_Organic_Tequila.png" alt="Solento Organic Tequila" class="brand-logo">
-      <img src="/img/logos/13_Teremana.png" alt="Teremana" class="brand-logo">
-      <img src="/img/logos/14_7th_Street_Burger.png" alt="7th Street Burger" class="brand-logo">
-      <img src="/img/logos/15_NightOwl.png" alt="NightOwl" class="brand-logo">
-      <img src="/img/logos/16_Bashi.png" alt="Bashi" class="brand-logo">
-      <img src="/img/logos/17_Lemon_Perfect.png" alt="Lemon Perfect" class="brand-logo">
-      <img src="/img/logos/18_Holiday.png" alt="Holiday" class="brand-logo">
-      <img src="/img/logos/01_Tequila_Cabal_Organic.png" alt="Tequila Cabal Organic" class="brand-logo">
-      <img src="/img/logos/02_Potro_Tequila.png" alt="Potro Tequila" class="brand-logo">
-      <img src="/img/logos/03_Mezcalum.png" alt="Mezcalum" class="brand-logo">
-      <img src="/img/logos/04_Mission_Craft_Cocktails.png" alt="Mission Craft Cocktails" class="brand-logo">
-      <img src="/img/logos/05_Hampton_Water.png" alt="Hampton Water" class="brand-logo">
-      <img src="/img/logos/06_Lucie.png" alt="Lucie" class="brand-logo">
+    <!-- REMOVED R19: Old brand logos (keeping Celsius and Lucie) -->
+    <!-- ROUND 19 FIX #4 — Updated brand logos: Celsius + Lucie kept, 16 new logos added -->
+    <div class="brands-grid-wrap brands-grid-r19">
+      <!-- KEPT: Celsius and Lucie -->
+      <img src="/img/logos/10_Celsius.png" alt="Celsius" class="brand-logo" loading="lazy">
+      <img src="/img/logos/06_Lucie.png" alt="Lucie" class="brand-logo" loading="lazy">
+      <!-- 16 new brand logos -->
+      <img src="/img/brand-logo-01.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-02.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-03.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-04.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-05.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-06.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-07.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-08.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-09.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-10.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-11.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-12.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-13.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-14.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-15.png" alt="Brand partner" class="brand-logo" loading="lazy">
+      <img src="/img/brand-logo-16.png" alt="Brand partner" class="brand-logo" loading="lazy">
     </div>
-    <div style="text-align:center;padding:2.5rem 0;border-top:1px solid var(--ln10);" data-a="u">
-      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1.25rem;">Limited spots available for 2026 events.</p>
+    <!-- ROUND 19 FIX #5 — Reduced bottom CTA padding -->
+    <div style="text-align:center;padding:1rem 0 0;border-top:1px solid var(--ln10);margin-top:2rem;" data-a="u">
+      <p style="font-family:var(--ff-e);font-style:italic;opacity:0.72;margin-bottom:1rem;">Limited spots available for 2026 events.</p>
       <a href="#sp-packages" class="btn btn-p">see sponsorship packages</a>
     </div>
   </div>
@@ -1017,7 +1076,8 @@
 <!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
 <section class="dk sponsor-bottom-video-section">
   <video
-    src="/img/sponsor-bottom-video.mp4"
+    <!-- ROUND 19 FIX #2 — Swapped to v2 -->
+    src="/img/sponsor-bottom-video-v2.mp4"
     autoplay
     muted
     loop
