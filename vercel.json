@@ -4,6 +4,7 @@
   "builds": [
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "*.js", "use": "@vercel/static" },
+    { "src": "*.css", "use": "@vercel/static" },
     { "src": "img/**", "use": "@vercel/static" }
   ],
   "routes": [
@@ -23,7 +24,19 @@
       ]
     },
     {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
       "source": "/index.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/sponsor.html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
