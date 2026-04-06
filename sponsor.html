@@ -783,16 +783,15 @@
 <!-- EXPANSION FIX #4 — sponsor page hero: full-viewport, curate-room.jpg background -->
 <section class="sp-hero" id="sp-hero">
     <!-- ROUND 18 FIX #2 — Video background for sponsor hero -->
+  <!-- ROUND 20 FIX #3 — hero video fixed: clean tag, correct src, no poster -->
   <video
     class="sp-hero-bg"
-    <!-- ROUND 19 FIX #1 — Swapped to v2 -->
-    src="/img/sponsor-hero-video-v2.mp4"
+    src="/img/sponsor-hero-video.mp4"
     autoplay
     muted
     loop
     playsinline
     preload="auto"
-    poster="/img/hero-new.jpg"
   ></video>
   <div class="sp-hero-overlay"></div>
   <div class="sp-hero-inner">
@@ -812,7 +811,7 @@
   <div class="sp-stats-inner">
     <span class="sp-stats-label">// Why Treehouse</span>
     <!-- ROUND 19 FIX #3 — Why Sponsor? heading -->
-    <h2 class="sp-why-heading">Why Sponsor?</h2>
+    <!-- REMOVED R20: standalone Why Sponsor? heading moved inline -->
     <div class="sp-stats-grid">
       <div class="sp-stat reveal">
         <span class="sp-stat-num">18</span>
@@ -847,6 +846,8 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="sp-igc-grid">
       <!-- Left: copy -->
       <div>
+        <!-- ROUND 20 FIX #5 — Why Sponsor? heading added inline -->
+        <h2 class="sp-inline-why" style="font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,4rem);color:#E8E6DF;letter-spacing:0.02em;margin:0 0 0.5rem;line-height:1;">Why Sponsor?</h2>
         <span class="lbl reveal-child" style="margin-bottom:1rem">// Past Partners</span>
         <h2 data-a="l" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1.5rem;color:#E8E6DF;">In Good Company.</h2>
         <div style="margin-bottom:2rem;">
@@ -1075,15 +1076,14 @@
 
 <!-- ROUND 18 FIX #3 — Bottom video on sponsor page -->
 <section class="dk sponsor-bottom-video-section">
+  <!-- ROUND 20 FIX #4 — bottom video fixed: clean tag, correct src, no poster -->
   <video
-    <!-- ROUND 19 FIX #2 — Swapped to v2 -->
-    src="/img/sponsor-bottom-video-v2.mp4"
+    src="/img/sponsor-bottom-video.mp4"
     autoplay
     muted
     loop
     playsinline
     preload="metadata"
-    poster="/img/hero-new.jpg"
     class="sponsor-bottom-video"
   ></video>
 </section>
