@@ -285,9 +285,10 @@
 
   /* ── PACKAGES SECTION ── */
   /* ROUND 33 FIX #1 — Reduced top padding to eliminate dead space before tiers */
+  /* ROUND 34 FIX — Cream gradient background on tiers section */
   .sp-packages {
-    background: var(--g);
-    color: var(--linen);
+    background: linear-gradient(165deg, #E8E6DF 0%, #F0EDE6 30%, #E8E6DF 60%, #E3E0D8 100%);
+    color: var(--g);
     padding: 48px clamp(1.5rem, 5vw, 5rem) 6rem;
   }
   .sp-packages-inner {
@@ -304,13 +305,13 @@
     line-height: 0.95;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--linen);
+    color: var(--g);
     margin-bottom: 1rem;
   }
   .sp-packages-header p {
     font-family: var(--ff-b);
     font-size: 1rem;
-    color: rgba(240,237,232,0.65);
+    color: rgba(26,58,26,0.65);
     max-width: 480px;
   }
   .sp-tiers {
@@ -319,9 +320,10 @@
     gap: 2rem;
   }
   /* ROUND 33 FIX #4 — Increased card padding to 40px desktop */
+  /* ROUND 34 FIX — Updated card colors for cream background */
   .sp-tier {
-    background: rgba(240,237,232,0.04);
-    border: 1px solid rgba(240,237,232,0.1);
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(26,58,26,0.12);
     border-radius: 8px;
     padding: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -329,21 +331,22 @@
   }
   .sp-tier:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-    background: rgba(240,237,232,0.07);
+    box-shadow: 0 12px 40px rgba(26,58,26,0.12);
+    background: rgba(255,255,255,0.75);
   }
   /* ROUND 30 POLISH — gold tier same padding, elevated visually */
+  /* ROUND 34 FIX — Gold tier on cream background */
   .sp-tier.gold {
-    background: rgba(212,175,55,0.07);
-    border-color: rgba(212,175,55,0.35);
+    background: rgba(212,175,55,0.12);
+    border-color: rgba(212,175,55,0.5);
     border-width: 2px;
-    padding: 32px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.15);
   }
   /* ROUND 30 POLISH — gold tier hover */
   .sp-tier.gold:hover {
-    background: rgba(212,175,55,0.12);
-    box-shadow: 0 8px 32px rgba(212,175,55,0.2);
+    background: rgba(212,175,55,0.2);
+    box-shadow: 0 8px 32px rgba(212,175,55,0.25);
     transform: translateY(-2px);
   }
   .sp-tier-badge {
@@ -359,38 +362,42 @@
     margin-bottom: 1.25rem;
     font-weight: 600;
   }
+  /* ROUND 34 FIX — Tier name color for cream background */
   .sp-tier-name {
     font-family: var(--ff-d);
     font-size: clamp(2rem, 4vw, 3.5rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--linen);
+    color: var(--g);
     line-height: 1;
     margin-bottom: 0.35rem;
   }
   /* ROUND 33 FIX #4 — Increased price size to 1.75rem (28px) */
+  /* ROUND 34 FIX — Price color for cream background */
   .sp-tier-price {
     font-family: var(--ff-b);
     font-size: 1.75rem;
     font-weight: 400;
-    color: rgba(240,237,232,0.75);
+    color: rgba(26,58,26,0.7);
     margin-bottom: 0.5rem;
   }
   /* ROUND 33 FIX #4 — Increased subtitle size to 1rem (16px) */
+  /* ROUND 34 FIX — Subtitle color for cream background */
   .sp-tier-desc {
     font-family: var(--ff-e);
     font-style: italic;
     font-size: 1rem;
-    color: rgba(240,237,232,0.65);
+    color: rgba(26,58,26,0.55);
     margin-bottom: 2rem;
   }
+  /* ROUND 34 FIX — Divider color for cream background */
   .sp-tier-div {
     height: 1px;
-    background: rgba(240,237,232,0.1);
+    background: rgba(26,58,26,0.1);
     margin-bottom: 2rem;
   }
   .sp-tier.gold .sp-tier-div {
-    background: rgba(212,175,55,0.2);
+    background: rgba(212,175,55,0.35);
   }
   /* ROUND 33 FIX #4 — 2 columns (was auto-fill ~3-4), 16px gap, more readable */
   .sp-tier-feats {
@@ -400,10 +407,11 @@
     margin-bottom: 2.5rem;
   }
   /* ROUND 33 FIX #4 — Increased line item size to 1rem (16px), line-height 1.7 */
+  /* ROUND 34 FIX — Line item color for cream background */
   .sp-tier-feats li {
     font-family: var(--ff-b);
     font-size: 1rem;
-    color: rgba(240,237,232,0.85);
+    color: rgba(26,58,26,0.8);
     line-height: 1.7;
     padding-left: 1rem;
     position: relative;
@@ -453,13 +461,14 @@
     background: #c9a227;
     border-color: #c9a227;
   }
+  /* ROUND 34 FIX — Note color for cream background */
   .sp-tiers-note {
     margin-top: 2.5rem;
     font-family: var(--ff-b);
     font-size: 0.82rem;
-    color: rgba(240,237,232,0.45);
+    color: rgba(26,58,26,0.45);
     text-align: center;
-    border-top: 1px solid rgba(240,237,232,0.08);
+    border-top: 1px solid rgba(26,58,26,0.08);
     padding-top: 2rem;
   }
   /* ROUND 33 FIX #4 — Mobile: 24px padding, single column feats */
