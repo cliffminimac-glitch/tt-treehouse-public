@@ -1104,7 +1104,7 @@ body .sp-packages {
 
 /* ── SPONSOR BOTTOM VIDEO ── */
 .sponsor-bottom-video-section { width: 100%; line-height: 0; overflow: hidden; }
-.sponsor-bottom-video { width: 100%; height: 40vh; min-height: unset; object-fit: cover; display: block; } /* FIX — reduced from 100vh to compact accent */
+.sponsor-bottom-video { width: 100%; height: 80vh; min-height: unset; object-fit: cover; display: block; } /* FIX — doubled from 40vh */
 
 /* ── SECONDARY BUTTON (on dark bg) ── */
 .sp-contact .btn-secondary {
@@ -1321,7 +1321,7 @@ body .sp-packages {
 
   /* Sponsor videos */ /* FIX — updated heights */
   .why-sponsor-video { height: auto; } /* contain: let natural height show */
-  .sponsor-bottom-video { height: 30vh; min-height: unset; } /* compact on mobile */
+  .sponsor-bottom-video { height: 60vh; min-height: unset; } /* FIX — doubled from 30vh */
 
   /* Sponsor btn-full */
   .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
