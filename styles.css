@@ -1452,3 +1452,33 @@ body .sp-packages {
 @media (hover: none) {
   .cur, .cur-r { display: none; }
 }
+
+
+/* ================================================ */
+/* PROTECTED: Cream section gradient                */
+/* This rule has been accidentally removed 4 times. */
+/* Do NOT override with background-color.           */
+/* If cream sections need a background change,      */
+/* EDIT THIS RULE directly — do not add a new one.  */
+/* ================================================ */
+/* GRADIENT RESTORE — DO NOT OVERRIDE THIS RULE */
+/* This gradient has been broken 4 times by subsequent CSS changes. */
+/* rgba(100,160,60,0.18) = bright grass green blob top-left         */
+/* rgba(60,100,40,0.14)  = deeper green blob bottom-right           */
+/* #e2e8d8 / #dde4d4     = cream with visible green undertone       */
+body .sp-stats,
+body .sp-packages {
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(100, 160, 60, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 85%, rgba(60, 100, 40, 0.14) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(45, 74, 30, 0.02) 0%, transparent 70%),
+    linear-gradient(
+      155deg,
+      #EBE9E2 0%,
+      #e2e8d8 20%,
+      #E8E6DF 40%,
+      #dde4d4 60%,
+      #E8E6DF 80%,
+      #e0e6d6 100%
+    ) !important; /* GRADIENT RESTORE */
+}
