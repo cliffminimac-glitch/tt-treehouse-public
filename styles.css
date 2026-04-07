@@ -704,10 +704,11 @@ body .sp-stats {
   padding-left: 48px;
   padding-right: 48px;
 }
-.sp-stats-layout { display: block; }
+/* FIX #1 — Two-column layout: text left, video right on desktop */
+.sp-stats-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 .sp-stats-left { width: 100%; }
-.sp-stats-right { width: 100%; margin-top: 4rem; overflow: hidden; line-height: 0; }
-.why-sponsor-video { width: 100%; height: auto; object-fit: contain; display: block; background: var(--color-green); } /* FIX — natural aspect ratio, full frame visible */
+.sp-stats-right { width: 100%; overflow: hidden; line-height: 0; }
+.why-sponsor-video { width: 100%; height: auto; max-height: 600px; object-fit: cover; display: block; border-radius: 4px; background: var(--color-green); }
 .sp-stats-label {
   display: block;
   font-family: var(--ff-b);
@@ -1103,8 +1104,9 @@ body .sp-packages {
 }
 
 /* ── SPONSOR BOTTOM VIDEO ── */
-.sponsor-bottom-video-section { width: 100%; line-height: 0; overflow: hidden; }
-.sponsor-bottom-video { width: 100%; height: 80vh; min-height: unset; object-fit: cover; display: block; } /* FIX — doubled from 40vh */
+/* FIX #2 — Bottom video: 4:3 aspect ratio, centered, max-width 900px */
+.sponsor-bottom-video-section { width: 100%; line-height: 0; overflow: hidden; padding: 0 0; background: var(--color-dark); display: flex; justify-content: center; }
+.sponsor-bottom-video { width: 100%; max-width: 900px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 
 /* ── SECONDARY BUTTON (on dark bg) ── */
 .sp-contact .btn-secondary {
@@ -1297,6 +1299,9 @@ body .sp-packages {
   .sp-packages-inner,
   .sp-contact-inner { padding-left: 24px; padding-right: 24px; }
   .sp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+  /* FIX #1 — Stack text above video on mobile, no text cut-off */
+  .sp-stats-layout { grid-template-columns: 1fr; gap: 24px; }
+  .sp-stats-left { width: 100%; overflow: visible; }
 
   /* Sponsor tiers */
   .sp-tier { padding: 24px; }
@@ -1319,9 +1324,12 @@ body .sp-packages {
   /* Sponsor brands */
   #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
 
-  /* Sponsor videos */ /* FIX — updated heights */
-  .why-sponsor-video { height: auto; } /* contain: let natural height show */
-  .sponsor-bottom-video { height: 60vh; min-height: unset; } /* FIX — doubled from 30vh */
+  /* Sponsor videos */
+  /* FIX #1 mobile — why-sponsor-video stacks below text, full width */
+  .why-sponsor-video { height: auto; max-height: 400px; }
+  /* FIX #2 mobile — bottom video: 4:3 maintained, full width with side padding */
+  .sponsor-bottom-video { max-width: 100%; aspect-ratio: 4 / 3; height: auto; }
+  .sponsor-bottom-video-section { padding: 0 16px; }
 
   /* Sponsor btn-full */
   .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
