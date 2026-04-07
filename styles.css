@@ -597,7 +597,7 @@ body #sp-brands .w {
 .sp-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 60vh; /* FIX — shortened from 100vh */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -707,7 +707,7 @@ body .sp-stats {
 .sp-stats-layout { display: block; }
 .sp-stats-left { width: 100%; }
 .sp-stats-right { width: 100%; margin-top: 4rem; overflow: hidden; line-height: 0; }
-.why-sponsor-video { width: 100%; height: auto; object-fit: contain; display: block; background: var(--color-green); } /* FIX — natural aspect ratio, full frame visible */
+.why-sponsor-video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; } /* FIX — 4:3 aspect ratio */
 .sp-stats-label {
   display: block;
   font-family: var(--ff-b);
@@ -1320,7 +1320,7 @@ body .sp-packages {
   #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
 
   /* Sponsor videos */ /* FIX — updated heights */
-  .why-sponsor-video { height: auto; } /* contain: let natural height show */
+  .why-sponsor-video { aspect-ratio: 4 / 3; } /* FIX — maintain 4:3 on mobile */
   .sponsor-bottom-video { height: 60vh; min-height: unset; } /* FIX — doubled from 30vh */
 
   /* Sponsor btn-full */
