@@ -129,7 +129,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 /* ============================================================
    SECTIONS
    ============================================================ */
-.dk { background:var(--g); color:var(--linen); position:relative; overflow:clip; padding:80px 0; }
+.dk { background:var(--g); color:var(--linen); position:relative; overflow:visible; padding:80px 0; }
 .lt {
   background: linear-gradient(
     155deg,
@@ -140,7 +140,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     var(--color-cream) 80%,
     #e0e6d6 100%
   );
-  color:var(--g); position:relative; overflow:clip; padding:80px 0;
+  color:var(--g); position:relative; overflow:visible; padding:80px 0;
 }
 /* Film grain on cream sections */
 .lt::after {
@@ -294,8 +294,8 @@ body.ci .cur-r { border-color:var(--g); }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:clip; }
-.hero-bg { position:absolute; inset:0; z-index:0; }
+.hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:visible; }
+.hero-bg { position:absolute; inset:0; z-index:0; overflow:hidden; }
 .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.65; }
 .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,28,10,0.35) 0%, rgba(10,28,10,0.1) 35%, rgba(10,28,10,0.5) 70%, rgba(10,28,10,0.92) 100%), linear-gradient(to right, rgba(10,28,10,0.4) 0%, transparent 55%); z-index:1; }
 .hero-inner { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.75rem; padding:calc(var(--nav) + 3rem) clamp(1.5rem,5vw,4rem) 4rem; max-width:1000px; }
@@ -338,7 +338,7 @@ body.ci .cur-r { border-color:var(--g); }
 /* ============================================================
    CURATE SECTION
    ============================================================ */
-.curate-section { position:relative; width:100%; overflow:clip; padding:60px 0; }
+.curate-section { position:relative; width:100%; overflow:visible; padding:60px 0; }
 .curate-section .dj-photo { width:100%; height:72vh; object-fit:cover; object-position:center center; display:block; max-height:none; }
 .curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:var(--color-cream-light); max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy::before { content:""; position:absolute; inset:-50px -80px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 70%); border-radius:50%; z-index:-1; pointer-events:none; }
@@ -1258,11 +1258,13 @@ body .sp-packages {
   .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 2; }
   .photo-grid .gallery-item, .gallery-visible .gallery-item, .gallery-collapsed .gallery-item { margin-bottom: 4px; }
 
-  /* Curate */
-  .curate-section { padding: 40px 0; }
-  .curate-section .dj-photo { height: 55vh; }
-  .curate-copy { top: 2rem; bottom: auto; padding: 0 16px; }
-  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+  /* Curate — switch to stacked layout on mobile so text is never clipped */
+  .curate-section { padding: 0; display: flex; flex-direction: column; overflow: visible; }
+  .curate-section .dj-photo { height: 50vw; min-height: 240px; max-height: 400px; order: 1; }
+  .curate-copy { position: relative; top: auto; left: auto; transform: none; order: 2; padding: 32px 24px; background: var(--g); max-width: 100%; width: 100%; text-align: left; }
+  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); color: var(--linen); }
+  .curate-copy p { color: rgba(240,237,232,0.85); }
+  .curate-copy::before { display: none; }
   .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
 
   /* Tags: tap targets */
@@ -1346,7 +1348,7 @@ body .sp-packages {
 
   /* Curate */
   .curate-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
-  .curate-copy { top: 1rem; }
+  .curate-section .dj-photo { height: 40vw; min-height: 200px; }
   .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
 
   /* Footer photos */
