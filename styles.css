@@ -1258,11 +1258,14 @@ body .sp-packages {
   .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 2; }
   .photo-grid .gallery-item, .gallery-visible .gallery-item, .gallery-collapsed .gallery-item { margin-bottom: 4px; }
 
-  /* Curate — overlay stays, just reduce font size and ensure section is tall enough */
-  .curate-section { padding: 0; overflow: visible; }
-  .curate-section .dj-photo { height: 70vw; min-height: 320px; max-height: 520px; }
-  .curate-copy { top: 50%; transform: translate(-50%, -50%); padding: 0 20px; }
-  .curate-copy h2 { font-size: clamp(1.8rem, 6vw, 3.2rem); } /* FIX — reduced proportionally */
+  /* Curate — FIX: switch from fixed-height overlay to content-height stacked layout on mobile */
+  .curate-section { padding: 0; overflow: visible; height: auto !important; min-height: auto !important; } /* FIX */
+  .curate-section .dj-photo { height: 50vw; min-height: 220px; max-height: 320px; display: block; } /* FIX — shorter photo, text flows below */
+  .curate-copy { position: relative !important; top: auto !important; left: auto !important; transform: none !important; padding: 2.5rem 24px 2.5rem; width: 100%; max-width: 100%; text-align: center; background: var(--color-green); } /* FIX — taken out of absolute, stacked below photo */
+  .curate-copy h2 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.05; word-wrap: break-word; overflow-wrap: break-word; } /* FIX */
+  .curate-copy p { font-size: 1rem; line-height: 1.6; max-width: 100%; } /* FIX */
+  .curate-copy .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 1.25rem; } /* FIX */
+  .curate-copy::before { display: none; } /* FIX — remove radial gradient pseudo-element */
   .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
 
   /* Tags: tap targets */
@@ -1344,9 +1347,9 @@ body .sp-packages {
   /* Countdown */
   .countdown-num { font-size: clamp(2.8rem,12vw,4rem); }
 
-  /* Curate */
-  .curate-section .dj-photo { height: 80vw; min-height: 300px; }
-  .curate-copy h2 { font-size: clamp(1.6rem, 8vw, 2.4rem); } /* FIX — reduced proportionally */
+  /* Curate — FIX: keep stacked layout from 768px, adjust photo height */
+  .curate-section .dj-photo { height: 55vw; min-height: 200px; max-height: 280px; } /* FIX */
+  .curate-copy h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); } /* FIX */
   .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
 
   /* Footer photos */
@@ -1396,8 +1399,8 @@ body .sp-packages {
   html, body { overflow-x: hidden; max-width: 100%; }
 
   /* Typography emergency floor */
-  .curate-section .dj-photo { height: 90vw; min-height: 280px; }
-  .curate-copy h2 { font-size: 1.4rem; letter-spacing: -0.01em; } /* FIX — reduced proportionally */
+  .curate-section .dj-photo { height: 55vw; min-height: 180px; max-height: 240px; } /* FIX — keep stacked layout */
+  .curate-copy h2 { font-size: clamp(1.7rem, 9vw, 2.2rem); letter-spacing: -0.01em; } /* FIX */
   .ev-title { font-size: 1.8rem; }
   .countdown-num { font-size: 2.5rem; }
 
