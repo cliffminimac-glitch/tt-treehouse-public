@@ -610,6 +610,17 @@ body #sp-brands .w {
   z-index: 0;
   overflow: hidden; /* FIX #2 Round 46 — contain bg image within section */
 }
+/* Sponsor hero background video — positioned absolutely so it doesn't affect layout */
+.sponsor-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
 .sp-hero-overlay {
   position: absolute;
   inset: 0;
