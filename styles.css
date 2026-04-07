@@ -349,7 +349,7 @@ body.ci .cur-r { border-color:var(--g); }
 
 /* Curate video section */
 .curate-video-section { width:100%; background:var(--color-green); line-height:0; display:block; }
-.curate-video { width:100%; height:auto; min-height:56vh; object-fit:cover; display:block; }
+.curate-video { width:100%; height:auto; min-height:80vh; object-fit:cover; display:block; }
 
 /* ============================================================
    EVENT GALLERY SECTIONS
