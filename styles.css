@@ -129,7 +129,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 /* ============================================================
    SECTIONS
    ============================================================ */
-.dk { background:var(--g); color:var(--linen); position:relative; overflow:hidden; padding:80px 0; }
+.dk { background:var(--g); color:var(--linen); position:relative; overflow:clip; padding:80px 0; }
 .lt {
   background: linear-gradient(
     155deg,
@@ -140,7 +140,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     var(--color-cream) 80%,
     #e0e6d6 100%
   );
-  color:var(--g); position:relative; overflow:hidden; padding:80px 0;
+  color:var(--g); position:relative; overflow:clip; padding:80px 0;
 }
 /* Film grain on cream sections */
 .lt::after {
@@ -294,7 +294,7 @@ body.ci .cur-r { border-color:var(--g); }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.hero { min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:clip; }
 .hero-bg { position:absolute; inset:0; z-index:0; }
 .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.65; }
 .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,28,10,0.35) 0%, rgba(10,28,10,0.1) 35%, rgba(10,28,10,0.5) 70%, rgba(10,28,10,0.92) 100%), linear-gradient(to right, rgba(10,28,10,0.4) 0%, transparent 55%); z-index:1; }
@@ -338,7 +338,7 @@ body.ci .cur-r { border-color:var(--g); }
 /* ============================================================
    CURATE SECTION
    ============================================================ */
-.curate-section { position:relative; width:100%; overflow:hidden; padding:60px 0; }
+.curate-section { position:relative; width:100%; overflow:clip; padding:60px 0; }
 .curate-section .dj-photo { width:100%; height:72vh; object-fit:cover; object-position:center center; display:block; max-height:none; }
 .curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:var(--color-cream-light); max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy::before { content:""; position:absolute; inset:-50px -80px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 70%); border-radius:50%; z-index:-1; pointer-events:none; }
@@ -1093,7 +1093,7 @@ body .sp-packages {
 
 /* ── SPONSOR BOTTOM VIDEO ── */
 .sponsor-bottom-video-section { width: 100%; line-height: 0; overflow: hidden; }
-.sponsor-bottom-video { width: 100%; height: 100vh; object-fit: cover; display: block; }
+.sponsor-bottom-video { width: 100%; min-height: 100vh; height: auto; object-fit: cover; display: block; }
 
 /* ── SECONDARY BUTTON (on dark bg) ── */
 .sp-contact .btn-secondary {
@@ -1133,8 +1133,56 @@ body .sp-packages {
 }
 
 /* ============================================================
-   RESPONSIVE — TABLET (max-width: 1024px)
+   ROUND 47 — Event details panel: editorial gradient treatment
+   No box/card — text sits on a right-side gradient that fades
+   the photo naturally into the content area.
    ============================================================ */
+.event-details-panel {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  max-width: 520px;
+  position: relative;
+  z-index: 2;
+}
+/* All text inside the panel: cream, with text-shadow for legibility */
+.event-details-panel .lbl,
+.event-details-panel .event-date,
+.event-details-panel .countdown-num,
+.event-details-panel .event-time,
+.event-details-panel .venue-n,
+.event-details-panel .venue-l,
+.event-details-panel .event-meta,
+.event-details-panel p,
+.event-details-panel span {
+  color: #E8E6DF;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+}
+/* Right-side editorial gradient on the events section */
+#events::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(10,28,10,0.92) 0%,
+    rgba(10,28,10,0.75) 30%,
+    rgba(10,28,10,0.35) 55%,
+    rgba(10,28,10,0) 75%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   RESPONSIVE — ALL BREAKPOINTS (consolidated Round 47)
+   Order: 1024px → 768px → 640px → 480px → 375px
+   Accessibility: prefers-reduced-motion, hover:none
+   ============================================================ */
+
+/* ── 1024px — TABLET LANDSCAPE ── */
 @media (max-width: 1024px) {
   .hiw-steps { grid-template-columns: repeat(2,1fr); gap: 3rem 2rem; }
   .hiw-steps::before { display: none; }
@@ -1144,77 +1192,240 @@ body .sp-packages {
   .sp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
 }
 
-/* ============================================================
-   RESPONSIVE — TABLET (max-width: 768px)
-   ============================================================ */
+/* ── 768px — TABLET PORTRAIT ── */
 @media (max-width: 768px) {
+  /* Global */
+  html, body { overflow-x: hidden; max-width: 100%; }
   :root { --nav: 60px; --pad: 3rem 1.5rem; }
   .dk, .lt { padding: 48px 0; }
+
+  /* Nav */
   .nav-links { display: none; }
   .ham { display: flex; }
+  .mob a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .vc-btn { display: none; }
+
+  /* Hero */
   .hero-ctas { flex-direction: column; width: 100%; max-width: 300px; }
   .hero-ctas .btn { width: 100%; min-height: 52px; justify-content: center; }
   .scroll-hint { display: none; }
   .btn { min-height: 48px; }
-  .ev-section { padding: 48px 0 0; }
-  .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 2; }
-  .photo-grid .gallery-item, .gallery-visible .gallery-item, .gallery-collapsed .gallery-item { margin-bottom: 4px; }
+  .hero-eye { font-size: 0.65rem; }
+
+  /* Events section: gradient switches to bottom-up on mobile */
+  #events::after {
+    background: linear-gradient(
+      to top,
+      rgba(10,28,10,0.95) 0%,
+      rgba(10,28,10,0.75) 35%,
+      rgba(10,28,10,0.35) 60%,
+      rgba(10,28,10,0) 80%
+    );
+  }
+  /* Event panel: full-width, centered, at bottom */
+  .event-details-panel {
+    max-width: 100%;
+    width: 100%;
+    align-self: stretch !important;
+    text-align: center !important;
+  }
+  .event-details-panel > * { text-align: center !important; }
+  .event-details-panel div[style*="justify-content:flex-end"] {
+    justify-content: center !important;
+  }
+  .event-details-panel a[class*="btn"] {
+    align-self: center !important;
+  }
+
+  /* Stats */
   .stats-band { flex-direction: column; gap: 0; padding: 2rem 1.5rem; }
   .stat { padding: 1.5rem 0; }
   .stat-div { width: 3rem; height: 1px; align-self: auto; }
+
+  /* Gallery */
+  .ev-section { padding: 48px 0 0; }
+  .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 2; }
+  .photo-grid .gallery-item, .gallery-visible .gallery-item, .gallery-collapsed .gallery-item { margin-bottom: 4px; }
+
+  /* Curate */
+  .curate-section { padding: 40px 0; }
+  .curate-section .dj-photo { height: 55vh; }
+  .curate-copy { top: 2rem; bottom: auto; padding: 0 16px; }
+  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+  .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
+
+  /* Tags: tap targets */
+  .tag { min-height: 44px; padding: 10px 16px; display: inline-flex; align-items: center; }
+
+  /* How it works */
   .hiw-steps { grid-template-columns: 1fr; gap: 2rem; }
   .hiw-step { padding: 0 0 2rem; border-bottom: 1px solid var(--color-green-12); }
   .hiw-step:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* Join row */
   .join-row { flex-direction: column; border: none; gap: 0.75rem; overflow: visible; }
   .join-row input { border: 1.5px solid var(--ln20); border-radius: var(--r); width: 100%; }
   .join-row .btn-p { border-radius: var(--r); width: 100%; min-height: 52px; }
+
+  /* Footer */
   .foot-links { flex-direction: column; gap: 0.75rem; }
-  .vc-btn { display: none; }
-  .curate-section { padding: 40px 0; }
-  .curate-section .dj-photo { height: 55vh; }
-  .curate-copy { top: 2rem; bottom: auto; }
-  /* FIX #2: removed 1.8rem mobile override -- .curate-copy h2 now uses same clamp as .ev-title */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: clamp(160px, 25vw, 240px) !important; }
+
+  /* Brand logos */
   .brand-logo { height: 44px; max-width: 120px; }
+  .brands-grid-r23 { grid-template-columns: repeat(3,1fr); gap: 1.75rem 2rem; }
+
+  /* Why photos */
   .why-photos { min-height: 40vh; max-height: none; width: 100%; }
-  /* Sponsor page */
+
+  /* Sponsor hero */
+  .sp-hero-h1 { font-size: clamp(3rem, 9vw, 6rem); }
+
+  /* Sponsor stats */
   .sp-stats-inner,
   .sp-packages-inner,
   .sp-contact-inner { padding-left: 24px; padding-right: 24px; }
+  .sp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+
+  /* Sponsor tiers */
   .sp-tier { padding: 24px; }
   .sp-tier.gold { padding: 24px; }
   .sp-tier-feats { grid-template-columns: 1fr; }
+  .sp-tier .btn-primary,
+  .sp-tier-cta { width: 100%; text-align: center; justify-content: center; }
+
+  /* Sponsor form */
   .sp-form-row { grid-template-columns: 1fr; }
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; } /* prevent iOS zoom */
+  .sp-form-submit { width: 100%; }
+
+  /* Sponsor contact */
+  .sp-contact h2,
+  .sp-contact-inner h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+
+  /* Sponsor brands */
+  #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
+
+  /* Sponsor videos */
   .why-sponsor-video { height: 50vh; }
-  .sponsor-bottom-video { height: 70vh; }
-  .sp-igc-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .brands-grid-r23 { grid-template-columns: repeat(3,1fr); gap: 1.75rem 2rem; }
+  .sponsor-bottom-video { min-height: 70vh; }
+
+  /* Sponsor btn-full */
+  .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
 }
 
-/* ============================================================
-   RESPONSIVE — MOBILE (max-width: 640px)
-   ============================================================ */
+/* ── 640px — SMALL TABLET / LARGE PHONE ── */
 @media (max-width: 640px) {
   .brands-grid-wrap { grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .btn-full { max-width: 100%; }
 }
 
-/* ============================================================
-   RESPONSIVE — MOBILE (max-width: 480px)
-   ============================================================ */
+/* ── 480px — MOBILE ── */
 @media (max-width: 480px) {
+  /* Global */
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* Gallery */
   .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 1; }
+
+  /* Countdown */
   .countdown-num { font-size: clamp(2.8rem,12vw,4rem); }
+
+  /* Curate */
+  .curate-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
+  .curate-copy { top: 1rem; }
+  .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+  /* Footer photos */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 180px !important; }
+
+  /* Brand logos */
+  .brands-grid-r23 { grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+  .brands-grid-r23 .brand-logo { height: 44px; max-width: 110px; }
+
+  /* Sponsor hero */
+  .sp-hero-h1 { font-size: clamp(2.5rem, 10vw, 4rem); line-height: 0.95; }
+
+  /* Sponsor stats */
   .sp-stats-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .sp-stat-num { font-size: clamp(4rem, 18vw, 6rem); }
   .sp-stats-inner,
   .sp-packages-inner,
   .sp-contact-inner { padding-left: 16px; padding-right: 16px; }
-  .brands-grid-r23 { grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
-  .brands-grid-r23 .brand-logo { height: 44px; max-width: 110px; }
+
+  /* Sponsor packages */
+  .sp-packages-header h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+  /* Sponsor tiers */
+  .sp-tier { padding: 20px 16px; }
+  .sp-tier.gold { padding: 20px 16px; }
+  .sp-tier-feats { grid-template-columns: 1fr; gap: 0.5rem; }
+
+  /* Sponsor form */
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; padding: 14px 16px; }
+
+  /* Sponsor contact */
+  .sp-contact h2,
+  .sp-contact-inner h2 { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+  /* Sponsor brands */
+  #sp-brands h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+  #sp-brands .w { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Sponsor btn-full */
+  .btn-full { padding: 18px 24px; font-size: 1rem; }
 }
 
-/* ============================================================
-   ACCESSIBILITY — prefers-reduced-motion
-   PHASE 2 FIX #12
-   ============================================================ */
+/* ── 375px — SMALL MOBILE (emergency overrides) ── */
+@media (max-width: 375px) {
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* Typography emergency floor */
+  .curate-copy h2 { font-size: 1.8rem; letter-spacing: -0.01em; }
+  .ev-title { font-size: 1.8rem; }
+  .countdown-num { font-size: 2.5rem; }
+
+  /* Nav */
+  .nav-logo img { height: 32px; }
+
+  /* Sponsor hero */
+  .sp-hero-h1 { font-size: 2.2rem; letter-spacing: 0.01em; }
+
+  /* Sponsor stats */
+  .sp-stat-num { font-size: 3.5rem; }
+  .sp-stats-inner,
+  .sp-packages-inner,
+  .sp-contact-inner { padding-left: 12px; padding-right: 12px; }
+
+  /* Sponsor headings */
+  .sp-packages-header h2 { font-size: 2rem; }
+  .sp-contact h2,
+  .sp-contact-inner h2 { font-size: 2rem; }
+  #sp-brands h2 { font-size: 2rem; }
+  #sp-brands .w { padding-left: 12px !important; padding-right: 12px !important; }
+
+  /* Sponsor tiers */
+  .sp-tier { padding: 16px 12px; }
+  .sp-tier.gold { padding: 16px 12px; }
+
+  /* Sponsor form */
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; padding: 12px; }
+
+  /* Footer */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 140px !important; }
+
+  /* Buttons */
+  .btn-full { font-size: 0.9rem; padding: 16px 20px; }
+  .btn-primary { padding: 14px 24px; font-size: 0.9rem; }
+}
+
+/* ── ACCESSIBILITY ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms;
@@ -1223,216 +1434,6 @@ body .sp-packages {
     scroll-behavior: auto;
   }
 }
-
-/* ============================================================
-   ACCESSIBILITY — hover:none (touch devices — hide cursor)
-   ============================================================ */
 @media (hover: none) {
   .cur, .cur-r { display: none; }
-}
-
-/* ============================================================
-   MOBILE RESPONSIVE — Round 45 Full Mobile Fix
-   Covers: 768px (tablet), 480px (mobile), 375px (small mobile)
-   ============================================================ */
-
-/* ============================================================
-   ROUND 45 — TABLET ADDITIONS (max-width: 768px)
-   ============================================================ */
-@media (max-width: 768px) {
-  /* Global: prevent horizontal scroll */
-  html, body { overflow-x: hidden; max-width: 100%; }
-
-  /* Nav: mobile tap targets */
-  .mob a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
-
-  /* Hero: reduce clamp floor so text fits at 768px */
-  .hero-eye { font-size: 0.65rem; }
-
-  /* Curate: tighter overlay position on tablet */
-  .curate-copy { top: 1.5rem; padding: 0 16px; }
-  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
-
-  /* Gallery headings: reduce clamp floor */
-  .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
-
-  /* Curate tags: ensure tap targets */
-  .tag { min-height: 44px; padding: 10px 16px; display: inline-flex; align-items: center; }
-
-  /* Footer photo grid: switch to 2-col on tablet */
-  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: clamp(160px, 25vw, 240px) !important; }
-
-  /* Sponsor: Past Partners inner padding */
-  #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
-
-  /* Sponsor: form inputs explicit 16px to prevent iOS zoom */
-  .sp-form input,
-  .sp-form select,
-  .sp-form textarea { font-size: 16px; }
-
-  /* Sponsor: hero h1 reduce for tablet */
-  .sp-hero-h1 { font-size: clamp(3rem, 9vw, 6rem); }
-
-  /* Sponsor: btn-full full width on tablet */
-  .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
-
-  /* Sponsor: tier inquire buttons full width */
-  .sp-tier .btn-primary { width: 100%; text-align: center; justify-content: center; }
-
-  /* Sponsor: contact section heading */
-  .sp-contact h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
-
-  /* Sponsor: submit button full width */
-  .sp-form-submit { width: 100%; }
-}
-
-/* ============================================================
-   ROUND 45 — MOBILE ADDITIONS (max-width: 480px)
-   ============================================================ */
-@media (max-width: 480px) {
-  /* Global */
-  html, body { overflow-x: hidden; max-width: 100%; }
-
-  /* Curate heading: further reduction */
-  .curate-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
-  .curate-copy { top: 1rem; }
-
-  /* Gallery headings */
-  .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
-
-  /* Footer photo grid: 2-col on mobile */
-  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 180px !important; }
-
-  /* Sponsor: Past Partners inner padding */
-  #sp-brands .w { padding-left: 16px !important; padding-right: 16px !important; }
-
-  /* Sponsor hero h1 */
-  .sp-hero-h1 { font-size: clamp(2.5rem, 10vw, 4rem); line-height: 0.95; }
-
-  /* Sponsor: stat numbers in 1-col layout */
-  .sp-stat-num { font-size: clamp(4rem, 18vw, 6rem); }
-
-  /* Sponsor: packages heading */
-  .sp-packages-header h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
-
-  /* Sponsor: tier cards full-width padding */
-  .sp-tier { padding: 20px 16px; }
-  .sp-tier.gold { padding: 20px 16px; }
-
-  /* Sponsor: tier feat items single column (already set at 768px but reinforce) */
-  .sp-tier-feats { grid-template-columns: 1fr; gap: 0.5rem; }
-
-  /* Sponsor: contact form full-width */
-  .sp-form-row { grid-template-columns: 1fr; }
-  .sp-form input,
-  .sp-form select,
-  .sp-form textarea { font-size: 16px; padding: 14px 16px; }
-
-  /* Sponsor: contact heading */
-  .sp-contact h2 { font-size: clamp(2rem, 10vw, 3.5rem); }
-
-  /* Sponsor: btn-full */
-  .btn-full { padding: 18px 24px; font-size: 1rem; }
-
-  /* Sponsor: Past Partners heading */
-  #sp-brands h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
-}
-
-/* ============================================================
-   ROUND 45 — SMALL MOBILE (max-width: 375px)
-   ============================================================ */
-@media (max-width: 375px) {
-  /* Emergency overrides for smallest screens */
-  html, body { overflow-x: hidden; max-width: 100%; }
-
-  /* Curate heading */
-  .curate-copy h2 { font-size: 1.8rem; letter-spacing: -0.01em; }
-
-  /* Gallery headings */
-  .ev-title { font-size: 1.8rem; }
-
-  /* Countdown numbers */
-  .countdown-num { font-size: 2.5rem; }
-
-  /* Sponsor hero h1 */
-  .sp-hero-h1 { font-size: 2.2rem; letter-spacing: 0.01em; }
-
-  /* Sponsor stat numbers */
-  .sp-stat-num { font-size: 3.5rem; }
-
-  /* Sponsor packages heading */
-  .sp-packages-header h2 { font-size: 2rem; }
-
-  /* Sponsor contact heading */
-  .sp-contact h2 { font-size: 2rem; }
-
-  /* Sponsor Past Partners heading */
-  #sp-brands h2 { font-size: 2rem; }
-
-  /* Sponsor: Past Partners inner padding */
-  #sp-brands .w { padding-left: 12px !important; padding-right: 12px !important; }
-
-  /* Sponsor: stats inner padding */
-  .sp-stats-inner,
-  .sp-packages-inner,
-  .sp-contact-inner { padding-left: 12px; padding-right: 12px; }
-
-  /* Tier cards */
-  .sp-tier { padding: 16px 12px; }
-  .sp-tier.gold { padding: 16px 12px; }
-
-  /* Form inputs */
-  .sp-form input,
-  .sp-form select,
-  .sp-form textarea { font-size: 16px; padding: 12px; }
-
-  /* Footer photo grid: single row at 375px */
-  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 140px !important; }
-
-  /* Nav logo */
-  .nav-logo img { height: 32px; }
-
-  /* Buttons */
-  .btn-full { font-size: 0.9rem; padding: 16px 20px; }
-  .btn-primary { padding: 14px 24px; font-size: 0.9rem; }
-}
-
-/* ============================================================
-   FIX #1 Round 46 — Event details frosted glass panel
-   Dark green panel behind countdown/venue/CTA for readability
-   ============================================================ */
-.event-details-panel {
-  background: rgba(45, 74, 30, 0.88);
-  padding: 48px 56px;
-  border-radius: 8px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  max-width: 520px;
-}
-
-/* Ensure all text inside the panel is cream for WCAG AAA contrast */
-.event-details-panel .lbl,
-.event-details-panel .event-date,
-.event-details-panel .countdown-num,
-.event-details-panel .event-time,
-.event-details-panel .venue-n,
-.event-details-panel .venue-l,
-.event-details-panel .event-meta {
-  color: #E8E6DF;
-}
-
-/* Mobile: panel goes full-width with reduced padding */
-@media (max-width: 768px) {
-  .event-details-panel {
-    max-width: 100%;
-    width: 100%;
-    padding: 24px 20px;
-    border-radius: 6px;
-    align-self: stretch !important;
-    text-align: center !important;
-  }
-  .event-details-panel > * { text-align: center !important; }
-  .event-details-panel div[style*="justify-content:flex-end"] {
-    justify-content: center !important;
-  }
 }
