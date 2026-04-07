@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- PHASE 2 FIX #1 — Canonical URL -->
   <link rel="canonical" href="https://treehouseevents.cliffeliz.ai/">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <title>treehouse. events | new york city</title>
   <meta name="description" content="treehouse. throws the best parties in New York. Invite only. Open bar. Next event: April 25th at 75 Varick Rooftop.">
   <meta property="og:title" content="treehouse. events | new york city">
   <meta property="og:description" content="The best night out in New York. Invite only. Open bar. You'll want to be there.">
-  <meta property="og:image" content="/img/sp-xmas-herogroup.jpg">
+  <meta property="og:image" content="/img/hero-new.jpg">
   <meta property="og:url" content="https://treehouseevents.cliffeliz.ai">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="treehouse. events | new york city">
-  <meta name="twitter:image" content="/img/sp-xmas-herogroup.jpg">
+  <meta name="twitter:image" content="/img/hero-new.jpg">
   <!-- PHASE 2 FIX #2 — Additional SEO meta tags -->
   <meta name="twitter:description" content="NYC's most sought-after invite-only event series. Open bar. Next event: April 25th at 75 Varick Rooftop.">
 
@@ -114,6 +116,8 @@
         <span class="countdown-num" id="countdown-days">--</span><span class="countdown-sep">D</span>
         <span class="countdown-colon">:</span>
         <span class="countdown-num" id="countdown-hours">--</span><span class="countdown-sep">H</span>
+        <span class="countdown-colon">:</span>
+        <span class="countdown-num" id="countdown-mins">--</span><span class="countdown-sep">M</span>
       </div>
     </div>
     <div class="hero-ctas" data-a="u" data-d="5">
@@ -139,7 +143,7 @@
     <div class="stat" data-a="u" data-d="3"><span class="stat-v">Apr 25</span><span class="stat-l">next event</span></div>
   </div>
 </section>
--->
+
 
 <!-- MARQUEE -->
 <div class="marquee-wrap" aria-hidden="true">
@@ -529,7 +533,7 @@
     </div>
   </div>
 </section>
--->
+
 
 <!-- JOIN -->
 <section class="dk grain join" id="join">
@@ -926,6 +930,7 @@ function updateCountdown() {
   var diff = eventDate - now;
   var dEl = document.getElementById('countdown-days');
   var hEl = document.getElementById('countdown-hours');
+  var mEl = document.getElementById('countdown-mins');
   if (!dEl || !hEl) return;
   if (diff <= 0) {
     /* ROUND 5 FIX #1B — Hide countdown entirely when date passes, no fallback text */
@@ -935,11 +940,13 @@ function updateCountdown() {
   }
   var days = Math.floor(diff / (1000 * 60 * 60 * 24));
   var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   dEl.textContent = String(days).padStart(2, '0');
   hEl.textContent = String(hours).padStart(2, '0');
+  if (mEl) mEl.textContent = String(mins).padStart(2, '0');
 }
 updateCountdown();
-setInterval(updateCountdown, 60000);
+setInterval(updateCountdown, 1000);
 
 // ROUND 4 FIX #9 — Mobile nav backdrop click to close
 var backdrop = document.getElementById('nav-backdrop');
