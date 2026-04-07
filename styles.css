@@ -342,7 +342,7 @@ body.ci .cur-r { border-color:var(--g); }
 .curate-section .dj-photo { width:100%; height:88vh; object-fit:cover; object-position:center 60%; display:block; max-height:none; }
 .curate-section .curate-copy { position:absolute; top:clamp(3rem,12vw,8rem); left:50%; transform:translateX(-50%); text-align:center; color:var(--color-cream-light); max-width:640px; padding:0 24px; width:100%; z-index:2; }
 .curate-copy::before { content:""; position:absolute; inset:-50px -80px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 70%); border-radius:50%; z-index:-1; pointer-events:none; }
-.curate-copy h2 { font-size:clamp(3.5rem,8vw,7rem); font-family:var(--ff-d); line-height:0.88; letter-spacing:-0.02em; font-weight:700; margin-bottom:16px; color:var(--color-cream-light); text-shadow:0 2px 10px rgba(0,0,0,0.65); } /* FIX #2: matched to .ev-title */
+.curate-copy h2 { font-size:clamp(2.5rem,6vw,5rem); font-family:var(--ff-d); line-height:0.9; letter-spacing:-0.02em; font-weight:700; margin-bottom:16px; color:var(--color-cream-light); text-shadow:0 2px 10px rgba(0,0,0,0.65); } /* FIX — reduced from clamp(3.5rem,8vw,7rem) for full visibility */
 .curate-copy p { font-size:var(--text-base); line-height:1.7; color:rgba(240,237,232,0.85); margin-bottom:0; text-shadow:0 1px 6px rgba(0,0,0,0.55); }
 .curate-copy .tag { background:rgba(0,0,0,0.35); border-color:rgba(240,237,232,0.3); color:var(--color-cream-light); }
 .curate-copy .tag:hover { background:rgba(240,237,232,0.15); color:var(--color-cream-light); }
@@ -428,7 +428,7 @@ body.ci .cur-r { border-color:var(--g); }
   z-index:2;
   pointer-events:none;
 }
-.gallery-item.is-video video { width:100%; height:100%; object-fit:cover; display:block; }
+.gallery-item.is-video video { width:100%; height:auto; object-fit:contain; display:block; } /* FIX — natural aspect ratio, no cropping */
 
 /* Gallery toggle */
 .gallery-toggle { transition:background 0.25s ease,color 0.25s ease,transform 0.15s ease,border-color 0.25s ease; }
@@ -707,7 +707,7 @@ body .sp-stats {
 .sp-stats-layout { display: block; }
 .sp-stats-left { width: 100%; }
 .sp-stats-right { width: 100%; margin-top: 4rem; overflow: hidden; line-height: 0; }
-.why-sponsor-video { width: 100%; height: 70vh; object-fit: cover; display: block; }
+.why-sponsor-video { width: 100%; height: auto; object-fit: contain; display: block; background: var(--color-green); } /* FIX — natural aspect ratio, full frame visible */
 .sp-stats-label {
   display: block;
   font-family: var(--ff-b);
@@ -1104,7 +1104,7 @@ body .sp-packages {
 
 /* ── SPONSOR BOTTOM VIDEO ── */
 .sponsor-bottom-video-section { width: 100%; line-height: 0; overflow: hidden; }
-.sponsor-bottom-video { width: 100%; min-height: 100vh; height: auto; object-fit: cover; display: block; }
+.sponsor-bottom-video { width: 100%; height: 40vh; min-height: unset; object-fit: cover; display: block; } /* FIX — reduced from 100vh to compact accent */
 
 /* ── SECONDARY BUTTON (on dark bg) ── */
 .sp-contact .btn-secondary {
@@ -1262,7 +1262,7 @@ body .sp-packages {
   .curate-section { padding: 0; overflow: visible; }
   .curate-section .dj-photo { height: 70vw; min-height: 320px; max-height: 520px; }
   .curate-copy { top: 50%; transform: translate(-50%, -50%); padding: 0 20px; }
-  .curate-copy h2 { font-size: clamp(2rem, 7vw, 4rem); }
+  .curate-copy h2 { font-size: clamp(1.8rem, 6vw, 3.2rem); } /* FIX — reduced proportionally */
   .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
 
   /* Tags: tap targets */
@@ -1319,9 +1319,9 @@ body .sp-packages {
   /* Sponsor brands */
   #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
 
-  /* Sponsor videos */
-  .why-sponsor-video { height: 50vh; }
-  .sponsor-bottom-video { min-height: 70vh; }
+  /* Sponsor videos */ /* FIX — updated heights */
+  .why-sponsor-video { height: auto; } /* contain: let natural height show */
+  .sponsor-bottom-video { height: 30vh; min-height: unset; } /* compact on mobile */
 
   /* Sponsor btn-full */
   .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
@@ -1346,7 +1346,7 @@ body .sp-packages {
 
   /* Curate */
   .curate-section .dj-photo { height: 80vw; min-height: 300px; }
-  .curate-copy h2 { font-size: clamp(1.8rem, 9vw, 2.8rem); }
+  .curate-copy h2 { font-size: clamp(1.6rem, 8vw, 2.4rem); } /* FIX — reduced proportionally */
   .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
 
   /* Footer photos */
@@ -1397,7 +1397,7 @@ body .sp-packages {
 
   /* Typography emergency floor */
   .curate-section .dj-photo { height: 90vw; min-height: 280px; }
-  .curate-copy h2 { font-size: 1.6rem; letter-spacing: -0.01em; }
+  .curate-copy h2 { font-size: 1.4rem; letter-spacing: -0.01em; } /* FIX — reduced proportionally */
   .ev-title { font-size: 1.8rem; }
   .countdown-num { font-size: 2.5rem; }
 
