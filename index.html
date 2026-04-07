@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ANALYTICS — Google Analytics 4 -->
+  <!-- TODO: Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
+  <!-- Get your ID at: https://analytics.google.com → Admin → Data Streams → Web → Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- ANALYTICS — Vercel Analytics (free, zero-config, works automatically on Vercel hosting) -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- ANALYTICS — Vercel Speed Insights (Core Web Vitals tracking) -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+
   <!-- PHASE 2 FIX #1 — Canonical URL -->
   <link rel="canonical" href="https://treehouseevents.cliffeliz.ai/">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -981,8 +998,70 @@ if (backdrop) {
       if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
     });
   });
-})();
+})})();
+</script>
 
+<!-- ANALYTICS — GA4 Event Tracking -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ANALYTICS — Track all Partiful link clicks (primary conversion)
+  document.querySelectorAll('a[href*="partiful.com"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'click_request_invite', {
+          'event_category': 'conversion',
+          'event_label': this.textContent.trim(),
+          'page': window.location.pathname
+        });
+      }
+    });
+  });
+
+  // ANALYTICS — Track email link clicks
+  document.querySelectorAll('a[href*="mailto:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'click_email', {
+          'event_category': 'contact',
+          'event_label': this.href
+        });
+      }
+    });
+  });
+
+  // ANALYTICS — Track form submissions (waitlist signup)
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+          'event_category': 'conversion',
+          'event_label': 'waitlist_signup'
+        });
+      }
+    });
+  });
+
+  // ANALYTICS — Track gallery section scroll depth
+  if ('IntersectionObserver' in window) {
+    var gallerySections = document.querySelectorAll('[class*="ev-section"]');
+    var galleryObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'view_gallery', {
+              'event_category': 'engagement',
+              'event_label': entry.target.id || entry.target.getAttribute('aria-label') || 'gallery_section'
+            });
+          }
+          galleryObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    gallerySections.forEach(function(section) { galleryObserver.observe(section); });
+  }
+
+});
 </script>
 
 </body>
