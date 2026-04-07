@@ -1258,13 +1258,11 @@ body .sp-packages {
   .photo-grid, .gallery-visible, .gallery-collapsed { column-count: 2; }
   .photo-grid .gallery-item, .gallery-visible .gallery-item, .gallery-collapsed .gallery-item { margin-bottom: 4px; }
 
-  /* Curate — switch to stacked layout on mobile so text is never clipped */
-  .curate-section { padding: 0; display: flex; flex-direction: column; overflow: visible; }
-  .curate-section .dj-photo { height: 50vw; min-height: 240px; max-height: 400px; order: 1; }
-  .curate-copy { position: relative; top: auto; left: auto; transform: none; order: 2; padding: 32px 24px; background: var(--g); max-width: 100%; width: 100%; text-align: left; }
-  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); color: var(--linen); }
-  .curate-copy p { color: rgba(240,237,232,0.85); }
-  .curate-copy::before { display: none; }
+  /* Curate — overlay stays, just reduce font size and ensure section is tall enough */
+  .curate-section { padding: 40px 0; overflow: visible; }
+  .curate-section .dj-photo { height: 70vw; min-height: 320px; max-height: 520px; }
+  .curate-copy { top: 50%; transform: translate(-50%, -50%); padding: 0 20px; }
+  .curate-copy h2 { font-size: clamp(2rem, 7vw, 4rem); }
   .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
 
   /* Tags: tap targets */
@@ -1347,8 +1345,8 @@ body .sp-packages {
   .countdown-num { font-size: clamp(2.8rem,12vw,4rem); }
 
   /* Curate */
-  .curate-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
-  .curate-section .dj-photo { height: 40vw; min-height: 200px; }
+  .curate-section .dj-photo { height: 80vw; min-height: 300px; }
+  .curate-copy h2 { font-size: clamp(1.8rem, 9vw, 2.8rem); }
   .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
 
   /* Footer photos */
@@ -1398,7 +1396,8 @@ body .sp-packages {
   html, body { overflow-x: hidden; max-width: 100%; }
 
   /* Typography emergency floor */
-  .curate-copy h2 { font-size: 1.8rem; letter-spacing: -0.01em; }
+  .curate-section .dj-photo { height: 90vw; min-height: 280px; }
+  .curate-copy h2 { font-size: 1.6rem; letter-spacing: -0.01em; }
   .ev-title { font-size: 1.8rem; }
   .countdown-num { font-size: 2.5rem; }
 
