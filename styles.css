@@ -1226,3 +1226,169 @@ body .sp-packages {
 @media (hover: none) {
   .cur, .cur-r { display: none; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — Round 45 Full Mobile Fix
+   Covers: 768px (tablet), 480px (mobile), 375px (small mobile)
+   ============================================================ */
+
+/* ============================================================
+   ROUND 45 — TABLET ADDITIONS (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Global: prevent horizontal scroll */
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* Nav: mobile tap targets */
+  .mob a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+
+  /* Hero: reduce clamp floor so text fits at 768px */
+  .hero-eye { font-size: 0.65rem; }
+
+  /* Curate: tighter overlay position on tablet */
+  .curate-copy { top: 1.5rem; padding: 0 16px; }
+  .curate-copy h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+
+  /* Gallery headings: reduce clamp floor */
+  .ev-title { font-size: clamp(2.5rem, 8vw, 5rem); }
+
+  /* Curate tags: ensure tap targets */
+  .tag { min-height: 44px; padding: 10px 16px; display: inline-flex; align-items: center; }
+
+  /* Footer photo grid: switch to 2-col on tablet */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: clamp(160px, 25vw, 240px) !important; }
+
+  /* Sponsor: Past Partners inner padding */
+  #sp-brands .w { padding-left: 24px !important; padding-right: 24px !important; }
+
+  /* Sponsor: form inputs explicit 16px to prevent iOS zoom */
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; }
+
+  /* Sponsor: hero h1 reduce for tablet */
+  .sp-hero-h1 { font-size: clamp(3rem, 9vw, 6rem); }
+
+  /* Sponsor: btn-full full width on tablet */
+  .btn-full { max-width: 100%; margin: 24px 0; padding: 20px 32px; }
+
+  /* Sponsor: tier inquire buttons full width */
+  .sp-tier .btn-primary { width: 100%; text-align: center; justify-content: center; }
+
+  /* Sponsor: contact section heading */
+  .sp-contact h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+
+  /* Sponsor: submit button full width */
+  .sp-form-submit { width: 100%; }
+}
+
+/* ============================================================
+   ROUND 45 — MOBILE ADDITIONS (max-width: 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Global */
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* Curate heading: further reduction */
+  .curate-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
+  .curate-copy { top: 1rem; }
+
+  /* Gallery headings */
+  .ev-title { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+  /* Footer photo grid: 2-col on mobile */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 180px !important; }
+
+  /* Sponsor: Past Partners inner padding */
+  #sp-brands .w { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Sponsor hero h1 */
+  .sp-hero-h1 { font-size: clamp(2.5rem, 10vw, 4rem); line-height: 0.95; }
+
+  /* Sponsor: stat numbers in 1-col layout */
+  .sp-stat-num { font-size: clamp(4rem, 18vw, 6rem); }
+
+  /* Sponsor: packages heading */
+  .sp-packages-header h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+  /* Sponsor: tier cards full-width padding */
+  .sp-tier { padding: 20px 16px; }
+  .sp-tier.gold { padding: 20px 16px; }
+
+  /* Sponsor: tier feat items single column (already set at 768px but reinforce) */
+  .sp-tier-feats { grid-template-columns: 1fr; gap: 0.5rem; }
+
+  /* Sponsor: contact form full-width */
+  .sp-form-row { grid-template-columns: 1fr; }
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; padding: 14px 16px; }
+
+  /* Sponsor: contact heading */
+  .sp-contact h2 { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+  /* Sponsor: btn-full */
+  .btn-full { padding: 18px 24px; font-size: 1rem; }
+
+  /* Sponsor: Past Partners heading */
+  #sp-brands h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+}
+
+/* ============================================================
+   ROUND 45 — SMALL MOBILE (max-width: 375px)
+   ============================================================ */
+@media (max-width: 375px) {
+  /* Emergency overrides for smallest screens */
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* Curate heading */
+  .curate-copy h2 { font-size: 1.8rem; letter-spacing: -0.01em; }
+
+  /* Gallery headings */
+  .ev-title { font-size: 1.8rem; }
+
+  /* Countdown numbers */
+  .countdown-num { font-size: 2.5rem; }
+
+  /* Sponsor hero h1 */
+  .sp-hero-h1 { font-size: 2.2rem; letter-spacing: 0.01em; }
+
+  /* Sponsor stat numbers */
+  .sp-stat-num { font-size: 3.5rem; }
+
+  /* Sponsor packages heading */
+  .sp-packages-header h2 { font-size: 2rem; }
+
+  /* Sponsor contact heading */
+  .sp-contact h2 { font-size: 2rem; }
+
+  /* Sponsor Past Partners heading */
+  #sp-brands h2 { font-size: 2rem; }
+
+  /* Sponsor: Past Partners inner padding */
+  #sp-brands .w { padding-left: 12px !important; padding-right: 12px !important; }
+
+  /* Sponsor: stats inner padding */
+  .sp-stats-inner,
+  .sp-packages-inner,
+  .sp-contact-inner { padding-left: 12px; padding-right: 12px; }
+
+  /* Tier cards */
+  .sp-tier { padding: 16px 12px; }
+  .sp-tier.gold { padding: 16px 12px; }
+
+  /* Form inputs */
+  .sp-form input,
+  .sp-form select,
+  .sp-form textarea { font-size: 16px; padding: 12px; }
+
+  /* Footer photo grid: single row at 375px */
+  .foot-photos { grid-template-columns: repeat(2, 1fr) !important; height: 140px !important; }
+
+  /* Nav logo */
+  .nav-logo img { height: 32px; }
+
+  /* Buttons */
+  .btn-full { font-size: 0.9rem; padding: 16px 20px; }
+  .btn-primary { padding: 14px 24px; font-size: 0.9rem; }
+}
