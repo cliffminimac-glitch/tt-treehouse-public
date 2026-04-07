@@ -601,13 +601,14 @@ body #sp-brands .w {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible; /* FIX #2 Round 46 — never clip hero text at any zoom level */
   background: var(--g);
 }
 .sp-hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden; /* FIX #2 Round 46 — contain bg image within section */
 }
 .sp-hero-overlay {
   position: absolute;
@@ -621,13 +622,16 @@ body #sp-brands .w {
   text-align: center;
   color: var(--linen);
   max-width: 800px;
-  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  padding: 120px clamp(1.5rem, 5vw, 4rem); /* FIX #2 Round 46 — generous vertical padding so text never touches edges */
+  box-sizing: border-box;
 }
 .sp-hero-inner .lbl { margin-bottom: 1.5rem; display: block; }
 .sp-hero-h1 {
   font-family: var(--ff-d);
-  font-size: clamp(var(--text-4xl), 9vw, var(--text-hero));
+  font-size: clamp(2.5rem, 6vw, var(--text-hero)); /* FIX #2 Round 46 — lower floor so text scales down at high zoom */
   line-height: 0.92;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--linen);
@@ -1391,4 +1395,44 @@ body .sp-packages {
   /* Buttons */
   .btn-full { font-size: 0.9rem; padding: 16px 20px; }
   .btn-primary { padding: 14px 24px; font-size: 0.9rem; }
+}
+
+/* ============================================================
+   FIX #1 Round 46 — Event details frosted glass panel
+   Dark green panel behind countdown/venue/CTA for readability
+   ============================================================ */
+.event-details-panel {
+  background: rgba(45, 74, 30, 0.88);
+  padding: 48px 56px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: 520px;
+}
+
+/* Ensure all text inside the panel is cream for WCAG AAA contrast */
+.event-details-panel .lbl,
+.event-details-panel .event-date,
+.event-details-panel .countdown-num,
+.event-details-panel .event-time,
+.event-details-panel .venue-n,
+.event-details-panel .venue-l,
+.event-details-panel .event-meta {
+  color: #E8E6DF;
+}
+
+/* Mobile: panel goes full-width with reduced padding */
+@media (max-width: 768px) {
+  .event-details-panel {
+    max-width: 100%;
+    width: 100%;
+    padding: 24px 20px;
+    border-radius: 6px;
+    align-self: stretch !important;
+    text-align: center !important;
+  }
+  .event-details-panel > * { text-align: center !important; }
+  .event-details-panel div[style*="justify-content:flex-end"] {
+    justify-content: center !important;
+  }
 }
