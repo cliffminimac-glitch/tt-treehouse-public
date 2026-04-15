@@ -45,29 +45,7 @@
   <!-- EXPANSION FIX #1 — CSS extracted to styles.css for shared use with sponsor.html -->
   <link rel="stylesheet" href="/styles.css">
 <script src="/photos.js"></script>
-<!-- ROUND 8 FIX #4 — Sync secondary countdown IDs in April 25 section -->
-<script>
-(function(){
-  function syncCountdown2(){
-    var d=document.getElementById('countdown-days');
-    var h=document.getElementById('countdown-hours');
-    var d2=document.getElementById('countdown-days-2');
-    var h2=document.getElementById('countdown-hours-2');
-    var m2=document.getElementById('countdown-mins-2');
-    if(d&&d2) d2.textContent=d.textContent;
-    if(h&&h2) h2.textContent=h.textContent;
-    if(m2){
-      var now=new Date();
-      var event=new Date('2026-04-25T15:00:00-04:00'); /* PHASE 2 FIX #3 — canonical event time */
-      var diff=Math.max(0,Math.floor((event-now)/1000));
-      var mins=Math.floor((diff%3600)/60);
-      m2.textContent=String(mins).padStart(2,'0');
-    }
-  }
-  setInterval(syncCountdown2, 1000);
-  setTimeout(syncCountdown2, 500);
-})();
-</script>
+<!-- COUNTDOWN FIX — syncCountdown2 removed; unified updateCountdown handles all IDs -->
 </head>
 <body>
 
@@ -936,31 +914,29 @@ document.querySelectorAll('img').forEach(function(img){
   });
 })();
 
-// ROUND 4 FIX #3 — Live countdown to April 25, 2025 8PM ET
-// ROUND 5 FIX #1 — Corrected year to 2026
+// COUNTDOWN FIX — unified function sets all hero + event section IDs directly
 function updateCountdown() {
-  var eventDate = new Date('2026-04-25T15:00:00-04:00'); /* PHASE 2 FIX #3 — canonical event time */
+  var eventDate = new Date('2026-04-25T15:00:00-04:00');
   var now = new Date();
   var diff = eventDate - now;
-  var dEl = document.getElementById('countdown-days');
-  var hEl = document.getElementById('countdown-hours');
-  var mEl = document.getElementById('countdown-mins');
-  if (!dEl || !hEl) return;
+
   if (diff <= 0) {
-    /* ROUND 5 FIX #1B — Hide countdown entirely when date passes, no fallback text */
-    var cdEl = document.querySelector('.hero-countdown');
-    if (cdEl) cdEl.style.display = 'none';
+    document.querySelectorAll('[id^="countdown-days"]').forEach(function(el){ el.textContent = '0'; });
+    document.querySelectorAll('[id^="countdown-hours"]').forEach(function(el){ el.textContent = '0'; });
+    document.querySelectorAll('[id^="countdown-mins"]').forEach(function(el){ el.textContent = '0'; });
     return;
   }
-  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  var days  = Math.floor(diff / (1000 * 60 * 60 * 24));
   var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  dEl.textContent = String(days).padStart(2, '0');
-  hEl.textContent = String(hours).padStart(2, '0');
-  if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+  var mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.querySelectorAll('[id^="countdown-days"]').forEach(function(el){ el.textContent = String(days).padStart(2, '0'); });
+  document.querySelectorAll('[id^="countdown-hours"]').forEach(function(el){ el.textContent = String(hours).padStart(2, '0'); });
+  document.querySelectorAll('[id^="countdown-mins"]').forEach(function(el){ el.textContent = String(mins).padStart(2, '0'); });
 }
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown, 60000);
 
 // ROUND 4 FIX #9 — Mobile nav backdrop click to close
 var backdrop = document.getElementById('nav-backdrop');
